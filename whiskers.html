@@ -18,42 +18,33 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbar">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.html">Work <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="index.html">Work<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="about.html">About</a>
                 </div>
             </div>
         </nav>
 
         <main role="main">
-            <div class="bg-dark pt-3 py-sm-5 mb-sm-5 text-light">
+            <div class="pt-3 py-sm-5 mb-sm-5 bg-light text-dark">
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-12 col-md-6">
-                            <div class="display-4 mb-2">Asgard</div>
+                            <div class="display-4">Mr. Whiskers</div>
                             <p>
-                                At the end of my first year at Saxion, I took part in a three-week project to create a 3D game.
-                                I was Lead Programmer and Team Lead in a team of 2 programmers and 4 artists.
-                            </p>
-                            <p>
-                                The game is a first-person grappling hook game in a Norse mythology setting.
-                                Each level is a large area filled with apocalyptic scenery and deadly enemies. 
-                                The player must kill all enemies and activate all checkpoint crystals.
-                                When that is done, the exit gate activates and the player may continue to the next level.
-                            </p>
-                            <p>
-                                The project received the maximum grade and won the public vote for the best game by first year students at the public exhibition in Oyfo Techniekmuseum in Hengelo.
+                                In the beginning of my second year at Saxion, I led a team of 2 programmers and 4 artists to make an arcade game in 3 weeks.
                             </p>
                         </div>
                         <div class="col-md px-0 px-sm-3 mt-3 mt-md-0">
-                            <div class="embed-responsive embed-responsive-16by10">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OY_wT9SVQto?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/16uY1TevvQ0?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
 
+            <div class="container">
+                
                 <hr class="my-sm-5 d-sm-none">
                 <div class="row">
                     <div class="col">
@@ -64,51 +55,46 @@
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
-                        <img class="img-fluid mx-auto d-block" src="images/asgard/download%20(3).png" alt="Screenshot">
+                        <img class="img-fluid mx-auto d-block" src="images/whiskers/broadcast_event.png" alt="Screenshot">
                     </div>
                     <div class="col col-md-6">
-                        <div class="display-4">Movement</div>
+                        <div class="display-4">Custom level representation</div>
                         <p>
-                            The player is armed with two grappling hooks which can be used to swing from level geometry and kill enemies.
-                            Chains of the hooks can be pulled on to accelerate. The player can also jump onto and run along walls.
+                            I designed a custom level representation which allowed us to detect gameplay events such as collisions with obscales or item pickups much more efficiently and configurably than possible with Unity's 3D collision system.
+                        </p>
+                        <p>
+                            As the gameplay takes place on a number of rigidly defined lanes, the location of each gameplay-significant entity may be defined as a simple one-dimensional range within a particular lane, with some extra information for when it's above a lane or between two adjacent lanes.
+                        </p>
+                        <p>
+                            This system made it extremely easy to introduce several anti-frustration features, for instance, registering a landing even if the player missed the platform by some margin.
                         </p>
                     </div>
                 </div>
-
+                
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-md px-0 px-sm-3 mb-4 mb-md-0 order-md-last">
-                        <img class="img-fluid mx-auto d-block" src="images/asgard/download%20(7).png" alt="Screenshot">
+                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
+                        <img class="img-fluid mx-auto d-block" src="images/whiskers/broadcast_event.png" alt="Screenshot">
                     </div>
                     <div class="col col-md-6">
-                        <div class="display-4">Checkpoints</div>
+                        <div class="display-4">Event broadcasting</div>
                         <p>
-                            Magic crystals are scattered around the world, closely guarded by enemies.
-                            They activate when the player reaches them, serving as checkpoints.
-                            Checkpoints can only be activated if all preceding checkpoints have been activated and all its guards have been killed.
-                        </p>
-                        <p>
-                            When all preceding checkpoints have been activated, the crystal emits a beam of light visible from afar.
-                            When all enemies are dead, the chains holding down the crystal are broken, and it floats up into the air.
+                            I designed and implemented a high-performance event broadcasting system in C#, which made it possible to send arbitrary messages to any concerned object.
+                            This made a possible for the codebase to stay flexible and made it easy to make changes further into the project.
                         </p>
                     </div>
                 </div>
-
+                
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-md px-0 px-sm-3 mb-4 mb-md-0">
-                        <img class="img-fluid mx-auto d-block" src="images/asgard/download%20(4).png" alt="Screenshot">
+                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
+                        <img class="img-fluid mx-auto d-block" src="images/whiskers/tutorial_1.png" alt="Screenshot">
                     </div>
                     <div class="col col-md-6">
-                        <div class="display-4">Enemies</div>
+                        <div class="display-4">Tutorial</div>
                         <p>
-                            The world is roamed by flying flaming acid-spewing skulls.
-                            They attempt to encircle and kill the player, and can be killed by grappling them.
-                            There are three kinds of enemies, differentiated by color. Each kind reacts differently to being grappled.
-                        </p>
-                        <p>
-                            Their AI is a relatively simple state machine with a different combination of 3D steering behaviours for each state. 
-                            They use ballistic calculations to determine how to shoot a ball of acid so it would hit the player.
+                            On the first level of story mode, when the player gets to the first locations where the player needed to jump, time would pause and a prompt to press the right button would appear. 
+                            This only happens if the player gets to the edge without jumping the right way. This makes the tutorial only show up to people who don't already know how to play the game.
                         </p>
                     </div>
                 </div>
@@ -117,18 +103,10 @@
                 <div class="display-4 text-center mb-4 mb-sm-5">Screenshots</div>
                 <div class="row">
                     <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
-                        <img src="images/asgard/download.png" class="img-fluid" alt="Screenshot">
+                        <img src="images/island_defence/download (1).png" class="img-fluid" alt="Screenshot">
                     </div>
                     <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
-                        <img src="images/asgard/download (1).png" class="img-fluid" alt="Screenshot">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4 pb-md-0">
-                        <img src="images/asgard/download%20(5).png" class="img-fluid" alt="Screenshot">
-                    </div>
-                    <div class="col-md px-0 px-sm-3">
-                        <img src="images/asgard/download%20(7).png" class="img-fluid" alt="Screenshot">
+                        <img src="images/island_defence/download.png" class="img-fluid" alt="Screenshot">
                     </div>
                 </div>
 
@@ -137,22 +115,22 @@
                     <div class="col col-md-5">
                         <p class="align-middle text-center">
                             Builds of the game may be downloaded following these links.
-                            The project files are available in full at the game's <a href="https://github.com/maksmaisak/Saxion_Y1Q4_Project_Virtual_Game">GitHub repository</a>
+                            The project files are available in full at the game's <a href="https://github.com/maksmaisak/Saxion_Y2Q1_Project_Clients_Call">GitHub repository</a>
                         </p>
                         <div class="text-center">
-                            <a class="btn btn-outline-primary" href="https://github.com/maksmaisak/Saxion_Y1Q4_Project_Virtual_Game/releases/download/v1.0/Build_Windows.zip">Windows</a>
-                            <a class="btn btn-outline-primary" href="https://github.com/maksmaisak/Saxion_Y1Q4_Project_Virtual_Game/releases/download/v1.0/Build_macOS.zip">macOS</a>
+                            <a class="btn btn-outline-primary" href="https://github.com/maksmaisak/Saxion_Y2Q1_Project_Clients_Call/releases/download/v1.1/Build_Windows.zip">Windows</a>
+                            <a class="btn btn-outline-primary" href="https://github.com/maksmaisak/Saxion_Y2Q1_Project_Clients_Call/releases/download/v1.1/Build_macOS.zip">macOS</a>
                         </div>
                     </div>
                 </div>
 
                 <hr class="mt-sm-5 mb-4">
-                <div class="row justify-content-center align-items-center">
+                <div class="row justify-content-center">
                     <div class="col-5 col-sm-3 text-left">
-                        <a href="index.html">⟵ prev</a>
+                        <a href="asgard.html">⟵ prev</a>
                     </div>
                     <div class="col-5 col-sm-3 text-right">
-                        <a href="island.html">next ⟶</a>
+                        <a href="about.html">next ⟶</a>
                     </div>
                 </div>
             </div>            
