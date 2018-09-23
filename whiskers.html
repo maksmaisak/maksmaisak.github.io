@@ -33,6 +33,13 @@
                             <p>
                                 In the beginning of my second year at Saxion, I led a team of 2 programmers and 4 artists to make an arcade game in 3 weeks.
                             </p>
+                            <p>
+                                The game is a lane-based runner about a cat's journey to heaven.
+                                Obstacles, enemies, moving platforms, bonuses and powerups, and portals connecting the levels are some of the features I worked on.
+                            </p>
+                            <p>
+                                I also built an adaptive tutorial, and made the intro and outro sequences.
+                            </p>
                         </div>
                         <div class="col-md px-0 px-sm-3 mt-3 mt-md-0">
                             <div class="embed-responsive embed-responsive-16by9">
@@ -44,73 +51,75 @@
             </div>
 
             <div class="container">
-                
+
                 <hr class="my-sm-5 d-sm-none">
                 <div class="row">
                     <div class="col">
-                        <div class="display-4 text-center">Here are some of the things I did</div>
+                        <div class="display-4 text-center">Here are some highlights</div>
                     </div>
                 </div>
-                
+
+                <hr class="my-sm-5">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col col-md-8">
+                        <div class="display-4 text-center">Custom level representation</div>
+                        <p>
+                            I used a custom data structure to represent the objects in a level, which allowed us to detect gameplay events such as collisions with obscales or item pickups much more efficiently and with a greater degree of control than would've been possible with Unity's 3D collision detection system.
+                        </p>
+                        <p>
+                            As the gameplay takes place on a number of rigidly defined lanes, all you need to define the location of any gameplay-significant entity is the lane it's on and a simple one-dimensional range within that lane. 
+                            Some extra bits are needed for cases when it's above a lane or between two adjacent lanes. 
+                        </p>
+                        <p>
+                            With this system, collision detection becomes a matter of checking a few flags and performing a trivial range intersect check.
+                            This made it extremely easy to introduce several anti-frustration features, for instance, registering a landing even if the player missed the platform by a small margin.
+                        </p>
+                    </div>
+                </div>
+
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
-                        <img class="img-fluid mx-auto d-block" src="images/whiskers/broadcast_event.png" alt="Screenshot">
-                    </div>
-                    <div class="col col-md-6">
-                        <div class="display-4">Custom level representation</div>
-                        <p>
-                            I designed a custom level representation which allowed us to detect gameplay events such as collisions with obscales or item pickups much more efficiently and configurably than possible with Unity's 3D collision system.
-                        </p>
-                        <p>
-                            As the gameplay takes place on a number of rigidly defined lanes, the location of each gameplay-significant entity may be defined as a simple one-dimensional range within a particular lane, with some extra information for when it's above a lane or between two adjacent lanes.
-                        </p>
-                        <p>
-                            This system made it extremely easy to introduce several anti-frustration features, for instance, registering a landing even if the player missed the platform by some margin.
-                        </p>
-                    </div>
-                </div>
-                
-                <hr class="my-sm-5">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
-                        <img class="img-fluid mx-auto d-block" src="images/whiskers/broadcast_event.png" alt="Screenshot">
+                        <img class="img-fluid mx-auto d-block" src="images/whiskers/broadcast_event.png" alt="UML Diagram">
                     </div>
                     <div class="col col-md-6">
                         <div class="display-4">Event broadcasting</div>
                         <p>
-                            I designed and implemented a high-performance event broadcasting system in C#, which made it possible to send arbitrary messages to any concerned object.
-                            This made a possible for the codebase to stay flexible and made it easy to make changes further into the project.
+                            I designed and implemented a high-performance event broadcasting system in C#, which made it possible to easily send arbitrary messages to any concerned object.
+                            Under this system, defining an event type is as easy as subclassing, and subscribing to one is  as easy as implementing a one-method interface.
+                        </p>
+                        <p>
+                            This made it possible for the codebase to stay flexible and made it easy to make changes further into the project.
                         </p>
                     </div>
                 </div>
-                
+
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
+                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <img class="img-fluid mx-auto d-block" src="images/whiskers/tutorial_1.png" alt="Screenshot">
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col col-md-6 text-md-right">
                         <div class="display-4">Tutorial</div>
                         <p>
                             On the first level of story mode, when the player gets to the first locations where the player needed to jump, time would pause and a prompt to press the right button would appear. 
-                            This only happens if the player gets to the edge without jumping the right way. This makes the tutorial only show up to people who don't already know how to play the game.
+                            This only happens if the player gets to the edge without jumping the right way. This makes the tutorial only show up for people who don't already know how to play the game.
                         </p>
                     </div>
                 </div>
-                
+
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
-                        <img class="img-fluid mx-auto d-block" src="images/whiskers/tutorial_1.png" alt="Screenshot">
+                        <img class="img-fluid mx-auto d-block" src="images/whiskers/forest_2.png" alt="Screenshot">
                     </div>
                     <div class="col col-md-6">
-                        <div class="display-4">Gameplay Elements</div>
-                        <ul>
-                            <li>Moving platforms</li>
-                            <li>Enemies</li>
-                            <li>TODO MORE STUFF</li>
-                        </ul>
+                        <div class="display-4">Moving platforms</div>
+                        <p>
+                            Some platforms move between lanes in regular intervals. 
+                            They do a little tilt to the side before moving, letting the player know they're about to move. 
+                            A subtle anti-frustration feature prevents them from moving if the player is too close to the edge of a platform.
+                        </p>
                     </div>
                 </div>
 
@@ -118,12 +127,29 @@
                 <div class="display-4 text-center mb-4 mb-sm-5">Screenshots</div>
                 <div class="row">
                     <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
-                        <img src="images/island_defence/download (1).png" class="img-fluid" alt="Screenshot">
+                        <img src="images/whiskers/city_1.png" class="img-fluid" alt="Screenshot">
                     </div>
                     <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
-                        <img src="images/island_defence/download.png" class="img-fluid" alt="Screenshot">
+                        <img src="images/whiskers/portal_2.png" class="img-fluid" alt="Screenshot">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
+                        <img src="images/whiskers/insert_coin.png" class="img-fluid" alt="Screenshot">
+                    </div>
+                    <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
+                        <img src="images/whiskers/magic_1.png" class="img-fluid" alt="Screenshot">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
+                        <img src="images/whiskers/gates_1.png" class="img-fluid" alt="Screenshot">
+                    </div>
+                    <div class="col-md px-0 px-sm-3 pb-3 pb-sm-4">
+                        <img src="images/whiskers/leaderboard.png" class="img-fluid" alt="Screenshot">
+                    </div>
+                </div>
+
 
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
@@ -142,10 +168,10 @@
                 <hr class="mt-sm-5 mb-4">
                 <div class="row justify-content-center">
                     <div class="col-5 col-sm-3 text-left">
-                        <a href="asgard.html">⟵ prev</a>
+                        <a href="index.html">⟵ prev</a>
                     </div>
                     <div class="col-5 col-sm-3 text-right">
-                        <a href="about.html">next ⟶</a>
+                        <a href="asgard.html">next ⟶</a>
                     </div>
                 </div>
             </div>            

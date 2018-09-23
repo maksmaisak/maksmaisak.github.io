@@ -10,7 +10,7 @@
         <link rel="icon" href="images/icons/icosahedron.png">
         <title>Maks Maisak</title>
     </head>
-    <body>
+    <body class>
 
         <nav class="navbar navbar-expand navbar-light rounded">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@
                         <div class="col-12 col-md-6">
                             <div class="display-4 mb-2">Asgard</div>
                             <p>
-                                At the end of my first year at Saxion, I took part in a three-week project to create a 3D game.
+                                Near the end of my first year at Saxion, I took part in a three-week project to create a 3D game.
                                 I was Lead Programmer and Team Lead in a team of 2 programmers and 4 artists.
                             </p>
                             <p>
@@ -80,16 +80,18 @@
                     <div class="col-md px-0 px-sm-3 mb-4 mb-md-0 order-md-last">
                         <img class="img-fluid mx-auto d-block" src="images/asgard/download%20(7).png" alt="Screenshot">
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col col-md-6 text-md-right">
                         <div class="display-4">Checkpoints</div>
                         <p>
                             Magic crystals are scattered around the world, closely guarded by enemies.
-                            They activate when the player reaches them, serving as checkpoints.
-                            Checkpoints can only be activated if all preceding checkpoints have been activated and all its guards have been killed.
+                            If activated, they serve as checkpoints.
                         </p>
                         <p>
                             When all preceding checkpoints have been activated, the crystal emits a beam of light visible from afar.
-                            When all enemies are dead, the chains holding down the crystal are broken, and it floats up into the air.
+                            When all enemies guarding the checkpoint are dead, the chains holding down the crystal are broken, and it floats up into the air. Only then can it be activated.
+                        </p>
+                        <p>
+                            If a player dies, the level is reloaded, the player is put at the location of the latest activated checkpoint and the state of the world is restored using a custom guid-based object persistence system.
                         </p>
                     </div>
                 </div>
@@ -108,7 +110,7 @@
                         </p>
                         <p>
                             Their AI is a relatively simple state machine with a different combination of 3D steering behaviours for each state. 
-                            They use ballistic calculations to determine how to shoot a ball of acid so it would hit the player.
+                            They use ballistic trajectory calculations to determine how to shoot a ball of acid so it would hit the player.
                         </p>
                     </div>
                 </div>
@@ -149,7 +151,7 @@
                 <hr class="mt-sm-5 mb-4">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-5 col-sm-3 text-left">
-                        <a href="index.html">⟵ prev</a>
+                        <a href="whiskers.html">⟵ prev</a>
                     </div>
                     <div class="col-5 col-sm-3 text-right">
                         <a href="island.html">next ⟶</a>
