@@ -55,19 +55,19 @@
                 <hr class="my-sm-5 d-sm-none">
                 <div class="row">
                     <div class="col">
-                        <div class="display-4 text-center">Here are some of  the most interesting things I did</div>
+                        <div class="display-4 text-center">Here are some of the most interesting things I did</div>
                     </div>
                 </div>
 
                 <hr class="my-sm-5">
                 <div class="row justify-content-center align-items-center">
                     <div class="col col-md-8">
-                        <div class="display-4 text-center" style="word-wrap: break-word">Custom level representation</div>
+                        <div class="display-4 text-center" style="word-wrap: break-word">Custom level model</div>
                         <p>
-                            I used a custom data structure to represent the objects in a level, which allowed us to detect gameplay events such as collisions with obscales or item pickups much more efficiently and with a greater degree of control than would've been possible with Unity's 3D collision detection system.
+                            I used a custom data structure to represent the objects in a level, which allowed us to detect gameplay events such as collisions with obstacles or bonuses much more efficiently and with a greater degree of control than would've been possible with Unity's 3D collision detection system.
                         </p>
                         <p>
-                            As the gameplay takes place on a number of rigidly defined lanes, all you need to define the location of any gameplay-significant entity is the lane it's on and a simple one-dimensional range within that lane. 
+                            As the gameplay takes place on a number of rigidly defined lanes, all you need to determine the location of any gameplay-significant entity is the lane it's on and a simple one-dimensional range within that lane. 
                             Some extra bits are needed for cases when it's above a lane or between two adjacent lanes. 
                         </p>
                         <p>
@@ -90,6 +90,11 @@
                         </p>
                         <p>
                             This made it possible for the codebase to stay flexible and made it easy to make changes further into the project.
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q1_Project_Clients_Call/wiki/Event-Broadcasting">More info on the implementation</a>
+                            <br>
+                            <a target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q1_Project_Clients_Call/tree/master/Assets/_Own/Scripts/Utility/EventsBroadcasting">Source code</a>
                         </p>
                     </div>
                 </div>
