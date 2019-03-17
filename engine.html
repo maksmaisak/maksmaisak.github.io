@@ -31,12 +31,8 @@
                         <div class="col-12 col-md-6">
                             <div class="display-4">C++ Game Engine</div>
                             <p>
-                                During  my second year at Saxion, over the course of a few months I've made a game engine in C++. I later used it to make a puzzle game in four weeks.
+                                During  my second year at Saxion, over the course of a few months I've made a game engine in C++. Later that year I used it to make <a href="sealed.html">a game</a>.
                             </p>
-                            <div class="text-center">
-                                <a class="btn btn-outline-primary" target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q2_Rendering">Check it out on GitHub</a>
-                                <a class="btn btn-outline-primary" target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q2_Rendering/wiki/Lua-Scripting-API">Lua scripting API</a>
-                            </div>
                         </div>
                         <div class="col-md px-0 px-sm-3 mt-3 mt-md-0">
                             <img class="img-fluid mx-auto d-block" src="images/engine/engine_3.png" alt="Engine rendering showcase">
@@ -58,7 +54,7 @@
 
                             Each entity is just a 64-bit ID that ties together various components. 
                             For each type of component there is a component pool that contiguously stores all components of that type. 
-                            Because of data contiguity, iterating over a component pool is cache-friendly and blazing fast.
+                            Iterating over a component pool is cache-friendly and blazing fast.
                         </p>
                     </div>
                 </div>
@@ -125,22 +121,52 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <img class="img-fluid mx-auto d-block" src="images/engine/engine_3.png" alt="Code snippet">
                     </div>
-                    <div class="col col-md-6 text-md-right">
-                        The rendering system features:
-                        <ul dir="rtl">
-                            <li>Physically-Based Rendering using the Cook-Torrance BRDF</li>
-                            <li>Soft shadows from both directional and point lights</li>
-                            <li>Skybox rendering</li>
-                            <li>Ambient lighting</li>
-                            <li>Static draw call batching</li>
+                    <div class="col col-md-6">
+                        <div class="display-4 text-">PBR</div>
+                        <p>
+                            The engine supports Physically-Based Rendering using the Cook-Torrance BRDF with the GGX microfacet distribution function.
+                            Per-fragment material properties are supplied by these texture maps:
+                        </p>
+                        <ul>
+                            <li>Albedo</li>
+                            <li>Joint Metallic-Smoothness map (red and alpha channels)</li>
+                            <li>Ambient Occlusion</li>
+                            <li>Normal map</li>
                         </ul>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col col-md-6">
+                        <div class="display-4">Shadowmapping</div>
+                        <p>
+                            The engine uses layered rendering for shadowmapping to get the same number of draw calls regardless of the number of lights in the scene.
+                            Instead of having a draw call for each face of the cubemap of each point light, only one is needed.
+                        </p>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="display-4">Static batching</div>
+                        <p>
+                            Models that are marked static and have the same material are pretransformed on the CPU and merged into a batch.
+                            This dramatically reduces the number of draw calls needed to render a frame.
+                        </p>
+                    </div>
+                </div>
+                
+                <hr class="my-sm-5">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col col-md-5">
+                        <div class="text-center">
+                            <a class="btn btn-outline-primary" target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q2_Rendering">GitHub repository</a>
+                            <a class="btn btn-outline-primary" target="_blank" href="https://github.com/maksmaisak/Saxion_Y2Q2_Rendering/wiki/Lua-Scripting-API">Lua scripting API</a>
+                        </div>
                     </div>
                 </div>
 
                 <hr class="mt-sm-5 mb-4">
                 <div class="row justify-content-center">
                     <div class="col-5 col-sm-3 text-left">
-                        <a href="portfolio.html">⟵ prev</a>
+                        <a href="sealed.html">⟵ prev</a>
                     </div>
                     <div class="col-5 col-sm-3 text-right">
                         <a href="whiskers.html">next ⟶</a>
