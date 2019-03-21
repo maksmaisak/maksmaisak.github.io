@@ -138,14 +138,15 @@
                 
                 <hr class="my-sm-4">
                 <div class="row justify-content-center">
-                    <div class="col col-md-6 word-wrap-break-word">
+                    <div class="col-sm col-md-6 word-wrap-break-word">
                         <div class="display-4">Shadows</div>
                         <p>
                             The engine uses layered rendering for shadowmapping to get the same number of draw calls regardless of the number of lights in the scene.
                             Instead of having a draw call for each face of the cubemap of each point light, only one is needed.
                         </p>
                     </div>
-                    <div class="col col-md-6">
+                    <div class="col-sm col-md-6">
+                        <hr class="d-sm-none">
                         <div class="display-4">Batching</div>
                         <p>
                             Models that are marked static and have the same material are pretransformed on the CPU and merged into a batch.
