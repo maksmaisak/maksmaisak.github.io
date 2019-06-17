@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2018 Maksym Maisak
+Copyright (c) 2018-2019 Maksym Maisak
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
