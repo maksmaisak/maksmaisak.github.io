@@ -1,0 +1,1678 @@
+Change: 636459
+Date:   2019-09-03 13:13:06
+Description:
+[UE4]
+- GT-1130 Generate uproject files with relative paths to engine that creates it
+Reviewed by Sander B
+--------------------------------------------------
+Change: 636825
+Date:   2019-09-05 12:17:18
+Description:
+[UE4]
+GT-1153
+Inserting spline points is a hassle. When inserting a splinepoint to for example a sharp turn the tangents of this splinepoint will be the set to (I think) the default values of a tangent. This messes up your any work you did to tweak the previous tangents
+
+The new behavior is optional on the `bPreserveCurveWhenAddingPoints` property of USplineComponent (true by default)
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 637040
+Date:   2019-09-06 16:39:44
+Description:
+[UE4]
+GE-1153
+There's a convenient 'Auto snap to next nav spline' function to make sure splines align properly. This works well for Coaster Combat as the splines only ever move forward, but for a racing game like Vroom an 'Auto snap to previous spline' would be very helpful as well
+
+- Now has separate Auto Search booleans for searching for the next spline and the prev spline
+- Separate Auto Snap settings for snapping to next spline and prev spline
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 637274
+Date:   2019-09-10 10:10:48
+Description:
+[UE4]
+GT-1153
+Exposing the "SplineParts" variable to blueprint for editing the visual at run time
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 637636
+Date:   2019-09-11 16:21:00
+Description:
+[UE4]
+GT-1153
+
+"When creating things like loopings using the spline component, the mesh tends to twist 180 degrees, messing up the track. It can usually be worked around by stretching the tangents really far, but it's inconvenient and people who aren't aware of this might not figure this out."
+
+- Made USplineComponent::GetQuaternionAtSplineInputKey give more stable results.
+- Added debug visualizations of orientations along the spline (interpolated and final).
+- Added a "Reset Key Rotation To Match Curve" option to a context menu when editing spline points. Use it if a key's rotation gets too out of sync with the final rotation at that point in the spline. Use the aforementioned debug visualizations to compare.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 637830
+Date:   2019-09-12 16:56:43
+Description:
+[UE4]
+GT-897
+
+All fades caused by the camera intersecting geometry are now done using post process volumes. 
+Workflow: To make an actor fade screen when the camera gets too close, add a FFFadeSource Component to an actor, attached to a UPrimitiveComponent. It will use the shape of its parent. Fades to solid black by default.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 637934
+Date:   2019-09-13 13:07:58
+Description:
+[UE4]
+GT-897
+
+Fades done through UFFFadeComponent::FadeBetweenColors now use post process volume blendables.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 638063
+Date:   2019-09-16 12:24:03
+Description:
+[UE4]
+GT-897
+- UFFFadeComponent now supports multiple fades at the same time. 
+- UFFFadeComponent::FadeBetweenColors now returns a UFFFade* through which that fade may be controlled.
+- Both UFFFadeComponent and UFFFade implement IBlendableInterface
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 638168
+Date:   2019-09-16 18:11:18
+Description:
+[UE4]
+GT-897
+
+- UFFFadeComponent::FadeBetweenColors can now take lambdas (actually any TFunction) as callbacks.
+- Added UFFFadeComponent::OnCppStartFadeDelegate as a non-dynamic version of UFFFadeComponent::OnStartFadeDelegate
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 638323
+Date:   2019-09-17 14:37:56
+Description:
+[UE4]
+GT-1432
+
+In the startup logos plugin we need a few changes to make it ready for new projects, they are the following:
+
+- Removal of the auto-continue after finish functionality from the plugin settings and C++ code of the plugin
+- Expose the StartupLogoSequence OnAllLogosFinished() function to blueprints
+- Add a "bUnskippable" var to the StartupLogoComponent that prevents you from skipping a logo.
+- Prevent OnAllLogosSkipped from working if one of the upcoming logos is unskippable
+
+Also fixed the logo gate in the template test scene always skipping the forcefield logo.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 638738
+Date:   2019-09-19 10:53:02
+Description:
+[UE4]
+GT-1000
+"Replace variable" in blueprints supports replacing multiple variables at the same time. 
+When multiple variable nodes are selected, will replace all selected variables of the same type as the variable node you right-clicked on.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 639624
+Date:   2019-09-24 14:59:35
+Description:
+[UE-4]
+GT-1062
+
+New plugin: ForceFieldLevelCreator.
+In the content browser, you can create a level with sublevels set up.
+Workflow: in the content browser, right click in folder, select "New Force Field Level".
+Sublevel names are configurable in the project settings under Plugins | Force Field Level Creator
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 639660
+Date:   2019-09-24 15:55:44
+Description:
+[UE4]
+ForceFieldLevelCreator category: Editor -> Force Field
+--------------------------------------------------
+Change: 639799
+Date:   2019-09-25 11:59:25
+Description:
+[UE4]
+GT-1468
+
+Added FFHMDFollower component in the UtilityExtensions plugin.
+Makes an actor stay in front of the HMD, facing it.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 639923
+Date:   2019-09-25 16:41:20
+Description:
+[UE4]
+
+Removed unused property from FFStartupLogosPluginSettings and DefaultGame.ini
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 640198
+Date:   2019-09-26 15:46:03
+Description:
+[UE-4]
+
+ForceFieldLevelCreato pluginr: made the default level name in the config non-localizable.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 640372
+Date:   2019-09-27 14:36:11
+Description:
+[UE4]
+GT-1168
+
+- Moved the PerformanceMapChecksEditor module from the PerformanceTools plugin to the MapCheckExtensions plugin
+- New module in MapCheckExtensions plugin: MapChecksCubemaps, based on the cubemap map check from TSWorldSettings from TimeStall
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 640401
+Date:   2019-09-27 15:45:09
+Description:
+[UE4]
+GT-1354
+
+Migrated contents of the GameplayExtensions plugin to UtilityExtensions.
+
+Did not remove IsNetModeStandalone because it has different logging behavior (when failed to get world from world context object) than Unreal's own IsStandalone.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 640411
+Date:   2019-09-27 15:49:46
+Description:
+[UE4]
+Removed GameplayExtensions from ForceFieldDemos project
+--------------------------------------------------
+Change: 640414
+Date:   2019-09-27 15:53:25
+Description:
+[UE4]
+Removed GameplayExtensions from ForceFieldDemos.Build.cs
+--------------------------------------------------
+Change: 640432
+Date:   2019-09-27 16:28:00
+Description:
+[UE4]
+
+Fixed BP_Enemy referencing the old FFHealth from the GameplayExtension plugin (now in UtilityExtensions)
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 640988
+Date:   2019-10-02 10:38:40
+Description:
+[UE4]
+GT-1455
+UtilityExtensions: added a FFVisibleForPlayerChecker component.
+Field-of-view testing is done against corners of the bounding box (either of the whole actor or just the checker component and its children, configurable).
+Occlusion testing is done with sweep tests of child primitive components from their postiions to the camera. If there are no child primitives, uses a single linecast from the component location to the camera.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641251
+Date:   2019-10-03 10:32:55
+Description:
+[UE4]
+
+Made FFFade reversible, made more of its properties writable.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641295
+Date:   2019-10-03 11:59:07
+Description:
+[UE4]
+GT-1507
+
+Made it possibe to disable FFFadeSource from showing up while in the editor.
+UFFFadeSourceComponent::bShowInEditor (false by default).
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641351
+Date:   2019-10-03 14:48:13
+Description:
+[UE4]
+
+GT-1506
+
+FFTextRenderComponent: made horizontal alignment functionality consistent with vertical alignment.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641374
+Date:   2019-10-03 15:26:44
+Description:
+[UE4]
+
+Made changing the Text property of FFTextRenderComponent mark the render state dirty.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641480
+Date:   2019-10-04 10:10:53
+Description:
+[UE4]
+
+Split UEngine::bAutoActivateDefault into bAutoActivateAudioComponentDefault and bAutoActivateParticleComponentDefault.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 641964
+Date:   2019-10-08 11:35:39
+Description:
+[UE4]
+GT-1512
+
+* Added convenience parameters to UFFFade::Reverse()
+* Added error logging when trying to Reverse() an inactive UFFFade
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 643518
+Date:   2019-10-17 10:58:26
+Description:
+[GAL]
+
+Fixed BP_HumanoidBase pawns cycliing through the run animation when unpossesed while running.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 643560
+Date:   2019-10-17 12:09:06
+Description:
+[Galleon]
+
+Made it possible to disable occlusion checking for FFVisibleForPlayerChecker
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 644458
+Date:   2019-10-23 11:06:58
+Description:
+[Galleon]
+Fixes to FF imposters:
+- Fixed incorrect rotations
+- Fixed billboarding resetting scale and pivot
+- Using UVs in UV2 and UV3 for actor origin and x scale instead of vertex colors
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 644828
+Date:   2019-10-24 13:57:31
+Description:
+[Galleon]
+
+- Fixed incorrect HLOD mesh merging for imposters when the merged mesh is not at origin.
+- Rebuilt foliage HLODs in Valley.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 645075
+Date:   2019-10-25 13:14:36
+Description:
+[Galleon]
+
+Fixed characters not reacting to damage because they could not access the instigator of projectiles.
+--------------------------------------------------
+Change: 645116
+Date:   2019-10-25 14:30:03
+Description:
+[Galleon]
+
+Fixed GLDamageResponseScope causing friendly fire.
+It no longer sets NeighbourDamageCauser on non-friendlies and self.
+
+Reviewed by Stijn Kistemaker
+--------------------------------------------------
+Change: 645633
+Date:   2019-10-29 15:43:50
+Description:
+[Galleon]
+
+- Synchronization mechanism between the two behavior trees pf characters
+- Messaging support for characters with more than one behavior tree (more than one UBrainComponent).
+- Fixed cover not protecting
+- Made characters seek better cover if they get damaged in current cover
+
+Reviewed by Stijn Kistemaker
+--------------------------------------------------
+Change: 645757
+Date:   2019-10-30 10:12:25
+Description:
+[Galleon]
+
+Reverted changes to FAIMessageObserver from CL 645633.
+
+Reviewed by Stijn Kistemaker.
+--------------------------------------------------
+Change: 646338
+Date:   2019-10-31 16:12:24
+Description:
+[Galleon]
+
+- Setup for enemy AI in the FPS segment
+- Made BlackboardComponent support being owned by multiple UBrainComponent|s
+- Made FFCondition_IsInRange abortable
+
+Reviewed by Stijn Kistemaker
+--------------------------------------------------
+Change: 646364
+Date:   2019-10-31 16:39:59
+Description:
+[Galleon]
+
+Fixed BP_HumanoidBase not handling player possession properly.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 646543
+Date:   2019-11-01 13:40:10
+Description:
+[Galleon]
+
+Fixed BP_FPSGrunt stopping when switching movement target (when found cover along the way to the player).
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 646546
+Date:   2019-11-01 13:41:26
+Description:
+[Galleon]
+
+Didn't save.
+--------------------------------------------------
+Change: 646841
+Date:   2019-11-04 14:36:37
+Description:
+[Galleon]
+
+FPS AI:
+- Target visibility checks before shooting
+- Removed BP_FPSPlayer in favour of BP_RevoltPawn_FPS
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 647380
+Date:   2019-11-05 11:46:51
+Description:
+[Galleon]
+
+Basic Elite AI: moves into range (or until player is visible), shoots player. 
+Dodges when damaged.
+Dodges randomly when in combat and not moving.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 647564
+Date:   2019-11-05 16:44:56
+Description:
+[Galleon]
+
+Elite AI:
+- Added a cooldown to control how often they can dodge from being damaged.
+- Elites don't try to get closer than a specified minimum distance
+- Player visibility checks for shooting are no longer blocked by weapons, ammo etc. (note: added a new trace channel for it, PhysicsActor preset ignores it)
+- Fixed "is safe from player" traces (added height offset to player location there).
+
+Reviewed by James.
+--------------------------------------------------
+Change: 648036
+Date:   2019-11-07 10:51:04
+Description:
+[Galleon]
+
+Fixed hands not appearing in test scenes
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 648064
+Date:   2019-11-07 11:28:45
+Description:
+[Galleon]
+
+Made elites start in idle and only begin fighting when damaged.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 648218
+Date:   2019-11-07 15:37:34
+Description:
+[Galleon]
+
+Made it possible to set up defend zones (BP_FPSDefendZone) that elites will stay in during combat.
+Specify the initial defend zone on instances of BP_FPSGrunt placed in the world.
+When spawning, you can call SetDefendZone on BP_Revolt_EliteController.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 648520
+Date:   2019-11-08 14:03:15
+Description:
+[Galleon]
+
+Elite AI:
+- Only dodging within defend zone
+- Only moving toward player if not too close to defend zone edge
+- Moving deeper inside defend zone when entering combat
+- Fixed focus visibility checks being blocked by weapons etc.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 648533
+Date:   2019-11-08 14:21:18
+Description:
+[Galleon]
+
+Added billboards to defend zone.
+Reduced min distance from defend zone edge for elites.
+--------------------------------------------------
+Change: 648887
+Date:   2019-11-11 15:14:50
+Description:
+[Galleon]
+
+- Made it possible to specify an initial shooting target for elites. They will shoot that and do random dodges instead of idling if it is set.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 648906
+Date:   2019-11-11 15:46:36
+Description:
+[Galleon]
+
+Fixed not being able to hit BP_Elite with non-plasma projectiles.
+Copied the collision setup from FPSGrunt to Elite.
+
+Reviewed by James
+--------------------------------------------------
+Change: 648941
+Date:   2019-11-11 16:57:47
+Description:
+[Galleon]
+
+Fixed elites dodging an initial target that's out of gun range.
+
+Reviewed by James
+--------------------------------------------------
+Change: 649073
+Date:   2019-11-12 11:18:42
+Description:
+[Galleon]
+
+- Ported intial target and defend zone setting from FPSGrunt to Elite
+- Fixed shooting visibility checking for elites
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 649095
+Date:   2019-11-12 11:37:20
+Description:
+[Galleon]
+
+Fixed enemies not spawning projectiles while firing by reducing fire delay on BP_ProjectileWeapon_Grunt.
+
+Reviewed by James
+--------------------------------------------------
+Change: 649349
+Date:   2019-11-12 17:41:06
+Description:
+[Galleon]
+
+Fixed elites staying focused on the initial target after entering combat with the player.
+
+Reviewed by Ruben Runhardt.
+--------------------------------------------------
+Change: 649562
+Date:   2019-11-13 14:14:57
+Description:
+[Galleon]
+
+Elite AI
+- Checks against friendly fire for entering the combat state.
+- Reset the shared ai state when entering the FPS segment.
+- Elites look at the player when entering combat.
+- Extracted dodge into a subtree.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 649738
+Date:   2019-11-14 10:10:01
+Description:
+[Galleon]
+
+Reworked the combat state movement of Elites to prevent aborting move tasks. That fixes abrupt direction changes in combat.
+Increased nav agent radius for elites to prevent getting stuck in navmesh.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 649940
+Date:   2019-11-14 15:18:08
+Description:
+[Galleon]
+
+Gave elites a chance to shoot the player even if the player is in cover.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 650147
+Date:   2019-11-15 13:57:24
+Description:
+[Galleon]
+
+- Elites may now use custom dodge animations.
+- Increased the capsule size of elites.
+
+Reviewed by James
+--------------------------------------------------
+Change: 650174
+Date:   2019-11-15 14:46:40
+Description:
+[Galleon]
+Fixed redirectors in Blueprints
+--------------------------------------------------
+Change: 650289
+Date:   2019-11-18 10:28:46
+Description:
+[Galleon]
+
+Made elites shoot over the player's head if the player's shield is depleted.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 650341
+Date:   2019-11-18 13:55:33
+Description:
+[Revolt]
+
+Cleaned up shooting above the player when shield depleted.
+Made GLAimScope respect GLAITarget priorities.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 650469
+Date:   2019-11-18 17:11:50
+Description:
+[Revolt]
+
+Added the BP_Revolt_Elite_CowardController which is the same as the regular EliteController but once its shield is depleted, flees to a designated location and kills self.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 650541
+Date:   2019-11-19 10:11:27
+Description:
+[Revolt]
+
+Fixed missing task in BT_AnimationTestBT_Elite
+--------------------------------------------------
+Change: 650631
+Date:   2019-11-19 13:08:54
+Description:
+[Revolt]
+
+- Made elites dodge when shields depleted.
+- When dodging with custom animation, prioritize using animations that bring the elite into cover.
+- Reduced dodge location prediction when doing a turn in place.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 650693
+Date:   2019-11-19 14:51:29
+Description:
+[Revolt]
+
+- Added navigation mesh presets
+- Fixed elites dodging out of defend zones
+- Increased weapon range of elites, so they can shoot the pelican again
+
+The navmeshes still need to be rebuilt in the main map.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 650761
+Date:   2019-11-19 16:00:51
+Description:
+[Revolt]
+
+Reduced agent radius to 59 on the elite navmesh. Rebuilt navigation.
+--------------------------------------------------
+Change: 650799
+Date:   2019-11-19 17:21:09
+Description:
+[Revolt]
+
+Slightly moved defend zones to avoid getting stuck in navmesh
+--------------------------------------------------
+Change: 650907
+Date:   2019-11-20 11:19:00
+Description:
+[Revolt]
+
+Moved a few elites back onto the navmesh
+--------------------------------------------------
+Change: 651056
+Date:   2019-11-20 16:37:52
+Description:
+[Revolt]
+
+Elite AI:
+- Increased minimum distance for dodges using movement
+- Using dodge roll animations
+- Elites can now dodge out of their defend zones, and will return after dodging
+- Fixed trace tests not happening in FindPointInDefendZone
+- Added BTDecorator_RandomChance to replace wrong use of RandomChanceSelector for random dodges and in the combat tree.
+
+Reviewed by James
+--------------------------------------------------
+Change: 651063
+Date:   2019-11-20 16:59:41
+Description:
+[Revolt]
+
+Fixed a few elites being spawned in the air, off the navmesh.
+--------------------------------------------------
+Change: 651293
+Date:   2019-11-21 15:29:20
+Description:
+[Revolt]
+
+- Made eliites fight marines in the sniper segment
+- Fixed AITargetTraceTest not handling invalid contexts
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 651301
+Date:   2019-11-21 15:41:47
+Description:
+[Revolt]
+
+Fixed weapon attachment to elites
+
+Reviewed by Peter K
+--------------------------------------------------
+Change: 651365
+Date:   2019-11-21 17:19:19
+Description:
+[Revolt]
+
+Rebuilt navmesh and moved spawners to fit the new level layout.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 651547
+Date:   2019-11-22 16:04:12
+Description:
+[Revolt] 
+
+Initial Grunt AI.
+
+- Extracted a base class for grunts and elites: BP_AICharacter
+- Made it possible to configure BP_EnemySpawner to spawn any BP_AICharacter. The spawner will show the correct preview mesh.
+- Extracted enemy updating behavior of elites into a subtree to be used on grunts as well
+- Grunts throw grenades the correct distance
+
+Reviewed by James
+--------------------------------------------------
+Change: 651552
+Date:   2019-11-22 16:09:14
+Description:
+[Revolt]
+
+Changed variable order on BP_EnemySpawner
+--------------------------------------------------
+Change: 651705
+Date:   2019-11-25 16:42:56
+Description:
+[Revolt]
+
+- Dodging animations for Grunts
+- Extracted custom animation playback (for things like dodges) into an interface implemented by ABP_Elite, ABP_Grunt
+- Rebuilt navmesh in sniper segment
+- Tweaked EQS queries done by grunts
+- Removed landfall grunts from sniper segment, put in new grunts
+
+Reviewed by James.
+--------------------------------------------------
+Change: 651707
+Date:   2019-11-25 16:49:45
+Description:
+[Revolt]
+
+Added files not submitted with last submit.
+--------------------------------------------------
+Change: 651913
+Date:   2019-11-26 16:13:12
+Description:
+[Revolt]
+
+- Grunt panic behavior! Always in the direction they were facing in the beginning though.
+- Fixed elites using the wrong navmesh to determine custom dodge targets.
+- Fixed redirectors in Blueprints/AI
+
+Reviewed by James.
+--------------------------------------------------
+Change: 652065
+Date:   2019-11-27 11:21:51
+Description:
+[Revolt]
+
+Fixed navmesh in the Revolt map
+--------------------------------------------------
+Change: 652157
+Date:   2019-11-27 15:32:08
+Description:
+[Revolt]
+
+- Reworked grunt behavior tree
+- Added moving to an initial position for grunts
+- Replaced a delay with a timer in DodgeWithCustomAnim, added abort support
+- Fixed wrong overlap checking in BP_Grenade
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 652172
+Date:   2019-11-27 16:29:07
+Description:
+[Revolt]
+
+Rebuilt navigation
+--------------------------------------------------
+Change: 652293
+Date:   2019-11-28 11:46:28
+Description:
+[Revolt]
+
+- DodgeWithCustomAnimation now postpones abort until the animation finishes.
+- Rebuilt navmesh in sniper. The nav bounds volume did not contain grunt spawn locations.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 652332
+Date:   2019-11-28 13:21:17
+Description:
+[Revolt]
+
+Fixed root motion drivent characters getting stuck on the edge of the navmesh.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 652349
+Date:   2019-11-28 13:55:29
+Description:
+[Revolt]
+
+Initial placement of grunts in the fps segment.
+--------------------------------------------------
+Change: 652501
+Date:   2019-11-28 17:45:59
+Description:
+[Revolt]
+
+- Fixed grunts sometimes not zigzagging for the first tree seconds of panicking (due to defocus delay)
+- Made grunts panic when their health is low
+- Made Condition_HealthFractionBelowAmount work with any pawn type, not just BP_SkullCrawler
+
+Reviewed by James
+--------------------------------------------------
+Change: 652504
+Date:   2019-11-28 17:46:58
+Description:
+Submitting unsaved from last submit
+--------------------------------------------------
+Change: 652554
+Date:   2019-11-29 10:15:40
+Description:
+[Revolt]
+
+Fixed ai characters targeting hidden enemy actors
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 652640
+Date:   2019-11-29 13:49:50
+Description:
+[Revolt]
+
+Fixed grunt grenades not exploding when hiting the grount.
+
+Made them overlap the ground collision channel instead of hitting it, since landscape does not emit hit events for whatever reason(?)
+This does mean that everything in the "Ground" channel (i.e. the landscape) needs to have "GenerateOverlapEvents" enabled.
+
+Reviewed by James
+--------------------------------------------------
+Change: 652662
+Date:   2019-11-29 14:29:58
+Description:
+[Revolt]
+
+Enabled generating overlap events on the landscape
+--------------------------------------------------
+Change: 652859
+Date:   2019-12-02 13:34:28
+Description:
+[Revolt]
+
+- Elites now react to their gun overheating, giving the player an opportunity to shoot them.
+- Elites now only shoot when not moving.
+- Relaxed constraints on EQS queries of grunts, fixing them occasionally getting stuck.
+- Fixed elites dodging forever once their shield is down.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 652922
+Date:   2019-12-02 14:53:56
+Description:
+[Revolt] 
+
+- Prevent grunts from wandering around when they have no TargetEnemy
+--------------------------------------------------
+Change: 653304
+Date:   2019-12-03 17:31:32
+Description:
+[Revolt]
+
+- When entering panic mode, Grunts pick a random direction and do a turning jump in place before running.
+- Grunts no longer panic forever when their health is low.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 653454
+Date:   2019-12-04 13:39:49
+Description:
+[Revolt]
+
+Elite & Grunt AI:
+- Fixed elites occasionally shooting marines when they (the marines) are in cover. They can only do that to the player now.
+- Made ai characters do aiming traces from their weapon, instead of from upper body.
+- Fixed not picking a visible enemy just because it's outside weapon range.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 653522
+Date:   2019-12-04 16:00:41
+Description:
+[Revolt]
+
+Made GLFocusScope correctly handle a changing focus target in the blackboard.
+
+Reviewed by Stijn.
+--------------------------------------------------
+Change: 653529
+Date:   2019-12-04 16:11:10
+Description:
+[Revolt]
+
+Added missing include for UE_VLOG
+--------------------------------------------------
+Change: 653652
+Date:   2019-12-05 10:31:24
+Description:
+[Revolt]
+
+- Made GLAimScope react to changes in blackboard.
+- Elites will no longer try to use movement to get to a location closer than a minimum distance.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 653701
+Date:   2019-12-05 11:11:37
+Description:
+[Revolt]
+
+Made the NoCollision preset actually not collide with Projectile and Ground
+--------------------------------------------------
+Change: 653742
+Date:   2019-12-05 11:54:23
+Description:
+[Revolt]
+
+Grunts use a higher physics rotation rate while panicking
+--------------------------------------------------
+Change: 653794
+Date:   2019-12-05 13:08:10
+Description:
+[Revolt]
+
+Increased minimum grenade throw distance
+--------------------------------------------------
+Change: 653813
+Date:   2019-12-05 13:30:19
+Description:
+[Revolt]
+
+- Better direction checking for shooting: elites and grunts can no longer shoot through themselves at odd angles.
+- Fixed elite offsets while shooting.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 653886
+Date:   2019-12-05 15:23:19
+Description:
+[Revolt]
+
+Made elites update state and target enemy the same way grunts do.
+--------------------------------------------------
+Change: 654042
+Date:   2019-12-06 11:12:19
+Description:
+[Revolt]
+
+Moved spawners to prevent characters getting stuck, rebuilt paths.
+--------------------------------------------------
+Change: 654056
+Date:   2019-12-06 11:37:25
+Description:
+[Revolt]
+
+- Characters will never dodge (using custom animations) into other characters anymore
+- Fixed grunts doing random small movements immediately after being spawned instead of going to the initial defend zone
+
+Reviewed by James
+--------------------------------------------------
+Change: 654290
+Date:   2019-12-06 16:18:09
+Description:
+[Revolt]
+
+- RVO avoidance for root motion driven characters. Grunts and elites now avoid colliding with each other while moving.
+- Grunts and Elites don't change heading direction in the abp instantly, they rotate smoothly. This fixes some cases of abrupt turns and direction changes of characters.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 654471
+Date:   2019-12-09 13:32:30
+Description:
+[Revolt]
+
+Increased size of a defend zone in the fps segment.
+--------------------------------------------------
+Change: 654494
+Date:   2019-12-09 14:03:16
+Description:
+[Revolt]
+
+- Refactored AIState
+- Fixed AI characters not reacting to being shot in the fps segment
+- The female spartan can also cause AI characters to enter fps combat
+- Fixed redirectors in Blueprints
+
+Reviewed by James
+--------------------------------------------------
+Change: 654808
+Date:   2019-12-10 13:54:58
+Description:
+[Revolt]
+
+Added null check to CanTriggerFpsCombat
+--------------------------------------------------
+Change: 654839
+Date:   2019-12-10 15:31:56
+Description:
+[Revolt]
+
+- New ABP for Marines
+
+There needs to be a socket on the marines.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 654847
+Date:   2019-12-10 15:41:41
+Description:
+[Revolt]
+
+Fixed a failed ensure on the movement component of the marines.
+--------------------------------------------------
+Change: 654894
+Date:   2019-12-10 16:40:08
+Description:
+[Revolt]
+
+Small delays to the beginning of fps, so the grunts and elites don't all turn instantly and synchronously when they're first triggered.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 655070
+Date:   2019-12-11 13:18:07
+Description:
+[Revolt]
+
+Fixed marine offset while firing
+--------------------------------------------------
+Change: 655090
+Date:   2019-12-11 13:43:25
+Description:
+[Revolt]
+
+- Exposed FFAIResourceManagerComponent to blueprints.
+- Limited the number of grunts and elites shooting the player at the same time. 1 Elite and 2 Grunts max for now (adjustable on the player pawn).
+- You can attach a subclass of BAC_AttackerResourceManager to any pawn to limit the number of enemies shooting at that pawn at the same time.
+
+Reviewed by Stijn
+--------------------------------------------------
+Change: 655395
+Date:   2019-12-12 12:13:24
+Description:
+[Revolt]
+
+Rebuilt navigation in sniper
+--------------------------------------------------
+Change: 655458
+Date:   2019-12-12 13:43:31
+Description:
+[Revolt]
+
+- Suicider grunts 
+- Cleanup in GrenadePlasma
+- Cleanup in EnemySpawner
+
+Reviewed by James
+--------------------------------------------------
+Change: 655513
+Date:   2019-12-12 14:43:12
+Description:
+[Revolt]
+
+- Cleanup in suicider running for grunts
+- ABP_Grunt is now polling the BP_Grunt for state of panicking or suicide running. Things no longer directly set values on the ABP
+
+Reviewed by James
+--------------------------------------------------
+Change: 655596
+Date:   2019-12-12 16:06:01
+Description:
+[Revolt]
+
+- Grunts now drop grenades when they die
+- Grenades explode when damaged
+
+Reviewed by James
+--------------------------------------------------
+Change: 655614
+Date:   2019-12-12 16:19:23
+Description:
+[Revolt]
+
+Added optional random deviation to enemy spawner autospawn interval
+--------------------------------------------------
+Change: 655627
+Date:   2019-12-12 16:37:18
+Description:
+[Revolt]
+
+Fixed invalid DefaultEngine.ini
+--------------------------------------------------
+Change: 655665
+Date:   2019-12-12 17:09:37
+Description:
+[Revolt]
+
+Fixed navmesh
+--------------------------------------------------
+Change: 655812
+Date:   2019-12-13 10:58:49
+Description:
+[Revolt]
+
+https://jira.forcefieldxr.com:8446/browse/REV-636
+
+Fixed female spartan triggering the AIs into fps combat in the sniper segment.
+
+Reviewed by James
+--------------------------------------------------
+Change: 655873
+Date:   2019-12-13 13:02:47
+Description:
+[Revolt]
+
+Reset ai state when entering start screen
+
+Reviewed by James
+--------------------------------------------------
+Change: 655967
+Date:   2019-12-13 14:16:34
+Description:
+[Revolt]
+
+Made elites and grunts hog the attacker resources for a bit before and after shooting, making sure that there is a delay between different characters shooting.
+
+Reviewed by Ruben and Merel
+--------------------------------------------------
+Change: 656339
+Date:   2019-12-16 11:41:06
+Description:
+[Shmup]
+
+- E_BlockKind enum exposed on spawn of BP_BlockBase
+- Use it to specify what kind of block (red/blue/gold/whatever) it's going to be
+--------------------------------------------------
+Change: 656407
+Date:   2019-12-16 12:27:47
+Description:
+[Shmup]
+
+Gun-hands with different colors.
+--------------------------------------------------
+Change: 656476
+Date:   2019-12-16 13:21:07
+Description:
+[Shmup]
+
+Shooting removes blocks (if color of the block is same as that of the gun).
+--------------------------------------------------
+Change: 656516
+Date:   2019-12-16 13:40:34
+Description:
+[Shmup]
+
+Can change block kind at runtime
+--------------------------------------------------
+Change: 656565
+Date:   2019-12-16 14:13:30
+Description:
+[Shmup]
+
+Gun shot sounds
+--------------------------------------------------
+Change: 656597
+Date:   2019-12-16 14:23:33
+Description:
+[Shmup]
+
+Hit sound setup
+--------------------------------------------------
+Change: 656623
+Date:   2019-12-16 14:35:13
+Description:
+[Shmup]
+
+Hit sounds
+--------------------------------------------------
+Change: 656676
+Date:   2019-12-16 14:51:18
+Description:
+[Shmup]
+
+Passing hit result into OnGunHit
+--------------------------------------------------
+Change: 656683
+Date:   2019-12-16 14:52:21
+Description:
+[Shmup]
+
+renamed utiliteis -> utilities
+--------------------------------------------------
+Change: 656732
+Date:   2019-12-16 15:17:02
+Description:
+[Shmup]
+
+Tracer beams from gunshots
+--------------------------------------------------
+Change: 656750
+Date:   2019-12-16 15:29:19
+Description:
+[Shmup]
+
+Tracers change color based on what kind of gun they were shot from
+--------------------------------------------------
+Change: 656772
+Date:   2019-12-16 15:42:39
+Description:
+[Shmup]
+
+Correct tracer length
+--------------------------------------------------
+Change: 656774
+Date:   2019-12-16 15:44:37
+Description:
+[Shmup]
+
+Removed debug log
+--------------------------------------------------
+Change: 656833
+Date:   2019-12-16 16:12:39
+Description:
+[Shmup]
+
+- Randomized pitch a bit on hit sounds
+- Depth fadeout on tracers
+--------------------------------------------------
+Change: 656885
+Date:   2019-12-16 16:36:02
+Description:
+[Shmup]
+
+Tracers fade out if too close to camera.
+--------------------------------------------------
+Change: 657042
+Date:   2019-12-16 18:44:30
+Description:
+[Shmup]
+
+Basic pause menu setup
+--------------------------------------------------
+Change: 657243
+Date:   2019-12-17 10:57:50
+Description:
+[Shmup]
+
+First pass of pause menu. Only the resume button works for now.
+--------------------------------------------------
+Change: 657256
+Date:   2019-12-17 11:01:01
+Description:
+[Shmup]
+
+Pause menu title
+--------------------------------------------------
+Change: 657299
+Date:   2019-12-17 11:10:38
+Description:
+[Shmup]
+
+Pause:
+Retry and main menu buttons work.
+--------------------------------------------------
+Change: 657450
+Date:   2019-12-17 12:22:49
+Description:
+[Shmup]
+
+Basic aim dots [wip]
+--------------------------------------------------
+Change: 657495
+Date:   2019-12-17 13:09:38
+Description:
+[Shmup]
+
+Can now pause with the menu button on the left controller
+--------------------------------------------------
+Change: 657675
+Date:   2019-12-17 14:14:30
+Description:
+[Shump]
+
+Aim dots now constrained to cylinder
+--------------------------------------------------
+Change: 657740
+Date:   2019-12-17 14:30:23
+Description:
+[Shmup]
+
+Basic gunshot haptics
+--------------------------------------------------
+Change: 657763
+Date:   2019-12-17 14:37:06
+Description:
+[Shmup]
+
+Better haptic curve
+--------------------------------------------------
+Change: 657829
+Date:   2019-12-17 15:20:16
+Description:
+[Shmup]
+
+Fixed aim dots not working when paused
+--------------------------------------------------
+Change: 657947
+Date:   2019-12-17 16:05:57
+Description:
+[Shmup]
+
+Pause menu on circle now
+--------------------------------------------------
+Change: 657999
+Date:   2019-12-17 16:32:56
+Description:
+[Shmup]
+
+Added Gold to E_BlockColor
+--------------------------------------------------
+Change: 658005
+Date:   2019-12-17 16:47:07
+Description:
+[Shmup]
+
+Fixed all hit effects being blue
+--------------------------------------------------
+Change: 658033
+Date:   2019-12-17 16:56:01
+Description:
+[Shmup]
+
+Fixed rotation offset of pause menu
+--------------------------------------------------
+Change: 658073
+Date:   2019-12-17 17:23:20
+Description:
+[Shmup]
+
+Using a DMI to change gun color
+Disabled traces on guns.
+--------------------------------------------------
+Change: 658093
+Date:   2019-12-17 17:38:52
+Description:
+[Shmup]
+
+fix gun bp
+--------------------------------------------------
+Change: 658097
+Date:   2019-12-17 17:41:24
+Description:
+[Shmup]
+
+Fixed guns blocking each other
+--------------------------------------------------
+Change: 658470
+Date:   2019-12-18 11:48:52
+Description:
+[Shmup]
+
+Color setting support for tracers
+--------------------------------------------------
+Change: 658498
+Date:   2019-12-18 11:55:19
+Description:
+[Shmup]
+
+Not creating a new dmi for the gun every time it changes color
+--------------------------------------------------
+Change: 658549
+Date:   2019-12-18 12:24:02
+Description:
+[Shmup]
+
+Cleanup in Gun, support for being gold
+--------------------------------------------------
+Change: 658562
+Date:   2019-12-18 12:27:55
+Description:
+[Shmup]
+
+Something didn't get submitted?
+--------------------------------------------------
+Change: 658563
+Date:   2019-12-18 12:29:06
+Description:
+[Shmup]
+
+Fixed rename
+--------------------------------------------------
+Change: 658673
+Date:   2019-12-18 13:39:45
+Description:
+[Shmup]
+
+Gold blocks turn the guns gold when shot, for a duration. All other (currently present) blocks turn gold for that duration too.
+--------------------------------------------------
+Change: 658692
+Date:   2019-12-18 13:49:20
+Description:
+[Shmup]
+
+Material change
+--------------------------------------------------
+Change: 658745
+Date:   2019-12-18 14:06:51
+Description:
+[Shmup]
+
+Got rid of the horrible mess introduced by E_BlockType
+--------------------------------------------------
+Change: 658925
+Date:   2019-12-18 15:16:15
+Description:
+[Shmup]
+
+Increased max aimdot distance
+--------------------------------------------------
+Change: 659001
+Date:   2019-12-18 15:51:05
+Description:
+[Shmup]
+
+Not creating a DMI for blocks unless absolutely necessary
+--------------------------------------------------
+Change: 659102
+Date:   2019-12-18 16:24:42
+Description:
+[Shmup]
+
+OnFire event for guns
+--------------------------------------------------
+Change: 659137
+Date:   2019-12-18 16:33:26
+Description:
+[Shmup]
+
+More info in gun OnFire event
+--------------------------------------------------
+Change: 659160
+Date:   2019-12-18 16:44:25
+Description:
+[Shmup]
+
+Rapid fire of golden guns
+--------------------------------------------------
+Change: 659212
+Date:   2019-12-18 17:05:02
+Description:
+[Shmup]
+
+GunSwitcher block
+--------------------------------------------------
+Change: 659221
+Date:   2019-12-18 17:08:29
+Description:
+[Shmup]
+
+Some text to distinguish gun switcher blocks
+--------------------------------------------------
+Change: 659262
+Date:   2019-12-18 17:37:21
+Description:
+[Shmup]
+
+Colored aim dots
+--------------------------------------------------
+Change: 659287
+Date:   2019-12-18 17:55:52
+Description:
+[Shmup]
+
+Cleaner haptics
+--------------------------------------------------
+Change: 659586
+Date:   2019-12-19 10:42:22
+Description:
+[Shmup]
+
+Made aimdots bigger
+--------------------------------------------------
+Change: 659666
+Date:   2019-12-19 11:22:49
+Description:
+[Shmup]
+
+Blocks turn gold when entering golden gun mode. Newly created blocks in golden gun mode will also become blue until the mode ends.
+--------------------------------------------------
+Change: 659677
+Date:   2019-12-19 11:30:47
+Description:
+[Shmup]
+
+Block spawn effects are gold when in golden gun mode
+--------------------------------------------------
+Change: 659773
+Date:   2019-12-19 12:02:53
+Description:
+[Shmup]
+
+Fixed gun muzzle flash scale being randomized every frame
+--------------------------------------------------
+Change: 659800
+Date:   2019-12-19 12:12:01
+Description:
+[Shmup]
+
+Fixed frequency on gunshot haptics
+--------------------------------------------------
+Change: 659858
+Date:   2019-12-19 12:33:04
+Description:
+[Shmup]
+
+Changed haptic curve for gunshots
+--------------------------------------------------
+Change: 660058
+Date:   2019-12-19 14:00:56
+Description:
+[Shmup]
+
+Scroll with sticks on scoreboard
+--------------------------------------------------
+Change: 660084
+Date:   2019-12-19 14:07:39
+Description:
+[Shmup]
+
+Golden gun mode triggered immediately after combo finishes
+--------------------------------------------------
+Change: 660128
+Date:   2019-12-19 14:16:37
+Description:
+[Shmup]
+
+Fixed rotation interpolation issue for moving blocks
+--------------------------------------------------
+Change: 660492
+Date:   2019-12-19 15:51:18
+Description:
+[Shmup]
+
+Effect when shooting a linked block without shooting the other one
+--------------------------------------------------
+Change: 660571
+Date:   2019-12-19 16:12:23
+Description:
+[Shmup]
+
+Block spawn effect is now gray for shield blocks
+--------------------------------------------------
+Change: 660637
+Date:   2019-12-19 16:33:37
+Description:
+[Shmup]
+
+Fixed gun spark color
+--------------------------------------------------
+Change: 660658
+Date:   2019-12-19 16:38:07
+Description:
+[Shmup]
+
+Fixed gun spark offsets
+--------------------------------------------------
+Change: 660813
+Date:   2019-12-19 17:25:39
+Description:
+[Shmup]
+
+Fixed FailedToHitLinkedBlock being called too often if player shoots too fast
+--------------------------------------------------
+Change: 661316
+Date:   2019-12-20 10:40:21
+Description:
+[Shmup]
+
+Link effects get destroyed immediately when their blocks are destroyed
+--------------------------------------------------
+Change: 661728
+Date:   2019-12-20 12:16:40
+Description:
+[Shmup]
+
+Voice lines when too many wrong blocks
+--------------------------------------------------
+Change: 661739
+Date:   2019-12-20 12:18:38
+Description:
+[Shmup]
+
+new vo cue
+--------------------------------------------------
+Change: 661775
+Date:   2019-12-20 12:27:05
+Description:
+[Shmup]
+
+Rebuild lighting, 
+
+only saying vo when hitting wrong blocks
+--------------------------------------------------
+Change: 661917
+Date:   2019-12-23 11:43:38
+Description:
+[Revolt]
+
+- Fixed corner cases in hand grabbing ClimbPoint_Pinch for climbing
+- Added Rotator -> ToAxisAndAngle to FFMathLibrary
+
+Reviewed by James
+--------------------------------------------------
+Change: 661949
+Date:   2019-12-23 16:24:19
+Description:
+[Revolt]
+
+Fixed grunts often going all the way around the light bridge.
+--------------------------------------------------
+Change: 661956
+Date:   2019-12-23 16:41:09
+Description:
+[Revolt]
+
+- New navmesh for grunts, increased their capsule radius
+- Rebuilt navigation
+- Removed dynamic shadows from clouds, lightbridge. Improves performance in sniper
+- Added navigation modifier volumes to prevent AI characters from climbing onto some rocks
+
+Reviewed by James
+--------------------------------------------------
+Change: 662011
+Date:   2019-12-24 12:41:48
+Description:
+[Revolt]
+
+Sniper and FPS:
+- Suicider grunts now spawn in three different locations
+- Layout of FPS segment tweaked for better movement paths of suicider grunts
+- Added navigation modifier volumes and removed collision from decals etc.
+
+Reviewed by James
+--------------------------------------------------
+Change: 662040
+Date:   2019-12-24 16:05:40
+Description:
+[Revolt]
+
+Grunts now occasionally do hops when running forward
+--------------------------------------------------

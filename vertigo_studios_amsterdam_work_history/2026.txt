@@ -1,0 +1,377 @@
+Change: 931349
+Date:   2026-01-05 11:30:41
+Description:
+[UNB-14771]
+Fixed most navmesh missing in Chapter03: someone had simply deleted the old navmesh instead of using `Build > Build Paths`. This cleared the level-specific override for max tile count on that navmesh, so only a small part of the level had navmesh on it. 
+
+Fixed light blockers under the level having navmesh on them again.
+
+This fixes the dozens of "enemy is OFF the navmesh" mapchecks, but many more unrelated ones remain.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-14771
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 931571
+Date:   2026-01-07 15:58:32
+Description:
+[UNB-14425]
+- Worldstate now supports quick reload, also for actors that were spawned/despawned in specific sublevels. 
+- Support for AI Characters spawning/despawning as well as their location and health is in, but not for their parameter templates or AI state, that is a separate task. 
+- Fixed worldstate components not registering with worldstate manager if spawned during quick reload
+- Added a FunctionalTest_QuickReloadAICharacters
+- Fixed FunctionalTesT_AICrossingBridge timing out due to walk speed being too low.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-14425
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 931747
+Date:   2026-01-09 10:32:57
+Description:
+[UNB-15154]
+Making OnInitialize work before BeginPlay even when we spawn actors inside OnInitialize/OnReinitialize of other actors.
+
+There were two cases where OnInitialize can get called after BeginPlay, both because you can't call OnInitialize if you're already inside OnInitialize.
+1. When actors are getting spawned on BeginPlay of the world, which is still technically inside the OnInitialize call of the last object that needed to be initialized. That calls NotifyInitializationFinished and inside of that BeginPlay is called on everything, including the actor pool, which spawns a bunch of actors. Inside their OnActorPostInitializeComponents it can't call OnInitialize because we're inside one already so it skips that and goes for BeginPlay, and later, on the next frame it actually does the OnInitialize which triggers an ensure in one of our functional tests.
+2. When actors are spawned directly inside OnInitialize/OnReinitialize of an actor: when we reinitialize the worldstate manager we can respawn some actors which should have OnInitialize called but this doesn't happen because we're inside one already.
+
+This change covers both cases. The only caveat is dependencies: if the worldstate manager spawns an actor during OnReinitialize and some component on that (e.g. the worldstate component) has the worldstate manager as an initialization dependency, then the OnInitialize call will still be postponed. This is not ideal but it's still an improvement as it gives guarantees on the OnInitialize<BeginPlay order to other classes outside of this dependency chain.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-15154
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 931959
+Date:   2026-01-12 16:03:59
+Description:
+[HAR-NOTICKET]
+Simple interactables can now be picked up / dropped / thrown. Some items have special rules like different throw speed or being unable to drop them (like the chapter00 bomb).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira har-noticket
+#vettedby rrunhardt
+
+Encountered 1 warnings:
+/Game/Blueprints/Hands/BP_Hand.BP_Hand is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Hands/BP_Hand.uasset'
+--------------------------------------------------
+Change: 931964
+Date:   2026-01-12 16:20:47
+Description:
+[HAR-NOTICKET]
+Made BP_Radio and BP_Bandana not throwable.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 931973
+Date:   2026-01-12 17:03:44
+Description:
+[HAR-NOTICKET]
+Fixed duplicated BSC_Interactable on a couple blueprints. Now use the one from the base class.
+Also includes Ruben's changes for simple interactable objects with highlighting fixes.
+Made it not possible to drop the backpack. It should be only possible to place it in inventory.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira har-noticket
+#redbuildfix
+#vettedby rrunhardt
+
+Encountered 2 warnings:
+/Game/Blueprints/Framework/Game/BP_Pawn_Game.BP_Pawn_Game is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Framework/Game/BP_Pawn_Game.uasset'
+/Game/Blueprints/Hands/BP_Hand.BP_Hand is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Hands/BP_Hand.uasset'
+--------------------------------------------------
+Change: 932164
+Date:   2026-01-14 13:00:57
+Description:
+[HAR-NOTICKET]
+Temporarily disabled actor pooling project-wide as it was causing bugs with interactions.
+
+Had to add a hack to BP_Pawn_Game to manually spawn BP_Bacpack and BP_WeaponStrap because they were set up in a way that relied on them doing logic while existing inside the actor pool.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby ttrignol
+--------------------------------------------------
+Change: 932216
+Date:   2026-01-14 17:36:50
+Description:
+[HAR-NOTICKET]
+On advice from Sander B changed shader compilation settings. This prevents UVGLevelUtilities::HasFinishedLoadingAssets being stuck on FShaderPipelineCache::NumPrecompilesRemaining() being above 0. Verified not stuck in a review build on startup, but not tested on loading a map.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 932271
+Date:   2026-01-15 11:52:46
+Description:
+[HAR-NOTICKET]
+Made tutorials off by default. They can still be enabled in the main menu (and the pause menu once we get it working).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 932292
+Date:   2026-01-15 13:27:46
+Description:
+[HAR-NOTICKET]
+Fixed soft lock in Chapter10b (sequence was waiting for you got grab the door handle but interactions work differently now so it wouldn't get detected. BSC_Intaractable now has a function "WasUsedRecently" that is used instead on that gate in the sequence. The original function "Is Any Handle Held" was not used anywhere else except the BP_LatchingHingedDoor which defines it.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 933194
+Date:   2026-01-22 14:41:33
+Description:
+[HAR-NOTICKET]
+Basic full-body avatar setup: when you look down you see your body and the body is pushed back so there's no clipping.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira har-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 933373
+Date:   2026-01-23 12:07:17
+Description:
+[HAR-NOTICKET]
+Added super-basic placeholder locomotion setup for player avatar. Fixed missing null checks.
+
+#assetvalidation succeeded
+#jira har-noticket
+--------------------------------------------------
+Change: 933811
+Date:   2026-01-27 11:48:52
+Description:
+[HAR-NOTICKET]
+Interaction layer setup for player avatar. Asynchronously hiding/swapping weapons that have an animation layer, in accordance with the player avatar TDD. Placeholder anim layer for kalash.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira har-noticket
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/Inventory/Slots/BSC_InventorySlot_Flashlight.BSC_InventorySlot_Flashlight is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Inventory/Slots/BSC_InventorySlot_Flashlight.uasset'
+--------------------------------------------------
+Change: 934458
+Date:   2026-01-30 17:42:41
+Description:
+[HRB-74]
+MainHand/OffHand setup for the ABP_Avatar. ABP_Avatar determines what anim instance should be in which slot based on what we're interacting with and what we're holding, and makes sure stuff transitions out before it can transition in.
+
+Also submitting an AGENTS.md at workspace root for the first time. It will be further refined to match company coding standards etc in the future.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-74
+#vettedby slageweg
+--------------------------------------------------
+Change: 934615
+Date:   2026-02-02 16:37:01
+Description:
+[HRB-74]
+Now using linked anim layers for mainhand/offhand. A much cleaner setup where ALI_Interaction has MainHand and OffHand slot and any ABP_Interaction_XXX blueprint gets to implement one or both of them, and blueprints that don't conflict can be applied at the same time.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira hrb-74
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/Kalashnikov/BP_Firearm_Kalashnikov.BP_Firearm_Kalashnikov is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Weapons/Kalashnikov/BP_Firearm_Kalashnikov.uasset'
+--------------------------------------------------
+Change: 934721
+Date:   2026-02-03 10:58:33
+Description:
+[HRB-74]
+Implemented placeholder valve interaction, lighter interaction. It doesn't look any good yet, it's just to test out if transitions between the various layers work as expected.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-74
+#vettedby slageweg
+--------------------------------------------------
+Change: 934958
+Date:   2026-02-04 15:06:32
+Description:
+[HRB-76]
+Inventory items like weapons are now actually spawned/despawned by the interaction ABP, so it waits until the previous weapon is hidden before spawning the new one.
+Generic main hand interaction ABP that all things default to when they don't have a bespoke ABP for them
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-76
+#vettedby slageweg
+--------------------------------------------------
+Change: 934998
+Date:   2026-02-04 16:53:47
+Description:
+[HRB-76]
+Made lighter offhand, fixed being unable to hold an offhand and mainhand at the same time.
+Fixed left hand not receiving input.
+Made simple interactables held in the left hand.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-76
+#vettedby slageweg
+--------------------------------------------------
+Change: 935130
+Date:   2026-02-05 13:00:58
+Description:
+[HRB-76]
+Fixed hand holding onto grenade after throwing it. After throwing a grenade a new one is equipped from inventory.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-76
+#vettedby slageweg
+--------------------------------------------------
+Change: 935145
+Date:   2026-02-05 13:56:46
+Description:
+[HRB-76]
+Fixed broken taf in world interactions where picked up items were not getting released.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-76
+#vettedby slageweg
+--------------------------------------------------
+Change: 935483
+Date:   2026-02-09 14:09:54
+Description:
+[HRB-221]
+Fix for level sequence conditions/gates not working due to base class API change.
+
+There is no longer an api for us to clamp "the frame till which we can play" inside the GetPauseRange function, so we instead clamp it beforehand. The inout param we're modifying here is what goes into the GetPauseRange function both in our subclass' PreUpdateTimeCursorPosition_Internal and in the base class UpdateTimeCursorPosition_Internal (the new GetPauseTimeForNewPosition function), so the conditions/gates get properly taken into account in both cases. The functional tests that involve enemies interrupting a sequence to go investigate now pass.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira hrb-221
+#vettedby skistemaker
+--------------------------------------------------
+Change: 935547
+Date:   2026-02-09 17:40:38
+Description:
+[HRB-222]
+Fixes for player avatar:
+- fixed head not following.
+- fixed animations having root motion but not root lock.
+- fixed foot placement node not working for our player pawn and our meshes with unusual axes.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira hrb-222
+#vettedby slageweg
+Encountered 1 warning:
+Source file Human_RunCombat_Loop_F.fbx is referenced and cannot be found in workspace 'D:/Harbor_Development/Impact/Content/Assets/Characters/Human/Animations/Chapters/Chapter00/Human_RunCombat_Loop_F.fbx' or depot. Referenced by: /Game/Assets/Characters/Evgeniy/Animations/Locomotion/Human_RunCombat_Loop_F_RootLock
+--------------------------------------------------
+Change: 936364
+Date:   2026-02-13 17:11:41
+Description:
+[HRB-209]
+First implementation of the valve door interaction, featuring nice animation-driven camera, auto-hiding and pulling out weapons.
+Made it possible to disable an interaction after it's complete.
+Made it possible fo an interaction to not auto-release when you stop holding E.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-209
+#redbuildfix
+#vettedby slageweg
+--------------------------------------------------
+Change: 936369
+Date:   2026-02-13 17:35:10
+Description:
+[HRB-209]
+Undid a change that was not meant to be submitted with the previous submit.
+
+#assetvalidation succeeded
+#jira hrb-209
+#redbuildfix
+--------------------------------------------------
+Change: 937472
+Date:   2026-02-20 14:56:12
+Description:
+[HRB-210]
+Added AnimNotifyState_CameraLock so you can look a bit away from where the animation points the camera. If you let go of the mouse then after a bit it settles back to being animation-driven. You have the option to make the camera keep looking where the animation put it after the lock is over or not, separately for pitch/yaw/roll.
+
+Added AnimNotifyState_InteractionMotionWarping to remove tons of boilerplate from interactions. It warps the player to the right spot in front of the interactable, dictated by the interactable's bone.
+
+Made it not possible to walk around during interactions like the valve door interaction.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira hrb-210
+#vettedby slageweg
+
+Encountered 1 warning:
+/Game/Blueprints/Framework/Game/BP_Pawn_Game.BP_Pawn_Game is referenced but is not at the latest revision 'D:/Harbor_Development/Impact/Content/Blueprints/Framework/Game/BP_Pawn_Game.uasset' (referenced from /Game/Blueprints/WorldInteraction/Doors/HingedDoors/ABP_Interaction_HingedValveDoor.ABP_Interaction_HingedValveDoor)
+--------------------------------------------------
+Change: 937907
+Date:   2026-02-24 15:52:55
+Description:
+[OB-988] Made FloorEventManager a service, with a one-directional dependency from consumer (FloorSegmentSpawner) to service (FloorEventManager).
+--------------------------------------------------
+Change: 937944
+Date:   2026-02-24 17:15:13
+Description:
+[OB-988] Environment.hstf and Environment_Tunnel.hstf are now not directly instanced in Main.hstf but loaded as sublevels with starting state Active so that they don’t contribute to the file size limit for travel.
+Vetted by Danny
+--------------------------------------------------
+Change: 938278
+Date:   2026-02-26 11:36:18
+Description:
+[HRB-432]
+Unshelved from pending changelist '937495':
+
+WiP on better workflow for designers to set up interactions:
+- The montage inside the interaction abp is now played on the interaction ABP itself instead of the main ABP and thus auto-blends out if the interaction ends externally
+- Playing a synced anim is now done via notify state on the player's anim
+- No need for dependencies on blueprints like the interacted object or BP_Pawn_Game anymore. The whole thing uses interfaces now in a way that when the new interaction system comes in we won't need to change existing interactions.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira hrb-432
+#vettedby slageweg
+--------------------------------------------------

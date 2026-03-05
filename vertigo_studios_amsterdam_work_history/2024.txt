@@ -1,0 +1,4130 @@
+Change: 830764
+Date:   2024-01-02 10:48:59
+Description:
+[IMP-33784]
+Nosalis tech pass:
+- When the Nosalis is too close, the attack it does properly respects left/right swing order and uses motionwarping to avoid clipping into player.
+- Removed the messy heap of decorators used to switch from "approach" to "attack" or "threatened". Replaced all that with the new "try to adjust plan" feature from HTN v1.13.0
+- Fixed the Nosalis awkwardly shuffling away instead of attacking when the player gets too close during an attack telegraph
+- Fixed Nosalis warping up into the air during attacks.
+- Fixed Nosalis' head clipping into the player when they do an attack even if the player stands still.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33784
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 830781
+Date:   2024-01-02 11:19:13
+Description:
+[IMP-38744] [IMP-39242]
+Made HTNTask_ShootFirearm abort when the gun moves too far from the direction towards target. Also made it access the current burst information safer.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-38744,imp-39242
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 830794
+Date:   2024-01-02 11:47:54
+Description:
+[IMP-36697] [IMP-41533]
+Potential fix for slavers sometimes treating a low cover point as high cover.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-36697,imp-41533
+#missingfixversion
+#vettedby rzak
+--------------------------------------------------
+Change: 830797
+Date:   2024-01-02 11:49:16
+Description:
+[IMP-37257]
+Unshelved from pending changelist '830285':
+
+Fixed humans who are not the designated Investigator not being able to relax back out of the Investigate state.
+When two characters participate in a sequence and one of them goes off to investigate, the other character no longer freezes and just idles instead. The transition from what they were doing in the sequence to the Idle is rather abrupt though, but that can be fixed in the ABP separately (blend times related to the bShowNarrativeLayer variable in ABP_Human_Base basically).
+
+TODO: also apply the changes in ABP_Human to ABP_Lurker and ABP_Nosalis as well.
+
+Vetted by Floyd Krielaart, Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-37257
+#missingfixversion
+#vettedby fkrielaart,mpennelli
+--------------------------------------------------
+Change: 830893
+Date:   2024-01-02 16:03:52
+Description:
+[IMP-37257]
+Made Lurkers and Hunters idle instead of freezing when their LW sequence partner gets distracted but they don't.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira imp-37257
+#vettedby ikamula
+--------------------------------------------------
+Change: 830911
+Date:   2024-01-02 16:21:04
+Description:
+[IMP-33784]
+Followup submit. Fixed HTN_NosalisSwipeAttack_PlayerGotTooClose not being properly assigned.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33784
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 830916
+Date:   2024-01-02 16:23:42
+Description:
+[IMP-33784]
+Fixed LookAheadDemo counting as a FunctionalTest because it was copied from one.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-33784
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 831067
+Date:   2024-01-03 11:50:21
+Description:
+[IMP-37094]
+Fixed TurnInPlace not working for humans
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-37094
+#vettedby rzak
+--------------------------------------------------
+Change: 831238
+Date:   2024-01-04 10:15:02
+Description:
+[IMP-36697]
+Fixed humans erroneously restarting movement (incorrect animation state transition to StartMove) after reaching a cover point. Fixed humans that start combat with 1m of a cover point thinking they're already at the cover point. This fixes or reduces issues where characters don't align with a cover point and thus think they have line of fire when they actually don't or the other way around.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-36697
+#vettedby rzak
+--------------------------------------------------
+Change: 831347
+Date:   2024-01-04 14:52:13
+Description:
+[IMP-NOTICKET]
+Fixed an ensure triggering every time Chapter04 is started: fixed LSA_SecurityGuard getting multiple trigger notifications when a trigger volume is entered. The volume was present in the LSA three times for different sections and the trigger event was firing three times for each trigger, for nine in total. The same callback was bound to the event multiple times.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 831418
+Date:   2024-01-04 17:52:34
+Description:
+[IMP-36697] [IMP-38717]
+Fixed EQSQuery_FindSuppressiveFireLocations failing when the player is off the navmesh (e.g., on a trolley). Reduced max radius of suppressive fire locations from 300cm to 150cm. This reduces issues with characters switching back and forth between regular and suppressive fire and fixes cases where they shoot way off to the side (when the suppressive fire location is 3m away from the player).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36697,imp-38717
+#vettedby slageweg
+--------------------------------------------------
+Change: 831507
+Date:   2024-01-05 10:16:32
+Description:
+[IMP-36467]
+Unshelved from pending changelist '831415':
+
+Added map checks for incorrect usages  of NavLinkProxy and BP_NavLinkJump, so level designers can easily detect and fix up issues where enemies run against walls.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36467
+#vettedby slageweg
+--------------------------------------------------
+Change: 831509
+Date:   2024-01-05 10:18:09
+Description:
+[IMP-36697]
+Unshelved from pending changelist '831416':
+
+Fixed Elites almost never rushing the player and made Slavers in general less likely to pick cover points during alarmed that are super far away.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36697
+#vettedby slageweg
+--------------------------------------------------
+Change: 831576
+Date:   2024-01-05 14:15:55
+Description:
+[IMP-NOTICKET]
+Fixed BP_NavTester not doing MapChecks for navlinks in maps without level streaming (demo maps, functional test maps).
+
+Vetted by Silvijn de Vries
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby sdvries
+--------------------------------------------------
+Change: 832175
+Date:   2024-01-09 15:56:18
+Description:
+[IMP-NOTICKET]
+Fixed Cues with VoiceActorSwitch nodes not working when hitting "play" on them in the editor.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 832548
+Date:   2024-01-10 17:25:40
+Description:
+[IMP-32558]
+Made humans ignored by cover tracker traces. Fixed the reserved locations of dead humans not being cleared on the AI group.
+
+Vetted by Floyd Krielaart, Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-32558
+#vettedby fkrielaart,rzak
+--------------------------------------------------
+Change: 833604
+Date:   2024-01-16 09:59:56
+Description:
+[IMP-42470]
+Porting HTNDecorator_TraceAlongPath to C++ to optimize away 15ms spikes on Quest 2.
+Fixed HTNLocationSource_ProjectedLocation not working when not called from a Blueprint that belongs to a World.
+Made HTNLocationSource_ProjectedLocation be displayed as (ProjectedLocation) instead of (HTNLocationSource_ProjectedLocation).
+Fixed hunters not doing their attack if they can't say the "attack" bark.
+Fixed hunters not playing the "inhale" bark before firing the blowgun.
+
+Vetted by Floyd Krielaart, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-42470
+#vettedby fkrielaart,slageweg
+--------------------------------------------------
+Change: 833719
+Date:   2024-01-16 12:17:51
+Description:
+[IMP-NOTICKET]
+Fixed HTN failing to switch to a higher-priority branch when it has an If node after a Prefer node.
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+--------------------------------------------------
+Change: 833860
+Date:   2024-01-16 15:23:13
+Description:
+[IMP-42686]
+In the FT for the player flashlight, added verification that the player becomes lit for light detection purposes after turning on the flashlight.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-42686
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 833887
+Date:   2024-01-16 15:55:34
+Description:
+[IMP-NOTICKET]
+Added the "left alone" bark to characters who went from Unaware into Alarmed after all their allies died.
+Fixed Elites waiting for multiple voice lines to complete before Rushing.
+Fixed various barks not playing or playing with the wrong bark group.
+Removed dead body bark handling in HTN_Human_Investigate because seeing a dead body moves the AI to Alarmed righ away anyway.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 834107
+Date:   2024-01-17 10:13:13
+Description:
+[IMP-39664]
+Unshelved from pending changelist '833948':
+
+In VGAIStateBase, replaced NoAwarenessBuildupFromSightTargetsWithTag with AwarenessBuildupMultipliersForSightTargetsByTag.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-39664
+#vettedby mpennelli
+--------------------------------------------------
+Change: 834215
+Date:   2024-01-17 13:23:04
+Description:
+[IMP-39664]
+Added sight target batching to VGAIStateBase so that awareness buildup rate does not depend on the number of flashlight targets seen, only on if any of them are seen or not.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-39664
+#vettedby slageweg
+--------------------------------------------------
+Change: 835029
+Date:   2024-01-19 12:38:10
+Description:
+[IMP-30603]
+Unshelved from pending changelist '834758':
+
+Made a functional test to verify helmet openings for elites.The fact that they work and the fact that they are disabled and don't have collision for other characters.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-30603
+#vettedby slageweg
+--------------------------------------------------
+Change: 835141
+Date:   2024-01-19 16:16:28
+Description:
+[IMP-42584]
+Fixed hunter warping across a long distance when a new path is submitted on the exact frame it decided to stop moving at the end of the old path.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-42584
+#vettedby rzak
+--------------------------------------------------
+Change: 835933
+Date:   2024-01-23 15:10:00
+Description:
+[IMP-42583]
+Fixed Hunter "ice skating" where it was using the speed of the "jog" movement method while using animations of the "walk" movement method.
+Fixed "start with turn" not working on Hunters.
+Fixed a one-frame glitch where the hunter's legs twist 180 degrees for one frame when going from the "stop move" state directly to the "start move" state.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-42583
+#vettedby rzak
+--------------------------------------------------
+Change: 836261
+Date:   2024-01-24 15:43:52
+Description:
+[IMP-42583]
+Fixed huge twist of the spine happening when transitioning from Stop to Start without going to Idle first.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-42583
+#vettedby rzak
+--------------------------------------------------
+Change: 836313
+Date:   2024-01-24 16:39:01
+Description:
+[IMP-42583]
+Fixed hitch happening every time hunters shoot the blowgun (the shot animation had no blending)
+
+Vetted by Rebecca Zak, Inka Kamula
+
+#assetvalidation succeeded
+#jira imp-42583
+#vettedby rzak,ikamula
+--------------------------------------------------
+Change: 836982
+Date:   2024-01-29 11:57:42
+Description:
+[IMP-43123]
+Fixed hunters never using TurnInMotion animations. Made hunters properly TurnInMotion when switching movement methods from a non-one-directional one to a one-directional one (from WalkCombat to JogCombat right after shooting the player so the hunter can run off).
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-43123
+#missingfixversion
+#vettedby rzak
+--------------------------------------------------
+Change: 837344
+Date:   2024-01-30 11:18:09
+Description:
+[IMP-43123]
+Fixes for human characters' one-frame spine-twisting when going from "stop move" to "start move".
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-43123
+#vettedby rzak
+--------------------------------------------------
+Change: 837443
+Date:   2024-01-30 14:22:39
+Description:
+[IMP-43123]
+Fixed all hunter blowgun shots after the first one having an abrupt hitch
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-43123
+#vettedby rzak
+
+Encountered 2 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Assets/Characters/Human/Human_Skel_Skeleton.Human_Skel_Skeleton is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Assets/Characters/Human/Human_Skel_Skeleton.uasset'
+--------------------------------------------------
+Change: 837875
+Date:   2024-01-31 14:36:03
+Description:
+[IMP-43123]
+Unshelved from pending changelist '837582':
+
+Fixed hunters blending from "aiming" to "not aiming" super fast.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-43123
+#vettedby rzak
+--------------------------------------------------
+Change: 837878
+Date:   2024-01-31 14:38:39
+Description:
+[IMP-43123]
+Fixed hunters spazzing out when using a turn-in-motion animation when transitioning to that from strafing. Refactored the way turn in motion is triggered. Applied smoothing (360 deg / s) to RelativeMoveAngle used for orientation warping in the Movement and MovementOneDirectional states.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-43123
+#vettedby rzak
+--------------------------------------------------
+Change: 837936
+Date:   2024-01-31 16:11:29
+Description:
+[IMP-43123]
+Made hunter staggers take into account the direction the shot came from.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-43123
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 838866
+Date:   2024-02-05 10:44:03
+Description:
+[IMP-43462]
+Updated HTN plugin to v1.13.3, which has pooling of these tasks.
+
+#assetvalidation succeeded
+#jira imp-43462
+--------------------------------------------------
+Change: 839478
+Date:   2024-02-06 15:35:26
+Description:
+[IMP-43786]
+LSA_SlaverDartDeath: 
+The slaver now stays in the dead pose after the sequence is done playing (the animation is now played in the DefaultSlot instead of NarrativeBody: the latter is only active during sequences and blends out after the sequence is done playing).
+The slaver's voice is now coming from below.
+Made the slaver's appearance match his voice actor.
+Fixed the slaver always running an "IdleBreak" animation that doesn't loop properly.
+
+Vetted by Rob van der Sloot
+
+#assetvalidation succeeded
+#jira imp-43786
+#vettedby rvdsloot
+--------------------------------------------------
+Change: 840012
+Date:   2024-02-07 16:31:35
+Description:
+[IMP-40384]
+Fixed slavers not properly turning to face the slaver who yelled "alarm!" (they were facing *themselves* instead).
+Fixed slavers who do see the player turning to face the playspace origin instead of the player's actual head.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-40384
+#vettedby mpennelli
+--------------------------------------------------
+Change: 840043
+Date:   2024-02-07 17:32:17
+Description:
+[IMP-36961] [IMP-36961]
+Unshelved from pending changelist '839599':
+
+Fixed humans taking cover too close to player and sitting there forever. They now rush the player like Elites do in this rare case.
+Fixed humans doing suppressive fire over the player sitting a couple of meters away behind the same cover, which makes them look dumb..
+Fixed humans sometimes deciding to walk through the player (they now use a navfilter that hard-forbids getting too close to the player).
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-36961,imp-36961
+#vettedby mpennelli
+--------------------------------------------------
+Change: 840074
+Date:   2024-02-07 18:13:26
+Description:
+[IMP-41963]
+Fixed humans having only a few rounds in their magazine on startup, causing them to reload almost immediately upon entering combat. Their magazine contents only get overridden by the scarcity system when they die now.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-41963
+#vettedby mpennelli
+--------------------------------------------------
+Change: 840274
+Date:   2024-02-08 11:29:01
+Description:
+[IMP-44325]
+Fixed melee hits not knowing the physics material of the thing they hit.
+Now a hit sound is audible when punching someone in the face. However, slapping them with a tokarev etc produces a sound of a can hitting the ground for some reason.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-44325
+#vettedby slageweg
+--------------------------------------------------
+Change: 840280
+Date:   2024-02-08 11:33:21
+Description:
+[IMP-39497]
+Fixed NavLink proxies in the Ch05 Train Yard HYG affecting all characters instead of just the player, causing slavers to run in place during combat.
+
+Vetted by Hakan Persson
+
+#assetvalidation succeeded
+#jira imp-39497
+#vettedby hpersson
+--------------------------------------------------
+Change: 840335
+Date:   2024-02-08 13:30:53
+Description:
+[IMP-44325]
+Fixed punching humans in the face not having any audio. Made this sound louder (it was barely audible before).
+The other issues remain (missing SFX for hitting mutants, wrong SFX when hitting enemies  with your weapon).
+
+Vetted by Ranjeet Hegde
+
+#assetvalidation succeeded
+#jira imp-44325
+#vettedby rhegde
+--------------------------------------------------
+Change: 840462
+Date:   2024-02-08 16:13:08
+Description:
+[IMP-44389]
+Fixed mounted gun emitting a "Suspicious" noise. Now makes "Alarming.Gunshot"
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-44389
+#vettedby mpennelli
+--------------------------------------------------
+Change: 840487
+Date:   2024-02-08 16:35:55
+Description:
+[IMP-NOTICKET]
+Fixed missing null check in idle fidget (cases where no fidgets are assigned in the template)
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby mpennelli
+--------------------------------------------------
+Change: 840493
+Date:   2024-02-08 16:40:38
+Description:
+[IMP-44382]
+When humans want to peer forward but they're not facing the target, they'll turn to face what they're looking at first.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-44382
+#vettedby rzak
+--------------------------------------------------
+Change: 840697
+Date:   2024-02-09 11:03:19
+Description:
+[IMP-34355]
+Made sure that the hunter's path updates a couple of times per second when moving to attack the player (was already doing that when moving to hiding spot) to handle cases where the player walks onto the hunter's path.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-34355
+#vettedby mpennelli
+--------------------------------------------------
+Change: 841096
+Date:   2024-02-12 15:12:29
+Description:
+[IMP-15183]
+Fixed ShootFirearm sometimes trying to finish when it's already finished.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-15183
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 841105
+Date:   2024-02-12 15:13:52
+Description:
+[IMP-43449]
+Updated the HTN plugin to v1.14.0 which introduces pooling of node instances to reduce the load on Garbage Collection.
+Explicitly disabled node pooling on nodes that play montages or bind to external events events completion events of said montages etc. from firing after the node has been returned to pool.
+
+#assetvalidation succeeded
+#jira imp-43449
+--------------------------------------------------
+Change: 841107
+Date:   2024-02-12 15:14:44
+Description:
+[IMP-44382]
+Made hunters also turn to face target before peering (as slavers do). Fixed humans not focusing on the investigation location while peering during the investigation state.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-44382
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 841109
+Date:   2024-02-12 15:16:30
+Description:
+[IMP-43617]
+Fixed "must complete before AI" setting on level sequences not working for humans.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-43617
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 841203
+Date:   2024-02-12 16:50:31
+Description:
+[IMP-34355]
+Fix for hunters deciding to walk through the player if the player got too close to them. Before, line segments that begin inside the forbidden sphere were allowed. Now it specifically disallows those that cross through the middle of the sphere (cross through the equator basically).
+
+Also fixed hunters not being able to attack if the player pushes them into a tight nook from which they can't get out or if they somehow got stuck off the navmesh.
+
+Vetted by Stanley Lageweg, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-34355
+#vettedby slageweg,fkrielaart
+--------------------------------------------------
+Change: 841447
+Date:   2024-02-13 13:40:20
+Description:
+[IMP-44668]
+Fixed hunter starting to move when it has no path in cases where it gets a move request to its current location while stopping.
+Made a functional test to reproduce the bug and verify the fix.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-44668
+#vettedby rzak
+--------------------------------------------------
+Change: 842208
+Date:   2024-02-15 10:00:37
+Description:
+[IMP-38195] [IMP-42000] [IMP-44503]
+Fixed characters stopping locomotion too early in builds compared to in editor because of missing curves.
+
+Fixed UVGAnimationUtilities::GetCurveValueAt never working in builds. It was reaching for uncompressed curve data (RawCurveData) that only exists in the editor and gets removed during cooking. Now it uses UAnimSequence::EvaluateCurveData which correctly samples the compressed data if the uncompressed data is not available.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-38195,imp-42000,imp-44503
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 842318
+Date:   2024-02-15 14:26:29
+Description:
+[IMP-44626]
+Fixed the scarcity system being unable to set the ammo count in magazines of dying enemies to zero because CanSpawnAmount(0) was always false.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-44626
+#vettedby ldekker
+--------------------------------------------------
+Change: 842433
+Date:   2024-02-15 18:10:52
+Description:
+[IMP-44666]
+Made a functional test to verify that humans can switch their headlamp on/off during living world sequences / locomotion.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-44666
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 842456
+Date:   2024-02-15 20:00:10
+Description:
+[POWD-NOTICKET]
+Initial structure setup for Orc character BP, templates, HTNs. We chose to reuse BP_AICharacter_Human as the Orc. The idea is that once we have the Orc model and animations available in engine, we can just assign them in BPTA_Orc_Base and all humans will now be orcs. The same applies for the ABPs: we can probaly reuse most of it and only make a replacement for ABP_Human_Locomotion from scratch (based on ABP_Nosalis_Locomotion).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 842470
+Date:   2024-02-15 20:27:00
+Description:
+[POWD-240]
+Removed various flashlight-managemtnlogic/variables from BP_AICharacter_Human and AIC_Human_Base.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-240
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 842732
+Date:   2024-02-16 17:30:16
+Description:
+[POWD-296]
+WiP on setting up the Orc combat AI and an arena-like Demo_Orc_Combat map: they now have a combat circle and move to surround the player similarly to how the Nosalis does.
+
+#assetvalidation succeeded
+#jira powd-296
+--------------------------------------------------
+Change: 843238
+Date:   2024-02-20 12:40:39
+Description:
+[POWD-227]
+Ported Impact changes to FVGNavigationFilter_AvoidSpecificLocations.
+Fixed combat circle making characters go through each other instead of shuffling around the player.
+Made combat circle act as a combat cone with a configurable maximum angle.
+Tweaked the combat cone and orc EQS to get them into melee range.
+
+#assetvalidation succeeded
+#jira powd-227
+--------------------------------------------------
+Change: 843305
+Date:   2024-02-20 14:35:12
+Description:
+[POWD-227]
+Fixed files not submitted with previous submit. 
+Fixed combat circle ignoring assignments with fewer characters when it can't assign them all.
+
+#assetvalidation succeeded
+#jira powd-227
+--------------------------------------------------
+Change: 843435
+Date:   2024-02-20 17:28:46
+Description:
+[POWD-227]
+Improved orc loitering: now they try to stay in the player's view instead of surrounding the player. This better matches the combat cone now being a cone instead of a circle.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-227
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 843639
+Date:   2024-02-21 15:03:24
+Description:
+[IMP-45076]
+Fixed humans interrupting their reloading if they start moving during rushing.
+Fixed a rare crash that happens when an HTN service clears the current plan, now this is handled gracefully with a warning log.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-45076
+#vettedby mpennelli
+--------------------------------------------------
+Change: 843903
+Date:   2024-02-22 11:28:39
+Description:
+[IMP-45208]
+Made the IsCharacterMoving helper function use the enum in VGWarpedLocomotionAnimInstance (when possible) instead of StateMachine_IsStateRelevant, which can block the game thread until parallel animation evaluation finishes on another thread, creating a spike.
+
+Fixed some functional tests failing because the gun they're supposed to shoot the enemy with to test their staggers had physics on and fell to the ground.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-45208
+#vettedby mpennelli
+--------------------------------------------------
+Change: 843913
+Date:   2024-02-22 11:44:49
+Description:
+[IMP-45092]
+Fixed HTNDecorator_LookAt keeping the look at active until the end of the entire plan it's in instead of until hte end of the node the decorator is on.
+Fixed humans planning out their investigation relaxation too far in advance.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-45092
+#vettedby mpennelli
+--------------------------------------------------
+Change: 844006
+Date:   2024-02-22 14:47:29
+Description:
+[IMP-45092]
+Fixed characters doing a weird spin when starting movement when they have a focal point set. Characters that have a focal point can now correctly decide to do a "start move with turn" even if their focus is a custom one.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-45092
+#vettedby rzak
+--------------------------------------------------
+Change: 844047
+Date:   2024-02-22 16:15:51
+Description:
+[IMP-45092]
+Fixed InvestigationLocation failing to project to navmesh when it's exactly on or slightly below it.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-45092
+#vettedby mpennelli
+--------------------------------------------------
+Change: 844056
+Date:   2024-02-22 16:25:31
+Description:
+[IMP-45092]
+Made functional test for that issue where the character keeps looking the wrong way when distracted while turing to face a living world waypoint. Fixed it by making the "look at current visible distraction" decorator have a separate focus priority from the one the locomotion track uses (locomotion track uses priority 3, the default is 2, that decorator now uses 4).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-45092
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 845423
+Date:   2024-02-28 10:57:56
+Description:
+[POWD-225]
+Unshelved from pending changelist '844771':
+
+Basic prediction of the player hand trajectory.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-225
+#vettedby slageweg
+--------------------------------------------------
+Change: 845485
+Date:   2024-02-28 14:12:21
+Description:
+[POWD-457]
+Made orc locomotion driven by character movement instead of animations.
+Fixed a couple of issues in the orc behavior causing them to jitter.
+Fixed a bunch of ensures in VGLookAtComponent triggering when starting PIE.
+
+Changes:
+- On BP_AICharacter_Human, on the UVGPathFollowingMediatorComponent disabled "bInterceptMoveRequest" and "bTruncatePathBasedOnAcceptanceRadius".
+- Switched ABP_Humanoid and ABP_Humanoid_Locomotion_Simple to only get root motion from montages instead of everything.
+- Changed the animations used by the ABP to "EnableRootMotion" off and "ForceRootLock" on.
+- Made VGLocomotionAnimInstance use velocity from the character movement component when the pathfollowingmediator has bInterceptMoveRequest disabled.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-457
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 845495
+Date:   2024-02-28 14:38:40
+Description:
+[POWD-457]
+Fixed orcs moving around their combat circle too often.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-457
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 845520
+Date:   2024-02-28 15:58:25
+Description:
+[POWD-457]
+Fixed Orcs not turning to face the focus when in Idle. There is now a "Apply Rotation Alpha" bool on the locomotion ABP, which is now false (was true). This means that the RotationAlpha curve in animations is ignored and the rotation rate on the movement method component is never reduced.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-457
+#vettedby slageweg
+--------------------------------------------------
+Change: 845523
+Date:   2024-02-28 16:06:17
+Description:
+[POWD-225]
+Disabled debug drawing on hand trajectory prediction.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira powd-225
+#vettedby kkune
+--------------------------------------------------
+Change: 845552
+Date:   2024-02-28 17:05:44
+Description:
+[POWD-459]
+Fixed combat cone breaking when ArcDistanceBetweenSectors is nonzero. 
+
+It was putting a gap between the supersector and itself, so the resulting supersector was no longer covering the entire circle, and so a cone could not contain that gap, so the cone ended up on either side of the gap.
+
+#assetvalidation succeeded
+#jira powd-459
+--------------------------------------------------
+Change: 845801
+Date:   2024-02-29 13:59:03
+Description:
+[POWD-NOTICKET]
+Fixed characters rotating in place when they have no focal point.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 845966
+Date:   2024-02-29 18:56:35
+Description:
+[POWD-225]
+Potential fix for combat cone drifting.
+
+#assetvalidation succeeded
+#jira powd-225
+--------------------------------------------------
+Change: 846301
+Date:   2024-03-01 16:35:51
+Description:
+[IMP-45706]
+Fixed Nosalis "can reach in straight line" tests failing.
+Projection extent was too small, not working for the test pawn and in some cases for the nosalis itself (its halfheight is 100cm while the projection extent was 50cm).
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-45706
+#vettedby mpennelli
+--------------------------------------------------
+Change: 846436
+Date:   2024-03-04 10:07:27
+Description:
+[IMP-41973]
+Added TAFTest_AICharacters to the shadercache test run to prevent shader spikes when running the TAF test proper.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 846461
+Date:   2024-03-04 10:50:36
+Description:
+[IMP-45651]
+Fixed repeated "don't think you can hide" vo line during alarmed when the player keeps distracting the slaver.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-45651
+#missingfixversion
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 846682
+Date:   2024-03-04 18:12:42
+Description:
+[IMP-41973]
+Disabled flashlights on slavers in trolley encounters (set flashlight limit to 0) on the encounter. There are many overlapping encounters all active at the same time during trolley sections, and simultaneous flashlight limits are set up on a per-encounter basis.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby kkune
+--------------------------------------------------
+Change: 847144
+Date:   2024-03-06 12:32:18
+Description:
+[IMP-41973]
+Unshelved from pending changelist '846900':
+
+Upped audio cache on Android from 32KB to 32MB (considered normal by UE docs, Windows has 64MB).
+
+Made sounds under SC_Weapons RetainOnLoad instead of PrimeOnLoad. This way the first chunk of gunshot/hit sounds is always available in memory and doesn't get evicted if a gun was not fired for a while unlike PrimeOnLoad.
+
+Vetted by Ranjeet Hegde
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby rhegde
+--------------------------------------------------
+Change: 847145
+Date:   2024-03-06 12:32:28
+Description:
+[IMP-41973]
+Unshelved from pending changelist '847003':
+
+Made ABP_Human_CombatActive fully fast-path and reduced the amount of BP processing on tick.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby rzak
+--------------------------------------------------
+Change: 847300
+Date:   2024-03-06 17:04:57
+Description:
+[IMP-41973]
+Fixed idle fidgets preventing locomotion from starting.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby mpennelli
+--------------------------------------------------
+Change: 847318
+Date:   2024-03-06 17:39:07
+Description:
+[IMP-41973]
+Upped audio cache size on android to 64MB
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 847323
+Date:   2024-03-06 17:50:41
+Description:
+[IMP-41973]
+Optimizations to ABP_Human_Locomotion to make it only use fast path updates in the anim graph.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-41973
+#vettedby rzak
+--------------------------------------------------
+Change: 847480
+Date:   2024-03-07 13:08:14
+Description:
+[IMP-41973]
+Setting audio cook overrides for Android match the proper defaults (was all at 0 due to engine upgrade issues early in the project).
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-41973
+#missingfixversion
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 847551
+Date:   2024-03-07 15:16:45
+Description:
+[IMP-41973]
+Added random start delays to some looping times during the combat state so they don't all trigger on the same frame, creating a spike every 5 and 7 seconds (and thus a double spike every 5*7=35 seconds). The work is now staggered.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-41973
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 847595
+Date:   2024-03-07 16:29:38
+Description:
+[IMP-41973]
+Made encounters put their characters into the actor when the encounter ends by default. This should fix an issue when an AI sets a looping timer and keeps evaluating it even though the character is already disabled.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-41973
+#missingfixversion
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 847635
+Date:   2024-03-07 17:34:19
+Description:
+[IMP-41973]
+Moved some helper variables for offsetting root motion scale and rotation to C++.
+Enabled more fast path in the anim graph of ABP_Human
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-41973
+#missingfixversion
+#vettedby rzak
+--------------------------------------------------
+Change: 847724
+Date:   2024-03-08 10:08:37
+Description:
+[IMP-41973]
+Fixed warning about variable initialization order.
+
+#assetvalidation succeeded
+#jira imp-41973
+--------------------------------------------------
+Change: 847730
+Date:   2024-03-08 10:17:06
+Description:
+[IMP-41973]
+Made only TTR encounters return characters to pool when they end.instead of all encounters.
+This fixes characters at home station disappearing forever if you move away and then return to them.
+
+#assetvalidation succeeded
+#jira imp-41973
+--------------------------------------------------
+Change: 848199
+Date:   2024-03-12 11:09:43
+Description:
+[POWD-225]
+WiP on detecting that enemies are about to be attacked by the player.
+Re-enabled CombatActive ABP (now using ABP_Humanoid_CombatActive)
+Made orcs use the new model
+Increased render distance of orcs from 30m to 40m
+Flipped orcs' sword
+
+#assetvalidation warning
+#jira powd-225
+
+Encountered 6 warnings:
+/Game/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_D_01_Start.Orc_CombatSword_Block_D_01_Start is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_D_01_Start.uasset'
+/Game/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_L_01_Start.Orc_CombatSword_Block_L_01_Start is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_L_01_Start.uasset'
+/Game/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_R_01_Start.Orc_CombatSword_Block_R_01_Start is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_R_01_Start.uasset'
+/Game/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_Up_01_Start.Orc_CombatSword_Block_Up_01_Start is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Assets/Characters/Orc_01/Animations/Orc_CombatSword_Block_Up_01_Start.uasset'
+/Game/Blueprints/AIToolkit/Human/Group/AIG_EncounterHumans.AIG_EncounterHumans is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Blueprints/AIToolkit/Human/Group/AIG_EncounterHumans.uasset'
+See log for complete list of warnings
+--------------------------------------------------
+Change: 848279
+Date:   2024-03-12 14:35:15
+Description:
+[POWD-225]
+Storing the detected incoming attack on the BP_AICharacter_Human
+
+#assetvalidation succeeded
+#jira powd-225
+--------------------------------------------------
+Change: 848375
+Date:   2024-03-12 17:09:08
+Description:
+[POWD-225]
+Basic setup of Orcs blocking the player's attacks.
+Fixed orcs sliding around when attacking. Removed motion warping from an anim that's not used with motion warping.
+
+Vetted by Stanley Lageweg, Inka Kamula
+
+#assetvalidation succeeded
+#jira powd-225
+#vettedby slageweg,ikamula
+--------------------------------------------------
+Change: 848582
+Date:   2024-03-13 13:59:46
+Description:
+[IMP-NOTICKET]
+Fixed crash when doing a log (missing printf argument).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 848598
+Date:   2024-03-13 14:17:15
+Description:
+[POWD-NOTICKET]
+Fixed changes not submitted yesterday (enabling of the CombatActive layer for orcs).
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby ikamula
+--------------------------------------------------
+Change: 848606
+Date:   2024-03-13 14:24:42
+Description:
+[POWD-536]
+Disabled the IK layer for orcs (was causing them to not move vertically).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-536
+#vettedby slageweg
+--------------------------------------------------
+Change: 848722
+Date:   2024-03-13 17:58:12
+Description:
+[POWD-532]
+More robust hand motion trajectory prediction that uses angular velocity as well as reglar smoothes all derivatives, not just the position itself.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira powd-532
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/Melee/BAC_Melee_Hand.BAC_Melee_Hand is referenced but is not at the latest revision 'D:/PowerDemos/Power/Content/Blueprints/Weapons/Melee/BAC_Melee_Hand.uasset'
+--------------------------------------------------
+Change: 848946
+Date:   2024-03-14 14:57:54
+Description:
+[POWD-532]
+Fixed division by zero causing NaN propagation causing tons of logs on game startup adding a 10s delay.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-532
+#vettedby slageweg
+--------------------------------------------------
+Change: 848961
+Date:   2024-03-14 15:10:07
+Description:
+[POWD-532]
+Only predicting trajectory to vislog if the vislog is recording.
+
+#assetvalidation succeeded
+#jira powd-532
+--------------------------------------------------
+Change: 849000
+Date:   2024-03-14 16:49:18
+Description:
+[POWD-533]
+Reduced blend times on the "block" animations of orcs.
+
+#assetvalidation succeeded
+#jira powd-533
+--------------------------------------------------
+Change: 849158
+Date:   2024-03-15 13:37:34
+Description:
+[POWD-532]
+Extraced melee combat logic into a component on BP_AICharacter_Human
+
+#assetvalidation succeeded
+#jira powd-532
+--------------------------------------------------
+Change: 849366
+Date:   2024-03-18 11:28:16
+Description:
+[POWD-NOTICKET]
+Updated HTN plugin to v1.15.0 to get the "search in HTN" functionality.
+
+#assetvalidation succeeded
+#jira powd-noticket
+--------------------------------------------------
+Change: 849611
+Date:   2024-03-19 12:10:17
+Description:
+[POWD-519] [POWD-532]
+More precise player attack prediciton (now sweeping actual collision volumes and not just their bounds)
+Orcs now dodge at the last moment if they can't block an incoming attack.
+
+Vetted by Floyd Krielaart, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-519,powd-532
+#vettedby fkrielaart,slageweg
+--------------------------------------------------
+Change: 849645
+Date:   2024-03-19 13:37:38
+Description:
+[POWD-519]
+Made orcs freeze their weapon for a bit when that weapon gets hit by the player.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-519
+#vettedby slageweg
+--------------------------------------------------
+Change: 849647
+Date:   2024-03-19 13:40:18
+Description:
+[POWD-519]
+Followup: disabled leftover debug drawing
+
+#assetvalidation succeeded
+#jira powd-519
+--------------------------------------------------
+Change: 849687
+Date:   2024-03-19 14:50:39
+Description:
+[POWD-519]
+Fixed incorrect offsets on weapons being aligned during blocking. Orcs now more correctly put their weapon in the way of the player's.
+
+#assetvalidation succeeded
+#jira powd-519
+--------------------------------------------------
+Change: 849867
+Date:   2024-03-20 10:29:25
+Description:
+[POWD-NOTICKET]
+Fixed ensure caused by duplicate subscription to OnTeleport caused by duplicate call to NativeBeginPlay of linked anim instances.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 849954
+Date:   2024-03-20 13:59:06
+Description:
+[POWD-533]
+First iteration of orc blocking animation selection using motion matching
+Added options to motion matching to match specific bones to the given trajectory.
+
+Vetted by Stanley Lageweg, Inka Kamula
+
+#assetvalidation succeeded
+#jira powd-533
+#vettedby slageweg,ikamula
+--------------------------------------------------
+Change: 849985
+Date:   2024-03-20 16:23:51
+Description:
+[POWD-621]
+Made orcs not hold forever and instead prefer to counterattack. Fixed issue with orc attack eqs not attacking sometimes.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-621
+#vettedby slageweg
+--------------------------------------------------
+Change: 850012
+Date:   2024-03-20 17:14:21
+Description:
+[POWD-532]
+Fixed orc dodges not working
+
+#assetvalidation succeeded
+#jira powd-532
+--------------------------------------------------
+Change: 850020
+Date:   2024-03-20 17:22:30
+Description:
+[POWD-532]
+Evicting outdated incoming attack information after 0.1s so we only act on recent information.
+
+#assetvalidation succeeded
+#jira powd-532
+--------------------------------------------------
+Change: 850034
+Date:   2024-03-20 17:45:33
+Description:
+[POWD-NOTICKET]
+Added logging of what will be hit in the predicted trajectory.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 850122
+Date:   2024-03-21 10:00:02
+Description:
+[POWD-NOTICKET]
+Fixed orcs not counterattacking after blocking.
+
+#assetvalidation succeeded
+#jira powd-noticket
+--------------------------------------------------
+Change: 850185
+Date:   2024-03-21 12:18:05
+Description:
+Fixed broken orc block animations
+--------------------------------------------------
+Change: 850220
+Date:   2024-03-21 14:13:29
+Description:
+[POWD-532]
+Fixed orcs blocking an incoming attack too early.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-532
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 850270
+Date:   2024-03-21 15:47:03
+Description:
+[POWD-533]
+Improved orc blocking.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-533
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 850960
+Date:   2024-03-26 11:03:28
+Description:
+[POWD-627]
+Better matching of orc blocking to the incoming attack.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira powd-627
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/Power_Demos/Power/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+--------------------------------------------------
+Change: 851088
+Date:   2024-03-26 16:51:08
+Description:
+[POWD-631]
+Orc blocking: improved trajectory prediction and more reliable incoming attack detection.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-631
+#vettedby slageweg
+--------------------------------------------------
+Change: 852062
+Date:   2024-04-02 13:55:52
+Description:
+[POWD-690]
+Made orcs freeze when their attack is blocked
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-690
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 852294
+Date:   2024-04-03 15:53:55
+Description:
+[POWD-575] [POWD-587]
+The orc can push back the player when backed into a corner now.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-575,powd-587
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 852318
+Date:   2024-04-03 16:43:34
+Description:
+[POWD-575] [POWD-587]
+Made orcs immune to damage when dodging or knocking back the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-575,powd-587
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 852319
+Date:   2024-04-03 16:46:55
+Description:
+[POWD-575] [POWD-587]
+Orcs that are backed into a wall are less likely to try to dodge in place with foot sliding and knock the player back instead.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-575,powd-587
+#vettedby slageweg
+--------------------------------------------------
+Change: 852422
+Date:   2024-04-04 11:01:58
+Description:
+[POWD-720]
+If the player damages/kills the orc while it's swinging its sword at the player, the player still gets damaged.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-720
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 852446
+Date:   2024-04-04 12:47:41
+Description:
+[POWD-NOTICKET]
+Made orcs respawn in the combat demo map.
+Made slaver death barks support orc scratch VA.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira powd-noticket
+#vettedby fkrielaart
+
+Encountered 2 warnings:
+/Game/Blueprints/Animation/Humanoid/ABP_Humanoid.ABP_Humanoid is referenced but is not at the latest revision 'D:/PowerDemos/Power/Content/Blueprints/Animation/Humanoid/ABP_Humanoid.uasset'
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/PowerDemos/Power/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+--------------------------------------------------
+Change: 852466
+Date:   2024-04-04 14:09:04
+Description:
+[POWD-720]
+Fixed ensure triggering when the player dies from hitting the orc during the orc's attack.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-720
+#vettedby slageweg
+--------------------------------------------------
+Change: 852475
+Date:   2024-04-04 15:30:21
+Description:
+[POWD-575]
+Made orcs push back the player to put the player a specific randomizable distance away from the orc instead of always a meter backwards.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-575
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 852705
+Date:   2024-04-05 16:58:20
+Description:
+[POWD-730]
+(hopefully temporarily) Removed root motion from orc attack animations as they were making the orc get into the player's face and then dodge away.
+
+Vetted by Tim Vegter
+
+#assetvalidation succeeded
+#jira powd-730
+#vettedby tvegter
+--------------------------------------------------
+Change: 852825
+Date:   2024-04-08 10:57:42
+Description:
+[POWD-730] [POWD-731]
+Multiple orcs can attack at the same-ish time (orc B can start an attack while orc B is in a particular part of a its attack animation, marked with a notify state).
+The combat coordinator can execute a sequence of attacks that aren't all on the same orcs (e.g. the first two attacks are done by orc A and the third by orc B).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-730,powd-731
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 853044
+Date:   2024-04-09 10:26:38
+Description:
+[POWD-731]
+Fixed orcs getting stuck in the "unclaim token post-attack" branch forever.
+
+#assetvalidation succeeded
+#jira powd-731
+--------------------------------------------------
+Change: 853046
+Date:   2024-04-09 10:28:30
+Description:
+[POWD-731]
+Fixed orcs overriding the attack token claim cooldown, now that's controlled by the combat coordinator.
+
+#assetvalidation succeeded
+#jira powd-731
+--------------------------------------------------
+Change: 853072
+Date:   2024-04-09 11:19:50
+Description:
+[POWD-731]
+Fixed coordinated attacks always trying to switch between orcs regardless of the switching chance.
+Fixed a single attack from an orc counting as two.
+
+#assetvalidation succeeded
+#jira powd-731
+--------------------------------------------------
+Change: 853191
+Date:   2024-04-09 18:28:36
+Description:
+[POWD-759]
+Making an orc dodge now triggers another orc to attack.
+
+#assetvalidation succeeded
+#jira powd-759
+--------------------------------------------------
+Change: 853257
+Date:   2024-04-10 11:19:12
+Description:
+[POWD-NOTICKET]
+Added missing null checks to a notifystate
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira powd-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 853296
+Date:   2024-04-10 14:36:43
+Description:
+[POWD-757] [POWD-758]
+Made orc dodge further away and stagger at the end of it.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-757,powd-758
+#vettedby slageweg
+--------------------------------------------------
+Change: 853400
+Date:   2024-04-11 10:50:01
+Description:
+[POWD-758]
+Made orcs use directional dodge animations instead of just backwards. Made orcs dodging not care about other orcs in the way. Those other orcs in the way now dodge away from the dodge.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira powd-758
+#vettedby slageweg
+--------------------------------------------------
+Change: 853777
+Date:   2024-04-16 10:52:29
+Description:
+[IMP-47136]
+Various fixes for hunter attack behavior.
+Fixed hunters rarely picking a hiding spot behind the tarp with campfire in ch12b.
+Fixed hunters trying to load a dart into the blowgun when it already has one. This was causing them to have two darts in the blowgun, with one of them blocking their "firearm obstructed" check.
+Reduced the "min distance to others" for hunters from 250cm to 150cm so it's easier for them to find hiding spots.
+Fixed HunterFindShootingSpot producing points up to 5m away due to a navmesh projection bug (ARecastNavMesh::BatchProjectPoints doesn't check for extents properly, acts as if the extents were a sphere. reducing the vertical projection from 1024 to 200 fixed it).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-47136
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 853802
+Date:   2024-04-16 13:20:30
+Description:
+[IMP-47136]
+Fixed mismatch between generators in the "hunter find ambush spot" eqs. When rerunning the eqs as a service this cause the current spot to be invalidated and force expensive recalculation of a new ambush spot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-47136
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 853961
+Date:   2024-04-17 12:58:46
+Description:
+[IMP-48032]
+Fixed humans using the priority 1 focus for looking at the current visible distraction. Locomotion focus was interfering with that and sometimes causing them to be stuck with an outdated focus target forever even after the movement is complete. Now HTN_Human_Investigate and HTN_Human_AlarmedInvestigate use priority 4 for that, for which I added special handling so it does not cause turn in place and only turns the head.
+
+Fixed focus scope in HTN_Human_AlarmedInvestigate not observing bb key for CurrentVisibleDistraction.
+
+Fixed broken functional test (it had a trigger box in a wrong place).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-48032
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 854023
+Date:   2024-04-17 16:41:12
+Description:
+[IMP-48344] [IMP-26307]
+Fixed the "Alaarm!" bark being cut off by the "find the bitch!" line. Mostly because the start of the Alarmed state overlaps so much with the start of the actual search for the hiding player. Added planning-time checks to prevent lines from being cut off. 
+Increased the delay from entering Alarmed till assigning the Searcher token from 0.2s to 3s.
+
+There are still some cases where 3s is not enough and making it 5s feels off because it would typically creates a long silence. So we should eventually make it done via an announcement as described in IMP-26307
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-48344,imp-26307
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 854039
+Date:   2024-04-17 17:42:26
+Description:
+[IMP-48349]
+Fixed hunters walking around the whole level to shoot the player.
+Made the eqs filter on the path length so it can't be walking more than 250cm to get to the destination.
+The more proper fix would be to just abort the walking once we're done shooting, but that can only be done when extra transition animations are supplied (if we go directly from walking to running away there are weird, abrupt blends).
+
+Vetted by Ruben Runhardt, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48349
+#vettedby rrunhardt,fkrielaart
+--------------------------------------------------
+Change: 854122
+Date:   2024-04-18 11:00:10
+Description:
+[IMP-48349]
+Fixed hunters never walking out to shoot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48349
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 854130
+Date:   2024-04-18 11:31:30
+Description:
+[IMP-46953]
+Fixed hunters starting to aim too early when they need to turn around first to face the player. They now start aiming once they're within 60 degrees of facing the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-46953
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 854153
+Date:   2024-04-18 13:47:57
+Description:
+[IMP-10004]
+Cover points at the currently shown navmesh are shown as well.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-10004
+#vettedby slageweg
+--------------------------------------------------
+Change: 854290
+Date:   2024-04-19 10:35:10
+Description:
+[IMP-48441]
+Fixed humans saying "huh?" twice when they see a thrown object fly past their field of view. The first "huh" was getting cut off by the second one.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-48441
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 854471
+Date:   2024-04-22 13:33:23
+Description:
+[IMP-48418]
+When the cover system fails to generate a cover point at a candidate location, it tries to regenerate it nearby (up to 7 times in total)
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48418
+#vettedby rzak
+--------------------------------------------------
+Change: 854486
+Date:   2024-04-22 15:11:57
+Description:
+[IMP-48482]
+Fix for cover points being visible in PIE even when their navmesh is not being rendered.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-48482
+#vettedby ldekker
+--------------------------------------------------
+Change: 854622
+Date:   2024-04-23 12:01:09
+Description:
+[IMP-48416]
+When a human is alerted about combat by another human, and the player is really close to them, the human now faces the player instead of the alerting human. Think characters A and B talking, player sneaks up on B, A notices the player and screams "Alaaarm!", so character B turns around to face the player, while characters further away still turn to look at character A.
+
+Also fixed them using focus priority 1 during this (that causes issues with locomotion), now using priority 2.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48416
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 854687
+Date:   2024-04-23 16:29:40
+Description:
+[IMP-48420]
+Introducing the concept of cover quality: a cover point may protect only 0.6 of a human's body when the player is in a particular direction. This allows for cover points with wider valid cones and more cover points in general.
+There is now and EQS Test Cover Point Cover Quality that allows for checking "what's the cover quality of this cover point against the player at the moment".
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48420
+#vettedby rzak
+--------------------------------------------------
+Change: 854852
+Date:   2024-04-24 15:11:36
+Description:
+[IMP-48415]
+Fixed characters not crouching in low cover sometimes.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48415
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 854855
+Date:   2024-04-24 15:26:19
+Description:
+[IMP-45062]
+Added BP-exposed getters for GetPawnViewLocationOverrideComponent and GetNavAgentLocationLocationOverrideComponent to AVGPawnBase
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-45062
+#vettedby slageweg
+--------------------------------------------------
+Change: 854856
+Date:   2024-04-24 15:29:29
+Description:
+[IMP-48419]
+Made it possible for cover points not to point exactly along the navmesh edge normal. Cover points can now effectively "cut corners" of geometry so humans can e.g. aim across an overturned couch diagonally instead of being aligned to its edges.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48419
+#vettedby rzak
+--------------------------------------------------
+Change: 855375
+Date:   2024-04-29 10:51:24
+Description:
+[IMP-41533] [IMP-48829]
+Fixed characters thinking they're at the wrong cover point when there are a bunch of them. They now pick the safe cover point within 20cm that best aligns with direction to the player. 
+Fixed manual cover points not working.
+
+When drawing cover points, their color now matches the color of their navmesh. They're only drawn based on a flag in Show > Impact in the viewport now instead of whenever a navmesh is shown.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-41533,imp-48829
+#vettedby rzak
+
+Encountered 1 warnings:
+/Game/Assets/Effects/Systems/Environment/FX_CandleFlame.FX_CandleFlame is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Assets/Effects/Systems/Environment/FX_CandleFlame.uasset'
+--------------------------------------------------
+Change: 855421
+Date:   2024-04-29 13:53:08
+Description:
+[IMP-48569]
+Doubling cover point update speed by making it only update line of fire at safe points (if a point is not safe from an enemy, don't bother checking if we can shoot the enemy from there using expensive line traces). The current cover point of an enemy still updates both safety and line of fire independently.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48569
+#vettedby rzak
+--------------------------------------------------
+Change: 855422
+Date:   2024-04-29 13:54:49
+Description:
+[IMP-48829]
+Made the color of cover points more contrasting with their navmesh.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48829
+#vettedby rzak
+--------------------------------------------------
+Change: 855626
+Date:   2024-04-30 14:08:54
+Description:
+[IMP-48943]
+Rebuilt navmesh in Ch4 following floor collision fix.
+
+#assetvalidation succeeded
+#jira imp-48943
+--------------------------------------------------
+Change: 855635
+Date:   2024-04-30 14:46:57
+Description:
+[IMP-48821]
+Fixed slavers stepping out of high cover during a StartMove and thinking they're still at that cover point even after moving out of it.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48821
+#vettedby rzak
+--------------------------------------------------
+Change: 855650
+Date:   2024-04-30 15:29:52
+Description:
+[IMP-NOTICKET]
+Exposed BindOnTriggered and UnbindOnTriggered of IVGTriggerInterface to Blueprints.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 855712
+Date:   2024-04-30 18:32:32
+Description:
+[IMP-NOTICKET]
+Made cover points drawing on top of the navmesh on by default.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 855714
+Date:   2024-04-30 18:49:51
+Description:
+[IMP-48981]
+Only sending out BPA_Death announcements when the character leaving the group actually has depleted health.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48981
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 855806
+Date:   2024-05-01 12:22:00
+Description:
+[IMP-48904]
+Exposed HTN decorator settings to Blueprints.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-48904
+#vettedby slageweg
+--------------------------------------------------
+Change: 855902
+Date:   2024-05-01 17:44:54
+Description:
+[IMP-48996]
+Fixed the first Elite in ch11 evadeslavers5 hiding in cover and not rushing out. 
+This specific Elite can now rush from 50m away instead of 10m (local template override).
+Gave him back the shambler because he can rush. Made it possible for characters with a shambler to shoot it while running at the player from any distance (with increasingly tiny accuracy).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48996
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 856022
+Date:   2024-05-02 12:33:55
+Description:
+[IMP-38626]
+Fixed characters saying the "missed me!" bark when a character next to them got shot.
+Fixed characters not saying the "are you alright!?" bark after someone screams in pain after getting shot.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-38626
+#vettedby slageweg
+--------------------------------------------------
+Change: 856222
+Date:   2024-05-03 13:38:45
+Description:
+[IMP-43581] [IMP-45621] [IMP-49003]
+Unshelved from pending changelist '856084':
+
+Fixed slavers and cultists being inaudible over distance in encounters (both combat and living world).
+
+Vetted by Mark Doeze
+
+#assetvalidation succeeded
+#jira imp-43581,imp-45621,imp-49003
+#vettedby mdoeze
+--------------------------------------------------
+Change: 856223
+Date:   2024-05-03 13:46:42
+Description:
+[IMP-45621]
+Made cultist telegraph audio (inhale etc) more audible over distance.
+
+Vetted by Mark Doeze
+
+#assetvalidation succeeded
+#jira imp-45621
+#vettedby mdoeze
+--------------------------------------------------
+Change: 856228
+Date:   2024-05-03 14:04:28
+Description:
+[IMP-45621]
+Made blowgun sounds more audible over distance.
+
+Vetted by Mark Doeze
+
+#assetvalidation succeeded
+#jira imp-45621
+#vettedby mdoeze
+--------------------------------------------------
+Change: 856269
+Date:   2024-05-03 16:58:51
+Description:
+[IMP-49163]
+Fixed facial animations of short barks not playing because they're blending out before they blend in.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-49163
+#vettedby slageweg
+--------------------------------------------------
+Change: 856282
+Date:   2024-05-03 18:16:00
+Description:
+[IMP-49163]
+Added a warning log to catch missing facial animations.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-49163
+#vettedby slageweg
+--------------------------------------------------
+Change: 856357
+Date:   2024-05-06 10:19:27
+Description:
+[IMP-NOTICKET]
+Unshelved from pending changelist '856076':
+
+Fixed some "start combat" barks not playing when they notice the player while already talking.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 856359
+Date:   2024-05-06 10:25:08
+Description:
+[IMP-NOTICKET]
+Unshelved from pending changelist '856079':
+
+Fixed slavers saying "stay alert!" etc. when they are alone. They only do the "you can't hide bitch!" line in that case.
+
+Vetted by Floyd Krielaart, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart,rrunhardt
+--------------------------------------------------
+Change: 856447
+Date:   2024-05-06 14:41:47
+Description:
+[IMP-48062] [IMP-49165]
+Raised low cover safety height to 100cm, made it do multiple checks at different heights to detect low cover (previously did only one at the low cover safety height itself).
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48062,imp-49165
+#vettedby rzak
+--------------------------------------------------
+Change: 856473
+Date:   2024-05-06 15:53:15
+Description:
+[IMP-49166] [IMP-49249]
+Fixed humans moving out of cover if they run out of ammo or otherwise can't shoot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-49166,imp-49249
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 856524
+Date:   2024-05-06 18:06:20
+Description:
+[IMP-48062] [IMP-49165] [IMP-49166] [IMP-49249]
+Fixed humans stopping 5cm short of their desired cover point when moving to it.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-48062,imp-49165,imp-49166,imp-49249
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 856645
+Date:   2024-05-07 11:31:08
+Description:
+[IMP-48062] [IMP-49165] [IMP-49166] [IMP-49249]
+Cover points now more reliably check if a character can shoot the player from this cover point, taking into account that the character will turn to face the player when at the cover point. This fixes an issue where characters would run into a cover point and then realize they can't actually shoot the player from there.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48062,imp-49165,imp-49166,imp-49249
+#vettedby rzak
+--------------------------------------------------
+Change: 856680
+Date:   2024-05-07 13:46:25
+Description:
+[IMP-49166] [IMP-49249]
+Fixed the EQSQuery_FindAlarmedFiringCover not caring about the chosen cover points actually being good cover. That was causing characters to run to a point chosen this way and then immediately to one that's actually good cover via the EQSQuery_FindDefensiveCover.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-49166,imp-49249
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 856684
+Date:   2024-05-07 13:52:30
+Description:
+[IMP-48344]
+Fixed the "Alaaarm!" bark getting cut off when the person saying get is designated as the searcher, which makes them say "I'm going to find the bitch!" instead.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-48344
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 856994
+Date:   2024-05-08 15:23:49
+Description:
+[IMP-48982]
+Unshelved from pending changelist '856782':
+
+Fixed frozen characters in Ch11 EvadeSlavers5. The bug was likely related to the use of trigger volumes at the beginning of the encounter to disable characters that aren't relevant yet instead of using the "Characters Not To Enable" variable of the  the VGEncounter.
+
+Made the triggers for "disable upstairs characters once you go downstairs" only do so when not in combat.
+
+Made the triggers either re-enable or remove the characters when combat begins (before did either nothing or removed). This is because the group AI systems don't expect multiple people in the same encounter to have different enabled/disabled states during combat (disabled characters end up trying to say barks as directed by the group and other members etc). The same should be probably done for Alarmed, now that I think about it. 
+
+Ideally we should just removing this dynamic enabling/disabling stuff altogether and optimize the AI/ABP to fit into the performance budget. At 7 characters in the encounter it shouldn't be outrageously difficult.
+
+Vetted by Filip Zaczkiewicz
+
+#assetvalidation succeeded
+#jira imp-48982
+#vettedby fzaczkiewicz
+--------------------------------------------------
+Change: 857024
+Date:   2024-05-08 16:55:49
+Description:
+[IMP-27238]
+It's now possible to check the last time a firearm fired.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-27238
+#vettedby slageweg
+--------------------------------------------------
+Change: 857025
+Date:   2024-05-08 16:56:03
+Description:
+[IMP-49434]
+Exposed some hazard system functions/variables to BP.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-49434
+#vettedby slageweg
+--------------------------------------------------
+Change: 857287
+Date:   2024-05-13 11:52:03
+Description:
+[IMP-48982]
+Removed triggers that disable upstairs characters once you go downstairs.
+
+Vetted by Paul van Eekelen
+
+#assetvalidation succeeded
+#jira imp-48982
+#vettedby pveekelen
+--------------------------------------------------
+Change: 857568
+Date:   2024-05-14 14:44:41
+Description:
+[IMP-38151]
+Unshelved from pending changelist '857033':
+
+Fixed hunters not attacking if the player stands in a way that keeps the entire encounter in view (by fov angle, not actual line of sight).
+Fixed hunters doing line of fire traces from the wrong height.
+Fixed hunters being stuck forever if line of sight is obstructed.
+Set MoveTo acceptance radius to 0 (was 5) to make hunters arrive exactly at the destination.
+Reduced delay between hunters telegraph bark and actual attack.
+Made hunters not say "easy prey"/"easy target" after you've killed one of them.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-38151
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 857804
+Date:   2024-05-15 11:24:59
+Description:
+[IMP-38151]
+Unshelved from pending changelist '857571':
+
+Fixed humans' fallback "in place" staggers stopping on complete instead of on blend out.
+Fixed cultists' fallback "in place stagger" playing in the wrong slot, being too long, and having no "pain" bark.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-38151
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 857805
+Date:   2024-05-15 11:25:17
+Description:
+[IMP-48354]
+Unshelved from pending changelist '857663':
+
+Fixed smart navfilters not respecting the HeuristicScale of A* pathfinding from our config.
+The config has that set to 5.0 instead of the default 0.999 and somehow that fixes strange paths with jagged corners in the middle. Probably because with a bigger heuristic it's more likely to rush ahead and smooth the issues that come from doing distances between midpoints of edges.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-48354
+#vettedby rzak
+--------------------------------------------------
+Change: 857845
+Date:   2024-05-15 13:42:37
+Description:
+[IMP-NOTICKET]
+Fixed lurker dodge functional test not always working (was hitting the ground too far from the lurker sometimes).
+Fixed the EliteHelmetWeakspot functional test not working (guns were falling to the ground before shooting).
+
+Vetted by Danny Kruiswijk
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby dkruiswijk
+--------------------------------------------------
+Change: 857847
+Date:   2024-05-15 13:57:24
+Description:
+[IMP-49748]
+Fixed a character's mesh being rotated inside the character itself, casuing the aim to be off.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira imp-49748
+#vettedby kkune
+--------------------------------------------------
+Change: 857855
+Date:   2024-05-15 14:31:22
+Description:
+[IMP-37345]
+Added some scopes to make a potentially expensive function show up on Insights
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-37345
+#vettedby rzak
+--------------------------------------------------
+Change: 857868
+Date:   2024-05-15 15:22:05
+Description:
+[IMP-49748]
+Added a mapcheck for skeleal meshes being offset relative to the character with a "Fix" button.
+
+Vetted by Rebecca Zak, Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-49748
+#vettedby rzak,lholst
+--------------------------------------------------
+Change: 858117
+Date:   2024-05-16 16:55:36
+Description:
+[IMP-49644]
+WiP on making humans go investigate if their sequence partners died.
+Fixed missing calls to parent functions in AIC_Human_Base
+Made it harder for characters to lose the player when the player goes out of view.
+
+Vetted by Ruben Runhardt, Rebecca Zak
+
+#assetvalidation warning
+#jira imp-49644
+#vettedby rrunhardt,rzak
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+--------------------------------------------------
+Change: 858626
+Date:   2024-05-21 15:20:54
+Description:
+[IMP-45052]
+Fixed alarmed humans being stuck looking around forever if the player sits behind them.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-45052
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 858904
+Date:   2024-05-22 16:48:41
+Description:
+[IMP-50017]
+When humans search for the player and the player's looking at them, they'll do the look around in the direction of the player. This means that slavers' sight targets remain active while they're alive, just like hunters.
+Fixed a couple of disparities between hunter's and slaver's alarmed search.
+Fixed slaver doing a weird double-turn when.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-50017
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 859009
+Date:   2024-05-23 10:22:44
+Description:
+[IMP-49819]
+Fixed some of humans' sightfields for seeing in the dark not actually seeing in the dark.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-49819
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 859279
+Date:   2024-05-24 10:39:10
+Description:
+[IMP-50059]
+Unshelved from pending changelist '858774':
+This is actually Floyd's work, I'm submitting it while he's off to unblock myself. We reviewed it on 23.05.2024
++ Adds the defense region system, which allows designers to place volumes that specify specific cover the AI should use when the player is inside the volume, allowing for more control over AI movement in a level.
++ Enemies care less about enemies moving through their view when at a cover point.
++ Exposes some vars on findvisiblepointonpath
++ Reverts avoidance radius from 100 to -1 as it causes circling AI
++ Defense regions widgets
+
+Vetted by Floyd Krielaart, Maks Maisak
+
+#assetvalidation warning
+#jira imp-50059
+#vettedby fkrielaart,mmaisak
+
+Encountered 3 warnings:
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_CorpseReplacer.BAC_CorpseReplacer is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_CorpseReplacer.uasset'
+/Game/Blueprints/AIToolkit/Corpse/BP_Corpse.BP_Corpse is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Corpse/BP_Corpse.uasset'
+/Game/Assets/Environment/Machinery/GeneratorEngineFuel/GeneratorEngineFuel.GeneratorEngineFuel is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Assets/Environment/Machinery/GeneratorEngineFuel/GeneratorEngineFuel.uasset'
+--------------------------------------------------
+Change: 859654
+Date:   2024-05-27 15:30:55
+Description:
+[IMP-50018]
+Fixed death barks of humans never playing because they had the wrong bark group configured and they'd just play the pain barks and those get cut off on death.
+Added a small delay between a character dying and other characters reacting to it.
+Fixed up bark groups on those reaction barks (was Announcements and Chatter, now both are AwareAnnouncements).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-50018
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 859655
+Date:   2024-05-27 15:31:12
+Description:
+[IMP-50018]
+Improved human alarmed/combat looking around in cover. They pop out of cover more.
+Fixed up cooldowns on voice lines they say when in combat idle ("don't think you can hide, bitch").
+The "dont think you can hide, bitch" barks are only played by characters who actually shot their guns instead of people hiding in cover on the other side of the level whom the player hasn't met yet.
+During alarmed search, characters face the last known location of the player.
+Fixed possible case of abortnig the "step out of cover" bit if it changes the facing direction of the character.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-50018
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 859688
+Date:   2024-05-27 17:28:06
+Description:
+[IMP-46123]
+Unshelved from pending changelist '859162':
+
+Fixed lurker repeating an animation forever when it can neither hide nor attack. Lurkers now run around in that case.
+Replaced the deprecated RandomBranch node with the new Random node.
+Fixed lurkers' "should dodge" and "is hidden" bb keys staying on due to a corner case in the GuardValue decorator. Added the usual workaround of setting them to false before entering the GuardValue so it knows to restore it to that.
+Fixed lurkers triggering a turn-in-place while playing a montage like "look behind shoulder", death, jump attacks etc.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-46123
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 860009
+Date:   2024-05-29 10:45:33
+Description:
+[IMP-50192]
+Unshelved from pending changelist '859916':
+
+Cover points in active defense regions are not longer just assumed to be unsafe because they're not facing the player, allowing character to set up an ambush facing the door.
+
+Vetted by Floyd Krielaart, Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-50192
+#vettedby fkrielaart,rzak
+--------------------------------------------------
+Change: 860108
+Date:   2024-05-29 15:53:18
+Description:
+[IMP-50280]
+Temporary fix for HYG characters being frozen in place in cases where a character is taken ouf of a pool one frame after being put in. This fix makes the pool be a queue instead of a stack. A more proper solution is needed to handle the case where there's only one character left in the pool, but submitting this fix anyway to unblock alpha.
+
+Vetted by Floyd Krielaart, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-50280
+#vettedby fkrielaart,ttoxopeus
+--------------------------------------------------
+Change: 860329
+Date:   2024-05-30 15:05:34
+Description:
+[IMP-50104] [IMP-50280]
+Fixed the actor state handler sometimes disabling tick on skeletal mesh components of characters taken out of the pool, leading to frozen characters in HYG sections.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-50104,imp-50280
+#vettedby slageweg
+--------------------------------------------------
+Change: 860331
+Date:   2024-05-30 15:05:56
+Description:
+[IMP-50104] [IMP-50280]
+Redid a change to a functional test that was undone earlier.
+
+#assetvalidation succeeded
+#jira imp-50104,imp-50280
+--------------------------------------------------
+Change: 860334
+Date:   2024-05-30 15:06:51
+Description:
+[IMP-50192]
+Undo the Undo that removed this.
+
+#assetvalidation succeeded
+#jira imp-50192
+--------------------------------------------------
+Change: 860677
+Date:   2024-05-31 18:43:14
+Description:
+[IMP-37608]
+Unshelved from pending changelist '860386':
+
+Fixed lurkers not doing a telegraph bark if they're still doing the "post attack" noise. Telegraph, attack, post attack now have the same priority and interrupt each other, but not higher priority barks (damage/death).
+
+Fixed Nosalis doing a "roar" animation without an actual roar sometimes (because it was silent but techically still playing the long tail or another roar sound).
+
+Vetted by Floyd Krielaart, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-37608
+#vettedby fkrielaart,rrunhardt
+--------------------------------------------------
+Change: 860678
+Date:   2024-05-31 18:43:27
+Description:
+[IMP-49593]
+Unshelved from pending changelist '860059':
+
+Fixed Nosalises running against a wall following an unreachable player.
+
+Vetted by Floyd Krielaart, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-49593
+#vettedby fkrielaart,rrunhardt
+--------------------------------------------------
+Change: 864047
+Date:   2024-06-18 16:44:08
+Description:
+[IMP-46994]
+Exposed hit reaction selectors on the HitReactionComponent to BP.
+Fixed nosalis jump link demo not working due to old navmesh.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-46994
+#vettedby slageweg
+--------------------------------------------------
+Change: 864266
+Date:   2024-06-19 14:15:18
+Description:
+[IMP-50940]
+[IMP-50940]
+Unshelved from pending changelist '864085':
+
+Pooling the "last known location" actor used in combat to prevent a spike when starting combat (6ms in Quest 2 in Insights).
+Made the pool size 1 by default but 4 in Chapter2c where there are many overlapping encounters in the trolley section.
+Fixed this actor being created outside of combat.
+Reduced tickrate of BAC_KnownEnemyLocationTimeSinceMovedTracker
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-50940
+#vettedby fkrielaart
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+--------------------------------------------------
+Change: 864632
+Date:   2024-06-20 16:23:30
+Description:
+[IMP-51083]
+Optimized the gameplay tag volume subsystem to use an octree instead of iterating over all the volumes in the world.
+A "GamepayTagVolumeQuery" EQS test with ~400 items in Chapter12b used to take ~4ms and now takes 0.03ms.
+This reduces how long it takes for hunters to decide where to go (before they could stand still for a bit after shooting).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-51083
+#vettedby slageweg
+--------------------------------------------------
+Change: 865178
+Date:   2024-06-24 17:36:59
+Description:
+[IMP-51083]
+Added a "skip middle trace" option to UVGEnvQueryTest_IsExposedToDirection. Useful for checking "can I step out from behind this obstacle" when the fact that there's an obstacle here was already determined by another test.
+
+Re-enabled the now-cheap gameplay tag volume checks on EQSQuery_HunterFindAmbushSpot
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-51083
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 865190
+Date:   2024-06-24 18:33:41
+Description:
+[IMP-48296]
+Providing the stagger info (including damage type) to CanBeStaggered. VGStaggerComponentBase now keeps track of the 16 most recent staggers and exposes that information to Blueprints.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-48296
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 865405
+Date:   2024-06-25 15:19:42
+Description:
+[IMP-51224]
+Fixed Nosalises being stuck forever when they want to do a turn in place. Was caused by a mistake when porting an enum to C++ to enable fastpath on the 19th.
+
+Vetted by Rebecca Zak, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-51224
+#vettedby rzak,fkrielaart
+--------------------------------------------------
+Change: 865450
+Date:   2024-06-25 16:41:11
+Description:
+[IMP-48522]
+Optimized player pawn updating so that various things that move the pawn's components don't cause UpdateOverlaps separately but instead batched together with the camera. Preformance TAF runs indicate this should provide a 0.8-0.9ms improvement of the game thread on average on Quest 2.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-48522
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 865473
+Date:   2024-06-25 17:17:26
+Description:
+[IMP-51320]
+Made it possible for external code to prevent encounters from ending when all their participants leave.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-51320
+#vettedby ldekker
+--------------------------------------------------
+Change: 865867
+Date:   2024-06-27 09:50:31
+Description:
+[IMP-49591]
+Unshelved from pending changelist '865476':
+
+Characters now do facial animations outside of doing barks as dictated by their BAC_FacialAnimationState component.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-49591
+#vettedby rzak
+
+Encountered 3 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+/Game/Blueprints/Hands/BSC_AnimatedHandInteraction.BSC_AnimatedHandInteraction is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Hands/BSC_AnimatedHandInteraction.uasset'
+/Game/Blueprints/Weapons/Tokarev/BP_Firearm_Tokarev.BP_Firearm_Tokarev is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/Tokarev/BP_Firearm_Tokarev.uasset'
+--------------------------------------------------
+Change: 865896
+Date:   2024-06-27 12:07:48
+Description:
+[IMP-49591]
+Increased blend time for non-bark facial animations from 0.1s to 0.2s. 
+Made AI humans have the Bored expression by default instead of None.
+Fixed a light detection component on humans not being parented to a sight target.
+
+#assetvalidation warning
+#jira imp-49591
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+--------------------------------------------------
+Change: 866394
+Date:   2024-07-01 16:36:05
+Description:
+[IMP-50370]
+Put in new hit reactions for elites: elites now don't stagger when shot but instead do a fullbody additive. Elites also do simple two-bone hand IK to prevent the left hand from clipping into the gun while doing this additive hit reaction.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-50370
+#vettedby rzak
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+--------------------------------------------------
+Change: 866631
+Date:   2024-07-02 15:41:38
+Description:
+[IMP-50370] [IMP-51449]
+Elites now keep shooting even when their aim is thrown off by their hit reactions.
+The angle deviation caused by aim assist is now clamped to 10 degrees which prevents bullets from visibly bending out of the gun barrel. This should also prevent issues where walking up very close to enemies shooting at you would cause their bullet to spray around you even if the barrel is pointed straight at you.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-50370,imp-51449
+#vettedby slageweg
+--------------------------------------------------
+Change: 866674
+Date:   2024-07-02 17:02:45
+Description:
+[IMP-48296]
+Added a Reset function to UVGStaggerComponentBase to be called when returning to pool.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-48296
+#vettedby slageweg
+--------------------------------------------------
+Change: 866859
+Date:   2024-07-03 13:09:57
+Description:
+[IMP-49155]
+Made it possible to generate cover points at an offset away from the navmesh edges.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby slageweg
+--------------------------------------------------
+Change: 868115
+Date:   2024-07-05 12:48:57
+Description:
+[IMP-49155]
+Unshelved from pending changelist '867019':
+
+Fixing slavers' guns clipping through their cover (and other obstacles). This works by checking if the gun would be obstructed if we didn't play the "hold weapon close" overlay.via a line trace.
+Greatly simplified the "hold weapon close" logic and made it only run when relevant (alarmed/combat).
+Fixed slavers gralncing over their shoulder while moving backwards/sideways even when they're nearly at the destination and/or stopping there.
+
+Vetted by Rebecca Zak, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak,rrunhardt
+--------------------------------------------------
+Change: 868476
+Date:   2024-07-08 17:43:08
+Description:
+[IMP-49155]
+Made characters's sight/hearing sensors line up with their eyes instead of being at the base of the head.
+Made line of sight checks during combat be done with line traces instead of sphere traces: cheaper and doesn't get snagged on geometry when shooting around a corner.
+Fixed the "shooting" facial animation staying on for too long after shooting is done.
+Made characters care about quality of cover more: they'll more strongly prefer cover points that cover most of the body over those that expose a lot of it.
+Fixed characters still having cover point effectors applied to their current cover point even though the effector was removed on the character blueprint itself.
+
+Vetted by Rebecca Zak, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak,fkrielaart
+--------------------------------------------------
+Change: 868701
+Date:   2024-07-09 15:44:23
+Description:
+[IMP-49155]
+Fixed LocationMatchesGameplayTagQuery returning false for queries like "None(AI.LocationTags.HunterAmbush.Forbid)" in cases where there are no gameplay tag volumes anywhere in the level.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak
+--------------------------------------------------
+Change: 868703
+Date:   2024-07-09 15:44:33
+Description:
+[IMP-49155]
+Followup submit of EQS with higher scoring for higher cover quality
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 868717
+Date:   2024-07-09 16:06:42
+Description:
+[IMP-49155]
+Fixed hunters doing a trace for "hold weapon close": that's not necessary as they're unable to hold weapon close anyway.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak
+--------------------------------------------------
+Change: 868919
+Date:   2024-07-10 11:59:40
+Description:
+[IMP-49155]
+Moved the "barrel base" location of the shambler further to the back of the gun to make it easier to detect when the slaver should hold the gun close to their chest when moving close to a wall or hiding in cover (before the trace would not hit anything because the entire barrel was inside the wall). Now the "barrel base" is technically behind the actual barrel of the shambler (which is a really short thing at the very front of the gun, but it's a good thing since now if the player comes so close that they clip into the shambler so far that the actual barrel is technically behind the player's head, the player would still get damaged.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak
+--------------------------------------------------
+Change: 869069
+Date:   2024-07-10 17:34:44
+Description:
+[IMP-49155]
+Made the offsets used to determine shoot locations for cover points more precisely match where the gun actually is when characters pop out of cover. This correctly uses the gun barrel location of a Kalashnikov relative to grab_r that holds it.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak
+--------------------------------------------------
+Change: 869071
+Date:   2024-07-10 17:45:22
+Description:
+[IMP-49155]
+Made humans transition into their "hold gun close to chest" pose faster and out of it slower. Fixed cases where they transition out of it too soon when getting up from crouched (they go a bit forward during it to the point that the start location of the trace used to detect clipping would go on the other side of the obstacle).
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-49155
+#vettedby rzak
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+--------------------------------------------------
+Change: 869279
+Date:   2024-07-11 13:04:33
+Description:
+[IMP-49155]
+Fixed characters shooting even while holding their weapon close.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49155
+#vettedby rzak
+--------------------------------------------------
+Change: 869639
+Date:   2024-07-12 15:11:51
+Description:
+[IMP-51931]
+Unshelved from pending changelist '869387':
+
+Slavers now use a taller pose when shooting over low cover onto the player below to prevent clipping.
+The "shoot from" height of low cover now matches the height of the gun when shooting straight in the normal pose (was artifically lowered 4cm before).
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-51931
+#vettedby rzak
+--------------------------------------------------
+Change: 869918
+Date:   2024-07-15 13:42:25
+Description:
+[IMP-51931]
+Fixed controlrig moving the character's pelvis down when using the Tall animation for shooting down over low cover. Added a +10cm offset to max pelvis height in the CR, which is calculated from the pelvis height in the standard (not tall) animation.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-51931
+#vettedby rzak
+--------------------------------------------------
+Change: 870040
+Date:   2024-07-15 17:59:33
+Description:
+[IMP-51351]
+Made a functional test to verify that spawners will not spawn a character if there's another character overlapping that spawner.
+
+Vetted by Tim Toxopeus, Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-51351
+#vettedby ttoxopeus,rzak
+--------------------------------------------------
+Change: 871468
+Date:   2024-07-22 10:35:10
+Description:
+[IMP-51668]
+Fixed humans popping out of cover the wrong way (or rather at all when there is no way to shoot the player from this cover).
+Consolidate stepping out of cover int hte BAC_GetttingInOutOfCover (before the direction to step out of cover was stored on BP_AICharacter_Human).
+Fixed high cover being generated where low cover is more appropriate (high cover height was only 150cm - the height of the head bone, while the actual head reaches up to 170cm in the standard pose).
+
+Vetted by Rebecca Zak, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-51668
+#missingfixversion
+#vettedby rzak,ttoxopeus
+--------------------------------------------------
+Change: 871617
+Date:   2024-07-22 16:27:32
+Description:
+[IMP-52238]
+Fixed HYG slavers in Ch05c having a flashlight on. The limit was the default 1, the desired new limit of 0 was not applied because the local template that contained that override was not saved correctly (it's a known bug that local templates don't save if the template component was added via BP and not C++). Worked around by making the template a standalone data asset instead of part of the encounter actor.
+
+Vetted by Jacob Eriksson
+
+#assetvalidation succeeded
+#jira imp-52238
+#vettedby jeriksson
+--------------------------------------------------
+Change: 871625
+Date:   2024-07-22 16:40:41
+Description:
+[IMP-51239] [IMP-51240]
+Re-enabled animation budget allocator for hunters and nosalises.
+Fixed animbudget allocator considering characters at different distances from the player equallly significant (it was considering the POV of all controllers instead of just the player controller).
+Disabled cover tracker traces for hunters (they don't use cover), their cover tracker is just used to keep track of the player's last known location.
+Disabled continuously running EQS to determine suppressive fire locations when fighting hunters (hunters don't do suppressive fire).
+Disabled the now-unused cover point location overrider from hunters and disabled the combat cover point effectors.
+
+#assetvalidation succeeded
+#jira imp-51239,imp-51240
+--------------------------------------------------
+Change: 871941
+Date:   2024-07-23 17:11:04
+Description:
+[IMP-52432]
+Enabling anim budget allocator for shades
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-52432
+#vettedby rzak
+--------------------------------------------------
+Change: 871946
+Date:   2024-07-23 17:23:45
+Description:
+[IMP-52432]
+Fixed bug in AnimBudgetAllocator that would not realize that a character needs to be ticked when bTickEvenIfNotRendered is false and VisibilityBasedAnimTickOption == AlwaysTickPoseAndRefreshBones
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-52432
+#vettedby rzak
+--------------------------------------------------
+Change: 872153
+Date:   2024-07-24 15:15:16
+Description:
+[IMP-52472]
+Fixed corpses ticking and doing overlap checks every frame. They now do so only once, when getting their pose set.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-52472
+#vettedby ldekker
+--------------------------------------------------
+Change: 872198
+Date:   2024-07-24 17:31:40
+Description:
+[IMP-52432]
+Made shades not refresh their bone transforms (which triggers overlap checks) when offscreen. 
+They don't carry guns that need to aim or flashlights that can be seen from behind a corner so this should not be noticeable.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-52432
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 872248
+Date:   2024-07-24 20:49:25
+Description:
+[IMP-48221]
+HYG hunters and slavers now always have their sight targets disabled to improve performance. This does prevent hunters in the mounted gun HYG from dodging when the player aims the gun at them, but that's a very rare case anyway (the player would need to aim the mounted gun at them but not shoot for a few seconds to see it).
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-48221
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 872729
+Date:   2024-07-26 18:33:58
+Description:
+[IMP-52544]
+Made a tool to auto update metasounds manually via right-click menu. Fixed up existing assets.
+Disabled "auto update" in project settings to fix spikes when playing each metasound for the first time.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-52544
+#vettedby pvzelst
+--------------------------------------------------
+Change: 873144
+Date:   2024-07-29 17:06:42
+Description:
+[IMP-52147]
+Fixing delayed reaction after entering Alarmed (the first character to react was waiting for voice lines to finish before moving).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-52147
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 873609
+Date:   2024-07-30 18:06:58
+Description:
+[IMP-53016] [IMP-53047]
+Fixed step out of cover offsets in the cover data not matching where the gun would end up (was not taking into account the aiming overlay). Made it possible to trigger stepouts in the HumanAnimationsDemo with the [, ] keys. This also logs the offsets into the output log so they can be easily read out following animation changes.
+
+Adjusted StepOutCoverHalf L anim to poke out of cover more.
+
+Made the "hold weapon close" trace extend 30cm past the barrel of the gun so characters can start blending in the "hold weapon close" pose just before clipping through geometry instead of after.
+
+Vetted by Rebecca Zak, Jamie McGookin
+
+#assetvalidation warning
+#jira imp-53016,imp-53047
+#vettedby rzak,jmcgookin
+
+Encountered 4 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Blueprints/AIToolkit/Human/ParameterTemplates/BPT_Human.BPT_Human is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/ParameterTemplates/BPT_Human.uasset'
+/Game/Blueprints/AIToolkit/Human/ParameterTemplates/AI/BPTA_HumanAI_Base.BPTA_HumanAI_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/ParameterTemplates/AI/BPTA_HumanAI_Base.uasset'
+--------------------------------------------------
+Change: 874125
+Date:   2024-08-01 10:53:17
+Description:
+[IMP-53047]
+Fixed Stagger and Death montage slots overriding all curves.
+Fixed staggers ignoring the "hold weapon close" overlay.
+Fixed reloading not using the "hold close" version in some cases. Now uses the "HoldingWeaponClose" curve to decide which anim to play.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-53047
+#vettedby rzak
+--------------------------------------------------
+Change: 874127
+Date:   2024-08-01 10:55:26
+Description:
+[IMP-51668]
+Fixed slavers popping out the wrong way from high cover. Now using the actual direction from cover point to target (player) instead of focus direction (which can only be used when the character is actaully looking at the player, which isn't always the case).
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-51668
+#vettedby rzak
+--------------------------------------------------
+Change: 874241
+Date:   2024-08-01 14:39:52
+Description:
+[IMP-51657] [IMP-53191]
+Fixes to pre-placed characters not having the right skeletal mesh after being placed into the actor pool and spawned out of it with a new template. This is now handled correctly and verified using functional tests.
+Fixes to some functional tests.
+Now logging a warning when a spawner doesn't have a template assigned.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-51657,imp-53191
+#vettedby slageweg
+--------------------------------------------------
+Change: 874315
+Date:   2024-08-01 16:48:53
+Description:
+[IMP-51657]
+Rebuilt navmesh in a couple demo/ft maps.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-51657
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Data/DamageTypes/BP_DamageType_BlowGunDart.BP_DamageType_BlowGunDart is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Data/DamageTypes/BP_DamageType_BlowGunDart.uasset'
+--------------------------------------------------
+Change: 874538
+Date:   2024-08-02 12:01:52
+Description:
+[IMP-49147]
+Fixed slavers and hunters doing many tiny turn in place animations instead of just one when they need to turn. Did this by disabling root motion on the "idle combat" and "hold weapon close" anims.
+Fixed using a hardcoded "hold weapon close" animation, now using the one from the firearm template.
+Made characters blend out of "hold weapon close" faster so they wouldn't take too long after stepping out of high cover.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49147
+#vettedby rzak
+--------------------------------------------------
+Change: 874641
+Date:   2024-08-02 16:05:19
+Description:
+[IMP-NOTICKET]
+Fixed p4 changelist descriptions shown in diffs / file history in unreal engine being truncated to 250 characters. Now we can see the full description, vetter, etc without having to hunt down the CL in p4.
+
+Vetted by Danny Kruiswijk
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby dkruiswijk
+--------------------------------------------------
+Change: 874662
+Date:   2024-08-02 16:48:14
+Description:
+[IMP-49147]
+Fixed slavers stepping out of high cover before they're done doin a turn in place after reaching it. This was causing issues where they would run into cover, immediately step out, not fire because they're misaligned, step back in, turn in place, then step out again. This made them look stupid. Now they only do the stepout if they don't want to do a turn in place.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-49147
+#vettedby rzak
+--------------------------------------------------
+Change: 875201
+Date:   2024-08-06 16:00:47
+Description:
+[IMP-53185]
+Offset cover points 10cm back from the navmesh edges to fix clipping through cover.
+Did a pass over defense region volumes that encompass cover points to fix them up.
+This seems to fix the issues with characters clipping through cover they're currently in, though some smaller issues remain during locomotion when they go around corners.
+
+Vetted by Stanley Lageweg, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-53185
+#vettedby slageweg,fkrielaart
+--------------------------------------------------
+Change: 875411
+Date:   2024-08-07 12:19:04
+Description:
+[IMP-52919]
+Disabled suppressive fire during "shoot while moving".
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-52919
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 875444
+Date:   2024-08-07 13:44:13
+Description:
+[IMP-53185]
+Fixed up cover tag volumes in ch03c. Made BP_DefenseRegion billboard/arrow screenspace scaled.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-53185
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 875707
+Date:   2024-08-08 12:20:00
+Description:
+[IMP-52919]
+TraceAlongPath decorator can now have an offset from the "trace start" location.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-52919
+#vettedby slageweg
+--------------------------------------------------
+Change: 875723
+Date:   2024-08-08 13:07:21
+Description:
+[IMP-52919]
+Fixed characters doing "shoot while moving" in a way that doesn't actually hit the player. Now they only shoot during movement if they know they have clear line of fire to the player's last known location for the next short distance along their current path.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-52919
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 876351
+Date:   2024-08-12 11:02:16
+Description:
+[IMP-53040]
+Fixed FS_MasterField (on bottles) ticking all the time (now only ticks after the bottle breaks).
+
+Vetted by Giulia De Medici
+
+#assetvalidation succeeded
+#jira imp-53040
+#vettedby gdmedici
+--------------------------------------------------
+Change: 877770
+Date:   2024-08-19 12:48:15
+Description:
+[IMP-54034] [IMP-49147]
+Made the IdleCombat and HoldWeaponClose additive anims in the prologue not have root motion. This is the same fix that was applied to the animations these were copied from but not propagated to the copies.
+
+Vetted by Rebecca Zak, Anastasiia Holumbovska
+
+#assetvalidation warning
+#jira imp-54034,imp-49147
+#vettedby rzak,aholumbovska
+
+Encountered 4 warnings:
+Source file Sergey_IdleCombat_B.fbx is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/Characters/Sergey/Animations/Locomotion/Sergey_IdleCombat_B.fbx' or depot. Referenced by: /Game/Assets/Characters/Sergey/Animations/Locomotion/Sergey_IdleCombat_B
+Source file Sergey_IdleCombat_HoldWeaponClose_A.fbx is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/Characters/Sergey/Animations/Locomotion/Sergey_IdleCombat_HoldWeaponClose_A.fbx' or depot. Referenced by: /Game/Assets/Characters/Sergey/Animations/Locomotion/Sergey_IdleCombat_HoldWeaponClose_A
+Source file Evgeniy_HoldWeaponClose_A.fbx is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/Characters/Evgeniy/Animations/Locomotion/Evgeniy_HoldWeaponClose_A.fbx' or depot. Referenced by: /Game/Assets/Characters/Evgeniy/Animations/Locomotion/Evgeniy_IdleCombat_HoldWeaponClose_A
+Source file Evgeniy_IdleCombat_A.fbx is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/Characters/Evgeniy/Animations/Locomotion/Evgeniy_IdleCombat_A.fbx' or depot. Referenced by: /Game/Assets/Characters/Evgeniy/Animations/Locomotion/Evgeniy_IdleCombat_A
+--------------------------------------------------
+Change: 878044
+Date:   2024-08-20 10:31:02
+Description:
+[IMP-54285]
+Updated HTN plugin to v1.18.0
+
+#assetvalidation succeeded
+#jira imp-54285
+--------------------------------------------------
+Change: 878098
+Date:   2024-08-20 12:30:07
+Description:
+[IMP-54285]
+Fixed humans being stuck in CombatIdle even though they have a valid place to go to.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-54285
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 878463
+Date:   2024-08-21 15:40:30
+Description:
+[IMP-54285]
+Re-enabled Node Instance Pooling of the HTN plugin that was erroenously disabled yesterday.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-54285
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 878698
+Date:   2024-08-22 13:21:34
+Description:
+[IMP-53992]
+Fixed anim budget allocator not counting the time it took to update the animation inside CharacterMovementComponent::PerformMovement, thus underestimating update time and blowing the peformance budget. Not submitting the improved formula for interpolation rate yet, that one needs QA verification.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-53992
+#vettedby rzak
+--------------------------------------------------
+Change: 878798
+Date:   2024-08-22 16:52:30
+Description:
+[IMP-54034] [IMP-54179] [IMP-54311] [IMP-54369]
+Unshelved from pending changelist '878227':
+
+Prologue AI tech pass:
+Better aiming for humans. Now aiming at Nosalis torso with smoothing to prevent an aimbot-like look.
+Fixed wrong AI controller class on humans, leading to stiff path following.
+Disabled collision on hanging cables that pipe Nosalis can get snagged on
+Fixed the "flying" state on the pipe Nosalis ending too early.
+Moved Nosalis spawners to be on the ground, removed unnecessary delay on start that may cause Nosalis to get staggered before playing the initial animation.
+Humans in the turret section now won't aim at invincible nosalises (e.g. the one running down pipes) until they're done with that.
+Fixed humans aimbot-following their target nosalis during reloading.
+Fixed use of an incompatible subnetwork in HTN_Human_Chapter00
+
+Vetted by Jeroen Kool
+
+#assetvalidation warning
+#jira imp-54034,imp-54179,imp-54311,imp-54369
+#vettedby jkool
+
+Encountered 3 warnings:
+/Game/Blueprints/Environment/Chapter00/BP_NosalisLane_Chapter00.BP_NosalisLane_Chapter00 is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Environment/Chapter00/BP_NosalisLane_Chapter00.uasset'
+/Game/Blueprints/AIToolkit/Human/ParameterTemplates/BPTA_Sergey_Chapter00.BPTA_Sergey_Chapter00 is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/ParameterTemplates/BPTA_Sergey_Chapter00.uasset'
+/Game/Maps/Chapters/Chapter00/Beats/BP_Chapter00_Beat_Campfire.BP_Chapter00_Beat_Campfire is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Maps/Chapters/Chapter00/Beats/BP_Chapter00_Beat_Campfire.uasset'
+--------------------------------------------------
+Change: 878812
+Date:   2024-08-22 17:53:51
+Description:
+[IMP-53720] [IMP-54034]
+Fixed Evgeniy not being able to turn while fighting Nosalises in the turret sections. 
+The last facial animation in LS_Prologue_Campfire had "keep state" on so it stayed on throughout the fight. That's not supposed to happen. Facial anims preventing turn in place is a separate bug which I'll fix as well but this already fixes the issue in this area specifically.
+
+Vetted by Jeroen Kool
+
+#assetvalidation warning
+#jira imp-53720,imp-54034
+#vettedby jkool
+
+Encountered 1 warnings:
+/Game/Maps/Chapters/Chapter00/Beats/BP_Chapter00_Beat_Campfire.BP_Chapter00_Beat_Campfire is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Maps/Chapters/Chapter00/Beats/BP_Chapter00_Beat_Campfire.uasset'
+--------------------------------------------------
+Change: 879228
+Date:   2024-08-26 11:10:17
+Description:
+[IMP-54034]
+Disabled expensive components on prologue aicharacters that don't need them (e.g, AI perception).
+
+Vetted by Jeroen Kool
+
+#assetvalidation succeeded
+#jira imp-54034
+#vettedby jkool
+--------------------------------------------------
+Change: 879242
+Date:   2024-08-26 11:33:45
+Description:
+[IMP-54034]
+Assigned missing facial animation to Sergey's bark when he opens the door before shooting Nosalises
+
+Vetted by Jeroen Kool
+
+#assetvalidation succeeded
+#jira imp-54034
+#vettedby jkool
+--------------------------------------------------
+Change: 879366
+Date:   2024-08-26 17:15:25
+Description:
+[IMP-54555]
+Fixed facial animations played from sequencer preventing turn in place.
+Fixed Death, NarrativeBody, and other fullbody animations not preventing turn in place.
+Fixed Nosalis additive roar interrupting movement due to being applied to the whole body due to incorrect montage slot setup.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-54555
+#vettedby rzak
+--------------------------------------------------
+Change: 879368
+Date:   2024-08-26 17:17:50
+Description:
+[IMP-54555]
+Removed unintended change from previous submit.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-54555
+#vettedby rzak
+--------------------------------------------------
+Change: 879988
+Date:   2024-08-28 18:01:20
+Description:
+[IMP-53551] [IMP-54555]
+Unshelved from pending changelist '879650':
+
+Using new anims for peeking out of cover.
+Fixed the "hold weapon close" overlay overriding the head rotation.
+Fixed hitches when humans get in and out of their "tiptoeing over low cover" pose. The blend was too short and the blend curve too abrupt (0.1s, now 0.2s).
+Fixed Humans, Lurkers, Nosalises not turning in place because their Narrative montage was still active despite being out of a narrative sequence already.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-53551,imp-54555
+#vettedby fkrielaart
+
+Encountered 2 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+/Game/Blueprints/AIToolkit/Mutants/Nosalis/Pawn/BP_Nosalis.BP_Nosalis is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Mutants/Nosalis/Pawn/BP_Nosalis.uasset'
+--------------------------------------------------
+Change: 880430
+Date:   2024-08-30 11:51:09
+Description:
+[IMP-54795] [IMP-54876]
+Fixed Kuzmich not letting the following sequence run and blocking progression because his settings were not reset after the previous sequence.
+
+#assetvalidation succeeded
+#jira imp-54795,imp-54876
+--------------------------------------------------
+Change: 880812
+Date:   2024-09-02 16:34:08
+Description:
+[IMP-54131] [IMP-54549] [IMP-54848]
+Prologue:
+Made Nosalises hunch down when close to the end of their path, giving characters more time to shoot them.
+Reduced delays between shooting bursts of humans with kalashnikovs, made them shoot bigger bursts with less time between them when the nosalis is really close.
+Fixed spread on kalash causing shots to miss.
+More shambler damage to nosalises post explosion.
+Made kalash reloading not be aborted by starting to play a sequence. The sequence will now wait until the reload is complete.
+
+Vetted by Jeroen Kool
+
+#assetvalidation succeeded
+#jira imp-54131,imp-54549,imp-54848
+#vettedby jkool
+--------------------------------------------------
+Change: 880852
+Date:   2024-09-02 17:36:04
+Description:
+[IMP-54918]
+Fixed uninitialized memory in anim budget allocator causing intermittent crashes and generally undefined behavior.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-54918
+#vettedby slageweg
+--------------------------------------------------
+Change: 881046
+Date:   2024-09-03 13:50:51
+Description:
+[IMP-54941]
+Making fonts inline with their assets (preloaded) instead of synchronously  loaded on demand. The font data will not be loaded when the font needs to be first used (causing a hitch), but when whatever references it is loaded (on level load).
+Removed the "GetFontFace' marker on performance charts in favor or "LazyLoad Font" and "Stream Font" markers, which should not show up because all custom fonts are inline/preloaded now.
+
+#assetvalidation warning
+#jira imp-54941
+
+Encountered 22 warnings:
+Source file Cafe24Supermagic-Bold-v1.0.ttf is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/UI/Fonts/C:/WS_TV/Impact/Impact/Content/Assets/UI/Fonts/Cafe24Supermagic-Bold-v1.0.ttf' or depot. Referenced by: /Game/Assets/UI/Fonts/Cafe24Supermagic-Bold-v1_0
+Source file Digital7.ttf is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Impact/Content/Assets/UI/Fonts/Digital7.ttf' or depot. Referenced by: /Game/Assets/UI/Fonts/Digital7
+Source file GABRWFFR.TTF is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/UI/Fonts/C:/WS_TV/Impact/Impact/Content/Assets/UI/Fonts/GABRWFFR.TTF' or depot. Referenced by: /Game/Assets/UI/Fonts/GABRWFFR
+Source file Magistral_Bold.ttf is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/UI/Fonts/C:/WS_TV/Impact/Impact/Content/Assets/UI/Fonts/Magistral_Bold.ttf' or depot. Referenced by: /Game/Assets/UI/Fonts/Magistral_Bold
+Source file Magistral_Book.ttf is referenced and cannot be found in workspace 'D:/ImpactDevelopment/Impact/Content/Assets/UI/Fonts/C:/WS_TV/Impact/Impact/Content/Assets/UI/Fonts/Magistral_Book.ttf' or depot. Referenced by: /Game/Assets/UI/Fonts/Magistral_Book
+See log for complete list of warnings
+--------------------------------------------------
+Change: 881162
+Date:   2024-09-03 16:54:10
+Description:
+[IMP-54588]
+Fixes for logspam:
+
+Added early validity checks for BP EQS contexts for whom it's valid to return invalid values.
+Reduced verbosity of LookAtComponent
+Added NavAgentProps to VGPawnBase so the TAF mover doesn't complain about them being missing.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-54588
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 881182
+Date:   2024-09-03 17:46:13
+Description:
+[IMP-54549]
+Restored collision on sandbags that Kuzmich hops over, now that he has a bespoke animation for that.
+
+Vetted by Jeroen Kool
+
+#assetvalidation succeeded
+#jira imp-54549
+#vettedby jkool
+--------------------------------------------------
+Change: 881187
+Date:   2024-09-03 18:02:47
+Description:
+[IMP-54549]
+Prologue: making humans less accurage on Nosalises far away, giving them a chance to get closer.
+Fixed Nosalis slowing down before intermediate movement point instead of just before the final destination.
+
+Vetted by Jeroen Kool
+
+#assetvalidation succeeded
+#jira imp-54549
+#redbuildfix
+#vettedby jkool
+--------------------------------------------------
+Change: 881846
+Date:   2024-09-06 13:34:01
+Description:
+[IMP-27109]
+Unshelved from pending changelist '881584':
+
+Making BP_ActorPool use soft class ptr instead of hard references to prevent loading characters in chapters where they're not needed (e.g. Lurkers in chapter11)
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-27109
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 881848
+Date:   2024-09-06 13:36:00
+Description:
+[IMP-55114]
+Untangling BP dependencies to prevent Lurkers and Nosalsies from being loaded in Chapter11 (and other chapters) that doesn't need them.
+
+BAC_IdleFidgets was using BP_Lurker and BP_Nosalis (via their ABPs)
+BAC_MutantFootIKTracer was using BP_Lurker
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-55114
+#vettedby pvzelst
+--------------------------------------------------
+Change: 882605
+Date:   2024-09-12 11:15:05
+Description:
+[IMP-55300]
+Logging when Niagara Component Pool needs to grow so we can find which niagara systems need to have more instances primed in pool
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55300
+#vettedby slageweg
+--------------------------------------------------
+Change: 882825
+Date:   2024-09-13 16:46:36
+Description:
+[IMP-55337]
+Increasing pool priming for specific Niagara FX (numbers based on logged pool misses in TAF of Chapter11) to pre-create them on level startup instead of during gameplay.
+
+#assetvalidation succeeded
+#jira imp-55337
+#missingfixversion
+--------------------------------------------------
+Change: 883035
+Date:   2024-09-16 11:11:47
+Description:
+[IMP-NOTICKET]
+Fixed functional test for level transition being set up incorrectly (did not support multiple montages playing at the same time, had the wrong animation name hardcoded). Now uses direct reference to montage and checks if any of the played ones is that one using the WaitForCharacterMontage macro.
+
+Vetted by Danny Kruiswijk
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby dkruiswijk
+--------------------------------------------------
+Change: 883216
+Date:   2024-09-16 18:33:29
+Description:
+[IMP-55334]
+Fixed missing roar on Nosalis_Taunt_Roar_IdleAdditive_01
+Fixed missing lurker roars when staggering: only the first out of four barks was being played and would prevent the others from playing. Now they interrupt each other's tails but that doesn't introduce any adible artifacts.
+
+Vetted by Mark Doeze, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-55334
+#vettedby mdoeze,rrunhardt
+--------------------------------------------------
+Change: 883217
+Date:   2024-09-16 18:36:11
+Description:
+[IMP-55334]
+Reducing the impact of creating proxy objects for montage playback for Nosalis/Lurker hit reactions and for Human recoil. Those proxies are now cached and reused betwen uses. this brings down MaxGameThread time from 41ms to 31ms in Ch11.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55334
+#vettedby slageweg
+--------------------------------------------------
+Change: 883220
+Date:   2024-09-16 18:37:34
+Description:
+[IMP-55334]
+Updated tooltip comment on VGPlayDynamicMontageNode
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55334
+#vettedby slageweg
+--------------------------------------------------
+Change: 883359
+Date:   2024-09-17 12:16:38
+Description:
+[IMP-51334] [IMP-54865] [IMP-43723]
+Submitting Floyd's changes from before he went on vacation during RC2 lock.
+
++ Slavers now move away from grenades when they notice them
++ Slaver barks for grenades improved
++ Face target using animation can now be cancelled without aborting the animation its playing
+
++ AI no longer collides with radioactive mushrooms
++ You can now specify the collision profile of a lights static mesh
+
++ Slavers now crouch when beginning combat
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-54865,imp-51334,imp-43723
+#vettedby fkrielaart
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-51334,imp-54865,imp-43723
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 883377
+Date:   2024-09-17 13:21:39
+Description:
+[IMP-55334]
+Removed temporary log
+
+#assetvalidation succeeded
+#jira imp-55334
+--------------------------------------------------
+Change: 883515
+Date:   2024-09-17 18:42:20
+Description:
+[IMP-55334]
+When characters get shot with multiple shotgun pellets on the same frame, this no longer causes a separate hit reaction to be triggered for each pellet, causing performance spikes. Now only the first hit on any given frame triggers such a reaction.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-55334
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Mutants/Nosalis/Pawn/BP_Nosalis.BP_Nosalis is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Mutants/Nosalis/Pawn/BP_Nosalis.uasset'
+--------------------------------------------------
+Change: 883729
+Date:   2024-09-18 15:10:45
+Description:
+[IMP-55319]
+Calling InitResources on MetasoundSource in PostLoad to prevent spikes when the first time the metasound is actually played later. This pushes the extra work to level loading instead of gameplay.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55319
+#vettedby slageweg
+--------------------------------------------------
+Change: 883920
+Date:   2024-09-19 11:52:38
+Description:
+[IMP-55319]
+Fix for "Attempt to get registered dependent assets for X before asset scan is complete may result in missed dependencies" in editor following recent change to metasound initialization in PostLoad. Not doing that in editor.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55319
+#vettedby slageweg
+--------------------------------------------------
+Change: 883934
+Date:   2024-09-19 12:20:55
+Description:
+[IMP-55300]
+Pre-creating EQS query instance templates on startup to prevent spikes the first time an EQS query is used.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55300
+#vettedby slageweg
+--------------------------------------------------
+Change: 884175
+Date:   2024-09-20 12:41:20
+Description:
+[IMP-55300] [IMP-55329]
+Fixed a few "for each" loops over GetComponentsByClass calling GetComponentsByClass for every iteration of the loop instead of once at the beginning.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55300,imp-55329
+#vettedby slageweg
+--------------------------------------------------
+Change: 884247
+Date:   2024-09-20 16:52:18
+Description:
+[IMP-55622]
+Fix for the 6 EBP_AirDuct variants preventing HLODs from being built (they were randomizing the set dressing every time a level was opened instead of just once). Note that instances in levels need to be rebuilt for this to work.
+
+Resaved in chapters:
+- Chapter01b
+- Chapter02
+- Chapter02b
+- Chapter02c
+- Chapter11
+
+Vetted by Andrea Molino
+
+#assetvalidation succeeded
+#jira imp-55622
+#vettedby amolino
+--------------------------------------------------
+Change: 884248
+Date:   2024-09-20 16:53:00
+Description:
+[IMP-55300]
+Making AI characters' own guns not make noise for AI perception: if an AICharacter is shooting a gun, they're already in combat and have alerted others, so emitting AI noise has no effect, except on performance.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-55300
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/Weapons/BSC_BoltInteraction.BSC_BoltInteraction is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Weapons/BSC_BoltInteraction.uasset'
+--------------------------------------------------
+Change: 884267
+Date:   2024-09-20 17:48:38
+Description:
+[IMP-55622]
+Resaved all instances of EBP_AirDuct in the rest of the game to fix unbuilt HLODs. Affected chapters:
+
+- 03b
+- 03c (a couple instances were checked out by another so could not be resaved)
+- 04
+- 05
+- 05b
+- 06
+- 06x
+- 09
+- 09b
+- 10
+- 10b
+- 11
+- 11b
+- 11c
+
+Vetted by Andrea Molino
+
+#assetvalidation succeeded
+#jira imp-55622
+#vettedby amolino
+--------------------------------------------------
+Change: 884925
+Date:   2024-09-25 14:40:46
+Description:
+[IMP-55622] [IMP-55725]
+Fixed all set dressing variants for Air Ducts being active at the same time. The disabling of other variants needed to happen at every run of the construction script instead of just once (but the randomization does still happen only once).
+
+Vetted by Frank Bakker, Andrea Molino
+
+#assetvalidation succeeded
+#jira imp-55622,imp-55725
+#vettedby fbakker,amolino
+--------------------------------------------------
+Change: 884958
+Date:   2024-09-25 16:13:43
+Description:
+[IMP-55738]
+Removed debug drawing from EQSQuery_IsCurrentLocationAGoodCrouchSpot
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-55738
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 887292
+Date:   2024-10-08 12:15:19
+Description:
+[IMP-55300]
+Fixed missing null check in VGPoolingSubsystem, causing some tests to crash.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-55300
+#vettedby ldekker
+--------------------------------------------------
+Change: 887523
+Date:   2024-10-09 12:41:02
+Description:
+[IMP-54419] [IMP-55912]
+Updated HTN to v1.18.3 to fix characters being stuck on a Parallel node. Fixes cases where the bottom branch would run forever and the top branch had an empty/failing Optional or Prefer node at the end.
+
+#assetvalidation succeeded
+#jira imp-54419,imp-55912
+--------------------------------------------------
+Change: 887780
+Date:   2024-10-10 14:03:17
+Description:
+[IMP-56116]
+Fixed BAC_CoverTargetAgainstPlayer ticking in the prologue even though it has auto activate disabled.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-56116
+#vettedby slageweg
+--------------------------------------------------
+Change: 887830
+Date:   2024-10-10 15:44:22
+Description:
+[IMP-55991]
+Exposed max corpse limits to blueprint on VGActorPool
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-55991
+#vettedby slageweg
+--------------------------------------------------
+Change: 887842
+Date:   2024-10-10 16:06:38
+Description:
+[IMP-56116]
+Disabled automatic eye blinking on prologue characters. This was causing hitches as the logic queries for a curve value which blocks the game thread until the parallel evaluation of evaluation is complete on another thread. Blinks are done by facial animations anyway.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-56116
+#vettedby rzak
+--------------------------------------------------
+Change: 888005
+Date:   2024-10-11 12:06:09
+Description:
+[IMP-50826]
+Fixed gameplay tag volumes blocking noise propagation (now use object type Trigger instead of WorldStatic)
+Fixed a gameplay tag functional test putting the volume too high for it to work.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-50826
+#vettedby slageweg
+--------------------------------------------------
+Change: 888936
+Date:   2024-10-21 15:53:57
+Description:
+[IMP-56258]
+Fixed most cases of human characters being stuck after moving, unable to turn in place.
+This would happen in cases where they switch their movement method (e.g. from WalkPatrol to JogCombat) on the same frame as starting movement. That happens at the beginning of combat when you spook somebody and they immediately run off.
+
+Vetted by Rebecca Zak, Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-56258
+#vettedby rzak,skistemaker
+--------------------------------------------------
+Change: 889074
+Date:   2024-10-22 14:22:42
+Description:
+[IMP-56258]
+Fixed character locomotion getting stuck forever after immediately transitioning from MovementLoop to Idle due to being staggered. Reproduced and verified the fix using a new functional test.
+
+Removed "elite stagger" interrupting movement via notifies. These are not actually staggers but additive twitches that are not supposed to interrupt movement. These notifies were added by accident on the 10th of October in CL 887847. Such notifies should only be on animations that are actual full-body staggers that interrupt the AI behavior. This would cause Elites to stop in their tracks when shot in a way that also triggers the bug that makes them get stuck.
+
+Vetted by Rebecca Zak, Steijn Kistemaker, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-56258
+#vettedby rzak,skistemaker,ttoxopeus
+--------------------------------------------------
+Change: 889075
+Date:   2024-10-22 14:23:10
+Description:
+[IMP-56258]
+Fixed characters frozen when they want to shove the player but for some reason unable to (e.g. if the player is too far).
+
+Vetted by Floyd Krielaart, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-56258
+#vettedby fkrielaart,ttoxopeus
+--------------------------------------------------
+Change: 889214
+Date:   2024-10-23 13:35:05
+Description:
+[IMP-56297]
+Fixed "exit combat barks" blocking the flow and making characters freeze up if characters go in and out of combat often.
+
+Vetted by Floyd Krielaart, Tim Toxopeus, Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-56297
+#vettedby fkrielaart,ttoxopeus,skistemaker
+--------------------------------------------------
+Change: 889840
+Date:   2024-11-01 16:01:41
+Description:
+[IMP-45637]
+Small CPU optimization for Chapter11 (and in general  in combat against Kalash-wielding humans).
+Disabling use of Kalash skeletal mesh on kalash magazines not held by player. It was only handling the top 4 bullets in the magazine, which are not visible if the weapon is not held by the player.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-45637
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 889846
+Date:   2024-11-01 17:02:40
+Description:
+[IMP-45637]
+Made the EQS budget 2.5ms instead of 5ms in Chapter11. Testing from Ruben indicates no issues with AI behavior and very minor remaining performance hitches, while perf charts also show an improvement.
+
+Vetted by Sander Brattinga, Stanley Lageweg, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-45637
+#vettedby sbrattinga,slageweg,rrunhardt
+--------------------------------------------------
+Change: 890085
+Date:   2024-11-05 13:45:03
+Description:
+[TRV-222]
+Disabled the plaion analytics plugin by default.
+
+Vetted by Steijn Kistemaker, Paul van Zelst
+
+#assetvalidation succeeded
+#jira trv-222
+#missingfixversion
+#vettedby skistemaker,pvzelst
+--------------------------------------------------
+Change: 890107
+Date:   2024-11-05 16:31:01
+Description:
+[TRV-222]
+Removed some Impact-specific debug menu items.
+
+#assetvalidation succeeded
+#jira trv-222
+#missingfixversion
+--------------------------------------------------
+Change: 890129
+Date:   2024-11-05 19:56:17
+Description:
+Deleted Chapter12
+--------------------------------------------------
+Change: 890223
+Date:   2024-11-06 14:52:24
+Description:
+Deleted Chapters, Locations, and Tunnel Section maps, as well as related external actors and objects.
+--------------------------------------------------
+Change: 890234
+Date:   2024-11-06 15:53:55
+Description:
+Removed various BPTAs and some functional tests.
+--------------------------------------------------
+Change: 890245
+Date:   2024-11-06 16:43:00
+Description:
+[TRV-222]
+Removed most functional tests (to do with stealth, character specific stuff etc). We'll probably remove more but I wanted to keep a few as reference (esp ones that we'll duplicate for new character types, like PooledVsFreshParity).
+
+Vetted by Giulia De Medici
+
+#assetvalidation succeeded
+#jira trv-222
+#missingfixversion
+#vettedby gdmedici
+--------------------------------------------------
+Change: 890250
+Date:   2024-11-06 17:00:35
+Description:
+[TRV-222]
+Removed 2nd slaver elite variant.
+
+#assetvalidation succeeded
+#jira trv-222
+#missingfixversion
+--------------------------------------------------
+Change: 890542
+Date:   2024-11-12 16:13:57
+Description:
+[UNB-222]
+Removed BP_Light_AIFlashlight and its uses.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-222
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 890631
+Date:   2024-11-13 10:23:21
+Description:
+[UNB-222]
+Removed COTGW_02
+
+#assetvalidation succeeded
+#jira unb-222
+--------------------------------------------------
+Change: 890632
+Date:   2024-11-13 10:28:27
+Description:
+[UNB-222]
+Removed Slaver_02
+
+#assetvalidation succeeded
+#jira unb-222
+--------------------------------------------------
+Change: 891077
+Date:   2024-11-18 16:57:15
+Description:
+[IMP-NOTICKET]
+Implemented a rudimentary ABP_Hyena that follows the code-driven movement of the character.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-noticket
+#vettedby fkrielaart
+
+Encountered 2 warnings:
+Source file Lurker_Gallop_F.fbx is referenced and cannot be found in workspace 'D:/Unbound_Prototype/Game/Content/Assets/Characters/Hyena/Placeholders/Lurker_Gallop_F.fbx' or depot. Referenced by: /Game/Assets/Characters/Hyena/Placeholders/Hyena_Placeholder_Gallop_F
+Source file Lurker_Idle_01.fbx is referenced and cannot be found in workspace 'D:/Unbound_Prototype/Game/Content/Assets/Characters/Hyena/Placeholders/Lurker_Idle_01.fbx' or depot. Referenced by: /Game/Assets/Characters/Hyena/Placeholders/Hyena_Placeholder_Idle_01
+--------------------------------------------------
+Change: 891308
+Date:   2024-11-20 16:20:55
+Description:
+Add Dummy.txt
+--------------------------------------------------
+Change: 891311
+Date:   2024-11-20 17:47:16
+Description:
+Set up the standard third person project in 5.5. Third person because we just want to try setting up a lurker with motion matching here (and maybe, experiment with motionmatching a character that moves around arbitrarily).
+--------------------------------------------------
+Change: 891718
+Date:   2024-11-26 14:00:42
+Description:
+Added SetSmartLinkEndPoints and SetSmartLinkComponentEndPoints helper functions.
+Vetted by Stanley. Made to support Floyd but forgot to submit last week.
+--------------------------------------------------
+Change: 891719
+Date:   2024-11-26 14:00:52
+Description:
+UNB-615:
+Set up a basic character (just a sphere for now) that moves around the map randomly.
+#changelist validated
+--------------------------------------------------
+Change: 891724
+Date:   2024-11-26 14:48:54
+Description:
+Added jump links (disabled for now, enable "generate nav links" on the navmesh to enable).
+#changelist validated
+--------------------------------------------------
+Change: 891759
+Date:   2024-11-26 16:37:47
+Description:
+Set up movement along predefined waypoints with predefined setting / clearing of focus.
+#changelist validated
+--------------------------------------------------
+Change: 892071
+Date:   2024-11-28 13:51:07
+Description:
+[UNB-753]
+Implemented hit reactions for hyenas (copied from lurker)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira unb-753
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 892536
+Date:   2024-12-04 14:48:22
+Description:
+Made the character movement component on the lurker use acceleration for path following. Trajectory prediction for motion matching relies on acceleration/velocity to predict the trajctory instead of the actual path.
+The lurker now properly uses start with turn animations thanks to this.
+Vetted by Inka Kamula
+--------------------------------------------------
+Change: 892655
+Date:   2024-12-05 12:04:32
+Description:
+[UNB-754]
+Functional test for staggers-during-staggers not working for hyenas. 
+
+Disabling "always succeed" on the play animation node fixed it. Without that aborting the current stagger would not interrupt the current plan, and so it would continue and clear the stagger direction key, so the next stagger would not play. With this change the current stagger plan aborts and the next one begins. 
+
+The fix itself is not part of this submit and will be submitted by Floyd Krielaart to avoid merge conflicts.
+
+This also includes missing nullchecks for BP_Firearm_Base when shooting a gun.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira unb-754
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 893116
+Date:   2024-12-09 15:53:11
+Description:
+[UNB-1346]
+Removed cover generation from player/human/hunter navmeshes. This makes automatic navmesh generation not freeze the editor when actors are moved in the editor.
+
+Vetted by Stanley Lageweg, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira unb-1346
+#vettedby slageweg,fkrielaart
+--------------------------------------------------
+Change: 893118
+Date:   2024-12-09 15:54:14
+Description:
+[UNB-1346]
+It's now possible to create EQS tests in blueprints by subclassing VGEnvQueryTest_BlueprintBase.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1346
+#vettedby slageweg
+--------------------------------------------------
+Change: 893217
+Date:   2024-12-11 13:52:52
+Description:
+Got turn in place to work (though it still picks L90 over L180 for some reason intermittently)
+The character now turns instantly and the animation within that uses turns in place to match the orientation.
+
+#changelist validated
+--------------------------------------------------
+Change: 893521
+Date:   2024-12-18 12:09:29
+Description:
+[UNB-1347]
+Hyena holes now connect via navlinks (add the holes to a BP_HyenaHoleNetwork and generate the connections between them) so hyenas can use pathfinding to find the way to the player. I had to increase the navmesh tile size in this gym to enable connections between holes that are really far away. 
+
+Traversing a hole connection takes time proportional to the straight-line distance between them.
+
+The hole connections use a navarea that gives them a 5x cost penalty per distance traversed. A NavigationQueryFilter_DisallowHyenaHoleConnections can be used to check if a target is reachable without using holes.
+
+Hyenas can still hide in a hole as before.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1347
+#vettedby slageweg
+--------------------------------------------------

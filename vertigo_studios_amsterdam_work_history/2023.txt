@@ -1,0 +1,4951 @@
+Change: 780728
+Date:   2023-01-02 14:28:47
+Description:
+[IMP-12381]
+Object property comparison: support for Set and Map properties.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-12381
+#vettedby lholst
+--------------------------------------------------
+Change: 780782
+Date:   2023-01-02 18:24:07
+Description:
+[IMP-12381]
+Object property comparison: Tolerance of float comparisons can now be set by property path. Correctly snapping sight sensors when respawning or re-enabling character.
+
+Sped up functional tests by a factor of 8 using `slomo`.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-12381
+#vettedby lholst
+--------------------------------------------------
+Change: 780829
+Date:   2023-01-03 12:15:51
+Description:
+[IMP-NOTICKET]
+Fixed simple collision cylinder of the player pawn being 12m
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 780889
+Date:   2023-01-03 17:02:01
+Description:
+[IMP-12381]
+Fixed path following mediator not resetting NavigationPathPoints when character is returned to pool.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-12381
+#vettedby skistemaker
+--------------------------------------------------
+Change: 780991
+Date:   2023-01-04 11:58:48
+Description:
+[IMP-12381]
+Pooling tests for lurkers and nosalises. Properly resetting more variables in characters when they get returned to pool.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-12381
+#vettedby lholst
+--------------------------------------------------
+Change: 781140
+Date:   2023-01-05 13:23:43
+Description:
+[IMP-12381]
+Human, Lurker, Nosalis properly resetting variables when returned to pool.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-12381
+#vettedby lholst
+--------------------------------------------------
+Change: 781153
+Date:   2023-01-05 13:53:06
+Description:
+[IMP-13053]
+Fixed human enemies not hitting the player when the player is standing very close to them.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-13053
+#vettedby lholst
+--------------------------------------------------
+Change: 781164
+Date:   2023-01-05 14:29:25
+Description:
+[IMP-NOTICKET]
+Changed "auto-possess AI" back to "Placed in World" for humans to fix tests.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 781169
+Date:   2023-01-05 14:35:56
+Description:
+[IMP-NOTICKET]
+Fixed characters spawned in melee demo not having AI controllers created for them.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 781302
+Date:   2023-01-06 14:04:33
+Description:
+[IMP-NOTICKET]
+Fixed characters spawned via SpawnActor instead of the character spawner not getting possessed by an AIController.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ldekker
+--------------------------------------------------
+Change: 781405
+Date:   2023-01-09 16:35:55
+Description:
+[IMP-13656]
+Extracted base class for all characters (AI and non-AI): VGCharacterBase. VGAICharacterBase is now a subclass of that. Fixed up usages of the old class.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-13656
+#vettedby lholst
+--------------------------------------------------
+Change: 781414
+Date:   2023-01-09 17:52:49
+Description:
+[IMP-15374]
+Made an AI data provider to let EQS queries pull floating-point values from parameter templates.
+Made VGAIFloatValue work with any kind of numeric properties, not just Float properties (because float properties are actually Double by default in UE5).
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15374
+#vettedby lholst
+--------------------------------------------------
+Change: 781471
+Date:   2023-01-10 11:17:58
+Description:
+[IMP-15374]
+Made VGAIFloatValue do a runtime warning + vislog error instead of an ensure when could not find property on object.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15374
+#vettedby lholst
+--------------------------------------------------
+Change: 781472
+Date:   2023-01-10 11:18:11
+Description:
+[IMP-NOTICKET]
+Fixed functional test NosalisJumpLink finishing before the Nosalis has landed.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 781473
+Date:   2023-01-10 11:19:03
+Description:
+[IMP-13656]
+Renamed VGAICharacterTemplate -> VGCharacterTemplate, VGAICharacterTemplate_AI -> VGCharacterTemplate_AI
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-13656
+#vettedby lholst
+--------------------------------------------------
+Change: 781502
+Date:   2023-01-10 14:38:25
+Description:
+[IMP-14827]
+Fixed characters in a pool being killed by TAFAction_KillAllEnemies
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-14827
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 781518
+Date:   2023-01-10 15:33:05
+Description:
+[IMP-14827]
+Made HealthComponent ignore damage when not active. Characters in a pool can no longer be damaged or killed (this include ForceInstantKill)
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-14827
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 781521
+Date:   2023-01-10 15:41:00
+Description:
+[IMP-13656]
+Made AVGCharacterBase work with locomotion tracks. Made a Functional Test to verify this.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-13656
+#vettedby skistemaker
+--------------------------------------------------
+Change: 781698
+Date:   2023-01-11 17:14:09
+Description:
+[IMP-15140]
+Foundations of human staggers
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15140
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 781705
+Date:   2023-01-11 18:34:51
+Description:
+[IMP-NOTICKET]
+Fixed lurkers jumping at the ground instead of at the player's head because the BSC_ViewportOverrider was parented to the wrong component.
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 781758
+Date:   2023-01-12 11:14:49
+Description:
+[IMP-NOTICKET]
+Fixed lurker driveby attack being too low.
+Fixed lurker driveby attack going behind the player instead of in font.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 781774
+Date:   2023-01-12 12:15:29
+Description:
+[IMP-15142]
+Moved the Stagger slot from ABP_Human_CombatPassive to ABP_Human to make root motion from staggers work.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby ikamula
+--------------------------------------------------
+Change: 781787
+Date:   2023-01-12 13:47:13
+Description:
+[IMP-NOTICKET]
+Made a couple of PrintStrings in ABP_Lurker_Locomotion only happen when the Debug flag is set.
+Vetted by Floyd Krielaart.
+Submitting manually via p4v because of nonsensical CL validation error in the editor tool.
+--------------------------------------------------
+Change: 781854
+Date:   2023-01-13 11:38:20
+Description:
+[IMP-15142]
+Made human characters stagger when damaged enough.
+Fixed erroneous failure of some functional tests
+
+Vetted by Ruben Runhardt, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby rrunhardt,fkrielaart
+--------------------------------------------------
+Change: 781858
+Date:   2023-01-13 11:46:43
+Description:
+[IMP-NOTICKET]
+Resaved parameter template blueprints to fix up core redirects (following the renaming of their base classes)
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby pvzelst
+--------------------------------------------------
+Change: 781866
+Date:   2023-01-13 12:28:36
+Description:
+[IMP-NOTICKET]
+Fixed Lurker not announcing combat to other lurkers if it entered combat by being shot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 781913
+Date:   2023-01-13 16:15:46
+Description:
+[IMP-15142]
+Refactored damage multipliers in healthcompoent to make that logic reusable elsewhere.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby slageweg
+--------------------------------------------------
+Change: 781914
+Date:   2023-01-13 16:16:00
+Description:
+[IMP-15142]
+BAC_Stagger now supports damage multipliers based on damage type and hit bone.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 782153
+Date:   2023-01-16 18:24:33
+Description:
+[IMP-15142]
+Fixed BAC_Stagger ignoring the bAutoStaggerOnDamage variable, which is only true for humans. This was erroneously making both lurker and nosalis prone to being staggered by any damage.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 782155
+Date:   2023-01-16 18:25:50
+Description:
+[IMP-15142]
+Resaved human characters in maps that are part of the milestone. This should fix the BAC_Stagger component not being present on them in builds..
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby kkune
+--------------------------------------------------
+Change: 782274
+Date:   2023-01-17 15:06:18
+Description:
+[IMP-NOTICKET]
+Removed debug print string that was accidentally left in.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 782317
+Date:   2023-01-17 16:16:47
+Description:
+[IMP-15652]
+Fixed Lurkers using the wrong navmesh (the nosalis navmesh) in builds. It was caused by the AgentHeight of the lurker navmesh in the project settings being too low for the lurker (45cm instead of 90cm). Not sure why it was picking the correct navmesh in the editor. Might be to do with the fact that the UNavigationSystemV1::GetNavDataForProps can return different navmeshes depending on the order in which it traverses the map form navagentprops to navmesh.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15652
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 782318
+Date:   2023-01-17 16:17:17
+Description:
+[IMP-NOTICKET]
+Fixed division by zero in ABP_Nosalis_Locomotion that was forcing a functional test to fail.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 782319
+Date:   2023-01-17 16:17:32
+Description:
+[IMP-NOTICKET]
+Fixed functional test having wrong template assigned.
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 782321
+Date:   2023-01-17 16:23:18
+Description:
+[IMP-NOTICKET]
+Added null checks to HitActor in BAC_Melee. In functional tests, the BAC_Throwable (which inherits from BAC_Melee) on BP_Kalashnikov somehow colliding with the component "ModelComponent_64" which somehow doesn't have an actor.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 782458
+Date:   2023-01-18 15:14:56
+Description:
+[IMP-NOTICKET]
+Rebuilt navmesh in Functional Test levels with lurkers.
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 782463
+Date:   2023-01-18 15:26:01
+Description:
+[IMP-15551]
+Extracted hit reaction selection into a data asset
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15551
+#vettedby slageweg
+--------------------------------------------------
+Change: 782545
+Date:   2023-01-19 09:30:15
+Description:
+[IMP-15551]
+Made hit reaction montages that we expect to use.
+
+#assetvalidation succeeded
+#jira imp-15551
+--------------------------------------------------
+Change: 782645
+Date:   2023-01-19 14:16:17
+Description:
+[IMP-15551]
+Made hit reaction selection support None bones.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15551
+#vettedby slageweg
+--------------------------------------------------
+Change: 782646
+Date:   2023-01-19 14:16:26
+Description:
+[IMP-15551]
+Made stagger component work with information about the hit bone and damage type causing the stagger.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15551
+#vettedby slageweg
+--------------------------------------------------
+Change: 782677
+Date:   2023-01-19 15:59:45
+Description:
+[IMP-15551]
+Made HTNTask_PlayAnimMontage support getting the montage from a BB key.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15551
+#vettedby slageweg
+--------------------------------------------------
+Change: 782679
+Date:   2023-01-19 16:00:09
+Description:
+[IMP-15551]
+Setup for directional hit reactions for humans.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15551
+#vettedby slageweg
+--------------------------------------------------
+Change: 782700
+Date:   2023-01-19 16:59:39
+Description:
+[IMP-15551]
+Made human staggers support being staggered while already in a stagger. Set up a small stagger cooldown for humans to prevent them from looping the beginning of a stagger when you shoot them with a burst of AK rounds.
+
+#assetvalidation succeeded
+#jira imp-15551
+--------------------------------------------------
+Change: 782850
+Date:   2023-01-20 15:43:47
+Description:
+[IMP-15215]
+- Made weakspots contribute "stagger damage" to the stagger component instead of staggering it directly.
+- Made the health component apply weakspot damage alongside bone damage instead of during PreDamageApply
+- Made the weakspot component get the final damage after all multipliers instead of an intermediate one.
+- Health component now stores the weakspot that was hit.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby lholst
+--------------------------------------------------
+Change: 782869
+Date:   2023-01-20 16:33:31
+Description:
+[IMP-15215]
+Fixed bone damage multipliers not being applied to final damage.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15215
+#redbuildfix
+#vettedby lholst
+--------------------------------------------------
+Change: 782905
+Date:   2023-01-23 10:17:33
+Description:
+[IMP-15215]
+Made BAC_Stagger process damage from weakspots properly.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 782953
+Date:   2023-01-23 14:50:35
+Description:
+[IMP-15215]
+Made VGWeakSpot not have collision but be a volume against which overlap checks are done. This makes hit SFX appear on the actual character mesh instead of on the invisible weakspot volumes.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby slageweg
+--------------------------------------------------
+Change: 782967
+Date:   2023-01-23 15:32:56
+Description:
+[IMP-15215]
+Made projectiles determine the physics material that was hit in an overridable way.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby hjanssen
+--------------------------------------------------
+Change: 782997
+Date:   2023-01-23 16:50:33
+Description:
+[IMP-15215]
+Added a "GetHighestPriorityHealthComponent" static helpler function.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby hjanssen
+--------------------------------------------------
+Change: 782998
+Date:   2023-01-23 16:50:43
+Description:
+[IMP-15215]
+Disabled "can ever affect navigation" on weakspots.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby hjanssen
+--------------------------------------------------
+Change: 783003
+Date:   2023-01-23 17:13:58
+Description:
+[IMP-15215]
+Fixed OutValidity not being set in the GetHightestPriorityHealthComponent function.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby hjanssen
+--------------------------------------------------
+Change: 783030
+Date:   2023-01-24 09:47:27
+Description:
+[IMP-15142]
+Fixed humans standing still for a while after a very long stagger.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15142
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 783031
+Date:   2023-01-24 09:47:46
+Description:
+[IMP-15215]
+Made projectile hits take into account the physics material of weakspots.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 783036
+Date:   2023-01-24 10:01:33
+Description:
+[IMP-15552]
+Added a "StaggerIntense" metadata curve to human skeleton.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15552
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 783048
+Date:   2023-01-24 11:47:06
+Description:
+[IMP-15145]
+Made a BP_AnimNotify_Bark to be used instead of AnimNotify_PlaySound for voice lines. This one properly handles cases where the character is already playing a voice line.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15145
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 783059
+Date:   2023-01-24 13:24:46
+Description:
+[IMP-15215]
+Made Nosalis weakspots have the WeakSpot collision preset.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-15215
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 783071
+Date:   2023-01-24 14:42:18
+Description:
+[IMP-15145]
+Fixed infinite loop when aborting the "toggle flashlight" animation.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-15145
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 783081
+Date:   2023-01-24 15:13:25
+Description:
+[IMP-15145]
+Added a AbortCurrentIfHigherOrEqualPriority option to the AlreadyPlayingResponse when calling PlayVoiceLine of the Bark System.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15145
+#vettedby lholst
+--------------------------------------------------
+Change: 783480
+Date:   2023-01-27 12:16:17
+Description:
+[IMP-16138]
+Refactoring the combat circle to make the inner radius also variable with obstacles like the outer radius.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16138
+#vettedby slageweg
+--------------------------------------------------
+Change: 783677
+Date:   2023-01-30 17:23:50
+Description:
+[IMP-16138]
+Made combat circle configurable to allow sectors behind obstacles.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16138
+#vettedby lholst
+--------------------------------------------------
+Change: 783691
+Date:   2023-01-30 18:23:07
+Description:
+[IMP-16138]
+Made DetectionBehindObstaclesSpacing configurable on UVGCombatCircleConfig
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16138
+#vettedby lholst
+--------------------------------------------------
+Change: 784061
+Date:   2023-02-02 11:05:36
+Description:
+[IMP-16142]
+Made acceptance radius configurable in CanReachInStraightLine EQS test and HTN Decorator.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby lholst
+--------------------------------------------------
+Change: 784134
+Date:   2023-02-02 16:02:33
+Description:
+[IMP-16312]
+Exposes must complete before AI setting on level sequence actor itself, so it can be set before play starts evaluating.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-16312
+#vettedby skistemaker
+--------------------------------------------------
+Change: 784201
+Date:   2023-02-03 11:00:48
+Description:
+[IMP-16142]
+Made weakspots work when there are multiple stagger components.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby lholst
+--------------------------------------------------
+Change: 784222
+Date:   2023-02-03 13:32:33
+Description:
+[IMP-16142]
+Removed an ensure that was giving false positives if the weakspot stops being vulnerable from inside an event sent by a health component during damage processing.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby lholst
+--------------------------------------------------
+Change: 784463
+Date:   2023-02-07 12:18:04
+Description:
+[IMP-NOTICKET]
+Resaved some files that were causing all shaders to be recompiled every time the editor is started.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 784465
+Date:   2023-02-07 12:18:27
+Description:
+[IMP-NOTICKET]
+Fixed perception system updating sensors and targets on hidden actors (e.g. ones in an actor pool)
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 784526
+Date:   2023-02-07 17:11:55
+Description:
+[IMP-NOTICKET]
+Fixed sight sensors spamming vislog from inside the actor pool.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 784528
+Date:   2023-02-07 17:15:05
+Description:
+[IMP-16160]
+Added functional tests for character avoidance. They all fail now, since avoidance is not implemented yet.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16160
+#vettedby lholst
+--------------------------------------------------
+Change: 784671
+Date:   2023-02-09 11:39:04
+Description:
+[IMP-NOTICKET]
+Exposed UVGCoverDataComponent's FindCoverPointsInRadius/InBounds to Blueprints per Ruben's request.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby hjanssen
+--------------------------------------------------
+Change: 784785
+Date:   2023-02-10 10:59:48
+Description:
+[IMP-16142]
+Fixed UVGNavigationFilter_AvoidSpecificLocations with finite cost not discouraging path segments that begin inside the sphere-to-avoid.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby slageweg
+--------------------------------------------------
+Change: 784842
+Date:   2023-02-10 17:20:34
+Description:
+[IMP-16142]
+Fixed case where a Nosalis attacking the player would try to go through the player to a combat circle sector on the other side of the player.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby slageweg
+--------------------------------------------------
+Change: 784935
+Date:   2023-02-13 15:55:38
+Description:
+[IMP-NOTICKET]
+Fixed MinDistanceToCoverPointForSightSensorCheck being checked from sight sensor location (at head height) to cover point location (on the ground). Now checking from nav agent location (on the ground).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 784988
+Date:   2023-02-14 10:13:34
+Description:
+[IMP-16142]
+Made a HTNTask_GetValueFromParameterTemplate
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby slageweg
+--------------------------------------------------
+Change: 785000
+Date:   2023-02-14 11:04:23
+Description:
+[IMP-16142]
+Added support for boolean properties in UVGHTNTask_GetValueFromParameterTemplate
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16142
+#vettedby slageweg
+--------------------------------------------------
+Change: 785067
+Date:   2023-02-14 16:02:37
+Description:
+[IMP-16161] Made RVO avoidance work with our VGLocomotionAnimInstance.
+Submitting via p4v because of nonsense validation errors.
+Vetted by Steijn.
+--------------------------------------------------
+Change: 785068
+Date:   2023-02-14 16:02:40
+Description:
+[IMP-16161] Improvements to RVO avoidance: Vislogging, cleanup, considering more candidate directions.
+Submitting via p4v because of nonsense validation errors.
+Vetted by Steijn.
+--------------------------------------------------
+Change: 785069
+Date:   2023-02-14 16:02:43
+Description:
+[IMP-16663] Providing nav edges to RVO avoidance.
+Submitting via p4v because of nonsense validation errors.
+Vetted by Steijn.
+--------------------------------------------------
+Change: 785088
+Date:   2023-02-14 17:11:18
+Description:
+[IMP-NOTICKET]
+Fixed case where humans would reserve SelfLocation while still doing a slowdown animation, meaning they reserve a location they won't actually be at.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 785120
+Date:   2023-02-15 09:28:30
+Description:
+[IMP-16892]
+Fixed wrong capitalization in including the "Navmesh" module (was "NavMesh")
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-16892
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 785299
+Date:   2023-02-16 11:34:54
+Description:
+[IMP-16964]
+Fixed VGLevelSequencePlayer spamming vislog even when inactive.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-16964
+#vettedby skistemaker
+--------------------------------------------------
+Change: 785422
+Date:   2023-02-17 13:52:23
+Description:
+[IMP-16892]
+RVO avoidance is now more lenient about navmesh edges:
+- if a candiate velocity intersects the navmesh, it's not discarded but instead truncated to end at the intersection point
+- velocities that enter the navmesh from the outside are now allowed
+Submitting via p4v due to IMP-13554
+Vetted by Steijn.
+--------------------------------------------------
+Change: 785429
+Date:   2023-02-17 14:28:57
+Description:
+[IMP-16822] Submitting via p4v due to IMP-13554
+Getting the firearm of a human character can now be done via an interface, removing dependencies on BP_AICharacter_Human
+Vetted by Loes.
+--------------------------------------------------
+Change: 785449
+Date:   2023-02-17 15:57:15
+Description:
+[IMP-NOTICKET]
+Fixed functional tests failing to wait long enough for dead bodies to return to the actor pool.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ldekker
+--------------------------------------------------
+Change: 785540
+Date:   2023-02-20 13:08:32
+Description:
+[IMP-16896]
+Fixed characters in EvadeSlavers3 not ticking their BAC_CoverTargetAgainstPlayerUpdater components.
+Not clear why this fixes it, but it's a change I was going to make anyway.
+The issue only occured in EvadeSlavers3, most likely due to OPFA issues.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-16896
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 785577
+Date:   2023-02-20 15:34:40
+Description:
+[IMP-17273]
+Fixed Nosalis not playing additive hit reactions.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby skistemaker
+--------------------------------------------------
+Change: 785631
+Date:   2023-02-21 11:32:53
+Description:
+[IMP-17273]
+Made it possible to remove all warp targets from a motionwarping component.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby slageweg
+--------------------------------------------------
+Change: 785632
+Date:   2023-02-21 11:34:17
+Description:
+[IMP-16893]
+Added AvoidanceUID to properties ignored for parity checks between fresh and pooled characters.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby slageweg
+--------------------------------------------------
+Change: 785633
+Date:   2023-02-21 11:34:39
+Description:
+[IMP-16896]
+Fixed pre-placed characters in an encounter that is disabled on start (like in EvadeSlavers3) still ticking and having their guns float in the air before the encounter begins.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-16896
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 785671
+Date:   2023-02-21 15:18:52
+Description:
+[IMP-NOTICKET]
+Resetting some variables of the Nosalis when returning to pool.
+Submitting via p4 due to IMP-13554
+Vetted by Inka
+--------------------------------------------------
+Change: 785672
+Date:   2023-02-21 15:19:18
+Description:
+[IMP-NOTICKET]
+Fixed some variables not being reset when going back to actor pool in Lurker and Nosalis.
+Submitting via p4v due to IMP-13554
+Vetted by Floyd
+--------------------------------------------------
+Change: 785687
+Date:   2023-02-21 16:07:25
+Description:
+[IMP-17273]
+Fixed Nosalis ABP not intializing the MutantIK component
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby ikamula
+--------------------------------------------------
+Change: 785740
+Date:   2023-02-21 18:16:49
+Description:
+[IMP-17272]
+Fixed characters ignoring the PreferAvoidPlayer filter when they're already inside the avoidance radius.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-17272
+#vettedby pvzelst
+--------------------------------------------------
+Change: 785862
+Date:   2023-02-22 16:08:42
+Description:
+[IMP-16893]
+Made the candidate directions of RVO avoidance evenly spaced out and their number configurable.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby skistemaker
+--------------------------------------------------
+Change: 785947
+Date:   2023-02-23 12:06:58
+Description:
+[IMP-16893]
+Fixed moving characters clipping into stationary ones because they expect the stationary characters to reciprocate the avoidance.
+The underlying issue is stationary characters always having nonzero velocity dictated by fluctutations in the root motion coming from animation. They sway in place very slightly. Fixed it by making speeds < 5 to be considered stationary for the purposes of avoidance.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby pvzelst
+--------------------------------------------------
+Change: 786042
+Date:   2023-02-23 17:13:24
+Description:
+[IMP-NOTICKET]
+Fixed ABP_PlayerHands spamming a PrintString on screen.
+
+Vetted by Tim Vegter
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby tvegter
+--------------------------------------------------
+Change: 786043
+Date:   2023-02-23 17:13:48
+Description:
+[IMP-16893]
+Made a ReserveLocation decorator reserve IntermediateMovementTarget instead of SelfLocation. This way the reserved location is on the ground, in line with the other reservations.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 786091
+Date:   2023-02-24 11:22:05
+Description:
+[IMP-16893]
+Made avoidance fall back to the desired velocity if collision is inevitable. This is not as good as trying to minimize penetration but not as bad as jogging in place forever.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby pvzelst
+--------------------------------------------------
+Change: 786093
+Date:   2023-02-24 11:22:50
+Description:
+[IMP-16893]
+Characters now properly signal when they can't reciprocate avoidance.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby pvzelst
+--------------------------------------------------
+Change: 786094
+Date:   2023-02-24 11:23:50
+Description:
+[IMP-16893]
+RVO avoidance for Humans
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-16893
+#vettedby pvzelst
+--------------------------------------------------
+Change: 786171
+Date:   2023-02-24 17:38:44
+Description:
+[IMP-17273]
+Made combat circle prefer to assign sectors in a way that prevents sectors being completely obstructed by obstacles.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby slageweg
+--------------------------------------------------
+Change: 786308
+Date:   2023-02-27 15:18:18
+Description:
+[IMP-16895]
+- Properly locking velocity to zero when can't avoid collision and should stand still.
+- Fixed Nosalis animinstance modifying the character movement component in editor.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-16895
+#vettedby lholst
+--------------------------------------------------
+Change: 786309
+Date:   2023-02-27 15:18:36
+Description:
+[IMP-17273]
+Fixed missing space.
+
+#assetvalidation succeeded
+#jira imp-17273
+--------------------------------------------------
+Change: 786387
+Date:   2023-02-28 10:58:18
+Description:
+[IMP-16895]
+RVO Avoidance for Nosalises
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-16895
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 786428
+Date:   2023-02-28 14:04:06
+Description:
+[IMP-17980]
+- Fixed Nosalis standing still forever when no combat circle sector assigned.
+- Fixed missing ReserveLocation when moving to combat circle.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17980
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 786477
+Date:   2023-02-28 16:51:14
+Description:
+[IMP-17273]
+Fixed Nosalis being stuck inside combat circle (close to player) because all available sectors are taken by other Nosalises. Nosalises closer than InnerRadius now have much lower cost of being assigned to a sector (by making those outside have a higher cost), so they get prioritized.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby slageweg
+--------------------------------------------------
+Change: 786497
+Date:   2023-02-28 18:45:23
+Description:
+[IMP-NOTICKET]
+Made it possible to specify separate cost per submitted location to avoid in VGNavigationQueryFilter_AvoidSpecificLocations.
+Made NavigationQueryFilter_PreferToAvoidPlayer make use of that: it now has two areas of avoidance for the player: an inner one with a super-high cost and an outer one with a moderately high cost.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby pvzelst
+--------------------------------------------------
+Change: 786725
+Date:   2023-03-02 14:21:11
+Description:
+[IMP-17056]
+Avoidance: when collision is inevitable, we pick a candidate velocity that minimizes penetration.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-17056
+#vettedby slageweg
+--------------------------------------------------
+Change: 786726
+Date:   2023-03-02 14:21:43
+Description:
+[IMP-16894]
+RVO Avoidance for Lurkers
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-16894
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 786848
+Date:   2023-03-03 11:45:45
+Description:
+[IMP-17056]
+Made RVO avoidance manager know the actual animation-driven velocity of characters instead of their desired velocity.
+This prevents a character walking into another because they're moving slower than their TargetVelocity.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-17056
+#vettedby skistemaker
+--------------------------------------------------
+Change: 786881
+Date:   2023-03-03 14:19:51
+Description:
+[IMP-17273]
+Fixed Nosalis sometimes going through the player and/or not attacking.
+
+- In EQSQuery_NosalisFindLocationTowardsEnemy, using a PreferToAvoidPlayer (2M) filter in the PathLength test from HTNQuerierLocation.
+- Made the MoveTo tasks following the use of that EQS (in HTN_NosalisCombatMainBehavior and HTN_NosalisCombatSwipeAttacks) use the same filter.
+- In HTN_NosalisCombatSwipeAttacks, made the behavior for getting into a location to attack from auto-interrupt once the enemy becomes reachable in a straight line.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 786882
+Date:   2023-03-03 14:20:09
+Description:
+[IMP-16895]
+Made pathfollowing for the Nosalis smoother to improve avoidance.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-16895
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 786905
+Date:   2023-03-03 15:48:53
+Description:
+[IMP-16894]
+Implemented CanApplyAvoidance in ABP_Lurker_Locomotion to inform other lurkers when a lurker won't reciprocate avoidance (e.g. when it's standing still or slowing down).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-16894
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 787055
+Date:   2023-03-06 14:14:03
+Description:
+[IMP-17273]
+Combat circle: 
+- fixed the detection of fully obstructed sectors not taking into account obstacles closer than InnerRadius
+- fixed 0-sized sectors being generated
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby lholst
+--------------------------------------------------
+Change: 787172
+Date:   2023-03-07 10:45:12
+Description:
+[IMP-17273]
+Fixed ABP_Nosalis_Locomotion having RVO smoothing speed exposed as a pin in the parent ABP
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17273
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 787317
+Date:   2023-03-07 17:34:24
+Description:
+[IMP-17278]
+More consistent and reliable cover picking and cover-to-cover movement for humans
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-17278
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 787478
+Date:   2023-03-08 17:57:22
+Description:
+[IMP-17278]
+Hold-your-ground support for humans.
+Making cover point picking more stable (making it so that when a character gets to a good-enough cover point they stay there).
+Vetted by Ruben
+
+Submitting via p4 due to nonsense validation error:
+
+"
+Encountered 2 errors:
+Soft references /Game/Blueprints/AIToolkit/Human/HTNs/HTN_Human_SelectMovementTarget_Defensive which does not exist. (AssetValidator_AssetReferenceRestrictions)
+Soft references /Game/Blueprints/AIToolkit/Human/HTNs/HTN_Human_SelectMovementTarget_Defensive which does not exist. (AssetValidator_AssetReferenceRestrictions)
+"
+
+For context, HTN_Human_SelectMovementTarget_Defensive was the name of HTN_Human_DetermineMovementTarget_Defensive before I renamed it. Resaving or fixing up redirectors does not fix it. It looks like the created assets themselves reference the old name.
+--------------------------------------------------
+Change: 787595
+Date:   2023-03-09 13:39:59
+Description:
+[IMP-17278]
+- Cleanly recreated the assets that were inexplicably referencing themselves pre-renaming, causing validation errors.
+- Fixed missing branch in the inital reaction of human combat that was preventing the "Do Once" decorator from getting locked.
+
+#assetvalidation succeeded
+#jira imp-17278
+--------------------------------------------------
+Change: 787651
+Date:   2023-03-09 17:26:19
+Description:
+[IMP-16497]
+Fixed the non-vr testing pawn using the wrong navmesh (Nosalis instead of Player)
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-16497
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 787720
+Date:   2023-03-10 10:47:51
+Description:
+[IMP-18454]
+Improvements to the DistanceCheck decorator:
+- Min/Max distance are now optional.
+- Now supports 3D, 2D, Z (signed/absolute), Capsule distances
+- Supports multi-location distance checking (e.g. check distance against any/all group members)
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-18454
+#vettedby lholst
+--------------------------------------------------
+Change: 787764
+Date:   2023-03-10 14:42:05
+Description:
+[IMP-18833]
+Blueprint HTN nodes are now displaying their Object/Class/Struct properties in a more concise way (one that doesn't result in overly wide nodes in the editor)
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-18833
+#vettedby slageweg
+--------------------------------------------------
+Change: 787791
+Date:   2023-03-10 16:25:42
+Description:
+[IMP-18631]
+Extracted the "combat per say" part of HTN_Human_Combat into HTN_Human_Combat_Main as cleanup and to avoid people working on unrelated things having to check out the same file.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18631
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 787968
+Date:   2023-03-13 16:36:02
+Description:
+[IMP-18454]
+HTNDecorator_DistanceCheck: better defaults, showing capsule size in descrption when using capsule test.
+
+#assetvalidation succeeded
+#jira imp-18454
+--------------------------------------------------
+Change: 787972
+Date:   2023-03-13 16:39:32
+Description:
+[IMP-18796]
+Made HTNTask_WaitUntilFacingTarget wait until the body is facing the target instead of just the head.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18796
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788065
+Date:   2023-03-14 10:44:29
+Description:
+[IMP-18942]
+Fixed Nosalis not transitioning out of the living world event properly (animation sequences had the wrong slot). Changed slot from "Default Slot" to "Narrative".
+
+Vetted by Paul van Eekelen
+
+#assetvalidation succeeded
+#jira imp-18942
+#vettedby pveekelen
+--------------------------------------------------
+Change: 788330
+Date:   2023-03-15 14:42:26
+Description:
+[IMP-18631] [IMP-18671]
+Changes to human shooting-related HTNs:
+- reduced tolerance for gun misalignment (70deg -> 20deg)
+- shooting while exposed no longer requires a token
+- shooting while exposed now includes reloading
+- shooting while exposed can now be done if can't find a better cover location (instead of just idling)
+- idle can now involve reloading
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18631,imp-18671
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788346
+Date:   2023-03-15 15:53:25
+Description:
+[IMP-18671]
+Made humans do the "reloading!" voice line at the same time as actually reloading instead of in sequence
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18671
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788377
+Date:   2023-03-15 18:02:13
+Description:
+[IMP-18671]
+Made humans able to reload while moving to cover. If they shoot you out in the open and then move to cover, they'll reload while moving to cover instead of first going to cover and then reloading.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18671
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788459
+Date:   2023-03-16 13:23:17
+Description:
+[IMP-19125]
+Made SA_BanditVoices and SA_EnemyFooteps use Natural Sound falloff with distance 5000cm (was Linear with 1850cm). The increased range makes enemies audible at longer range and Natual Sound makes it much easier to pinpoint their distance and direction based on the audio alone.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-19125
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788599
+Date:   2023-03-17 09:56:41
+Description:
+[IMP-16497]
+Made it possible to specify the name of the navmesh to use directly on the CharacterMovementComponent
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16497
+#triggerscoderebuild
+#vettedby slageweg
+--------------------------------------------------
+Change: 788654
+Date:   2023-03-17 12:35:07
+Description:
+[IMP-7690]
+When cycling through navmeshes using Alt+N, the name of the shown navmesh is now displayed on screen.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-7690
+#vettedby slageweg
+--------------------------------------------------
+Change: 788681
+Date:   2023-03-17 14:13:13
+Description:
+[IMP-15119]
+Added a lurker demo map that repros this bug.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-15119
+#vettedby rzak
+--------------------------------------------------
+Change: 788946
+Date:   2023-03-21 12:38:21
+Description:
+[IMP-18630]
+Fixed human trying to do a turn-in-place while leaning out of cover.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18630
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 788976
+Date:   2023-03-21 14:51:58
+Description:
+[IMP-18814]
+Fixed Lurkers playing duplicate footsteps in some cases. Now using appropriate lurker footstep sounds based on locomotion instead of the Nosalis footstep sounds.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-18814
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 789145
+Date:   2023-03-22 16:52:10
+Description:
+[IMP-18631]
+Added a SelectRandomWeightedIndex helper function that exposes Algo::SelectRandomWeightedBy to Blueprints
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-18631
+#vettedby slageweg
+--------------------------------------------------
+Change: 789291
+Date:   2023-03-23 15:39:22
+Description:
+[IMP-18630]
+- Added an IsObstructed helper function to VGFirearmComponent to check if the gun is clipping through geometry.
+- Added stats to the line traces done by VGFirearmComponent
+- Made "shoot projectile" traces ignore the magazine.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-18630
+#vettedby slageweg
+--------------------------------------------------
+Change: 789372
+Date:   2023-03-24 10:57:09
+Description:
+[IMP-18630] [IMP-18631]
+Refactoring human shooting to have less logic inside the ShootFirearm task and more in the HTN.
+
+- removed the "wait in cover" part from "advance from cover to cover" so that we don't shoot while hiding in cover after moving.
+- added a "wait until facing target" to "shoot from cover" to account for turn-in-place preventing the character from popping out of cover (they tend to do that after running into cover)
+- removed the old "cover to cover movement" htns and the old combat-main
+- the HTNTask_ShootFirearm now only does one burst at a time and the intermediate state is stored in a persistent HTNExtension_Shooting
+- made EQSQuery_FindCoverForShooting_Defensive find locations within the firing range of the firearm (specified in BPT_Firearm). Shambler-carrying enemies now try to get closer in TTR levels.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18630,imp-18631
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 789509
+Date:   2023-03-27 11:16:27
+Description:
+[IMP-18842]
+Updated HTN plugin to v1.9.2 + WiP changes from its develop branch to get the Random/RandomWeight nodes.
+
+#assetvalidation succeeded
+#jira imp-18842
+--------------------------------------------------
+Change: 789572
+Date:   2023-03-27 16:01:46
+Description:
+[IMP-18798]
+Fixed ProjectPointMulti (and therefore ProjectPointToNavigationDown) ignoring the X and Y coordinates of the QueryExtent.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-18798
+#vettedby skistemaker
+--------------------------------------------------
+Change: 789693
+Date:   2023-03-28 13:46:45
+Description:
+[IMP-18798]
+alarmed FindVisiblePointOnPath: improvements:
+- Intermediate points along long segments
+- investigation location is projected down further (now supports cases where the player shoots the ceiling and enemies hear the noise)
+- disabled "discard unreachable" in the "find alarmed cover" EQS query. This is necessary when the investigation location is unreachable (e.g. on the ceiling)
+- fixed head hitches when waiting alarmed
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18798
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 789737
+Date:   2023-03-28 16:02:48
+Description:
+[IMP-18798]
+More fixes to human Alarmed behavior being stuck:
+- fixed the FindAlarmedCover EQS not having a good "current cover point" test set
+- cleaned up the part of the HTN for characters who aren't the searcher
+- fixed FindPointAtDistanceOnPath not working when the player hides below ground via debug movement
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18798
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 789823
+Date:   2023-03-29 11:49:42
+Description:
+[IMP-18626]
+Fixed low cover points being generated at covers whose height is exactly the high cover height (150cm). This was causing characters to try shooting through such covers and have most shots miss due to animation wobble.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-18626
+#vettedby slageweg
+--------------------------------------------------
+Change: 789898
+Date:   2023-03-29 17:17:08
+Description:
+[IMP-18796]
+Reworked the HoldYourGround cover picking to rely on the settings in BPT_Firearm instead of manual type checking on the type of firearm we hold.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-18796
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 790087
+Date:   2023-03-31 11:51:36
+Description:
+[IMP-NOTICKET]
+Fixed characters trying to step up on themselves using foot IK
+
+Vetted by Laurens Holst, Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst,skistemaker
+--------------------------------------------------
+Change: 790097
+Date:   2023-03-31 13:21:59
+Description:
+[IMP-NOTICKET]
+Increased radius in which cover points are updated around the player (500 -> 1400). This fixes issues in Hold Your Ground sections where enemies that spawn far away couldn't pick a cover point to shoot the player from because they're too far from those points for them to be updated.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790124
+Date:   2023-03-31 14:55:51
+Description:
+[IMP-19569]
+Fixed characters getting stuck on navmesh in tight corners.
+Reduced timescale of functional tests back to 1.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-19569
+#vettedby skistemaker
+--------------------------------------------------
+Change: 790176
+Date:   2023-03-31 18:35:49
+Description:
+[IMP-NOTICKET]
+Fixed failing functional test where the AvoidanceWeight of a character being moved into pool stayed at 1 instead of being reset to 0.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 790236
+Date:   2023-04-03 11:05:59
+Description:
+[IMP-17009]
+Fixed BP_ThrowableCan not counting a debug throw as a throw (for the purposes of determining the noise radius)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17009
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790422
+Date:   2023-04-04 13:50:16
+Description:
+[IMP-17009]
+Nosalis investigation behavior (very similar to that of the lurker)
+Added a functional test for verifying the following behavior: 
+- Nosalis reacts to a gunshot sound by going to combat
+- Nosalis reacts to a thrown can (by investigating), then to a gunshot sound (by attacking)
+Also made versions of the latter test for lurkers and humans.
+Fixed the non-VR player pawn not getting damaged by bullets.
+Made it possible to trigger the BP_TestNoiseEmitter via function call instead of after delay on beginplay.
+Set up audio for investigation-related nosalis animations
+Fixed lurker sometimes turning the wrong way when reacting to a distraction.
+Fixed missing interface in BP_Nosalis that was preventing "stay in motion" scopes from working.
+Fixed BP_Nosalis changing its collision settings on death but not resetting them when returning to actor pool. That functionality is not necessary because the nosalis is replaced with a corpse actor once the body settles down anyway.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17009
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790423
+Date:   2023-04-04 13:50:25
+Description:
+[IMP-19353]
+Implemented nosalis bipedal movement during attacks.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19353
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790426
+Date:   2023-04-04 13:51:08
+Description:
+[IMP-17009]
+Reduced timescale in a couple of functional tests back to 1
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17009
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790836
+Date:   2023-04-07 15:56:05
+Description:
+[IMP-17009]
+Minor tweaks to a few functional tests.
+
+#assetvalidation succeeded
+#jira imp-17009
+--------------------------------------------------
+Change: 790837
+Date:   2023-04-07 15:56:14
+Description:
+[IMP-17009]
+Fixed Nosalis barely sticking out from behind a corner when picking an "investigate from" location.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-17009
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 790931
+Date:   2023-04-11 12:45:26
+Description:
+[IMP-19794]
+Updated HTN plugin to v1.11.0
+
+#assetvalidation succeeded
+#jira imp-19794
+--------------------------------------------------
+Change: 790966
+Date:   2023-04-11 15:15:47
+Description:
+[IMP-18524]
+Added an EQS test to check if a location is seen by given sight sensors.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-18524
+#vettedby slageweg
+--------------------------------------------------
+Change: 790992
+Date:   2023-04-11 16:19:56
+Description:
+[IMP-19794]
+Made Nosalis properly avoid player's aim.
+Made BP_Pawn and BP_Hand implement the VGFirearmProviderInterface
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19794
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791086
+Date:   2023-04-12 12:32:07
+Description:
+[IMP-20988]
+Increased falloff distance (and made it use Natural Sound attentuation) for the sounds of thrown cans etc.
+
+Vetted by Mark Doeze
+
+#assetvalidation succeeded
+#jira imp-20988
+#vettedby mdoeze
+--------------------------------------------------
+Change: 791106
+Date:   2023-04-12 13:56:21
+Description:
+[IMP-20988]
+Made wooden objects not muffle sound as much (range multiplier 0.45 -> 0.75)
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-20988
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 791150
+Date:   2023-04-12 16:38:47
+Description:
+[IMP-20988]
+Fixed Nosalis and Human failing to investigate if thrown can hit the ceiling or high on a wall.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-20988
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791151
+Date:   2023-04-12 16:39:01
+Description:
+[IMP-20988]
+Added more animations to Nosalis investigation including a bespoke one for when the investigation location is above the Nosalis (e.g. hit ceiling or high up a wall).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-20988
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791246
+Date:   2023-04-13 11:45:23
+Description:
+[IMP-20988]
+Increased noise radius of an AK shot from 25m to 100m
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-20988
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 791271
+Date:   2023-04-13 14:06:38
+Description:
+[IMP-NOTICKET]
+Fixed a functional test spamming an assert every frame.
+
+Vetted by Danny Kruiswijk
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby dkruiswijk
+--------------------------------------------------
+Change: 791295
+Date:   2023-04-13 16:23:13
+Description:
+[IMP-17009]
+Fixed noise propagation not working in some cases:
+- Obstacles now dampen the noise range, not the min(noise range, hearing range). This way making the noise louder actually makes it more audible.
+- When propagating sound via navmesh, now projecting the sound onto the navmesh.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-17009
+#vettedby slageweg
+--------------------------------------------------
+Change: 791342
+Date:   2023-04-14 11:19:26
+Description:
+[IMP-19321] [IMP-19794] [IMP-20975]
+- Made the last Nosalis in the group not respond to being threatened
+- Made the Nosalis dynamically switch between walking and galloping based on distance to current enemy
+- Better jumping around to avoid player's aim for Nosalises. They can cover more distance now, more in line with the animations used (previously had to motionwarp them to cover less distance then authored). They also try to avoid each other more.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19321,imp-19794,imp-20975
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791343
+Date:   2023-04-14 11:19:40
+Description:
+[IMP-19794]
+Removed unused (and obsolete) BP task relying on removed function
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19794
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791346
+Date:   2023-04-14 11:39:13
+Description:
+[IMP-19794]
+Removed decorator that could cause Nosalis to lock up after getting shot in some situations.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19794
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791366
+Date:   2023-04-14 13:48:48
+Description:
+[IMP-21097]
+When aiming at a group of nosalises, only the ones in front will be threatened.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-21097
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791415
+Date:   2023-04-14 17:56:22
+Description:
+[IMP-20871]
+Fixed characters spinning around forever in some cases where their path has a very sharp corner in the beginning (such as when making a path from waypoints using the locomotion track).
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-20871
+#vettedby hjanssen
+--------------------------------------------------
+Change: 791597
+Date:   2023-04-18 11:48:36
+Description:
+[IMP-19789]
+Exposed a CurrentAwarenessChangeRate of VGAIStateBase to Blueprints.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-19789
+#vettedby hjanssen
+--------------------------------------------------
+Change: 791667
+Date:   2023-04-18 15:18:54
+Description:
+[IMP-NOTICKET]
+Added a "bUseCoverTargetInfoForTrace" setting (true by default) to VGLineOfFireTestSettings from Floyd's request.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 791669
+Date:   2023-04-18 15:24:05
+Description:
+[IMP-19793] [IMP-19884]
+Nosalis locomotion improvements
+- Fixed Nosalis not aborting plan when getting too close to player
+- Fixed Nosalis making tiny steps in place when trying to find a spot to attack the player from
+- Made Nosalis face the player before doing an attack telegraph.
+- Fixed Nosalis jumping towards player to avoid their aim
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19793,imp-19884
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791761
+Date:   2023-04-19 12:28:15
+Description:
+[IMP-19793] [IMP-19884]
+- Nosalis pathfinding now avoids other characters as well as the player.
+- Added a couple of "stay in motion" scopes to Nosalis to avoid a couple of cases of stuttery "start and stop" movement.
+- Fixed hit reactions sometimes not happening for the Nosalis. Made the torso hit reactions more pronounced.
+- Fixed point on combat circle changing in a way that causes the Nosalis to take small steps.
+Changes from Floyd:
+- Slightly decreased damage from Nosalis
+- Increased jogging speed for Nosalis
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19793,imp-19884
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791798
+Date:   2023-04-19 15:04:08
+Description:
+[IMP-19884]
+Made Nosalis swipe when the player gets too close only if roughly facing the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19884
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 791976
+Date:   2023-04-20 16:17:51
+Description:
+[IMP-16394]
+The pose of skeletal meshes is now logged in the visual logger.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-16394
+#vettedby slageweg
+--------------------------------------------------
+Change: 792109
+Date:   2023-04-24 11:26:59
+Description:
+[IMP-21275]
+Made RVOSmoothingSpeed writable from Blueprints
+
+#assetvalidation succeeded
+#jira imp-21275
+--------------------------------------------------
+Change: 792143
+Date:   2023-04-24 13:36:26
+Description:
+[IMP-21275]
+Added a "IsActorSeenByActor" helper function to sight sensor.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby slageweg
+--------------------------------------------------
+Change: 792144
+Date:   2023-04-24 13:37:07
+Description:
+[IMP-20076]
+Imrovements to the unaware -> aware transitions for humans. Shorter delays, better blending of startled into shooting
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-20076
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 792145
+Date:   2023-04-24 13:37:20
+Description:
+[IMP-21275]
+Made cultist hunters always have their sight targets enabled (be always visible to sight sensors of player and other characters). This makes it possible for them to reliably check if they're seen by the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 792194
+Date:   2023-04-24 16:06:09
+Description:
+[IMP-19640]
+Made the Alarmed group behavior designate a Searcher almost immediately instead of waiting 5s
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-19640
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 792286
+Date:   2023-04-25 11:02:10
+Description:
+[IMP-20076]
+Preventing turn-in-place while playing full-body montages.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-20076
+#vettedby skistemaker
+--------------------------------------------------
+Change: 792292
+Date:   2023-04-25 12:08:12
+Description:
+[IMP-20076]
+Better transition from Unaware to Combat for humans. Now the "startle" animation at the beginning of Combat or Alarmed actually turns the character to face the player (or the investgation locaiton)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-20076
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 792318
+Date:   2023-04-25 13:43:58
+Description:
+[IMP-20076]
+Added comments about how we're now using only one animation for the Unaware -> Aware transitions and might want to go back to multiple animations in the future.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-20076
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 792361
+Date:   2023-04-25 15:55:32
+Description:
+[IMP-21275]
+Fixed VGHTNDecorator_IsClearLineOfFire never using line of fire information from the cover system.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby slageweg
+--------------------------------------------------
+Change: 792363
+Date:   2023-04-25 15:55:50
+Description:
+[IMP-20076]
+Fixed characters sometimes using a turn-in-place animation from the wrong movement method (WalkPatrol instead of JugCombat)
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-20076
+#vettedby skistemaker
+--------------------------------------------------
+Change: 792366
+Date:   2023-04-25 16:02:27
+Description:
+[IMP-NOTICKET]
+Fixed broken functional test
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 792376
+Date:   2023-04-25 16:27:59
+Description:
+[IMP-21275]
+Fixed human not resetting motionwarping when returning to pool
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 792476
+Date:   2023-04-26 15:18:11
+Description:
+[IMP-NOTICKET]
+Changed an ensure to a warning vislog.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 792670
+Date:   2023-05-01 11:02:58
+Description:
+[IMP-21275]
+Added a bUseTargetHeadLocationForTrace option to FVGLineOfFireTestSettings to use TargetActor.GetActorEyesViewPoint() instead of Controller.GetFocalPointOnActor(TargetActor).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby slageweg
+--------------------------------------------------
+Change: 792768
+Date:   2023-05-01 17:20:21
+Description:
+[IMP-19643]
+Fixed bug where stealing a token from a claimer would notify the wrong claimer that its token was stolen.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-19643
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 792777
+Date:   2023-05-01 18:00:27
+Description:
+[IMP-19643]
+Made Investigators and Searchers able to steal the Flashlight token from characters who arent Investigators or Searchers.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-19643
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 793036
+Date:   2023-05-03 13:23:09
+Description:
+[IMP-19648]
+made it possible to dynamically configure the way VGAIController determines where to look at when focusing on another actor (e.g. the player)
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-19648
+#vettedby slageweg
+--------------------------------------------------
+Change: 793079
+Date:   2023-05-03 15:49:11
+Description:
+[IMP-19648]
+- If humans spot the player while looking around, they'll stop looking around and look at the player for a couple of seconds instead.
+- Fixed humans turning off their headlights when going into Combat.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-19648
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 793082
+Date:   2023-05-03 15:57:02
+Description:
+[IMP-19648]
+Made humans in Alarmed walk to the first search point instead of jogging to it.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-19648
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 793294
+Date:   2023-05-05 16:36:35
+Description:
+[IMP-21275]
+Fixed characters sometimes skipping their entire path and trying to go straight to the destination due to reusing now-invalid cached data.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby rzak
+--------------------------------------------------
+Change: 793295
+Date:   2023-05-05 16:38:17
+Description:
+[IMP-21275]
+Made it possible to check the current path destination in Blueprints.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby slageweg
+--------------------------------------------------
+Change: 793296
+Date:   2023-05-05 16:38:24
+Description:
+[IMP-NOTICKET]
+Fixed comment in VGCharacterTemplate
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 793383
+Date:   2023-05-08 12:32:57
+Description:
+[IMP-21275]
+Made the Hand preset ignore Visibility traces. This fixes an issue where human enemies (especially hunters) could not shoot the player when the player's hands are roughly in front of their head, such as when the player is aiming.
+
+Vetted by Tim Vegter
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby tvegter
+--------------------------------------------------
+Change: 793523
+Date:   2023-05-09 10:34:38
+Description:
+[IMP-21275]
+Made it possible to see what blocked a trace made using VGTraceHelpers.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby slageweg
+--------------------------------------------------
+Change: 793531
+Date:   2023-05-09 11:00:47
+Description:
+[IMP-21275]
+Better hunter dodging.
+- Hunters now try to pick a dodge location that brings them closer to the movement destination and preferrably away from the player's aim.
+- When avoiding due to being aimed at, the "dodge away from" location is just their current location instead of the player's location
+- Now stopping the roll on blend out instead of on complete so that a new path is calculated during the blendout instead of after (they were following the old path before).
+- After dodging, hunters now consider going to the hiding spot they were moving towards before dodging instead of picking a whole new one.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-21275
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 793548
+Date:   2023-05-09 12:01:22
+Description:
+[IMP-21275]
+Cleaned up dodge location selection of hunters to not rely on a dedicated BB key.
+
+#assetvalidation warning
+#jira imp-21275
+--------------------------------------------------
+Change: 793573
+Date:   2023-05-09 14:50:49
+Description:
+[IMP-19650]
+Fixed characters not animating when off screen or running in headless mode (they were technically animating but the transforms of their bones weren't being updated from animation).
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-19650
+#vettedby rzak
+--------------------------------------------------
+Change: 793770
+Date:   2023-05-10 17:06:38
+Description:
+[IMP-20953]
+Added IsValid checks for playing sounds and niagara particle systems that were returning null when running functional tests on the server (because that's done in headless mode with no audio or rendering).
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-20953
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 793771
+Date:   2023-05-10 17:06:48
+Description:
+[IMP-21275]
+Disabled debug drawing in EQSQuery_FindLocationToInvestigateFrom (was erroneously left on)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-21275
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 793772
+Date:   2023-05-10 17:07:21
+Description:
+[IMP-19650]
+Fixed characters rapidly switching from Combat to Alarmed and back. Was caused by them not updating the last known location in the first 0.2 seconds of Combat and thus deciding they lost the player when seeing their old last known location (which is away from the player's actual location). Now they can only lose the player if they don't see the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-19650
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 793773
+Date:   2023-05-10 17:07:33
+Description:
+[IMP-19650]
+Preventing enemies from walking directly into player during alarmed search.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-19650
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 793840
+Date:   2023-05-11 12:57:48
+Description:
+[IMP-20953]
+Fixed more missing IsValid checks that were breaking tests.
+
+Vetted by Danny Kruiswijk, Mirko Pennelli, Jordan de Jong
+
+#assetvalidation succeeded
+#jira imp-20953
+#vettedby dkruiswijk,mpennelli,jdejong
+--------------------------------------------------
+Change: 793867
+Date:   2023-05-11 15:50:26
+Description:
+[IMP-NOTICKET]
+Fixed Functional Test failing because of randomness in investigation location picking. Made the triggerbox wider.
+
+#assetvalidation warning
+#jira imp-noticket
+--------------------------------------------------
+Change: 793953
+Date:   2023-05-12 13:25:30
+Description:
+[IMP-13534]
+Did a pass over EQS queries to use CurrentEnemyNavLocation instead of CurrentEnemy where appropriate. This prevents issues where enemies try to attack the origin of the roomscale playspace instead of the place where the player is actually standing.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-13534
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 794242
+Date:   2023-05-16 16:38:25
+Description:
+[IMP-NOTICKET]
+Better logging of "missing parameter template" warning for OPFA actors.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-noticket
+#redbuildfix
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 794244
+Date:   2023-05-16 16:46:57
+Description:
+[IMP-NOTICKET]
+Fixed missing Printf argument
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#redbuildfix
+#vettedby pvzelst
+--------------------------------------------------
+Change: 794309
+Date:   2023-05-17 10:41:13
+Description:
+[IMP-12571]
+Made the FocusScope decorator support Rotator keys (will set the focal point in a way that makes the character face the direction specified by the rotator).
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-12571
+#vettedby lholst
+--------------------------------------------------
+Change: 794347
+Date:   2023-05-17 14:00:07
+Description:
+[IMP-12571]
+Made humans return to original location post-investigation. Made a couple of functional tests to verify this:
+- Investigate then return.
+- Investigate then return to a Living World Sequence with a locomotion track (this one also tests the case where you distract the character again while they're returning from investigating a distraction).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-12571
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 794624
+Date:   2023-05-23 13:40:21
+Description:
+[IMP-24568]
+Exposed ShouldPostponePathUpdates/ShouldPostponePathAbort/ShouldPostponePathFinish to Blueprints
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby lholst
+--------------------------------------------------
+Change: 794657
+Date:   2023-05-23 16:03:24
+Description:
+[IMP-24568]
+Added a few config variables to BPT_Firearm to configure the Rushing behavior for Elites (or rather, people with Shamblers).
+
+Vetted by Ruben Runhardt, Kent Kune
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby rrunhardt,kkune
+--------------------------------------------------
+Change: 794666
+Date:   2023-05-23 16:23:42
+Description:
+[IMP-24568]
+Added a BP-exposed UVGAITokenPoolComponent::GetNumActiveTokenClaimsOfType to check if tokens of a particular type are claimed at the moment.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby lholst
+--------------------------------------------------
+Change: 794670
+Date:   2023-05-23 16:31:38
+Description:
+[IMP-24568]
+Fixed missing null check for controlled pawn
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 794767
+Date:   2023-05-24 15:08:43
+Description:
+[IMP-24568]
+Making Elites be able to rush the player.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 794768
+Date:   2023-05-24 15:08:53
+Description:
+[IMP-24568]
+Making it not possible to transition to Alarmed while someone is rushing the player.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-24568
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 794790
+Date:   2023-05-24 16:37:02
+Description:
+[IMP-24571]
+Added a PriorityToBeInvestigator variable to parameter templates to make it possible for Elites to be prioritized for investigating disturbances.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-24571
+#vettedby pvzelst
+--------------------------------------------------
+Change: 794887
+Date:   2023-05-25 11:42:14
+Description:
+[IMP-24571]
+Made Elites be preferred for Investigation and Searching (in the Alarmed state)
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-24571
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 795510
+Date:   2023-06-01 15:34:17
+Description:
+[IMP-24424]
+Improving hunters' location picking
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-24424
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 795511
+Date:   2023-06-01 15:34:37
+Description:
+[IMP-NOTICKET]
+Fixing missing navigation for BP_BarrelFire
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 795514
+Date:   2023-06-01 15:35:11
+Description:
+[IMP-24570]
+Made it possible to kill elites through the little opening in their helmet.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-24570
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 795515
+Date:   2023-06-01 15:35:23
+Description:
+[IMP-15781]
+Added showflags for showing the sight fields of sight sensors in the editor. Made characters have the sight sensors in the right place (on head) before the game starts so it shows up correctly in the editor.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-15781
+#vettedby lholst
+--------------------------------------------------
+Change: 795516
+Date:   2023-06-01 15:35:31
+Description:
+[IMP-NOTICKET]
+Fixed missing null check in sequencer
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 795517
+Date:   2023-06-01 15:35:39
+Description:
+[IMP-NOTICKET]
+More debug vislogging of the shooting task
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 795518
+Date:   2023-06-01 15:35:56
+Description:
+[IMP-NOTICKET]
+The PlayVoice line task can now be used to make another character say something.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby lholst
+--------------------------------------------------
+Change: 795614
+Date:   2023-06-02 12:12:37
+Description:
+[IMP-21073]
+A simple conversation can now happen when two characters hear a distraction at the same time.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-21073
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 795746
+Date:   2023-06-05 13:20:47
+Description:
+[IMP-21073]
+Added a helper function DescribeArrayOfObjects for pretty-printing an array of objects.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-21073
+#vettedby rzak
+--------------------------------------------------
+Change: 795788
+Date:   2023-06-05 16:43:07
+Description:
+[IMP-21073]
+Made HTNTask_GetActorsForConversation log the found actors in the vislog
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-21073
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 796013
+Date:   2023-06-07 12:40:38
+Description:
+[IMP-25175]
+Rebuilt navmesh in HunterAIDemo
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-25175
+#vettedby rzak
+--------------------------------------------------
+Change: 796014
+Date:   2023-06-07 12:40:51
+Description:
+[IMP-25175]
+VGEnvQueryTest_JumpMotionWarpingDistance can now take the VGMotionWarpingAnimationSelectionAsset from a blackboard/worldstate key
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-25175
+#vettedby rzak
+--------------------------------------------------
+Change: 796015
+Date:   2023-06-07 12:41:45
+Description:
+[IMP-25175]
+- C++ changes for selecting hit reactions / staggers so that the hit reaction selector asset narrows down the available animations and the HTN selects from those with the help of EQS.
+- Making hunters stagger differently when still/walking/running.
+
+Vetted by Rebecca Zak, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-25175
+#vettedby rzak,fkrielaart
+--------------------------------------------------
+Change: 796153
+Date:   2023-06-08 11:03:27
+Description:
+[IMP-NOTICKET]
+Fixed characters that spawned directly into the Combat state (e.g. in Hold Your Ground sections) acting as if they're transitioning from Unaware into Combat.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 796154
+Date:   2023-06-08 11:03:34
+Description:
+[IMP-NOTICKET]
+Resaved HumanEnemyDemo_Stagger to fix a character having an unassigned template.
+
+#assetvalidation warning
+#jira imp-noticket
+--------------------------------------------------
+Change: 796155
+Date:   2023-06-08 11:03:47
+Description:
+[IMP-19016]
+Removed hack in HTNTask_Despawn: the encounter now properly unregisters characters that get manually destroyed or returned to pool.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-19016
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 796302
+Date:   2023-06-09 13:02:47
+Description:
+[IMP-25442]
+Fixed melee attacks not doing enough damage to knock out human enemies while in stealth.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira imp-25442
+#vettedby kkune
+--------------------------------------------------
+Change: 796334
+Date:   2023-06-09 16:21:42
+Description:
+[IMP-18670]
+Fixed characters moving back and forth during combat (defensive, not HYG), never settling down to the same spot.
+
+The issue was that in EQSQuery_FindCoverForShooting_Defensive, some EQS filters were present on the "is current point still good enough" generator that weren't present on the "pick new point" generator, so the EQS would keep picking points to move to that were not good enough to stay at once reached.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-18670
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 798671
+Date:   2023-06-28 15:35:32
+Description:
+[IMP-NOTICKET]
+Fixed game hanging forever when tyring to run specific levels with the visual logger.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 798714
+Date:   2023-06-28 16:47:20
+Description:
+[IMP-25486]
+- Fixed characters not having stagger animations configured for being damaged in a way that doesn't hit a specific bone (i.e. when the HitBone is None because the damage comes from an explosion). 
+- Made the stagger animation task in HTN_Human_Stagger always succeed so that if something goes wrong the character just skips the stagger animation instead of freezing forever.
+- Added a functional test for humans being staggered by grenades.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-25486
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 799021
+Date:   2023-06-29 17:33:34
+Description:
+[IMP-24953]
+- Fixed the "gun preview mesh" on humans blocking navmesh.
+- Changed default character template from BPTA_Human_Base to BPTA_Human_Soldier_01
+
+#assetvalidation succeeded
+#jira imp-24953
+--------------------------------------------------
+Change: 799761
+Date:   2023-07-05 11:25:41
+Description:
+[IMP-25845] [IMP-26254]
+Added a VGSoundNodeVoiceActorSwitch node for the Sound Cue editor to switch between voice lines recorded by different voice lines.
+Made Character Templates have an assignable voice actor asset. 
+Any sound cues played by VGCharacterBase that have a VGSoundNodeVoiceActorSwitch will use the voice actor asset assigned in the Character Template.
+
+Vetted by Ranjeet Hegde
+
+#assetvalidation succeeded
+#jira imp-25845,imp-26254
+#vettedby rhegde
+--------------------------------------------------
+Change: 799778
+Date:   2023-07-05 12:04:19
+Description:
+[IMP-25845] [IMP-26254]
+Fixed missing #if WITH_EDITOR
+
+#assetvalidation succeeded
+#jira imp-25845,imp-26254
+--------------------------------------------------
+Change: 800070
+Date:   2023-07-06 11:00:24
+Description:
+[IMP-25845]
+Fixed errors being logged when a Sound Cue with a VGSoundNodeVoiceActorSwitch node is played manually in the editor (not from a specific actor).
+
+#assetvalidation succeeded
+#jira imp-25845
+--------------------------------------------------
+Change: 800403
+Date:   2023-07-07 16:22:13
+Description:
+[IMP-NOTICKET]
+Fixed living world sequenes in HunterAIDemo playing animations in the DefaultSlot instead of the NarrativeBody slot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 800413
+Date:   2023-07-07 16:50:30
+Description:
+[IMP-NOTICKET]
+Fixed missing null check in EQS context.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 800414
+Date:   2023-07-07 16:51:43
+Description:
+[IMP-25814]
+Making hunters attack in pairs if the player stands still for too long.
+
+Vetted by Mirko Pennelli, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-25814
+#vettedby mpennelli,fkrielaart
+--------------------------------------------------
+Change: 800634
+Date:   2023-07-10 18:09:40
+Description:
+[IMP-25814]
+Removed spamming print string
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-25814
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 801015
+Date:   2023-07-12 17:37:55
+Description:
+[IMP-NOTICKET]
+Added vislogging when the firearm is obstructed to show what it's obstructed by
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rzak
+--------------------------------------------------
+Change: 801156
+Date:   2023-07-13 12:29:26
+Description:
+[IMP-27732]
+Optimized querying of the cover system by porting interface implementations from Blueprints to C++ and caching the results during a frame.
+Introduced TVGFrameCachedVariable to make it easier to cache things in the same manner in the future.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-27732
+#vettedby mpennelli
+--------------------------------------------------
+Change: 801347
+Date:   2023-07-14 12:14:47
+Description:
+[IMP-29298]
+Made cover point effectors C++ only for performance reasons (removed BlueprintNativeEvent) and made them preallocate the TSet to preallocate for 4000 items.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-29298
+#vettedby mpennelli
+--------------------------------------------------
+Change: 801394
+Date:   2023-07-14 14:33:30
+Description:
+[IMP-27813]
+Slight optimization in HTNExtension_Shooting (caching an array)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-27813
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 802012
+Date:   2023-07-18 16:38:34
+Description:
+[IMP-26357]
+Made encounters have a configurable AIGroupTemplate that gets assigned to all actor groups that get spawned for the encounter.
+Made lurker attack waves configurable via template.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-26357
+#vettedby mpennelli
+--------------------------------------------------
+Change: 802227
+Date:   2023-07-19 14:03:44
+Description:
+[IMP-29605]
+Made the sight sensor on BP_Firearm_Base only be active when held by a player.
+This massively reduces the number of traces the sight system must do.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-29605
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 802252
+Date:   2023-07-19 14:58:40
+Description:
+[IMP-NOTICKET]
+Fixed missing nullcheck in EQSContext_CurrentEnemyLastKnownLocation
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 802461
+Date:   2023-07-20 11:25:16
+Description:
+[IMP-29605]
+Optimizing sight sensor updates to avoid expensive calls to IsInLight when not needed.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-29605
+#vettedby mpennelli
+--------------------------------------------------
+Change: 802539
+Date:   2023-07-20 14:29:30
+Description:
+[IMP-NOTICKET]
+Added a variable to the ignore list for comparing fresh and reused characters.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 802606
+Date:   2023-07-20 17:10:19
+Description:
+[IMP-29605]
+Made humans in combat not see dead bodies to save perception performance
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-29605
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 803067
+Date:   2023-07-24 13:31:31
+Description:
+[IMP-29756]
+Making firearms and magazines be properly disabled (ticks, collision, physics, etc) when the holding character is disabled.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-29756
+#vettedby slageweg
+--------------------------------------------------
+Change: 803068
+Date:   2023-07-24 13:31:42
+Description:
+[IMP-NOTICKET]
+Fixed missing null check causing crashes in editor
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 803069
+Date:   2023-07-24 13:31:57
+Description:
+[IMP-NOTICKET]
+Fixed up a couple of functional tests.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 803070
+Date:   2023-07-24 13:32:09
+Description:
+[IMP-NOTICKET]
+Fixed characters saying "job's not over guys!" when spawned during HYG sections.
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 803107
+Date:   2023-07-24 15:05:17
+Description:
+[IMP-29756]
+Fixed crash when spawning an actor when there is no pooled one available.
+
+Vetted by Stanley Lageweg, Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-29756
+#vettedby slageweg,ldekker
+--------------------------------------------------
+Change: 803187
+Date:   2023-07-24 17:45:28
+Description:
+[IMP-29756]
+Fixed shambler magazines staying in place, not folllowing the shambler (was occuring with a pre-placed shambler).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-29756
+#vettedby slageweg
+--------------------------------------------------
+Change: 803309
+Date:   2023-07-25 11:14:07
+Description:
+[IMP-29756] [IMP-29981]
+Fixed actor pool pre-spawning actors before the world is fully initialized, causing the actors to be not fully initialized when we disable them.
+It is now done on BeginPlay again, but if some other actors tries to spawn a pooled actor before that, the actor pool gets initialized on-demand.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-29756,imp-29981
+#vettedby slageweg
+--------------------------------------------------
+Change: 803337
+Date:   2023-07-25 13:25:11
+Description:
+[IMP-25216]
+Better warning logging when trying to place a corpse for which we don't have a matching pool.
+
+Vetted by Laurens Holst
+
+#assetvalidation succeeded
+#jira imp-25216
+#vettedby lholst
+--------------------------------------------------
+Change: 803387
+Date:   2023-07-25 16:40:20
+Description:
+[IMP-30005]
+Fixed shambler magazines not moving with their gun.
+Fixed shambler pool initializing before shambler shell pool. Now this no longer creates issues.
+Better logging in VGActorPoolComponent
+Increased number of shamblers in pool from 5 to 8, shambler shells from 32 to 60, reduced number of kalashnikovs in pool from 32 to 15 based on log in Chapter 04.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-30005
+#vettedby slageweg
+--------------------------------------------------
+Change: 803982
+Date:   2023-07-28 12:10:14
+Description:
+[IMP-30250]
+Fixed UVGLightDetectionBlueprintLibrary::GetLightStateAtLocation doign overlaps against WorldStatic instead of light detection volumes because someone changed the collision prodile name in the project settings without updating the code.
+Added functional test to verify this helper function.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation warning
+#jira imp-30250
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 804284
+Date:   2023-07-31 14:12:45
+Description:
+[IMP-27739]
+Overriding GetViewRotation on VGPawnBase so Blueprint code can easily check where the player is looking via GetActorEyesViewPoint
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-27739
+#vettedby mpennelli
+--------------------------------------------------
+Change: 804355
+Date:   2023-07-31 17:48:08
+Description:
+[IMP-26404]
+Cover system improvements for alarmed search:
+- Made service MarkVisibleCoverPointsAsSearched only mark points that were recently (or ever) updated. This fixes tons of points behind obstacles getting marked as searched in the first few frames of a search
+- Made it possible for the service MarkVisibleCoverPointsAsSearched and EQS generator CoverPoints include navigation points alongside cover points.
+- Fixed the cover system updating the same cover point multiple times in the same frame.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-26404
+#vettedby mpennelli
+--------------------------------------------------
+Change: 804356
+Date:   2023-07-31 17:51:31
+Description:
+[IMP-NOTICKET]
+Fixed some voice lines during the alarmed search getting cut off
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 804509
+Date:   2023-08-01 13:02:06
+Description:
+[IMP-15150]
+Made SightSensorComponent notify that it can't see anything anymore when it gets deactivated
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-15150
+#vettedby mpennelli
+--------------------------------------------------
+Change: 804567
+Date:   2023-08-01 15:22:25
+Description:
+[IMP-24634]
+AIs notifying how long until the player is detected for the stealth stinger
+
+Vetted by Ranjeet Hegde
+
+#assetvalidation succeeded
+#jira imp-24634
+#vettedby rhegde
+--------------------------------------------------
+Change: 804865
+Date:   2023-08-02 16:29:16
+Description:
+[IMP-NOTICKET]
+Disabled debug drawing of Nosalis staggers.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 805151
+Date:   2023-08-03 15:55:51
+Description:
+[IMP-29294]
+Fixed VGHTNTask_GetActorsForConversation always failing.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-29294
+#vettedby mpennelli
+--------------------------------------------------
+Change: 805195
+Date:   2023-08-03 17:50:35
+Description:
+[IMP-26404]
+Alarmed search improvements/optimizations:
+- Cover point effectors can now affect only specific cover trackers (e.g. the alarmed cover tracker only needs to update cover points in a 10m radius around the characters instead of 30m for the combat cover tracker)
+- Only points that haven't been searched are updated by the cover tracker now.
+- Only points that are relevant to the search (close to characters or close to investigation location) are updated by the alarmed cover tracker now.
+- Fixed HTNTask_FindPointAtDistanceOnPath picking an unreachabe point under the stairs instead of on top of them.
+- Made alarmed search use navpoints of the cover system alongside actual cover points
+- Made enemies search in a smaller radius around the investigation location now that there are many more points to go through (6m radius instead of 10m)
+- Fixed characters not noticing points that are below their field of view during alarmed search. They now do the visibility check against a point 50cm above the ground.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation warning
+#jira imp-26404
+#vettedby mpennelli
+--------------------------------------------------
+Change: 805368
+Date:   2023-08-04 16:30:51
+Description:
+[IMP-NOTICKET]
+Fixed erroneous "character off navmesh" map check errors. Increased tolerance for the vertical navmesh projection to also work for characters that are slightly above the navmesh.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby mpennelli
+--------------------------------------------------
+Change: 805405
+Date:   2023-08-04 18:10:08
+Description:
+[IMP-30500]
+Various Lurker combat improvements
+- Fixed noticeable delays during attacks because the lurker would erroneously assume it could do a driveby attack and then replan a bounce attack at the last moment
+- Fixed lurker turning and sliding in a weird way after doing a bounce attack (it was trying to turn to look at the player)
+- Changed attack distances for lurker to better match the animations
+- Fixed lurker doing a bounce attack right after telegraph without doing a runup
+- Lurker telegraph tasks now end when the animations begin to blend out, instead of when they finish blending out.
+- Fixed Lurkers getting confused if the player breaks line of sight during them attacking
+- Fixed Lurkers not facing the player while doing a telegraph (temporary solution, will likely need to be replaced with motionwarped animations later)
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-30500
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 805407
+Date:   2023-08-04 18:15:38
+Description:
+[IMP-NOTICKET]
+Made the structs in VGTraceHelpers editable from Blueprints
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby mpennelli
+--------------------------------------------------
+Change: 805558
+Date:   2023-08-07 17:55:55
+Description:
+[IMP-24711]
+Fixed mistake in a functional test that makes it erroneously succeed.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-24711
+#vettedby rzak
+--------------------------------------------------
+Change: 805675
+Date:   2023-08-08 13:33:50
+Description:
+[IMP-31037]
+Rearranged human shooting HTNs to reduce the number of line traces done during planning.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-31037
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 805784
+Date:   2023-08-08 17:45:34
+Description:
+[IMP-31129]
+Fixed GetCoverPointOfActor still returning the closest point even if the actor explicitly says it's not at a cover point.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-31129
+#vettedby rzak
+--------------------------------------------------
+Change: 805786
+Date:   2023-08-08 17:52:58
+Description:
+[IMP-31129]
+Better querying of BAC_GettingInOutOfCover
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-31129
+#vettedby rzak
+--------------------------------------------------
+Change: 805947
+Date:   2023-08-09 15:26:19
+Description:
+[IMP-31196]
+Fixed many actor blueprints having an instanced light detection component that is always spawned at world origin and doesn't move.
+Made FVGProjectileNotification include the trace hit.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation warning
+#jira imp-31196
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 806012
+Date:   2023-08-09 17:59:02
+Description:
+[IMP-31327]
+Fixed human enemies never shooting the player (stuck forever in the "shoot firearm" task because they think the're busy turning on/off their flashlight).
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-31327
+#vettedby mpennelli
+--------------------------------------------------
+Change: 806145
+Date:   2023-08-10 11:47:04
+Description:
+[IMP-11489]
+Fixed characters sometimes holding their gun close to chest even when out of cover.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-11489
+#vettedby rzak
+--------------------------------------------------
+Change: 806327
+Date:   2023-08-11 10:42:34
+Description:
+[IMP-31181]
+Fixed Nosalis not doing the "threatened" behavior when being aimed at with a gun.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-31181
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 806565
+Date:   2023-08-14 10:35:27
+Description:
+[IMP-31567]
+Made HTN decorators conditions not be checked during execution if they are not allowed to abort the plan (e.g. if an If node has "bCanConditionsInterruptFalseBranch" or "bCanConditionsInterruptFalseBranch" disabled).
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-31567
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 806683
+Date:   2023-08-14 14:33:48
+Description:
+[IMP-31651]
+Made it possible to specify an Idle animation in the character template.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-31651
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 806687
+Date:   2023-08-14 14:43:21
+Description:
+[IMP-31567]
+Updgraded HTN plugin to v1.11.5 (+ unpublished improvements from develop).
+Decorators can now check their conditions at an interval instead of every frame.
+Made the "is path available" decorator in HTN_Lurker_Combat only check its condition every 0.5+-0.2s instead of every frame.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-31567
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 806767
+Date:   2023-08-14 18:00:43
+Description:
+[IMP-31567]
+Fixed paths calculated with "IsPathAvailable" automatically recalculating up to 120 times before being garbage collected, despite only being needed once.
+Fixed "IsPathAvailable" returning true when the resulting path is not valid.
+
+Vetted by Tim Toxopeus, Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-31567
+#vettedby ttoxopeus,fkrielaart
+--------------------------------------------------
+Change: 807080
+Date:   2023-08-15 18:33:23
+Description:
+[IMP-30938]
+Fixed the sight targets of the player flashlight being visible to sight sensors even after the flashlight is turned off.
+Added a functional test for this: FunctionalTest_FlashlightSightTargetsAfterTurnedOff
+
+Vetted by Mirko Pennelli
+
+#assetvalidation warning
+#jira imp-30938
+#vettedby mpennelli
+--------------------------------------------------
+Change: 807268
+Date:   2023-08-16 14:43:23
+Description:
+[IMP-31865]
+Reduced frequency of the "hold your ground" voice line.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-31865
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 807347
+Date:   2023-08-16 17:26:47
+Description:
+[IMP-31023] [IMP-31029] [IMP-31033]
+Improved and more performant rushing behavior for Elites.
+Elites no longer meander chaotically once close to player during rushing.
+Querying fewer points with pathfinding and "is exposed to direction"
+Replanning less often when doing Combat_Idle (every ~1s instead of 0.2s)
+Fixed characters picking "defensive" cover points that are safe but will be exposed once the player comes out.
+Recalculating suppresive fire locations less often: every 0.2s -> 0.4s
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-31023,imp-31029,imp-31033
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 807627
+Date:   2023-08-17 18:54:27
+Description:
+[IMP-31821]
+Added a mapcheck for using disallowed animation slots in animation sections in sequencer.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-31821
+#vettedby pvzelst
+--------------------------------------------------
+Change: 807774
+Date:   2023-08-18 13:17:26
+Description:
+[IMP-31821]
+Improved the mapcheck for animation slots to have a "Fix" button and use the right slot name based on the class of the actor involved (e.g. "Narrative" for mutants, "NarrativeBody"/"NarrativeFace" for humans).
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-31821
+#vettedby pvzelst
+--------------------------------------------------
+Change: 808137
+Date:   2023-08-21 17:41:11
+Description:
+[IMP-32266]
+Fixed crash caused by trying to update invalid sensor targets. They were not removed from the array in the subsystem in OnUnregister because they were added to that array multiple times because Activate was called multiple times on them.
+Fixed missing NotifyOnExitedView when a sight target gets deactivated.
+Moved from raw ptr to TObjectPtr<> in the perception system.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-32266
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 808263
+Date:   2023-08-22 11:07:40
+Description:
+[IMP-32452]
+Fixed hunters freezing for 2s when doing a turn-in-place around the same time as reloading.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-32452
+#vettedby rzak
+--------------------------------------------------
+Change: 808645
+Date:   2023-08-23 13:39:19
+Description:
+[IMP-32512] [IMP-26627]
+Fixed AI contorllers unpossessing before stopping the HTN (UVGHTNDecorator_AllowParticipationInSequenceScope was unable to reset bReadyToParticipate on the UVGSequenceParticipantComponent on the pawn which was no longer possessed).
+Fixed erroneous "cannot run invalid HTN" warnings.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-32512,imp-26627
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 809583
+Date:   2023-08-28 16:40:19
+Description:
+[IMP-32880]
+Made the map check for animation slots handle facial animations better. The allowed animation slots for an animation in the sequencer now take into account if it's a face or a body animation (determined by checking for "Face" or "Facial" in the name).
+This should catch cases where a face animation was accidentally assigned to NarrativeBody or a body animation to NarrativeFace.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-32880
+#vettedby skistemaker
+--------------------------------------------------
+Change: 809820
+Date:   2023-08-29 17:05:11
+Description:
+[IMP-32209]
+[Impact] Integrated #807627, #807774, #807875, #807880, #808263, #808619, #808645, #809052, #809073, #809583 from //Impact/Development/....
+
+Also fixed up BPTA_Pawn_Game_Easy having damage multipliers set to Ignore and thus not having any effect.
+
+Change 807627 on 2023/08/17 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-31821]
+	Added a mapcheck for using disallowed animation slots in animation sections in sequencer.
+
+	Vetted by Paul van Zelst
+
+	#assetvalidation succeeded
+	#jira imp-31821
+	#vettedby pvzelst
+
+Change 807774 on 2023/08/18 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-31821]
+	Improved the mapcheck for animation slots to have a "Fix" button and use the right slot name based on the class of the actor involved (e.g. "Narrative" for mutants, "NarrativeBody"/"NarrativeFace" for humans).
+
+	Vetted by Paul van Zelst
+
+	#assetvalidation succeeded
+	#jira imp-31821
+	#vettedby pvzelst
+
+Change 807875 on 2023/08/18 by rzak@rzak_impact
+
+	[IMP-29499]
+	Removes hunter turn in motion, adds generated curves to COTGW locomotion animations for smoother transitions from start motion to movement loop
+
+	Vetted by Floyd Krielaart
+
+	#assetvalidation succeeded
+	#jira imp-29499
+	#vettedby fkrielaart
+
+Change 807880 on 2023/08/18 by rzak@rzak_impact
+
+	[IMP-31271]
+	Removes vent warnings, clean up mutant abps, and checks for vent bounding boxes more efficiently
+
+	Vetted by Maks Maisak
+
+	#assetvalidation succeeded
+	#jira imp-31271
+	#vettedby mmaisak
+
+Change 808263 on 2023/08/22 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-32452]
+	Fixed hunters freezing for 2s when doing a turn-in-place around the same time as reloading.
+
+	Vetted by Rebecca Zak
+
+	#assetvalidation succeeded
+	#jira imp-32452
+	#vettedby rzak
+
+Change 808619 on 2023/08/23 by fkrielaart@DevelopmentOffice
+
+	[IMP-29628]
+	+ Hunter blowgun now does 25 dmg on easy, 30 on normal and 35 on hard. (Against player)
+	+ Hunter now flanks when hiding instead of when attacking. This reduces time to attack
+	+ Hunter can now attack with 2 hunters at once.
+	+ Hunter telegraph 1.5x as fast
+	+ Hunter blowgun is now more accurate 0.7 -> 1
+	+ Hunter now does not decide to attack in the middle of it moving to a hiding spot
+
+	Vetted by Maks Maisak
+
+	#assetvalidation succeeded
+	#jira imp-29628
+	#vettedby mmaisak
+
+Change 808645 on 2023/08/23 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-32512] [IMP-26627]
+	Fixed AI contorllers unpossessing before stopping the HTN (UVGHTNDecorator_AllowParticipationInSequenceScope was unable to reset bReadyToParticipate on the UVGSequenceParticipantComponent on the pawn which was no longer possessed).
+	Fixed erroneous "cannot run invalid HTN" warnings.
+
+	Vetted by Tim Toxopeus
+
+	#assetvalidation succeeded
+	#jira imp-32512,imp-26627
+	#vettedby ttoxopeus
+
+Change 809052 on 2023/08/24 by arembado@arembado_VSA-DESKTOP010_ImpactDevelopment
+
+	[IMP-32835]
+	Trimmed Turn In Place Combat Animations
+	As per tech Anim feedback
+
+	Vetted by Rebecca Zak
+
+	#assetvalidation succeeded
+	#jira imp-32835
+	#vettedby rzak
+
+Change 809073 on 2023/08/24 by rzak@rzak_impact
+
+	[IMP-32452]
+	Root motion checkbox fix for pose blend in CombatActive
+
+	Vetted by Maks Maisak
+
+	#assetvalidation succeeded
+	#jira imp-32452
+	#vettedby mmaisak
+
+Change 809583 on 2023/08/28 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-32880]
+	Made the map check for animation slots handle facial animations better. The allowed animation slots for an animation in the sequencer now take into account if it's a face or a body animation (determined by checking for "Face" or "Facial" in the name).
+	This should catch cases where a face animation was accidentally assigned to NarrativeBody or a body animation to NarrativeFace.
+
+	Vetted by Steijn Kistemaker
+
+	#assetvalidation succeeded
+	#jira imp-32880
+	#vettedby skistemaker
+
+#assetvalidation succeeded
+#jira imp-32209
+--------------------------------------------------
+Change: 809946
+Date:   2023-08-30 11:00:27
+Description:
+[IMP-32209]
+[Impact] Integrated #808137 from //Impact/Development/....
+
+
+Change 808137 on 2023/08/21 by mmaisak@VSA-DESKTOP002_ImpactDevelopment
+
+	[IMP-32266]
+	Fixed crash caused by trying to update invalid sensor targets. They were not removed from the array in the subsystem in OnUnregister because they were added to that array multiple times because Activate was called multiple times on them.
+	Fixed missing NotifyOnExitedView when a sight target gets deactivated.
+	Moved from raw ptr to TObjectPtr<> in the perception system.
+
+	Vetted by Tim Toxopeus
+
+	#assetvalidation succeeded
+	#jira imp-32266
+	#vettedby ttoxopeus
+
+#assetvalidation succeeded
+#jira imp-32209
+--------------------------------------------------
+Change: 809947
+Date:   2023-08-30 11:00:33
+Description:
+[IMP-32209]
+[Impact] Integrated #809797 from //Impact/Development/....
+
+
+Change 809797 on 2023/08/29 by arembado@arembado_VSA-DESKTOP010_ImpactDevelopment
+
+	[IMP-32835]
+	[L1] Removed Unwanted Extra Settle frames from Hunter's Locomotion Animations
+
+	Vetted by Rebecca Zak
+
+	#assetvalidation succeeded
+	#jira imp-32835
+	#vettedby rzak
+
+#assetvalidation succeeded
+#jira imp-32209
+--------------------------------------------------
+Change: 809969
+Date:   2023-08-30 11:47:01
+Description:
+[IMP-32209]
+[Impact] Integrated #809797, #809941 from //Impact/Development/....
+
+
+Change 809797 on 2023/08/29 by arembado@arembado_VSA-DESKTOP010_ImpactDevelopment
+
+	[IMP-32835]
+	[L1] Removed Unwanted Extra Settle frames from Hunter's Locomotion Animations
+
+	Vetted by Rebecca Zak
+
+	#assetvalidation succeeded
+	#jira imp-32835
+	#vettedby rzak
+
+Change 809941 on 2023/08/30 by arembado@arembado_FOR-DESKTOP22_ImpactDevelopment
+
+	[IMP-32835]
+	Solved In-Engine Weird rotation snapping on Turns and Start With Turns animations
+
+	Vetted by Rebecca Zak
+
+	#assetvalidation succeeded
+	#jira imp-32835
+	#vettedby rzak
+
+#assetvalidation succeeded
+#jira imp-32209
+--------------------------------------------------
+Change: 810224
+Date:   2023-08-31 14:50:54
+Description:
+[IMP-33246]
+Exposed records of recent hits of VGHitReactionHandlerComponent to Blueprints.
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira imp-33246
+#vettedby skistemaker
+--------------------------------------------------
+Change: 810801
+Date:   2023-09-05 17:49:44
+Description:
+[IMP-32209] [IMP-32210] [IMP-30252] [IMP-33422] [IMP-33452]
+- Fixed staggers and hunters' dodges not aborting montages playing in the DefaultSlot (which is most of them)
+- Fixed hunters sometimes not dodging or staggering.
+- Fixed hunters picking an ambush spot and then immediately discarding it because of mismatch between EQS Test (is exposed to direction) and HTN decorator (clear line of fire)
+- Made human characters transition into Alarmed/Combat if a projectile shot by the player narrowly misses them.
+- Adding an Aiming trace channel for checking if a character can aim at the player through something. (e.g. you can shoot through a piece of glass even though it doesn't block Visibility but does block Bullet).
+- Cages block Aming and Bullet but not Visibility
+- Much cleaner handling of finding and updating the ambush spot for hunters
+- Fixed EQS services doing the EQS twice when the service begins
+- Made hunters not able to crouch for navigation purposes (this should fix them getting stuck trying to run into an area where you're supposed to crouch).
+- Fixed characters getting alerted by a projectile that didn't actually get any close to them
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-32209,imp-32210,imp-30252,imp-33422,imp-33452
+#vettedby fkrielaart
+
+Encountered 4 warnings:
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_PlayerMovementReaction.BAC_PlayerMovementReaction is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactSideBranch/Impact/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_PlayerMovementReaction.uasset'
+/Game/Blueprints/Framework/BP_Pawn.BP_Pawn is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactSideBranch/Impact/Content/Blueprints/Framework/BP_Pawn.uasset'
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactSideBranch/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Blueprints/AIToolkit/Human/ParameterTemplates/BPT_Human.BPT_Human is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactSideBranch/Impact/Content/Blueprints/AIToolkit/Human/ParameterTemplates/BPT_Human.uasset'
+--------------------------------------------------
+Change: 810802
+Date:   2023-09-05 17:50:16
+Description:
+[IMP-32209]
+Better vislogging of some traces.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-32209
+#vettedby rzak
+--------------------------------------------------
+Change: 811076
+Date:   2023-09-06 18:22:49
+Description:
+[IMP-30252]
+Made some cages block Aiming so hunters don't shoot through them.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-30252
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811249
+Date:   2023-09-07 16:19:42
+Description:
+[IMP-32210]
+Made slavers use the Aiming trace channel for line-of-fire checks.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-32210
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811632
+Date:   2023-09-12 10:44:20
+Description:
+[IMP-33685]
+Changed collision settings on some actors.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-33685
+#vettedby fkrielaart
+
+Encountered 7 warnings:
+Source file CatwalkCeilingSupportSA_3m.fbx is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_3m.fbx' or depot. Referenced by: /Game/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_3m
+Source file CatwalkCeilingSupportSA_4m.fbx is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_4m.fbx' or depot. Referenced by: /Game/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_4m
+Source file CatwalkCeilingSupportSA_7m.fbx is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_7m.fbx' or depot. Referenced by: /Game/Assets/Environment/ConstructionElements/Catwalks/CatwalkServiceAreas/Blockout/CatwalkCeilingSupportSA_7m
+This asset is in an unexpected path: AtlasSource/Environment/BarricadesFencing/Fence_CrushBarrier/. Expected root path is Assets/ for StaticMesh assets. (AssetPath_Validator_C)
+This asset is in an unexpected path: AtlasSource/Environment/BarricadesFencing/Fence_CrushBarrier/. Expected root path is Assets/ for StaticMesh assets. (AssetPath_Validator_C)
+See log for complete list of warnings
+--------------------------------------------------
+Change: 811674
+Date:   2023-09-12 14:08:52
+Description:
+[IMP-33425]
+Added a fallback behavior for the Hunter when the hunter has nowhere to hide. Now keeps shooting the player forever instead of doing nothing. Did this in a test-driven way by making a failing functional test first and applying changes until it succeeded.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33425
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811719
+Date:   2023-09-12 16:52:33
+Description:
+[IMP-33681]
+Made hunters finish the Stagger task OnBlendOut instead of OnComplete, reducing the amount of time they stand still after getting hit (by roughly 0.2s by default, configurable on individual montages). It's likely we can resolve this issue fully by increasing the blendout time on the hunters' stagger montages.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33681
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811830
+Date:   2023-09-13 14:04:07
+Description:
+[IMP-NOTICKET]
+Fixed some functional tests not waiting long enough for a body to settle on the ground.
+
+#assetvalidation succeeded
+#jira imp-noticket
+--------------------------------------------------
+Change: 811831
+Date:   2023-09-13 14:05:38
+Description:
+[IMP-31615]
+Fixed CanSeePlayer sometimes returning true even if the player is (e.g.) crouching in darkness without moving in the periphery view of an enemy, thus making the awareness rate 0.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-31615
+#vettedby rzak
+--------------------------------------------------
+Change: 811837
+Date:   2023-09-13 14:43:13
+Description:
+[IMP-33422]
+Made hunters try not to change direction when going to hiding spot. This is done by adding a sphere of high pathing cost behind them to their pathfinding filter. So they'll try to avoid paths that end up going through the spot right behind the character and thus try to move forward.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33422
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811994
+Date:   2023-09-14 15:22:50
+Description:
+[IMP-32209]
+A few short fixes for Kent's feedback on the Hunter behavior.
+Made the HunterHidingSpot navfilter hard-prevent going through the player. Made the associated MoveTo task recalculate the path a couple of times per second in case the player gets in the way of the path.
+Increased the stagger cooldown from 0.8s to 2s for the hunter.
+Made the MoveTo task have the Pawn be the query owner for plan-time pathing checks instead of the task itself. This makes navfilters that rely on the querier pawn work during planning.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-32209
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 811995
+Date:   2023-09-14 15:23:38
+Description:
+[IMP-33681]
+Made hunter staggers blend out longer, thus letting them move on to other AI tasks like running away earlier.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33681
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 812040
+Date:   2023-09-14 17:51:45
+Description:
+[IMP-32209]
+Made hunter face player while hiding in hiding spots. This reduces situations where the player chases down the hunter and the hunter is just standing there with their back to the player.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-32209
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 812042
+Date:   2023-09-14 17:52:52
+Description:
+[IMP-14977] [IMP-32209]
+Made it possible for the IsExposedToDirection test to test multiple points per location to give them a sense of "width" so that locations very close to a wall's corner will still count as exposed because if a character stood there their arm would stick out the corner.
+
+Implemented said changes for hunters finding hiding spots.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-14977,imp-32209
+#vettedby slageweg
+--------------------------------------------------
+Change: 812044
+Date:   2023-09-14 18:01:35
+Description:
+[IMP-14977]
+Fixed missing comment.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-14977
+#vettedby slageweg
+--------------------------------------------------
+Change: 814030
+Date:   2023-09-28 14:36:52
+Description:
+[IMP-33680] [IMP-34355]
+- Vislogging the locations to be avoided during pathfinding in the AvoidSpecificLocations navfilter.
+- Fixed hunters avoiding too big a radius around the player during pathfinding (inner and outer avoidance radius was swapped)
+- Made cultists look at player while staggering and dodging
+- Added a 0.2s delay before shooting at the beginning of "standing" dodge/stagger tests to prevent issues when switching from one test to another.
+- Made hunter staggers more lenient in their location picking so they don't cancel all locations if they're too close to player.
+- Fixed hunters playing a moving  stagger animation even when staggering in place, causing tons of foot sliding.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation warning
+#jira imp-33680,imp-34355
+#vettedby mpennelli
+
+Encountered 9 warnings:
+/Game/Blueprints/AIToolkit/Shared/Testing/BP_FunctionalTestBase.BP_FunctionalTestBase is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Testing/BP_FunctionalTestBase.uasset'
+/Game/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_R45_Montage.COTGW_RunCombat_Dodge_R45_Montage is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_R45_Montage.uasset'
+/Game/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_L15_Montage.COTGW_RunCombat_Dodge_L15_Montage is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_L15_Montage.uasset'
+/Game/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_L45_Montage.COTGW_RunCombat_Dodge_L45_Montage is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_L45_Montage.uasset'
+/Game/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_R15_Montage.COTGW_RunCombat_Dodge_R15_Montage is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Assets/Characters/COTGW_01/Animations/Combat/COTGW_RunCombat_Dodge_R15_Montage.uasset'
+See log for complete list of warnings
+--------------------------------------------------
+Change: 814397
+Date:   2023-10-02 12:02:06
+Description:
+[IMP-33680]
+Fixed wrong animation slot for narrative seqeunces in Chapter12.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-33680
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 814621
+Date:   2023-10-03 11:44:52
+Description:
+[IMP-NOTICKET]
+Made UVGAIStateBase::SetInvestigationLocation return true if the investigation location was changed significantly per Ruben's request.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby mpennelli
+--------------------------------------------------
+Change: 814725
+Date:   2023-10-03 17:15:06
+Description:
+[IMP-26713]
+Characters now react to light status changing + functional tests. Destructible lights now have a BAC_InformAIOfLightStatusChanges component that, when active, activates a sight target for a short duration whenever the light status changes. AI characters (just humans for now) that notice that will investigate that. You can manually parent a BP_SightTarget_LightStatusChange actor to such lights, and in that way have characters notice lights changing without facing the light itself (e.g. if a bright lamp above them got shot they'll only notice that if a sight target parented to that light was placed in their field of view).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira imp-26713
+#vettedby rrunhardt
+
+Encountered 2 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Blueprints/Hands/BSC_InteractionHighlighter.BSC_InteractionHighlighter is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Hands/BSC_InteractionHighlighter.uasset'
+--------------------------------------------------
+Change: 814853
+Date:   2023-10-04 12:47:16
+Description:
+[IMP-35687]
+Fixed the IsExposedToDirection EQS test failing due to doing a trace from a point inside a wall.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-35687
+#vettedby rzak
+--------------------------------------------------
+Change: 815057
+Date:   2023-10-05 10:19:04
+Description:
+[IMP-26713]
+Made Nosalises and Lurkers explicitly react to the flashlight and to lamps being turned on/off.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira imp-26713
+#vettedby rrunhardt
+
+Encountered 3 warnings:
+/Game/Blueprints/Lighting/BP_Light.BP_Light is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Lighting/BP_Light.uasset'
+/Game/Blueprints/AIToolkit/Human/Controller/AIC_Human_Base.AIC_Human_Base is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Controller/AIC_Human_Base.uasset'
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_ThreatTracker.BAC_ThreatTracker is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_ThreatTracker.uasset'
+--------------------------------------------------
+Change: 815655
+Date:   2023-10-10 10:10:01
+Description:
+[IMP-33973]
+Added an EQS generator for generating points on navmesh edges around an EQS context.
+Extracted GetNavMeshEdges into a helper function in VGNavMeshHelpers
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33973
+#vettedby mpennelli
+--------------------------------------------------
+Change: 815724
+Date:   2023-10-10 13:14:27
+Description:
+[IMP-33973]
+Changed defaults of the PointsOnNavmesh EQS generator.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33973
+#vettedby mpennelli
+--------------------------------------------------
+Change: 815789
+Date:   2023-10-10 15:49:06
+Description:
+[IMP-33973]
+Fixed crash when not supplying a nav data to GetNavMeshEdges. Fixed not using fallback to regular nav edges when there is no CoverData on the navmesh.
+Made hunters and lurkers use teh new PointsOnNavmeshEdges generator to find hiding spots.
+Made lurker hidings spots have a 50cm radius so that they can't pick points that are just on a corner so half their body sticks out.
+
+Vetted by Floyd Krielaart, Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33973
+#vettedby fkrielaart,mpennelli
+--------------------------------------------------
+Change: 816292
+Date:   2023-10-12 17:29:40
+Description:
+[IMP-26036] [IMP-26037]
+TAF test for AI characters (just hunters and slavers for now).
+A map with two encounters that begin in stealth but transition to combat in the middle.
+This should provide a comparison for stealth/combat performance for AI characters.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-26036,imp-26037
+#vettedby mpennelli
+--------------------------------------------------
+Change: 816385
+Date:   2023-10-13 11:19:35
+Description:
+[IMP-26036]
+Added TAFTest_AICharacters to the ShaderCache tests.
+Fixed Chapter12 being listed in the ShaderCache tests with the Performance monitor instead of ShaderCache.
+Removed TAFTest_AICharacters from Sanity tests as it can't really fail..
+More consistend naming of section end markers in TAFTest_AICharacters.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira imp-26036
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 816475
+Date:   2023-10-13 16:52:34
+Description:
+[IMP-36095]
+Fixed cultists using slaver barks when no cultist barks are available.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-36095
+#vettedby pvzelst
+--------------------------------------------------
+Change: 816647
+Date:   2023-10-16 13:45:46
+Description:
+[IMP-36330]
+Made characters with "start with flashlight enabled" respect the limit on the number of flashlights enabled at the same time.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-36330
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 816707
+Date:   2023-10-16 15:49:31
+Description:
+[IMP-36319]
+Fixed ProjectPointToNavigationDown, when the projection radius is big, projecting onto a polygon that is highest instead of the one that is closest to the point.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36319
+#vettedby slageweg
+--------------------------------------------------
+Change: 817373
+Date:   2023-10-19 15:54:09
+Description:
+[IMP-36330] [IMP-34259]
+Much more reliable flashlight management that always respects the flashlight token limit.
+Fixed characters not turning off their flashlight after investigating sometimes.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira imp-36330,imp-34259
+#vettedby rrunhardt
+
+Encountered 7 warnings:
+/Game/Blueprints/AIToolkit/Human/Group/AIG_EncounterHumans.AIG_EncounterHumans is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Group/AIG_EncounterHumans.uasset'
+/Game/Blueprints/AIToolkit/Human/HTNs/HTN_Human_Combat_Main.HTN_Human_Combat_Main is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/HTNs/HTN_Human_Combat_Main.uasset'
+/Game/Blueprints/Scarcity/BP_ResourceManager.BP_ResourceManager is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Scarcity/BP_ResourceManager.uasset'
+/Game/Blueprints/Scarcity/ResourceSpawners/BSC_ResourceSpawnLocation.BSC_ResourceSpawnLocation is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Scarcity/ResourceSpawners/BSC_ResourceSpawnLocation.uasset'
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_Ragdoll.BAC_Ragdoll is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_Ragdoll.uasset'
+See log for complete list of warnings
+--------------------------------------------------
+Change: 817955
+Date:   2023-10-24 14:46:33
+Description:
+[IMP-36330]
+Improved flashlight handling for humans: more reliable logging of changes, options to force turn on/off with or without animation. Force turn on no longer makes flashlight tokens not stealable.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-36330
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 817956
+Date:   2023-10-24 14:47:24
+Description:
+[IMP-36330]
+Added handling for corner case for when we try to release a communal lock handle after delay but there's no World.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36330
+#vettedby slageweg
+--------------------------------------------------
+Change: 818524
+Date:   2023-10-26 10:53:01
+Description:
+[IMP-33679]
+Added gameplay tag volumes that can be used to mark up areas with gameplay tags and run gameplay tag queries against locations via a subsystem or EQS tests. Added a functional test to verify this system.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33679
+#vettedby mpennelli
+--------------------------------------------------
+Change: 818785
+Date:   2023-10-27 11:22:43
+Description:
+[IMP-33679]
+Made hunters avoid areas marked with specific gameplay tags when picking an ambush spot.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33679
+#vettedby mpennelli
+--------------------------------------------------
+Change: 819370
+Date:   2023-10-31 15:42:18
+Description:
+[IMP-37251]
+Partial rebuild (408 actions). Added facial animation support for barks. When the bark component plays a sound wave that has a facial animation assigned in its metadata (VGSoundWaveAnimationMetadata), it plays it on the Face slot of ABP_Human. Added a functional test to verify that the facial animation gets played when a bark is played. Also fixed the Blink slot sharing a group with DefaultSlot.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-37251
+#triggerscoderebuild
+#vettedby rzak
+
+Encountered 4 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Blueprints/Scarcity/ResourceSpawners/BSC_AIAmmo_SpawnLocation.BSC_AIAmmo_SpawnLocation is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Scarcity/ResourceSpawners/BSC_AIAmmo_SpawnLocation.uasset'
+/Game/Blueprints/Framework/LightDetection/BSC_LightDetectionComponent.BSC_LightDetectionComponent is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Framework/LightDetection/BSC_LightDetectionComponent.uasset'
+Source file Slaver_Generic_Cursing_LongCurse_M04_SukaBlyad_01.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/VO/EnemyBarks/SlaverBarks/Slaver2/Generic/Slaver_Generic_Cursing_LongCurse_M04_SukaBlyad_01.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver2/Generic/Slaver_Generic_Cursing_LongCurse_M04_SukaBlyad_01
+--------------------------------------------------
+Change: 819372
+Date:   2023-10-31 15:46:12
+Description:
+[IMP-NOTICKET]
+Fixed spamming "Planning task AITask_MakeHTNPlan_4435 succeeded. Recorded planspace traversal:" in the output log.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 819841
+Date:   2023-11-02 12:01:09
+Description:
+[IMP-37270]
+Editor tool for assigning facial animations to voice line sound waves. Select voice line sound waves -> right click -> assign facial animations
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-37270
+#vettedby rzak
+--------------------------------------------------
+Change: 819865
+Date:   2023-11-02 13:18:51
+Description:
+[IMP-37269] [IMP-37270]
+Generated and assigned facial animations for voice line sound waves. Renamed ResponseTouchedSomething -> ResponseTouch because their paths were above the 260 character limit.
+
+Vetted by Rebecca Zak
+
+#assetvalidation warning
+#jira imp-37269,imp-37270
+#vettedby rzak
+
+Encountered 983 warnings:
+Source file Slaver_Combat_Comms_Assisting_M03_CoverHim.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Assisting_M03_CoverHim.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Assisting_M03_CoverHim
+Source file Slaver_Combat_Comms_Assisting_M03_GotYourBack.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Assisting_M03_GotYourBack.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Assisting_M03_GotYourBack
+Source file Slaver_Combat_Comms_Assisting_M03_Group_Covering_02.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/Audio/VO/Barks/M03/Slaver_Combat_Comms_Assisting_M03_Group_Covering_02.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Assisting_M03_Group_Covering_02
+Source file Slaver_Combat_Comms_Firing_M03_DieMraz.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Firing_M03_DieMraz.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Firing_M03_DieMraz
+Source file Slaver_Combat_Comms_Firing_M03_DieMudak.wav is referenced and cannot be found in workspace 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/AssetsSource/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Firing_M03_DieMudak.wav' or depot. Referenced by: /Game/Assets/Audio/VO/EnemyBarks/SlaverBarks/Slaver1/Combat/Slaver_Combat_Comms_Firing_M03_DieMudak
+See log for complete list of warnings
+--------------------------------------------------
+Change: 820144
+Date:   2023-11-03 15:32:00
+Description:
+[IMP-33243]
+Optimized VGMapCheckTest to not freeze the editor for 50 seconds when opening the Session Frontend for the first time.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira imp-33243
+#vettedby pvzelst
+--------------------------------------------------
+Change: 820146
+Date:   2023-11-03 15:33:07
+Description:
+[IMP-31038]
+Added a configurable limit of simultaneous flashlight token claims to BPT_AIGroup. This limit is applied independently of the number of tokens in the AIG_EncounterHumans (e.g. if it's 2 in the encounter and 1 in the group template, or the other way around, the actual limit will be 1).
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-31038
+#vettedby mpennelli
+--------------------------------------------------
+Change: 820640
+Date:   2023-11-07 16:41:52
+Description:
+[IMP-7302] [IMP-16501]
+Human look-around/peering animations are now played in a way that is aware of walls to teh character's left and/or right. This prevents characters looking stupid when they're intently peering into a wall.
+New HTNTask_PlayAnimation task to replace HTNTask_PlayAnimMontage and HTNTask_PlayDynamicAnimMontage.
+Fixed an issue where a character quickly turning to face an alarming noise abrubptly stops halfway through the rotation.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-7302,imp-16501
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 820826
+Date:   2023-11-08 12:51:13
+Description:
+[IMP-7302]
+Fixed LookAround detecting walls too strictly.
+Fixed BP_TestNoiseEmitter being usper loud.
+Removed unused HTN_Human_LookAround
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-7302
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 820881
+Date:   2023-11-08 15:09:33
+Description:
+[IMP-7302]
+Hooked up hunter-specific lookaround animations. Increased blend time on cut up lookaround/peer animations that are cut off at the middle.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-7302
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 821075
+Date:   2023-11-09 13:30:33
+Description:
+[IMP-16501] [IMP-7302] [IMP-33784]
+Replaced usages of HTNTask_PlayAnimMontage and HTNTask_PlayDynamicAnimMontage with HTNTask_PlayAnimation.
+Fixed HTN_NosalisApproachGrenade aborting the roar when it's done moving. Now moving and roaring are handled independently in parallel.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-16501,imp-7302,imp-33784
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 821556
+Date:   2023-11-13 12:32:37
+Description:
+[IMP-33974]
+Made weakspots configurable to ignore certain damage types. Made helmet weakspot of elites ignore player melee.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-33974
+#vettedby rzak
+--------------------------------------------------
+Change: 821613
+Date:   2023-11-13 14:22:40
+Description:
+[IMP-37626]
+Hunter combat fixes/improvements:
+- Fixed hunter's fallback behavior not working when there is a path towards the player.
+- Fixed hunter not attacking the player if it's possible to shoot the player from where the hunter is standing but from no other location.
+- Fixed hunter not finding a place to attack the player from in cases where there is no path from the attack location to the player. What matters is if the location has clear line of fire on the player.
+- When a hunter is going to an ambush spot but it is invalidated (e.g. if the player moved), the hunter just picks a new ambush spot now instead of going back to hiding.
+- Cleaned up Hunter Combat Main.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-37626
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 821684
+Date:   2023-11-13 16:22:55
+Description:
+[IMP-37626]
+When hunter is attacking because the player saw them, removed an abort that happens if the distance between them grows too big. It's cleaner to just complete the attack instead of aborting it mid-shot.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-37626
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 822470
+Date:   2023-11-15 16:31:47
+Description:
+[IMP-38069]
+Fixes to staggers always picking the same animation.
+Much cleaner, performant, and correct selection of stagger destinations for humans and hunters.
+Reduced stagger cooldowns for humans (0.8s -> 0.5s) and hunters (2s -> 1s).
+
+Vetted by Ruben Runhardt, Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-38069
+#vettedby rrunhardt,rzak
+--------------------------------------------------
+Change: 823021
+Date:   2023-11-17 11:43:25
+Description:
+[IMP-37626]
+Fixed hunters' sight targets always being off. Made a functional test to verify this and catch similar issues in the future.
+The issue was caused by caching the "sight targets visible" variable before the sight targets are actaully added (UpdateSightTargetVisibility was being called before BeginPlay)
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-37626
+#vettedby slageweg
+--------------------------------------------------
+Change: 823046
+Date:   2023-11-17 13:04:43
+Description:
+[IMP-27538]
+Fixed the player pawn's NavAgentLocation being at the playspace origin instead of below the camera.
+This fixes potential issues with AI at close range when playing with a roomscale playspace instead of stationary.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation warning
+#jira imp-27538
+#vettedby mpennelli
+
+Encountered 1 warnings:
+/Game/Blueprints/Equipment/GasMask/BSC_GasmaskSocket.BSC_GasmaskSocket is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Equipment/GasMask/BSC_GasmaskSocket.uasset'
+--------------------------------------------------
+Change: 823075
+Date:   2023-11-17 14:40:41
+Description:
+[IMP-37575]
+Fix for deadlock and crash in UPhysicalAnimationComponent::UpdatePhysicsEngineImp()
+
+It appears that it was locking a writelock around the physics state of the skeletal mesh but then evaluated the bone transforms inside it, which triggered a case of "wait until it's finished evaluating on another thread", where that evaluation most likely needed to read the physics state, causing a deadlock.
+
+Another issue was that the transforms array provided by the skeletal mesh component was empty in some cases (on the first frame?), and the UPhysicalAnimationComponent didn't range check indices in that array. In this case it now skips setting up physics until the next update.
+
+Vetted by Rebecca Zak
+
+#assetvalidation succeeded
+#jira imp-37575
+#vettedby rzak
+--------------------------------------------------
+Change: 823305
+Date:   2023-11-20 14:25:43
+Description:
+[IMP-NOTICKET]
+Unshelved from pending changelist '822910':
+
++ AIC_Lurker's OnUsingBlackboard now correctly calls its parent
+
+Vetted by Floyd Krielaart, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby fkrielaart,rrunhardt
+--------------------------------------------------
+Change: 823330
+Date:   2023-11-20 15:13:15
+Description:
+[IMP-30193]
+Fixed humans jittering up and down when walking over small objects (they try to StepUp on them). Rather than disabling "can character step up on" on tons of assets, this change just reduces the step up height from 45cm to 0cm.
+
+Vetted by Hakan Persson
+
+#assetvalidation succeeded
+#jira imp-30193
+#vettedby hpersson
+--------------------------------------------------
+Change: 823657
+Date:   2023-11-21 16:56:40
+Description:
+[IMP-38230] [IMP-38231]
+If the player is inside a VGGameplayTagVolume with the tag "AI.LocationTags.PlayerNotVisibleToUnawareAI", the player will not be seen by enemies in Unaware/Investigate states, but will be seen by enemies in Alarmed/Combat states. Everywhere where we use BP_PreCombatVisibilityBlocker (a hack from Prototype) we should remove that and use a VGGameplayTagVolume with "AI.LocationTags.PlayerNotVisibleToUnawareAI" instead.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation warning
+#jira imp-38230,imp-38231
+#vettedby mpennelli
+
+Encountered 4 warnings:
+/Game/Blueprints/AIToolkit/Shared/Perception/BP_SightTarget_Flashlight.BP_SightTarget_Flashlight is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Perception/BP_SightTarget_Flashlight.uasset'
+/Game/Blueprints/AIToolkit/Mutants/Lurker/Pawn/BP_Lurker.BP_Lurker is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Mutants/Lurker/Pawn/BP_Lurker.uasset'
+/Game/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.BP_AICharacter_Human is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BP_AICharacter_Human.uasset'
+/Game/Blueprints/Inventory/Slots/BSC_InventorySlot_Flashlight.BSC_InventorySlot_Flashlight is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Inventory/Slots/BSC_InventorySlot_Flashlight.uasset'
+--------------------------------------------------
+Change: 824195
+Date:   2023-11-23 15:29:53
+Description:
+[IMP-38885]
+Fixed slavers/hunters freezing for 4 seconds between reaching the investigation locaation and looking around.
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-38885
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 824681
+Date:   2023-11-27 10:27:29
+Description:
+[IMP-37592] [IMP-38008]
+Fixed enemies not reacting to teleport locomotion
+Made a functional test to verify that teleportation increases enemy awareness.
+Made an error be logged when the character is not configured to react to seeing teleportation in specific sight fields.
+
+Fixed alarmed searcher humans not always having their flashlights on. Investigators and Searchers now steal flashlight tokens from others.
+Made HumanAIDemo_Alarmed darker and made the default light state Dark instead of Light in the world settings.
+
+Vetted by Ruben Runhardt, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-37592,imp-38008
+#vettedby rrunhardt,slageweg
+--------------------------------------------------
+Change: 824850
+Date:   2023-11-27 16:10:59
+Description:
+[IMP-39036] [IMP-38455] [IMP-30193]
+Fixed hunters getting stuck on stairs. Made a FunctionalTest_Stairs to reproduce and verify the issue. Unfortunately had to roll back the fix for IMP-30193 as part of this (characters can now step up to 45cm again), so the issue of characters jittering up and down on small objects on the ground will need to be fixed by level designers disabling "can character step up on" on specific meshes.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation warning
+#jira imp-39036,imp-38455,imp-30193
+#vettedby rrunhardt
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Human/Pawn/BAC_GettingInOutOfCover.BAC_GettingInOutOfCover is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Human/Pawn/BAC_GettingInOutOfCover.uasset'
+--------------------------------------------------
+Change: 825793
+Date:   2023-11-30 13:20:34
+Description:
+[IMP-39205]
+Fixed VGGameplayTagVolume and VGNoAutomaticCoverPointsVolume triggering OutOfBounds when walked into.
+
+Vetted by Hilko Janssen
+
+#assetvalidation succeeded
+#jira imp-39205
+#vettedby hjanssen
+--------------------------------------------------
+Change: 825836
+Date:   2023-11-30 14:36:39
+Description:
+[IMP-39551]
+It's now possible to configure AI states to ignore sight targets with specific tags.
+Made mutants not build up Awareness from seeing a flashlight beam. They still go to investigate though.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-39551
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 826034
+Date:   2023-12-01 10:15:29
+Description:
+[IMP-36914]
+Fixed humans not reacting to seeing dead bodies.
+Now seeing a dead body makes human characters go into Alarmed, not Investigate. 
+Appropriate barks are played from the initial reaction there.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation warning
+#jira imp-36914
+#missingfixversion
+#vettedby fkrielaart
+
+Encountered 1 warnings:
+/Game/Blueprints/Hands/BAC_InteractionUtility.BAC_InteractionUtility is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/Hands/BAC_InteractionUtility.uasset'
+--------------------------------------------------
+Change: 827080
+Date:   2023-12-06 14:05:25
+Description:
+[IMP-36914]
+Unshelved from pending changelist '826051':
+
+Added FT for hunters reacting to a dead body.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-36914
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 827141
+Date:   2023-12-06 15:16:50
+Description:
+[IMP-36956]
+Unshelved from pending changelist '825318':
+
+Cover handling improvements for humans. Cover points now have a pre-generated "safe cone" such that if a target is outside it, then we already know it's not safe from that target and we can skip doing a line trace. This helps fix cases where a character thinks they're in cover because the one trace done from their middle says so but their arm/side is sticking out from behind cover. This also improves cover tracking responsiveness as many line traces can be skipped.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira imp-36956
+#vettedby slageweg
+--------------------------------------------------
+Change: 827172
+Date:   2023-12-06 16:23:16
+Description:
+[IMP-36956]
+When a hunter is hiding in cover and it becomes no longer valid cover (e.g., because the player flanks and can now see the hunter's leg sticking out from the new angle), the hunter reacts to that within a couple of seconds instead of just continuing to stand there.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-36956
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 827716
+Date:   2023-12-08 11:59:45
+Description:
+[IMP-39627]
+Originally made by Floyd, vetted by me.
+- The AI will no longer get stuck if the AI cannot make a plan, but the player is reachable.
+- When going to hiding spot during the "unreachable" behavior, hunters now continuously update the movement destination.
+
+Vetted by Floyd Krielaart
+
+#assetvalidation succeeded
+#jira imp-39627
+#missingfixversion
+#vettedby fkrielaart
+--------------------------------------------------
+Change: 828082
+Date:   2023-12-11 14:03:07
+Description:
+[IMP-36957]
+Increased tolerance for "is on the same line" checks from 60cm to 80cm to better prevent friendly fire when using a Shambler, which has a very high spread.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-36957
+#missingfixversion
+#vettedby mpennelli
+--------------------------------------------------
+Change: 828429
+Date:   2023-12-12 16:33:51
+Description:
+[IMP-36956]
+High cover stepout locations now more closely match the animations, reducing issues with characters getting into high cover and realizing that they can't actually shoot from there.
+Updated the gun's offsets to match updated animations for stepping out of cover.
+Fixed characters popping out high cover the wrong way when they just walkted into the high cover point and haven't oriented themselves to face it yet (e.g rounded a corner like here: https://vertigotube.vertigo-studios.nl/view?m=Wn6cfd2Rg)
+Fixed characters doing a "look around" animation while still stepped out of cover. Added a delay to wait until we're safely back in cover.
+When characters pick an intermediate cover point to go to as part of going to a destination further away, that is done in a more strict way.
+Reduced "Line of Fire Width" from 20cm to 12cm to fix low cover not being generated by the windows in EvadeSlavers1.
+
+Vetted by Floyd Krielaart, Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-36956
+#vettedby fkrielaart,slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_CorpseReplacer.BAC_CorpseReplacer is referenced but is not at the latest revision 'D:/P4/VSA-DESKTOP002_ImpactDevelopment/Impact/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_CorpseReplacer.uasset'
+--------------------------------------------------
+Change: 828660
+Date:   2023-12-13 13:18:53
+Description:
+[IMP-40267]
+Fixed editor crash when exiting PIE during HYG (AVGEnemyPhaseManager::Stop wasn't nullchecking its World).
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-40267
+#vettedby ldekker
+--------------------------------------------------
+Change: 828714
+Date:   2023-12-13 14:51:03
+Description:
+[IMP-40267]
+Fixed use of raw pointers to destroyed objects being retained by UVGWorldResourceTrackerComponent, leading to memory corruption issues. Most likely an issue with some resources falling through the floor, getting destroyed, and pointers to them still being used. It was most likely a shambler shell since I got an ensure triggered for it being destroyed while in a pool. That in turn is possibly connected to the issue of trying to grab a shell off the floor with both hands at the same time after which it just floats in the air. Something in the shell's physics probably stays enabled even after it's placed in inventory, so it falls through the floor even when it's supposed to be in a pool. The shambler shell issue is mostly a hunch though. The crash should be fixed now.
+
+Vetted by Loes Dekker
+
+#assetvalidation succeeded
+#jira imp-40267
+#vettedby ldekker
+--------------------------------------------------
+Change: 828882
+Date:   2023-12-14 12:22:10
+Description:
+[IMP-NOTICKET]
+Resaved asset to fix pain bark not getting triggered in Human_AimCombat_Hit_Chest_F_02_Montage
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 828884
+Date:   2023-12-14 12:25:59
+Description:
+[IMP-NOTICKET]
+Increased tolerance for motion warping when staggering a hunter while moving. This fixes hunter abruptly stopping when shot while running in a narrow space instead of stumbling forward along the way.
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-noticket
+#missingfixversion
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 828889
+Date:   2023-12-14 13:03:18
+Description:
+[IMP-39810]
+Fixed trolley characters not having bark+audio components.
+
+Vetted by Riccardo Lusuardi
+
+#assetvalidation succeeded
+#jira imp-39810
+#missingfixversion
+#vettedby rlusuardi
+--------------------------------------------------
+Change: 828929
+Date:   2023-12-14 14:38:54
+Description:
+[IMP-33784]
+Updated HTN plugin to v1.13.0
+
+#assetvalidation succeeded
+#jira imp-33784
+#missingfixversion
+--------------------------------------------------
+Change: 828931
+Date:   2023-12-14 14:40:26
+Description:
+[IMP-33784]
+Fixed Nosalises and Lurkers not being able to damage the test pawn used in some functional test maps.
+Fixed Nosalis investigation tests having a too narrow range of expected investigation location (they were not making it to the too-small trigger box).
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33784
+#missingfixversion
+#vettedby mpennelli
+--------------------------------------------------
+Change: 828971
+Date:   2023-12-14 15:53:52
+Description:
+[IMP-33784]
+Rebuild navmesh in functional test to update cover points.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33784
+#missingfixversion
+#vettedby mpennelli
+--------------------------------------------------
+Change: 828972
+Date:   2023-12-14 15:54:05
+Description:
+[IMP-33784]
+Fixed InvestigateAboveSelf test erroneously failing due to too short timeout.
+
+Vetted by Mirko Pennelli
+
+#assetvalidation succeeded
+#jira imp-33784
+#missingfixversion
+#vettedby mpennelli
+--------------------------------------------------
+Change: 829567
+Date:   2023-12-18 15:48:01
+Description:
+[IMP-40849]
+Made it possible to configure a NavModifierComponent to include components that don't have "can ever affect navigation enabled"
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira imp-40849
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 830029
+Date:   2023-12-20 13:22:26
+Description:
+[IMP-40968]
+Fixes for Lurker not attacking and generally acting weird in Chapter02.
+Made lurkers use fast telegraph instead of locomotion to face the player (they were prone to just running around forever if the player keeps dodging out of the way).
+Fixed lurkers being unable to approach the player to do an attack if they are really far away and the path to the player is roundabout (more than 1.5x length of the straight-line distance).
+Fixed TokenScope decorator reacting to a token being unclaimed even after the decorator is already done executing.
+Added missing nullcheck in ABP_Lurker_Base (was causing errors when exiting PIE)
+
+Vetted by Mirko Pennelli, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira imp-40968
+#vettedby mpennelli,rrunhardt
+--------------------------------------------------
+Change: 830130
+Date:   2023-12-20 17:56:43
+Description:
+[IMP-40902]
+Fixed light detection components being on before character death, hogging performance when updating overlaps.
+Modified HoldYourGround functional tests to reproduce the issue and verify the fixes.
+Light detection components now always follow the state of the sight targets that depend on them (if there are any).
+
+These light detection components were always enabled for slavers (should only be the case after death), and for lurkers they stayed on after dying (should only be on before death). That is now fixed and the functional tests pass.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira imp-40902
+#vettedby slageweg
+
+Encountered 1 warnings:
+/Game/Blueprints/Framework/ActorPooling/BP_ActorPool.BP_ActorPool is referenced but is not at the latest revision 'D:/ImpactDevelopment/Impact/Content/Blueprints/Framework/ActorPooling/BP_ActorPool.uasset'
+--------------------------------------------------

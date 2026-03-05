@@ -1,0 +1,1830 @@
+Change: 718305
+Date:   2021-02-05 14:18:22
+Description:
+[Poker] Highlighting the highest hand.
+--------------------------------------------------
+Change: 718307
+Date:   2021-02-05 14:22:46
+Description:
+Undo //RoomsAR/Development/pokerlounge/... changelist 718305
+--------------------------------------------------
+Change: 718364
+Date:   2021-02-08 11:28:49
+Description:
+[Poker] 
+Highlighting highest hand when playing open-handed. Refactoring of hand highlighting.
+Reviewed by Laurens Holst
+--------------------------------------------------
+Change: 718390
+Date:   2021-02-08 15:14:17
+Description:
+[Poker] Fixed wrong hand strength indication after a new game begins at the same table.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718392
+Date:   2021-02-08 15:17:43
+Description:
+[Poker] No longer highlighting highest hand if all players have the same hand strength.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718402
+Date:   2021-02-08 17:20:54
+Description:
+[Poker] Renames on client side.
+
+SeatObject -> SeatView
+Seats -> SeatsView
+Table -> TableView (scene.pokerTable -> scene.tableView)
+Card -> CardView
+--------------------------------------------------
+Change: 718540
+Date:   2021-02-10 16:48:24
+Description:
+[Poker] Refactored SeatView and SeatInformation.
+Reviewed by Laurens Holst
+--------------------------------------------------
+Change: 718601
+Date:   2021-02-11 11:28:28
+Description:
+[Poker] 
+- Seats to be knocked out at the beginning of next round are now highlighted in red.
+- Recreating SeatInformation when moving from lobby to game to fix missing UI.
+
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718662
+Date:   2021-02-12 10:41:58
+Description:
+[Poker] Fixed the "dealer/smallblind/bigblind" icons being duplicated across multiple games.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718678
+Date:   2021-02-12 14:46:48
+Description:
+[Poker] Fixed VictoryScreen visuals. Now creating a separate avatar image instead of moving the winner's SeatView around.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718820
+Date:   2021-02-15 17:37:54
+Description:
+[Poker] Partial implementation of the v1.3 Seat UI.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718893
+Date:   2021-02-16 13:44:13
+Description:
+[Poker] Fixed rejoining table breaking the game.
+Fixed placeholder text on other players' seats when rejoining table.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718908
+Date:   2021-02-16 16:17:25
+Description:
+[Poker] Seats are now highlighted in green when they have the highest hand in the open handed mode. Highlighted in red if they will be knocked out in knockout mode.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 718961
+Date:   2021-02-17 10:34:49
+Description:
+[Poker] [RAR-2047] Fixed soft-lock during victory screen.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719105
+Date:   2021-02-18 10:21:54
+Description:
+[Poker] When a player is about to be knocked out, there is text on their seat that indicates that.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719124
+Date:   2021-02-18 11:32:39
+Description:
+[Poker] Not showing "highest hand" highlight on folded players.
+Fixed green highlight lingering on the wrong player until next socket update.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719137
+Date:   2021-02-18 13:07:45
+Description:
+[Poker] Fixed soft lock when all other players leave table.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719156
+Date:   2021-02-18 16:37:05
+Description:
+[Poker] No longer showing hand strength bars on players who folded.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719157
+Date:   2021-02-18 16:37:32
+Description:
+[Poker] Showing the green/red (highest hand/will get knocked out) highlights on the client player's UI and not just for other players.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719158
+Date:   2021-02-18 16:40:14
+Description:
+[Poker] [RAR-2032] "Reveal hand" button no longer used in open hand mode.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719275
+Date:   2021-02-22 11:32:43
+Description:
+[Poker] Refactored hand strength evaluation. Fixed incorrect highest hand highlighting.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719276
+Date:   2021-02-22 11:32:56
+Description:
+[Poker] Only updating padding and fontsize fitting if the text changed.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719287
+Date:   2021-02-22 15:17:59
+Description:
+[Poker] [RAR-2063] Fixed timer around other players' avatars overlapping the sb/bb/d badges.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719355
+Date:   2021-02-23 13:17:42
+Description:
+[Poker] Fixed a possible cause of black screen when all players leave table during round.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719356
+Date:   2021-02-23 13:18:26
+Description:
+[Poker] Refactoring in CardManager. Fixed cards showing up wrong when disconnecting and reconnecting to a game after Flop.
+Fixed wrong offset of the betUI for seats in the bottom left/right locations.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719368
+Date:   2021-02-23 14:31:25
+Description:
+[Poker] [RAR-1630, RAR-2073] Fixed SeatInformation panel being seen through semitransparent player avatar.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719375
+Date:   2021-02-23 16:02:27
+Description:
+[Poker] Fixed error causing black screen when players manually leave table at the end of the round.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719435
+Date:   2021-02-24 10:23:58
+Description:
+[Poker] Re-applied erroneuoulsly removed fix.
+--------------------------------------------------
+Change: 719456
+Date:   2021-02-24 15:20:46
+Description:
+[Poker] Refactored the BlindTimer panel. 
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719490
+Date:   2021-02-24 17:46:23
+Description:
+[Poker] Added knockout timer view.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719538
+Date:   2021-02-25 11:33:55
+Description:
+[Poker] [RAR-2093] Improved "player image" knockout UI.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719551
+Date:   2021-02-25 13:17:47
+Description:
+[Poker] [RAR-2073] Fixed knockout timer being stuck at 00:00 after the first knockout.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719608
+Date:   2021-02-26 10:23:05
+Description:
+[Poker] Removed the redundant knockout countdown on player seats. Now they just say "Fewest chips".
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719616
+Date:   2021-02-26 11:59:40
+Description:
+[Poker] Fixed knockout overlay and the d/sb/bb icon not following the scale of the player avatar when doing a scale tween.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719617
+Date:   2021-02-26 11:59:51
+Description:
+[Poker] Changed knockout timer view to match new concept
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719661
+Date:   2021-02-26 15:39:28
+Description:
+[Poker] Playing a sound when the knockout timer rolls over.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719662
+Date:   2021-02-26 15:46:31
+Description:
+[Poker] Not showing knockout info until a minute before knockout. Removed the "Fewest chips" text from SeatInformation.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719740
+Date:   2021-03-01 14:46:39
+Description:
+[Poker] [RAR-2111] Added more space for the game mode description text in main menu.
+--------------------------------------------------
+Change: 719751
+Date:   2021-03-01 16:20:24
+Description:
+[Poker] [RAR-2118] Added text describing if there's a betting limit or not in different gamemodes in lobby and during the game.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719838
+Date:   2021-03-02 10:49:35
+Description:
+[Poker] Added the new knockout timer sound.
+--------------------------------------------------
+Change: 719846
+Date:   2021-03-02 11:28:53
+Description:
+[Poker] Replaced sfx_knockout_timer.wav file with .mp3
+--------------------------------------------------
+Change: 719896
+Date:   2021-03-02 14:19:45
+Description:
+[Poker] Fixed server crash when all players leave at the same time. 
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719908
+Date:   2021-03-02 16:23:41
+Description:
+[Poker] Added conditional offset down to seat text to avoid overlap with hand strength bar when it's present.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 719971
+Date:   2021-03-03 13:12:18
+Description:
+[Poker] [RAR-2122] In knockout mode, the all-in button is present if the player does not have enough chips to call.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 720003
+Date:   2021-03-03 16:00:34
+Description:
+[Poker] [RAR-1661] Card holders are no longer hidden when reconnecting to a game in progress.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 721055
+Date:   2021-03-18 15:07:34
+Description:
+Stream //RoomsAR/StateSystemPrototype saved.
+--------------------------------------------------
+Change: 721056
+Date:   2021-03-18 15:07:35
+Description:
+Initial branch of files from Development (//RoomsAR/Development) to StateSystemPrototype (//RoomsAR/StateSystemPrototype)
+--------------------------------------------------
+Change: 721058
+Date:   2021-03-18 15:12:49
+Description:
+Stream //RoomsAR/StateSystemPrototype_NoAssetsSource saved.
+--------------------------------------------------
+Change: 721060
+Date:   2021-03-18 15:20:36
+Description:
+[States] Initial implementation of state machines inspired by XState.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 721355
+Date:   2021-03-22 16:30:14
+Description:
+[States] 
+- Distinction between eventless (no "on" property) and eventful (on specific message) transitions.
+- TurnEffect as state machine.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 721694
+Date:   2021-03-25 10:56:17
+Description:
+[States]
+- Unified transition triggering. Now using a consumesMessage property of transitions to determine message propagation.
+- TradeCardsContainer as state machine.
+- GoFish fishing animation management as state machine.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 721866
+Date:   2021-03-26 13:55:44
+Description:
+[States]
+- makeFlipFlopMachine helper
+- consumesMessage (true by default) and checkOnEntry (false by default) now have to be specified explicitly.
+- removed messageFilters, now using conditions to handle the "on" property of transition configs
+- using flipFlop machines in a few UI elements
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 721928
+Date:   2021-03-26 16:57:57
+Description:
+[States]
+- Using a state machine in FishingRod
+- Removed commented out code in GoFishGame.js
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722038
+Date:   2021-03-29 14:08:40
+Description:
+[States]
+- Removed context
+- Made it possible to pass extra arguments instead of just a message
+- Class comments for state machine classes
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722067
+Date:   2021-03-29 16:14:36
+Description:
+[State] - Now only keeping track of the current leaf node, instead of redundantly storing a node chain from root to leaf.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722088
+Date:   2021-03-29 17:31:38
+Description:
+[States] 
+- Added specification of the state machine config as passed into makeStateMachine for clarity.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722090
+Date:   2021-03-29 18:20:52
+Description:
+[Poker] Imported the StateMachine system from the StateSystemPrototype branch.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722157
+Date:   2021-03-30 10:25:16
+Description:
+[Poker] Fixed linter errors.
+--------------------------------------------------
+Change: 722401
+Date:   2021-03-31 15:06:04
+Description:
+[Poker] 
+- Initial version of lobby player views with placeholder visuals.
+- Ability to add custom masks to AvatarView.
+- AvatarView now unsubscribes from scene.load once the image is loaded.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722422
+Date:   2021-03-31 18:09:19
+Description:
+[Poker] Added a HorizontalLayout helper for element layout.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722712
+Date:   2021-04-06 11:29:06
+Description:
+[Poker]
+- New in game seat views
+- New card views for them (using the GoFish/simplePoker cards atlas for now)
+- Added Seat.equals(a, b) and Player.equals(a, b)
+- State.onEntryExit helper to avoid paired calls to onEntry, onExit
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722777
+Date:   2021-04-06 17:06:55
+Description:
+[Poker]
+- Proper size and layout of the opponents' seat views.
+
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 722923
+Date:   2021-04-07 16:58:19
+Description:
+[Poker]
+- Renamed InGameSeatView to OpponentSeatView
+- Added ClientPlayerSeatView
+- Extracted PlayerPortraitView from OpponentSeatView
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723262
+Date:   2021-04-13 11:15:21
+Description:
+[Poker] 
+- Set up In-game UI elements for player seats. Prefabs and scripts.
+- Equals and GetHashCode for Seat, Player.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723292
+Date:   2021-04-13 15:03:03
+Description:
+[Poker] Setup for lobby seats UI
+Reviwed by Laurens Holst.
+--------------------------------------------------
+Change: 723293
+Date:   2021-04-13 15:04:25
+Description:
+[Poker] Converted spaces to tabs.
+--------------------------------------------------
+Change: 723322
+Date:   2021-04-13 17:43:01
+Description:
+[Poker] Renamed Card.number to Card.value
+--------------------------------------------------
+Change: 723421
+Date:   2021-04-14 18:44:23
+Description:
+[GoFish] Added interactive background animations (visible while asking for cards):
+- Raccoon in the bushes
+- Raccoon drinking water
+- Mother duck with ducklings
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723571
+Date:   2021-04-16 11:53:39
+Description:
+[Poker] Intial version of the state system ported to C# from the js original. Fully synchronous for now.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723759
+Date:   2021-04-19 15:34:13
+Description:
+[Poker] Lobby seats and mock join/leave functionality.
+Reviwed by Laurens Holst.
+--------------------------------------------------
+Change: 723881
+Date:   2021-04-20 11:34:25
+Description:
+[Poker] Game mode selection screen UI scripts and prefab structure.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723911
+Date:   2021-04-20 14:15:14
+Description:
+[Poker] Split off some of the Lobby scene into prefabs. Made the host player be the player in the first seat.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 723934
+Date:   2021-04-20 16:29:08
+Description:
+[Poker] Lobby UI for seats now matches wireframe.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724050
+Date:   2021-04-21 16:35:20
+Description:
+[Poker] Added missing BaseBehavior.cs.meta
+--------------------------------------------------
+Change: 724061
+Date:   2021-04-21 19:17:12
+Description:
+[GoFish] 
+- Added the "Seagull" background animation set
+- Adjusted clickable areas on interactive animations
+- Interactable animations no longer stall the rest of the game
+- Fixed asyncronous sequencing of interaction events.
+Reviewed by Laurens Holst
+--------------------------------------------------
+Change: 724194
+Date:   2021-04-22 13:33:48
+Description:
+[Poker] Switching to the in-game state when the Start button is pressed under the right conditions.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724309
+Date:   2021-04-23 15:09:00
+Description:
+[Poker] Removed "continuous mode" from game mode settings.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724310
+Date:   2021-04-23 15:09:21
+Description:
+[Poker] Added a "settings" panel.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724575
+Date:   2021-04-28 16:51:53
+Description:
+[Poker] Fixed leaving/disconnecting not working while in game.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724576
+Date:   2021-04-28 17:00:31
+Description:
+[GoFish] 
+- Added background animations: frog, ladybug, pondDuck.
+- New background image.
+- Background animations are now above pond fishes.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724701
+Date:   2021-04-29 16:52:27
+Description:
+[Poker]
+Added a game settings overlay with toggleable settings.
+Setting options can be specified in the editor.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724702
+Date:   2021-04-29 16:54:00
+Description:
+[Poker]
+Fixed GameSettingsOverlay prefab being inactive when opened separately.
+--------------------------------------------------
+Change: 724739
+Date:   2021-04-30 10:32:25
+Description:
+[Poker]
+Fixed player seats not showing correctly when in game.
+Cards of the client player are now on the player portrait.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 724884
+Date:   2021-05-03 13:32:34
+Description:
+[Poker]
+- Added the "make host / kick player" overlay. Non-functional yet, UI-only.
+- The "me" player auto-joins when playing in editor.
+--------------------------------------------------
+Change: 724919
+Date:   2021-05-03 17:55:10
+Description:
+[Poker]
+- Host player popup is no longer a singleton
+- Extracted common parts of SeatView and LobbySeatView into SeatViewBase
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725047
+Date:   2021-05-04 15:31:11
+Description:
+[Poker] Only showing the game settings button to the host.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725048
+Date:   2021-05-04 15:32:07
+Description:
+[Poker] 
+- Player widgets and bet info functionality.
+- Fixed cached properties sometimes referencing invalid values.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725112
+Date:   2021-05-05 10:43:49
+Description:
+[Poker] Added missing .meta files
+--------------------------------------------------
+Change: 725118
+Date:   2021-05-05 11:31:44
+Description:
+[Poker] Added the bottom panel with the betting buttons and a game status text.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725166
+Date:   2021-05-05 18:48:24
+Description:
+[GoFish] "Waiting for players to join x / y" no longer shows counts like "0 / 0" or "0 / 1", since the minimum number of players to start a game is 2.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725167
+Date:   2021-05-05 18:48:41
+Description:
+[GoFish]
+- Updated background animations
+- Added secondary loop animations to all animals
+- Client-server synchronization for background animations
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725168
+Date:   2021-05-05 19:16:00
+Description:
+[GoFish] Added an fps counter. Can be hidden by pressing "p".
+--------------------------------------------------
+Change: 725209
+Date:   2021-05-06 11:22:10
+Description:
+[Poker]
+- Fixed errors when editing the betting panel in the editor.
+- Added the call amount above the check/call button.
+- Call and Check buttons are now separate gameobjects in the same location. They get turned on and off depending on the call amoun (call with 0 bet is a check).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725210
+Date:   2021-05-06 11:22:43
+Description:
+[Poker] Changing the color of text on a button when pressed.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725214
+Date:   2021-05-06 12:04:35
+Description:
+[Poker] Added a hand strength bar to PlayerPortrait.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725232
+Date:   2021-05-06 15:26:17
+Description:
+[Poker]
+- Changing image tint when a button is pressed.
+- Fixed InformationButton being obscured by another element.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725468
+Date:   2021-05-10 17:14:44
+Description:
+[Poker] A single betting round is now possible.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725469
+Date:   2021-05-10 17:16:10
+Description:
+[Poker] Fixed missing semicolon.
+--------------------------------------------------
+Change: 725584
+Date:   2021-05-11 15:30:30
+Description:
+[Poker]
+- Added a rudimentary winner screen
+- Raise panel functionality
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725720
+Date:   2021-05-12 15:36:12
+Description:
+[GoFish]
+- Latest background animations from ArtKing
+- The raccoon in the bushes now reacts with a sound when clicked.
+--------------------------------------------------
+Change: 725721
+Date:   2021-05-12 15:36:20
+Description:
+[GoFish] Moved down the FPS counter.
+--------------------------------------------------
+Change: 725905
+Date:   2021-05-17 17:31:50
+Description:
+[Poker]
+Cycling through game mode icons on the sides of the screen in the lobby.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725984
+Date:   2021-05-18 13:21:00
+Description:
+[Poker]
+Hooked up the "game status" label in the lobby.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725985
+Date:   2021-05-18 13:21:09
+Description:
+[Poker] Functionality for new player turn design.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 725986
+Date:   2021-05-18 13:21:24
+Description:
+[Poker] Moved the leave button on lobby seats to make it visible. Was hidden off screen.
+--------------------------------------------------
+Change: 725987
+Date:   2021-05-18 13:21:38
+Description:
+[Poker] 
+Correct movement around table during betting rounds. 
+Correct betting amounts dependent on what other players bet.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726017
+Date:   2021-05-18 16:17:11
+Description:
+[Poker] Submitted missing meta file
+--------------------------------------------------
+Change: 726026
+Date:   2021-05-18 17:56:13
+Description:
+[Poker] Dealing and showing table cards and player cards.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726027
+Date:   2021-05-18 17:59:29
+Description:
+[Poker] Made component caching less verbose.
+--------------------------------------------------
+Change: 726028
+Date:   2021-05-18 18:11:51
+Description:
+[Poker]
+Seat now uses a List instead of an Array.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726216
+Date:   2021-05-19 18:16:49
+Description:
+[GoFish]
+- Sound effects for background animations
+- Extracted background animation management from GoFishTable to BackgroundAnimationLogic
+- Background animations are now disabled if the game can't maintain X fps for Y milliseconds (configurable, 30 and 5000 by default)
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726217
+Date:   2021-05-19 18:22:04
+Description:
+[GoFish] Added ability to make background animations appear with a random chance instead of every turn.
+--------------------------------------------------
+Change: 726228
+Date:   2021-05-19 19:04:13
+Description:
+[GoFish] Fixed missing Util error.
+--------------------------------------------------
+Change: 726302
+Date:   2021-05-20 11:30:43
+Description:
+[GoFish] 
+- Added a status indicator for background animation throttling in the debug phase
+- Extracted performance throttling tracker into a separate class.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726334
+Date:   2021-05-20 15:04:32
+Description:
+[GoFish]
+Looping card animations (idle/hover/dragging) are now only enabled if the device can produce at least 20fps for 5000ms (configurable in debug panel).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726335
+Date:   2021-05-20 15:24:17
+Description:
+[GoFish] Fixed debug panel throwing on game update.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726336
+Date:   2021-05-20 15:24:58
+Description:
+[GoFish] Made the debug panel always accessible without pressing ctrl + b
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726502
+Date:   2021-05-21 15:10:16
+Description:
+[Poker] The first two seats in the game now auto-pay the small/big blinds.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726697
+Date:   2021-05-25 13:23:32
+Description:
+[GoFish]
+- FPS counter is hidden by default, can be enabled by pressing "p".
+- Only tracking performance for throttling when not in lobby
+- Changed default values for performance tracking / animation throttling
+- Shuffling and randmizing chance of background animations
+
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726700
+Date:   2021-05-25 13:33:51
+Description:
+[GoFish] Removed debug panel and fps counter.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726750
+Date:   2021-05-25 17:32:35
+Description:
+[Poker] A poker hand can now be fully played (preflop, flop, turn, river).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726751
+Date:   2021-05-25 17:33:08
+Description:
+[Poker] The pot amount is now visually displayed on the table.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 726765
+Date:   2021-05-25 17:56:14
+Description:
+[Poker] Fixed missing meta file.
+--------------------------------------------------
+Change: 726846
+Date:   2021-05-26 12:14:43
+Description:
+[GoFish] Changed background animation probability to 0.2
+--------------------------------------------------
+Change: 726936
+Date:   2021-05-26 16:49:28
+Description:
+[GoFish] Disabled debug panel and fps counter again.
+--------------------------------------------------
+Change: 727100
+Date:   2021-05-27 16:10:18
+Description:
+[Poker]
+- Tournament mode: Playing multiple hands. Eliminating players with no chips at the end of a hand.
+- Skipping a round if everyone goes all in.
+- Blinds double every time a timer runs out. The changes apply at the beginning of the next hand.
+- Unit tests for the above.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727101
+Date:   2021-05-27 16:11:47
+Description:
+[Poker]
+- Fixed folded cards staying folded forever even in subsequent hands.
+- Added a small delay when the cards on the table change.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727510
+Date:   2021-06-01 10:30:57
+Description:
+[Poker] Fixed wrong icons on SeatBettingInfo.
+--------------------------------------------------
+Change: 727525
+Date:   2021-06-01 13:19:19
+Description:
+[Poker] Fixed 6 of Clubs being upside-down in the sprite atlas.
+--------------------------------------------------
+Change: 727638
+Date:   2021-06-01 18:03:50
+Description:
+[Poker] Refactored betting turn advancement. In preFlop, the big blind player can bet even if everyone else calls.
+
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727716
+Date:   2021-06-02 11:05:03
+Description:
+[Poker] Blinds timer increased from 60s to 5m.
+--------------------------------------------------
+Change: 727819
+Date:   2021-06-02 18:05:34
+Description:
+[States] Fixed error when entering a state on machine start.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727820
+Date:   2021-06-02 18:08:52
+Description:
+[Poker] Decoupled Players from Seats. A seat is now not removed when a player leaves during the game. This lets them retain the rebuy counter and their place at the table.
+--------------------------------------------------
+Change: 727919
+Date:   2021-06-03 14:35:31
+Description:
+[Poker] Fixed the only remaining player with chips having to click through the remaining rounds.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727941
+Date:   2021-06-03 15:00:23
+Description:
+[Poker] Made cards highlightable.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727943
+Date:   2021-06-03 15:12:00
+Description:
+[Poker] Removed now-unused script.
+--------------------------------------------------
+Change: 727944
+Date:   2021-06-03 15:12:40
+Description:
+[Poker] Unit tests - replaced comment with assert
+--------------------------------------------------
+Change: 727948
+Date:   2021-06-03 15:33:38
+Description:
+[Poker] Fixed warnings on startup due to OnValidate.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 727958
+Date:   2021-06-03 15:59:23
+Description:
+[Poker] Undid unsuccessful warnign fix attempt.
+--------------------------------------------------
+Change: 728292
+Date:   2021-06-07 14:36:39
+Description:
+[GoFish] Updated the background animations (moved seagull and frog).
+--------------------------------------------------
+Change: 728293
+Date:   2021-06-07 14:45:06
+Description:
+[Poker] Highlighting cards that make a combination on table and in player's hand.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728305
+Date:   2021-06-07 16:01:46
+Description:
+[GoFish] Enabled debug panel and fps counter.
+--------------------------------------------------
+Change: 728325
+Date:   2021-06-07 17:19:49
+Description:
+[Poker] Updated outline color of the cards in players' hands.
+--------------------------------------------------
+Change: 728329
+Date:   2021-06-07 17:47:15
+Description:
+[Poker] Linter fixes in Game.js 
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728330
+Date:   2021-06-07 17:47:28
+Description:
+[Poker] Hand winner screen card highlighting.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728332
+Date:   2021-06-07 17:47:54
+Description:
+[Poker] Submitted files not submitted with the previous changelist.
+--------------------------------------------------
+Change: 728481
+Date:   2021-06-08 14:43:06
+Description:
+[Poker] Fixed "dead zone" around raise panel preventing the panel from closing.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728482
+Date:   2021-06-08 14:44:01
+Description:
+[Poker] Fixed turn timer showing up during small/big blind automatic betting.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728486
+Date:   2021-06-08 14:49:44
+Description:
+[Poker] Animating highlighted community cards during payout.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728547
+Date:   2021-06-08 17:35:38
+Description:
+[Poker] Extracted base class for CardsView.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728548
+Date:   2021-06-08 17:35:51
+Description:
+[Poker] Added PokerTable.IsTurn(Seat | Player) helper function.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728559
+Date:   2021-06-08 18:52:16
+Description:
+[Poker] Fixed missing meta file.
+--------------------------------------------------
+Change: 728675
+Date:   2021-06-09 13:27:11
+Description:
+[Poker]
+- Hooked up animation for blinds increase
+- Playing sound when blinds go up.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 728719
+Date:   2021-06-09 14:58:45
+Description:
+[Poker] Removed now-unused manual card lowering when a player folds.
+Reviewed by Tom.
+--------------------------------------------------
+Change: 728937
+Date:   2021-06-10 14:17:23
+Description:
+[GoFish] Disabled debug panel and fps counter.
+--------------------------------------------------
+Change: 728941
+Date:   2021-06-10 14:23:10
+Description:
+[Poker] If all players except one fold, the winner doesn't automatically reveal their cards. They can press a button to reveal them manually.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729353
+Date:   2021-06-15 16:23:10
+Description:
+[States] Changed header comment in StateNode. Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729370
+Date:   2021-06-15 18:04:19
+Description:
+[Poker] Added selecting fake decks from the debug panel. The selection of fake decks is customizable in the inspector.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729430
+Date:   2021-06-16 10:13:00
+Description:
+[Poker] Fixed "add player" buttonin the debug menu being blocked by a text element.
+--------------------------------------------------
+Change: 729466
+Date:   2021-06-16 13:34:13
+Description:
+[Poker] Fixed an Ace not being highlighted in a Straight. 
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729467
+Date:   2021-06-16 13:34:50
+Description:
+[Poker] Added Equals and GetHashCode to Card.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729474
+Date:   2021-06-16 14:07:25
+Description:
+[Poker] Added fake decks from original poker to the debug menu.
+--------------------------------------------------
+Change: 729539
+Date:   2021-06-16 16:49:51
+Description:
+[Poker] Updated header comment of makeStateMachine.
+--------------------------------------------------
+Change: 729551
+Date:   2021-06-16 18:22:23
+Description:
+[Poker] Simplified client-side logic for deciding if cards should be revealed to other players.
+Made the showdown view show your combination to you even if you're not revealing your cards to others.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729663
+Date:   2021-06-17 13:46:29
+Description:
+[Poker] Made PokerTable.cs and Seat.cs PODs.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 729664
+Date:   2021-06-17 13:59:42
+Description:
+[Poker] Made Player.cs a POD
+--------------------------------------------------
+Change: 739297
+Date:   2021-09-01 12:59:30
+Description:
+[Arco]
+- Removed a mask from CustomerUI (CustomerPatienceUI)
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739307
+Date:   2021-09-01 14:11:39
+Description:
+[Arco] Removed an unnecessary mask from the Progressbar prefab.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739346
+Date:   2021-09-01 16:09:03
+Description:
+[Arco]
+- Removed masks from CustomerUI
+Reviewed by Laurens Holst
+--------------------------------------------------
+Change: 739357
+Date:   2021-09-01 16:50:44
+Description:
+[Arco]
+- Removed mask on text in the compliment UI
+- Compliment speech bubble now expands to fit the chef name text
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739459
+Date:   2021-09-02 13:52:41
+Description:
+[Arco]
+- Atlased some sprites and moved others between atlases to reduce draw calls
+- Changed the order of some UI elements in LevelHUD to improve batching
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739460
+Date:   2021-09-02 13:54:54
+Description:
+[Arco] Moved the "UI/Food" folder under "UI/Game" to place the sprites under the atlas they're in.
+--------------------------------------------------
+Change: 739506
+Date:   2021-09-02 16:53:28
+Description:
+[Arco] Disabling the fadein/fadeout black blocks when not in view.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739507
+Date:   2021-09-02 16:53:36
+Description:
+[Arco] Flipping speech bubbles correctly.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739513
+Date:   2021-09-02 17:28:40
+Description:
+[Arco] Removed the non-3sliced version of the CloudOrder image.
+--------------------------------------------------
+Change: 739516
+Date:   2021-09-02 17:31:08
+Description:
+[Arco] Removed CloudOrderExtension.png
+--------------------------------------------------
+Change: 739594
+Date:   2021-09-03 13:42:02
+Description:
+[Arco] Disabled CustomerAttentionUI by default (it used to take up Animator time even when hidden).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739595
+Date:   2021-09-03 13:42:40
+Description:
+[Arco] Caching transform components in the Billboard component
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739596
+Date:   2021-09-03 13:44:44
+Description:
+[Arco] Customer animation: using hashes instead of strings to set animator values.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739600
+Date:   2021-09-03 14:21:39
+Description:
+[Arco] Caching smoke material and shader property id in Oven
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739609
+Date:   2021-09-03 16:29:23
+Description:
+[Arco] Disabled CanvasScaler on CustomerUI
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739646
+Date:   2021-09-06 10:16:11
+Description:
+[Arco] Removed Billboard component from Contextual Highlight (particle systems are already billboarded)
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739698
+Date:   2021-09-06 16:57:32
+Description:
+[Arco] Introduced layers to make trigger volumes only react to characters (improves physics performance).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739699
+Date:   2021-09-06 17:01:16
+Description:
+[Arco] Made customer rigidbodies kinematic
+--------------------------------------------------
+Change: 739700
+Date:   2021-09-06 17:04:42
+Description:
+[Arco] Made triggers static.
+--------------------------------------------------
+Change: 739701
+Date:   2021-09-06 17:13:26
+Description:
+[Arco] Moved Rigidbody from customers to the door trigger.
+--------------------------------------------------
+Change: 739788
+Date:   2021-09-07 16:05:57
+Description:
+[Arco] Replaced Humanoid rigs with Generic ones. This improves animation performance by not using Retargeting and IK.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 739811
+Date:   2021-09-07 18:16:07
+Description:
+Undo //RoomsAR/Development/arcade/ARCO/Assets/... changelist 739788
+The change broke the grab_joint, so carried objects are now in the ground. Reverting for now.
+--------------------------------------------------
+Change: 740027
+Date:   2021-09-09 13:44:28
+Description:
+[Arco-1337]
+- Reimported Character and all animations with a Generic rig instead of a Humanoid one. This eliminates Retargeting and IK overhead.
+- Added a GrabJointTransformCompensator script to compensate for the broken grab_joint transform (the animations expect a -90 degree x rotation on the root bone, but it's not present when reimporting with a Generic rig, not sure why).
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 740060
+Date:   2021-09-09 15:55:08
+Description:
+[Arco] Using a couroutine instead of Update to animate the oven smoke turning black.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 740061
+Date:   2021-09-09 15:55:12
+Description:
+[Arco] Billboard component is only updaring per frame for players' names above their heads. For all others it only updates on start and when the camera moves between level parts in two-part levels.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 740108
+Date:   2021-09-10 09:44:58
+Description:
+[Arco-1349] Fixed customers not animating carrying items properly.
+--------------------------------------------------
+Change: 740114
+Date:   2021-09-10 10:44:47
+Description:
+[Arco] Fixed the ingredient baking progress bar being rotated after moving it to a different stove.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 740116
+Date:   2021-09-10 10:45:29
+Description:
+[Arco] Optimized Billboard rotation.
+Reviewed by Laurens Holst.
+--------------------------------------------------
+Change: 740117
+Date:   2021-09-10 10:49:27
+Description:
+[Arco] Submitting the InputManager changes that kept showing up for everyone.
+--------------------------------------------------
+Change: 740444
+Date:   2021-09-15 10:51:20
+Description:
+[Arco] Removed MeshColliders from TakeAway and FoodStand. This reduces build size due to code stripping.
+--------------------------------------------------
+Change: 740519
+Date:   2021-09-15 16:54:06
+Description:
+[Arco-1371] Fixed being able to wash dishes remotely when server lag is high.
+Reviewed by Piotr.
+--------------------------------------------------
+Change: 740523
+Date:   2021-09-15 17:21:11
+Description:
+[Arco] Optimized the steam coming off a ready pizza.
+Reviewed by Piotr.
+--------------------------------------------------
+Change: 740677
+Date:   2021-09-17 10:55:14
+Description:
+[Arco] Fixed cutting/washing animations not playing sometimes when another player starts doing those actions.
+--------------------------------------------------
+Change: 741075
+Date:   2021-09-24 12:10:14
+Description:
+[Impact][IMP-103] Added CustomizedPathfindingSimple: a bare-bones proof of concept for a custom pathfinding cost function. In this map a character goes from point A to point B in a way that avoids areas close to origin. It uses a custom navigation query filter that provides a custom cost function.
+
+Also imported the Mannequin from the ThirdPersonBP template.
+
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 741263
+Date:   2021-09-28 19:16:28
+Description:
+[Impact][IMP-117] Demo maps for different types of character avoidance.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 741324
+Date:   2021-09-29 15:37:07
+Description:
+[IMP][IMP-117] Added the maps DynamicAvoidanceCircle and DynamicAvoidanceCorridor to build.
+--------------------------------------------------
+Change: 741335
+Date:   2021-09-29 16:52:41
+Description:
+[IMP] Added a simple TAF test for different kinds of collision avoidance.
+--------------------------------------------------
+Change: 741358
+Date:   2021-09-30 10:51:12
+Description:
+[IMP][IMP-117] Moved player pawn out of the way of characters in DynamicAvoidanceCircle.
+--------------------------------------------------
+Change: 741396
+Date:   2021-10-01 14:32:49
+Description:
+[IMP][IMP-117] Made AvoidanceTest wait until the map is loaded
+--------------------------------------------------
+Change: 741399
+Date:   2021-10-01 15:17:22
+Description:
+[IMP] TAF: made StatsChart use TWeakObjectPtr instead of a raw pointer for keeping track of the world. Clearer error messaging when the world is destroyed (e.g. if a new map is opened while the monitor is running).
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 741403
+Date:   2021-10-01 15:36:29
+Description:
+[IMP][IMP-117] Doubled the number of characters (10 -> 20) in the DynamicAvoidanceCircle map.
+--------------------------------------------------
+Change: 741975
+Date:   2021-10-12 13:14:35
+Description:
+[Impact][IMP-154] Initial version of the cover system. 
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 742086
+Date:   2021-10-13 10:46:34
+Description:
+[Impact][IMP-154]
+- Improved debug drawing of the cover system.
+- Added the test maps of the cover system to the build.
+--------------------------------------------------
+Change: 742252
+Date:   2021-10-15 14:18:14
+Description:
+[Impact] Cover System: the difference between low and high cover is now taken into account when generating and updating sampling points.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 742558
+Date:   2021-10-21 11:15:31
+Description:
+[IMP] Added the Hierarchical Task Networks plugin as an editor plugin. Fixed a few minor compilation warnings in it for ue5-main.
+--------------------------------------------------
+Change: 742560
+Date:   2021-10-21 11:19:25
+Description:
+[Impact][IMP-254] Starter setup for the human AI demo. 
+- Imported the animation starter pack and set up a character with basic locomotion with it
+- Imported gunshot sounds for the AK47, some character voice lines from Metro Last Light
+- Base clases for Character, AnimInstance, AIController
+- Characters noticing the player, starting combat, using some voice lines
+Reviewed by Sander B.
+--------------------------------------------------
+Change: 742729
+Date:   2021-10-25 12:49:07
+Description:
+[Impact] Human enemy AI demo:
+- Implemented demo scenarios 2 (multiple enemies) and 3 (enemy character customization)
+- Enemies now have a CharacterTemplate (an assignable data asset) that determines configuration values and can be accessed by the AIController or the Pawn
+- Enemies now join into groups and coordinate through the group
+- Enemies reserve locations when they decide to move to them. They avoid locations reserved by others.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 742732
+Date:   2021-10-25 14:06:55
+Description:
+[Impact] Fixed ambiguous implicit cast.
+--------------------------------------------------
+Change: 742749
+Date:   2021-10-25 19:39:12
+Description:
+[Impact] Updated the HTN plugin to 1.7.1
+--------------------------------------------------
+Change: 742751
+Date:   2021-10-25 19:43:15
+Description:
+[Impact] Fixed missing include.
+--------------------------------------------------
+Change: 742887
+Date:   2021-10-27 11:08:33
+Description:
+[Impact] Fixed warning on clang by making it explicit that the key-value pairs produced from iterating over a map are values and not references.
+--------------------------------------------------
+Change: 743107
+Date:   2021-10-29 16:24:37
+Description:
+[Impact][IMP-442] Introduced a custom perception system (with just vision for now, other senses can be added later). Uses a world subsystem and sets of sensors and sensor targets. See full design on Confluence: https://confluence.forcefieldxr.com:8447/x/tIClBw
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 743108
+Date:   2021-10-29 16:24:43
+Description:
+[Impact] HTN: Correct finding of a navigation query filter during plan-time pathfinding tests.
+--------------------------------------------------
+Change: 743109
+Date:   2021-10-29 16:24:47
+Description:
+[Impact] HTN: Fixed one-frame gap between finishing an old plan and starting the next.
+--------------------------------------------------
+Change: 743198
+Date:   2021-11-01 13:36:55
+Description:
+[Impact] Fixed iteration over maps creating extra copies of the key/value pairs.
+Vetted by Sander S.
+--------------------------------------------------
+Change: 743212
+Date:   2021-11-01 15:11:31
+Description:
+[Impact] Decoupled the perception system from character templates. Now values are pushed from the template to the vision component via Blueprint code that is called OnConstruction and OnPreInitializeComponents.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 743287
+Date:   2021-11-02 09:33:54
+Description:
+[Impact] Extracted the cover system and the new perception system into an engine plugin (VertigoGames/AITools) with separate modules for each.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 743298
+Date:   2021-11-02 10:42:47
+Description:
+[Impact] Using StructRedirects instead of ClassRedirects to redirect a struct.
+--------------------------------------------------
+Change: 743304
+Date:   2021-11-02 10:58:13
+Description:
+[Impact] Moved AITools redirectors from DefaultEngine.ini to BaseAITools.ini
+--------------------------------------------------
+Change: 743314
+Date:   2021-11-02 11:27:00
+Description:
+[Impact] Resaved all assets with class redirectors (since CoreRedirects doesn't seem to work correctly).
+--------------------------------------------------
+Change: 743318
+Date:   2021-11-02 11:48:23
+Description:
+[Impact] Submitting the .uproject change that adds the AITools plugin to the project.
+--------------------------------------------------
+Change: 743325
+Date:   2021-11-02 12:01:02
+Description:
+[Impact] Fixed wrong module name.
+--------------------------------------------------
+Change: 743479
+Date:   2021-11-03 16:25:04
+Description:
+[Impact] Perception module:
+- Fixed wrong settings category in project settings
+- GetSensorsByClass in Blueprints now returns an array of the right class
+--------------------------------------------------
+Change: 743480
+Date:   2021-11-03 16:25:10
+Description:
+[Impact] Cover system improvements.
+- Characters now crouch in low cover and lean out from tall cover
+- Blueprints can now query the cover system for information about the cover point close to a given location.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 743486
+Date:   2021-11-03 16:45:34
+Description:
+[Impact] Fixed USTRUCT initialization.
+--------------------------------------------------
+Change: 743488
+Date:   2021-11-03 17:02:22
+Description:
+[Impact] Fixed some properties being marked as editoronly data.
+--------------------------------------------------
+Change: 743664
+Date:   2021-11-08 10:22:02
+Description:
+[Impact] Fixed wrong settings path for the perception editor module.
+--------------------------------------------------
+Change: 743693
+Date:   2021-11-08 15:55:28
+Description:
+[Impact] Ported over the AI systems from the Research branch.
+- Base classes
+- Cover system
+- Perception system
+- Hierarchical Task Networks AI plugin
+- A very basic character templating system
+--------------------------------------------------
+Change: 743922
+Date:   2021-11-11 09:46:00
+Description:
+[Impact] HTN: Fixed deprecated typedef.
+--------------------------------------------------
+Change: 744080
+Date:   2021-11-12 11:39:14
+Description:
+[Impact] Perception: Made GetSensorsOfClass properly support base classes in a class hierarchy.
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 744081
+Date:   2021-11-12 11:39:19
+Description:
+[Impact][IMP-900] Added a Blueprint base class for VGSensors. Implemented a simplistic hearing sensor with it.
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 744269
+Date:   2021-11-16 15:12:24
+Description:
+[Impact][IMP-958] Core functionality of the Parameter Templates system.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 744270
+Date:   2021-11-16 15:12:36
+Description:
+[Impact][IMP-979] Base classes for AI characters.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 744276
+Date:   2021-11-16 15:36:20
+Description:
+[Impact] Fixed local variable in a static function shadowing a member variable.
+--------------------------------------------------
+Change: 744361
+Date:   2021-11-17 16:07:19
+Description:
+[Impact][Imp-979] Base blueprints and behaviors for AI humans.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 744434
+Date:   2021-11-18 12:04:47
+Description:
+[Impact] Submitted AnimStarterPack files that were not submitted before.
+--------------------------------------------------
+Change: 744445
+Date:   2021-11-18 12:46:05
+Description:
+[Impact] Added the CombatToolkitTest map to cooked maps.
+--------------------------------------------------
+Change: 744480
+Date:   2021-11-18 14:22:31
+Description:
+[Impact] Moved AnimStarterPack to the External folder.
+--------------------------------------------------
+Change: 744489
+Date:   2021-11-18 14:38:18
+Description:
+[Impact] Submitting the character blueprint that references moved assets.
+--------------------------------------------------
+Change: 744574
+Date:   2021-11-19 14:36:11
+Description:
+[Impact] Made SensorClass of a SensorTarget editable.
+--------------------------------------------------
+Change: 744732
+Date:   2021-11-22 15:32:43
+Description:
+[Impact][IMP-977]
+- Edits to parameter templates in the editor are now immediately propagated to components (e.g. the character field of view).
+- Fixed a local template being replaced with null when recompiling the blueprint.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 744946
+Date:   2021-11-23 16:10:14
+Description:
+[Impact][IMP-1009] Parameter templates editor improvements:
+- When assigning a base template to a template, the options are filtered down to those of compatible class and which won't cause a loop in the parent-child hierarchy
+- The local template is kept inheriting from the assigned template even when it's reassigned in the blueprint
+- A local template can now be promoted to a standalone asset with a button click
+- A child template can be easily created by right-clicking a template in the Content Browser and selecting "Create Child Template"
+- When switching a numeric property to Add or Multiply, the value is automatically set to 0 and 1 respectively. When switching a collection property (Array, Map, Set) to Add, it's automatically emptied.
+- Fixed incorrect graying out of properties when the base template is of a different class than the child template
+- Widgets for manipulating arrays/maps etc. are now properly grayed out when editing is disabled
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 745045
+Date:   2021-11-24 13:14:06
+Description:
+[Impact] When creating a local parameter template, it automatically opens.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 745046
+Date:   2021-11-24 13:14:11
+Description:
+[Impact] Made GetParameterTemplate a non-pure function with two output pins.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 745092
+Date:   2021-11-24 15:42:44
+Description:
+[Impact] Renamed "Create Derived Template" to "Create Child Template".
+--------------------------------------------------
+Change: 745181
+Date:   2021-11-25 14:54:01
+Description:
+[Impact] Extracted a base Blueprint for characters: BP_HumanAICharacter_Base
+Reviewed by Floyd.
+--------------------------------------------------
+Change: 745288
+Date:   2021-11-26 13:10:05
+Description:
+[Impact] Fixed not being able to edit booleans in parameter templates.
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 745444
+Date:   2021-11-29 15:36:56
+Description:
+[Impact] Added CombatToolkitTest to Debug Menu
+--------------------------------------------------
+Change: 745670
+Date:   2021-12-01 14:38:20
+Description:
+[Impact]
+- Implemented the VGHearingSensor up to the current functional design.
+- Perception system can now do time-sliced events (e.g. different characters may handle hearing a noise on different frames for performance reasons).
+- Updated API of VGSensorComponent (sensor-based instead of actor-based, removed the generic OnActorSensed event).
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 745673
+Date:   2021-12-01 14:41:19
+Description:
+[Impact] Made new dependencies of the Perception module public dependencies.
+--------------------------------------------------
+Change: 746318
+Date:   2021-12-06 12:09:34
+Description:
+[Impact] Sight sensor now up to functional design.
+- Can configure multiple sight fields (cones or coffins) with different names and priorities
+- At runtime can get the names of the fields in which a given target is visible (can get all, or just highest priority ones)
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 746356
+Date:   2021-12-06 14:55:46
+Description:
+[Impact] Added TrackedActorOverride to SightTargetComponent. Renamed a CVAR.
+--------------------------------------------------
+Change: 746521
+Date:   2021-12-07 17:18:08
+Description:
+[Impact][IMP-1752] Improvements to the cover system requested by Design.
+- Cover point info exposed to blueprints now includes direction to the obstacle that forms the cover.
+- The EQS generator for finding cover points can now filter out cover facing wrong way and cover that can't be leaned out from (configurable).
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 746625
+Date:   2021-12-08 17:49:28
+Description:
+[Impact] Integration of light/darkness with AI sight.
+- Added the VGSightTargetWithLightingComponent that makes use of hte LightMeasurmentComponent.
+- Hooked up these sight targets to BP_PawnGame and BP_Hand
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 746689
+Date:   2021-12-09 11:48:12
+Description:
+[Impact] Made ABP_HumanAICharacter properly aim at the focal point when aiming (GetControlRotation() ignores pitch when using FocalPoint instead of FocusActor).
+--------------------------------------------------
+Change: 746704
+Date:   2021-12-09 13:07:16
+Description:
+[Impact] Renamed folder: ParamaterTemplatesEditor -> ParameterTemplatesEditor
+--------------------------------------------------
+Change: 746705
+Date:   2021-12-09 13:07:22
+Description:
+[Impact] In VGCoverSystem, renamed CoverFromActor -> ThreatActor.
+--------------------------------------------------
+Change: 746725
+Date:   2021-12-09 14:47:04
+Description:
+[Impact] Added a bIgnoreDarkness property to VGSightSensorComponent. Added visual logging for when a target is checked against but not seen due to darkness.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 746736
+Date:   2021-12-09 16:14:58
+Description:
+[Impact] Added AllLineOfFireLocations to FVGCoverPointInfo.
+--------------------------------------------------
+Change: 746744
+Date:   2021-12-09 16:37:46
+Description:
+[Impact][IMP-1527] Ported AI senses (Sight, Hearing) from Prototype branch.
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 747134
+Date:   2021-12-14 11:21:16
+Description:
+[Impact] Ported the Cover System from the Prototype branch.
+--------------------------------------------------
+Change: 747135
+Date:   2021-12-14 11:21:22
+Description:
+[Impact] Ported the parameter template system from the Prototype branch.
+--------------------------------------------------
+Change: 747158
+Date:   2021-12-14 12:53:05
+Description:
+[Impact] Fixed ambiguous cast between raw ptr and TObjectPtr
+--------------------------------------------------
+Change: 747359
+Date:   2021-12-16 12:06:31
+Description:
+[Impact] 
+Made AI characters inherit from VGHumanAICharacterBase, which inherits from VGAICharacterBase. Ported some BP functionality to C++ in those base classes.
+Fixed AI characters not aiming vertically when targeting a location (as opposed to an actor)
+Made enemies visually aim at the camera instead of the floor when aiming at the player.
+Reviewed by Tim T.
+--------------------------------------------------
+Change: 747369
+Date:   2021-12-16 12:24:58
+Description:
+[Impact] Fixed ambiguous cast
+--------------------------------------------------
+Change: 747495
+Date:   2021-12-17 14:04:41
+Description:
+[Impact] SightFields of VGSightSensorComponents are now logged in the VisualLogger much more efficiently and do not cause it to run out of memory.
+Reviewed by Steijn.
+--------------------------------------------------
+Change: 747522
+Date:   2021-12-17 16:39:11
+Description:
+[Impact] HTN: fixed rare issue with a one-frame gap between finding a plan and executing it, causing a kind of "stutter" where characters try to uncrouch in one frame and crouch back in the next.
+--------------------------------------------------
+Change: 747758
+Date:   2021-12-20 17:12:54
+Description:
+[Entities] Moved VoIP setup to VGGameStateBase
+--------------------------------------------------
+Change: 747764
+Date:   2021-12-20 17:26:00
+Description:
+[Entities] Removed Intermediate folder.
+--------------------------------------------------
+Change: 747847
+Date:   2021-12-21 09:47:52
+Description:
+Partial Undo //GameJamVR/2021/Entities/... changelist 747727
+--------------------------------------------------
+Change: 747975
+Date:   2021-12-21 13:40:46
+Description:
+[Entities] Assigning roles to players on login to Game. The first to login becomes the ghost. Ghosts prefer to spawn at BP_PlayerStartGhost, Humans at regular PlayerStart.
+--------------------------------------------------
+Change: 748022
+Date:   2021-12-21 14:28:38
+Description:
+[Entities] Going to lobby on win condition.
+--------------------------------------------------
+Change: 748192
+Date:   2021-12-21 19:33:02
+Description:
+[Entities] To be tested: in the Game, humans don't see ghosts and ghosts only see humans during the hunting phase.
+--------------------------------------------------
+Change: 748269
+Date:   2021-12-22 09:39:55
+Description:
+[Entities]
+- Fixed compile error in BP_PlayerControllerGame
+- Fixed None player pawn in client_ReceiveVoiceData
+--------------------------------------------------
+Change: 748287
+Date:   2021-12-22 10:04:24
+Description:
+[Entities]
+- Fixed missing functions in BP for player controller visibility
+- Made built-in VoIP optional
+--------------------------------------------------
+Change: 748384
+Date:   2021-12-22 12:24:42
+Description:
+[Entities] Fixed ghosts spawning at the human spawn points.
+--------------------------------------------------
+Change: 748398
+Date:   2021-12-22 12:49:41
+Description:
+[Entities] Players and ghosts only see each other during hunting phase now.
+--------------------------------------------------
+Change: 748490
+Date:   2021-12-22 14:20:42
+Description:
+[Entities] Lowered player spawn points.
+--------------------------------------------------
+Change: 748527
+Date:   2021-12-22 14:49:32
+Description:
+[Entities]
+- Win condition for ghosts (all human players dead or spectating). 
+- On round finish, restarting the game map instead of going back to lobby.
+--------------------------------------------------
+Change: 748615
+Date:   2021-12-22 15:59:20
+Description:
+[Entities] Added a bGameStarted variable to BP_GameStateGame. Becomes true when game starts.
+--------------------------------------------------
+Change: 748727
+Date:   2021-12-22 17:58:36
+Description:
+[Entities] Hiding the red light on the ghost when not hunting
+--------------------------------------------------
+Change: 748737
+Date:   2021-12-22 18:16:14
+Description:
+[Entities] Only starting the game when the start button is pressed by the host
+--------------------------------------------------
+Change: 748745
+Date:   2021-12-22 19:06:09
+Description:
+[Entities] Made the "start level" button replicate.
+--------------------------------------------------
+Change: 749004
+Date:   2021-12-23 12:15:13
+Description:
+[Entities] Moved the locomotion plugin to the project. Made MaxSpeed overridable per movement mode.
+--------------------------------------------------
+Change: 749032
+Date:   2021-12-23 12:55:52
+Description:
+[Entities] Pawn ghost is now slower when not hunting and faster when hunting. Same speed for sprint and non-sprint.
+--------------------------------------------------
+Change: 749171
+Date:   2021-12-23 15:20:04
+Description:
+[Entities] Slightly safer delivering of bones
+--------------------------------------------------
+Change: 749231
+Date:   2021-12-23 16:11:07
+Description:
+[Entities] Destroy hands on pawn EndPlay
+--------------------------------------------------
+Change: 749255
+Date:   2021-12-23 16:30:18
+Description:
+[Entities] Random start spot selection for ghosts
+--------------------------------------------------
+Change: 749267
+Date:   2021-12-23 16:47:23
+Description:
+[Entities] Slightly safer delivering of objective items
+--------------------------------------------------
+Change: 749348
+Date:   2021-12-23 19:55:05
+Description:
+[Entities] Fixed crash when delivering a bone to the pentagram.
+--------------------------------------------------
+Change: 749547
+Date:   2021-12-24 10:47:53
+Description:
+[Human] Marking spectators as such instead of as ghosts.
+--------------------------------------------------
+Change: 749578
+Date:   2021-12-24 11:17:33
+Description:
+[Entities] Disabled "can character step up on" for some components.
+--------------------------------------------------
+Change: 749613
+Date:   2021-12-24 11:58:30
+Description:
+[Entities] More precise replication of pawn velocity and rotation
+--------------------------------------------------
+Change: 749646
+Date:   2021-12-24 12:37:24
+Description:
+[Entities] Made the bones only set HoldingHuman on Authority
+--------------------------------------------------

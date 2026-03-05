@@ -1,0 +1,6 @@
+# Raw capture directories (large files — keep locally)
+raw_video/
+raw_screenshot/
+
+# Rendered output images/videos are committed selectively
+# images/metro_awakening/ is tracked (final web assets)

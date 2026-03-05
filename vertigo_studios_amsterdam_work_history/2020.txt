@@ -1,0 +1,290 @@
+Change: 662357
+Date:   2020-01-06 11:15:15
+Description:
+[Revolt]
+
+Fixed grunts incorrectly transitioning to Grunt_Hop animation while running.
+--------------------------------------------------
+Change: 662510
+Date:   2020-01-06 16:23:53
+Description:
+[Revolt]
+
+- Grunts have a chance to panic (0.8) if an elite dies within 10 meters of them.
+- Grunts won't try to do a panic run in a direction blocked by dynamic actors (usually other grunts).
+
+Reviewed by James.
+--------------------------------------------------
+Change: 662589
+Date:   2020-01-06 18:06:45
+Description:
+[Revolt]
+
+Fixed NavMesh
+--------------------------------------------------
+Change: 662592
+Date:   2020-01-06 18:11:16
+Description:
+[Revolt]
+
+Rebuilt navmesh again, this time saving changes to the persistent level.
+--------------------------------------------------
+Change: 662734
+Date:   2020-01-07 11:43:26
+Description:
+[Revolt]
+
+Rearranged suicider grunts, now there's only four of them from three different directions
+--------------------------------------------------
+Change: 662967
+Date:   2020-01-07 16:02:56
+Description:
+[Revolt]
+
+Rebuilt navmesh
+--------------------------------------------------
+Change: 663011
+Date:   2020-01-07 16:49:24
+Description:
+[Revolt]
+
+Made the "CanShootAt" decorator ignore the weapon of the character doing the check.
+--------------------------------------------------
+Change: 663253
+Date:   2020-01-08 13:18:50
+Description:
+[Revolt]
+
+Made Ground overlap Projectile instead of blocking. This fixes grenades falling through the landscape.
+--------------------------------------------------
+Change: 663590
+Date:   2020-01-09 11:04:34
+Description:
+[Revolt]
+
+- Fixed godrays blocking navigation
+- Rebuilt navmesh
+--------------------------------------------------
+Change: 663693
+Date:   2020-01-09 13:49:56
+Description:
+[Revolt]
+
+First iteration of group AI for marines.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 663714
+Date:   2020-01-09 14:18:24
+Description:
+[Revolt]
+
+Removed landfall tactical locations and target points
+--------------------------------------------------
+Change: 663797
+Date:   2020-01-09 15:38:01
+Description:
+[Revolt]
+
+Rebuilt navmesh
+--------------------------------------------------
+Change: 663810
+Date:   2020-01-09 15:46:49
+Description:
+[Revolt]
+
+Moved a rock out of the way to prevent marines getting stuck between it and a warthog.
+--------------------------------------------------
+Change: 663911
+Date:   2020-01-09 17:17:28
+Description:
+[Revolt]
+
+Marines first get to an initial position before advancing.
+
+Reviewed by James
+--------------------------------------------------
+Change: 663916
+Date:   2020-01-09 17:21:46
+Description:
+[Revolt]
+
+Moved initial marine location
+--------------------------------------------------
+Change: 663933
+Date:   2020-01-09 17:44:55
+Description:
+[Revolt]
+
+Disabled debug drawing on BP_MarineGroup
+--------------------------------------------------
+Change: 663945
+Date:   2020-01-09 17:56:42
+Description:
+[Revolt]
+
+Refactored debug display of marine groups
+--------------------------------------------------
+Change: 663957
+Date:   2020-01-09 18:19:35
+Description:
+[Revolt]
+
+Better validity checks in marine groups
+--------------------------------------------------
+Change: 664112
+Date:   2020-01-10 13:24:49
+Description:
+[Revolt]
+
+- Made marines use cover more. The now prefer locations which overlap with CoverArea
+- Added more navigation blockers on the battlefield.
+--------------------------------------------------
+Change: 664261
+Date:   2020-01-10 16:44:59
+Description:
+[Revolt]
+
+- Marines now do hierarchical EQS when advancing (for performance).
+- Marines may now change location when shot.
+- Disabled RVO and collisions with each other for Marines. They may now momentarily clip through each other, but that's better than running against the edge of the navmesh for 20 seconds.
+
+Reviewed by James.
+--------------------------------------------------
+Change: 664396
+Date:   2020-01-13 10:36:02
+Description:
+[Revolt]
+
+Rebuilt navmesh
+--------------------------------------------------
+Change: 664407
+Date:   2020-01-13 10:54:47
+Description:
+[Revolt]
+
+Better cover locations
+--------------------------------------------------
+Change: 664447
+Date:   2020-01-13 11:40:37
+Description:
+[Revolt]
+
+Marines now ignore weapon range when aiming and shooting
+--------------------------------------------------
+Change: 664452
+Date:   2020-01-13 11:51:11
+Description:
+[Revolt]
+
+Rebuilt navmesh
+--------------------------------------------------
+Change: 664497
+Date:   2020-01-13 13:38:50
+Description:
+[Revolt]
+
+- Fixed grunts idling forever after doing a pre panic jump
+- Better transition curve for grunts getting in and out of cover
+
+Reviewed by James
+--------------------------------------------------
+Change: 664502
+Date:   2020-01-13 13:42:09
+Description:
+[Revolt]
+
+Removed some extra debug from GruntPrePanicJump
+--------------------------------------------------
+Change: 664531
+Date:   2020-01-13 14:17:24
+Description:
+[Revolt]
+
+In the sniper segment, grunts are now 4 times less likely to panic.
+
+Reviewed by James
+--------------------------------------------------
+Change: 664539
+Date:   2020-01-13 14:38:21
+Description:
+[Revolt]
+
+Increased marine weapon range
+--------------------------------------------------
+Change: 664697
+Date:   2020-01-13 18:48:06
+Description:
+[Revolt]
+
+- Better cover tests for marines: now prefer locations that are close to cover
+- Fixed bug where marines would get too close to each other
+
+Reviewed by James
+--------------------------------------------------
+Change: 664702
+Date:   2020-01-13 19:34:27
+Description:
+[Revolt]
+
+Made marines advance faster and more aggressively
+--------------------------------------------------
+Change: 664865
+Date:   2020-01-14 11:24:16
+Description:
+[Revolt]
+
+Fixed TryMerge errors in marines
+--------------------------------------------------
+Change: 665021
+Date:   2020-01-14 14:57:24
+Description:
+[Revolt]
+
+Fixed some marines, grunts and elites falling through the ground in sniper.
+--------------------------------------------------
+Change: 665061
+Date:   2020-01-14 15:37:19
+Description:
+[Revolt]
+
+Removed extra debug output
+--------------------------------------------------
+Change: 665077
+Date:   2020-01-14 15:58:08
+Description:
+[Revolt]
+
+Max 8 marines instead of 7
+--------------------------------------------------
+Change: 665346
+Date:   2020-01-15 11:09:19
+Description:
+[Revolt]
+
+Reduced the number of simultaneous marines from 8 to 6
+--------------------------------------------------
+Change: 665440
+Date:   2020-01-15 13:52:03
+Description:
+[REV-1020][REV-713]
+
+Changed RVO avoidance settings on Grunts to reduce them bumping into each other and the environment.
+--------------------------------------------------
+Change: 665475
+Date:   2020-01-15 14:33:40
+Description:
+[REV-1020][REV-713]
+
+- Reduced avoidance radius of Grunts to prevent them from running into walls while trying to avoid each other.
+- Made characters ignore collisions with ragdolls to fix characters being stuck in them
+--------------------------------------------------
+Change: 665586
+Date:   2020-01-15 16:05:28
+Description:
+[REV-986]
+
+Fixed the start screen sequence not happening if the player is already aligned with the guide when the game begins.
+
+Reviewed by Sander B.
+--------------------------------------------------

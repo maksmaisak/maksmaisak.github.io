@@ -1,0 +1,4318 @@
+Change: 894275
+Date:   2025-01-15 15:21:25
+Description:
+Installed MimicPro for evaluation. It requires the "SetWorldToMeters" function from the built-in XRBase plugin so I enabled that one too.
+--------------------------------------------------
+Change: 894319
+Date:   2025-01-15 16:54:20
+Description:
+[UNB-1782]
+Hit reactions for Hyena based on physical animation.
+Also made them do a bark every time they're hit instead of on hits with >1 damage to make sure it works in demo maps that simulate hits.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1782
+#vettedby jvrooij
+--------------------------------------------------
+Change: 894324
+Date:   2025-01-15 17:22:04
+Description:
+[UNB-1789]
+Fix for deprecation warning in VGMovieSceneGaetSectionTemplate + Functional Test
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-1789
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 894353
+Date:   2025-01-16 11:01:10
+Description:
+[UNB-508]
+Fixed look at for Hyenas looking away from the focus instead of at it.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-508
+#vettedby slageweg
+--------------------------------------------------
+Change: 894360
+Date:   2025-01-16 11:32:32
+Description:
+[UNB-508]
+Cleanup of HTN_Hyena_Combat
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-508
+#vettedby jvrooij
+--------------------------------------------------
+Change: 894376
+Date:   2025-01-16 15:11:53
+Description:
+[UNB-1792]
+Fixed missing tracer VFX on the pistol
+
+Vetted by Frank Bakker
+
+#assetvalidation succeeded
+#jira unb-1792
+#vettedby fbakker
+--------------------------------------------------
+Change: 894391
+Date:   2025-01-16 16:41:28
+Description:
+[UNB-1782]
+Exaggerated hit reactions (4x impulse) for moving hyenas to make it more noticeable.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1782
+#vettedby slageweg
+--------------------------------------------------
+Change: 894854
+Date:   2025-01-24 12:09:15
+Description:
+[UNB-1427]
+Floyd's work on the skeleton warrior setup:
+Unshelved from pending changelist '894666':
+
++ Adds BP_Skeleton
++ Adds Skeleton armour and weakspots, if you destroy the weakspots the skeleton its attached to it will die
++ Adds some placeholder meshes for skeleton armor
++ Adds basic skeleton AI (They move in range and attack)
++ Reduces volume of guns
++ Adds basic ABP for skeleton
+
+Submitted via p4v because some validators complain about the placeholder meshes for armor pieces using complex collision as simple and the default material.
+--------------------------------------------------
+Change: 894862
+Date:   2025-01-24 12:55:27
+Description:
+[UNB-1427]
+Floyd's changes on hit/destroy audio being added to skeletons
+
+Vetted by Floyd Krielaart, Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1427
+#vettedby fkrielaart,jvrooij
+--------------------------------------------------
+Change: 894876
+Date:   2025-01-24 15:11:46
+Description:
+[UNB-1427]
+Fixing ensure triggering on skeleton startup (missing hit reaction interface on the abp).
+
+#assetvalidation succeeded
+#jira unb-1427
+--------------------------------------------------
+Change: 894983
+Date:   2025-01-27 14:50:43
+Description:
+[UNB-1881]
+Made hyenas jump up/down ledges via auto-generated navlinks. The zig-zaggy motion they do is now only active during the part of their path past the final navlink (if any). This is because zig-zaggy movement doesn't follow navlinks..
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1881
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895190
+Date:   2025-01-29 15:37:32
+Description:
+[UNB-1480]
+Optimized HTNDecorator_IsPathAvailable to not create a UObject wrapper around a path.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1480
+#vettedby slageweg
+--------------------------------------------------
+Change: 895191
+Date:   2025-01-29 15:38:07
+Description:
+[UNB-1852]
+Fixes for hyena movement. Extracted subnets for zigzaggy movement to be reused.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1852
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895244
+Date:   2025-01-30 09:59:36
+Description:
+[UNB-1480]
+Made a TAF test for stress testing the maximum number of hyenas on device. It spawns a hyena every 10 seconds up to 30 hyenas. On the perf charts we get to see the performance numbers for every number of hyeanas so we can draw the line somewhere and decide at which number the performance becomes unacceptable on device.
+
+TestSeriesOverride for running it on automationjenkins:
+
+StressTest_Hyena,StressTestEnemyCount_Hyena,1
+
+Vetted by Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira unb-1480
+#vettedby skistemaker
+--------------------------------------------------
+Change: 895248
+Date:   2025-01-30 10:14:22
+Description:
+[UNB-1480]
+Replaced an EQS service (which is done in Blueprints and spawns UObjects, which is slow) with an EQS task in a looping subplan, which is C++ only and is much faster.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1480
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895310
+Date:   2025-01-30 16:41:16
+Description:
+[UNB-1480]
+Upped the maximum number of hyenas in the stress test level to 50 because 30 was not enough to get the Quest 3 to have performance issues.
+
+#assetvalidation succeeded
+#jira unb-1480
+--------------------------------------------------
+Change: 895403
+Date:   2025-01-31 17:34:36
+Description:
+[UNB-2029]
+Added EQS contexts for querier mesh location and rotation. These are needed now that we're back to using UE4/UE5 skeletons that need to be rotated 90 degrees relative to the pawn.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2029
+#vettedby slageweg
+--------------------------------------------------
+Change: 895421
+Date:   2025-02-03 11:05:25
+Description:
+[UNB-2029] [UNB-2030]
+Made skeletons able to jump up/down ledges via auto-generated navlinks just like hyenas.
+Fixed skeletons standing still when there are multiple due to improper reserved location tracking.
+Made skeletons stagger. 
+Fixed armor pieces etc attached to skeletons blocking their own "can I reach this" traces.
+Fixed motion warping targets being set up wrong for characters whose skeletal mesh component is rotated 90 degrees.
+
+Vetted by Jente van Rooij
+
+#assetvalidation warning
+#jira unb-2029,unb-2030
+#vettedby jvrooij
+Encountered 12 warnings:
+Source file Sword1h_Hit_Head_Front.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_Front.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_Front
+Source file Sword1h_Hit_Head_Left.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_Left.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_Left
+Source file Sword1h_Hit_Head_LeftDown.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_LeftDown.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_LeftDown
+Source file Sword1h_Hit_Head_LeftUp.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_LeftUp.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_LeftUp
+Source file Sword1h_Hit_Head_Right.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_Right.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_Right
+See log for complete list of warnings
+--------------------------------------------------
+Change: 895425
+Date:   2025-02-03 11:27:42
+Description:
+[UNB-2030]
+Fixed missing navmesh in skeleton temple in Combat Gym
+
+#assetvalidation succeeded
+#jira unb-2030
+--------------------------------------------------
+Change: 895426
+Date:   2025-02-03 11:28:16
+Description:
+[UNB-2030]
+Fixed skeletons not facing the player in some parts of the behavior
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2030
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895493
+Date:   2025-02-04 12:24:46
+Description:
+[UNB-2031]
+Fixed skeleton warriors always ragdolling
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-2031
+#vettedby ikamula
+--------------------------------------------------
+Change: 895498
+Date:   2025-02-04 13:21:31
+Description:
+[UNB-2031]
+Extracted Physical Animation Hit Reactions into a BAC_PhysicalAnimationHitReactions that can be easily disabled for performance testing.
+Improved hit reaction demo to automatically shoot at random bones from random locations. The demo is deterministic though, always starting from the same random seed.
+Made skeleton warriors also have physics-based hit reactions.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2031
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895501
+Date:   2025-02-04 13:40:09
+Description:
+[UNB-2033]
+Fix for crash when duplicating or retargeting animation sequences (missing null check)
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2033
+#vettedby slageweg
+--------------------------------------------------
+Change: 895509
+Date:   2025-02-04 15:47:50
+Description:
+[UNB-2031]
+Added impulse bone remapping to physical animation hit reactions so when you (e.g.) hit the foot the entire let twitches, if you hit the tail the pelvis twitches and so on. This makes hit reactions more noticeable.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2031
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895513
+Date:   2025-02-04 16:04:38
+Description:
+[UNB-1428]
+Fixed Skeleton Warrior getting too close and then spinning in place
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895555
+Date:   2025-02-05 13:27:47
+Description:
+[UNB-1428]
+Fixed all 43 characters in the combat gym starting HTN planning despite being in a disabled encounter. The first plan would still get made. It involves a bunch of EQS queries which all operate on a global queue so all characters behavior would be delayed some 10-20s before all those queries go through the queue.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 895611
+Date:   2025-02-06 11:12:51
+Description:
+[UNB-1428]
+Undid the fix for the huge AI delay on combat gym startup done in the AIController as it caused characters that are supposed to be active on startup to not start their AI at all. The workaround is now in the HTNs (first plan is always a simple Success node).
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 895632
+Date:   2025-02-06 13:38:02
+Description:
+[UNB-1428]
+Disabled collision between neighboring bones in the skeleton warrior physics asset.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby ikamula
+--------------------------------------------------
+Change: 895660
+Date:   2025-02-06 15:40:47
+Description:
+[UNB-1762]
+Added a URootMotionModifier::GetInverseRootMotionAfterWarpingWindow helper that caches the result between runs, to make NotifyState_MotionWarpingWithTarget more efficient.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1762
+#vettedby slageweg
+--------------------------------------------------
+Change: 895663
+Date:   2025-02-06 15:48:43
+Description:
+[UNB-1428]
+Fixed a functional test not spawning characters because the spawners are in view of the player.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby slageweg
+--------------------------------------------------
+Change: 895664
+Date:   2025-02-06 15:49:15
+Description:
+[UNB-1428]
+Got rid of some Chapter00 assets that were spamming errors and causing an editor lagspike when right clicking in the HTN editor
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby slageweg
+--------------------------------------------------
+Change: 895665
+Date:   2025-02-06 15:50:06
+Description:
+[UNB-1762]
+Replaced HTNTask_PlayMotionWarpingMontage with a new motion warping integration (NotifyState_MotionWarpingWithTarget + HTNTask_PlayAnimationWithMinimalMotionWarping) that allows for more than one motion warping window per animation.
+
+To make an animation do warping, simply add one or more NotifyState_MotionWarpingWithTarget to the *montage* and configure where it should warp to (e.g. move to a blackboard key's location, or rotate to face focal point etc). Play animations normally from anywhere, via an HTNTask_PlayAnimation from HTN.
+
+The HTNTask_PlayAnimationWithMinimalMotionWarping is specially for the case where you have multiple animations to select from and want to decide which one to play based on which one brings you closest to the destination.
+
+The skeleton warrior now uses the new system to do staggers and attacks.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1762
+#vettedby slageweg
+--------------------------------------------------
+Change: 895712
+Date:   2025-02-07 13:57:14
+Description:
+[UNB-1428]
+Fix for missing jump links in combat gym (made jump links 20cm longer).
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895824
+Date:   2025-02-10 18:25:01
+Description:
+[UNB-1762]
+Made hyena staggers and bites use the new motion warping tools.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-1762
+#vettedby jvrooij
+--------------------------------------------------
+Change: 895862
+Date:   2025-02-11 10:49:09
+Description:
+[UNB-1428]
+Made HTNTask_PlayMotionWarpingMontage not "deprecated" in the settings as evidently that trips up validators for some people doing unrelated work. Renamed it to HTNTask_PlayMotionWarpingMontage_DEPRECATED (and fixed up redirectors to make it clear it should not be used).
+
+Vetted by Andrea Molino
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby amolino
+--------------------------------------------------
+Change: 895863
+Date:   2025-02-11 10:51:29
+Description:
+[UNB-1791]
+Fix for broken navmesh post 5.5 caused by BSP geometry not contributing to navigable geometry when loading a level (only contributing after you nudge something in the level).
+Fix for an old engine bug where it doesn't recognize "can ever affect navigation" on components.
+
+#assetvalidation succeeded
+#jira unb-1791
+--------------------------------------------------
+Change: 895910
+Date:   2025-02-11 17:25:31
+Description:
+[UNB-1428]
+Set up lighting scenarios for the CombatGym so lighting can be built and we get playable performance on Quest 3.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 896001
+Date:   2025-02-12 16:22:10
+Description:
+[UNB-1428]
+Fix for skeletons leaving floating armor pieces after they die.
+
+#assetvalidation succeeded
+#jira unb-1428
+--------------------------------------------------
+Change: 896022
+Date:   2025-02-12 17:12:29
+Description:
+[UNB-1428]
+Making CombatGym_Main perform on Quest 3: Removed all lights except the sky light, made it cast no shadows, baked lighting.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-1428
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 896113
+Date:   2025-02-13 16:53:15
+Description:
+[UNB-2278]
+Added a "Measure Path" function that actually uses string pulling like all other pathfinding functions.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2278
+#vettedby slageweg
+--------------------------------------------------
+Change: 896114
+Date:   2025-02-13 16:53:33
+Description:
+[UNB-2278]
+Made the HTNTask_MeasurePath use string pulling for a more precise result (the measured path now actually hugs corners instead of going through the middles of navmesh polygons).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2278
+#vettedby slageweg
+--------------------------------------------------
+Change: 896117
+Date:   2025-02-13 16:55:10
+Description:
+[UNB-2278]
+Fixed FT Hyena Holes not working (hyena's native AI was interfering with the test scenario).
+Rebuild navmesh there and in StressTest_Hyena
+
+#assetvalidation succeeded
+#jira unb-2278
+--------------------------------------------------
+Change: 896118
+Date:   2025-02-13 16:56:07
+Description:
+[UNB-NOTICKET]
+Quick fix for all node classes in the project getting loaded on right click in HTN editor, triggering lots of synchronous p4 operations.
+
+#assetvalidation succeeded
+#jira unb-noticket
+--------------------------------------------------
+Change: 896159
+Date:   2025-02-14 10:23:01
+Description:
+[UNB-2278]
+Fixed hyena getting stuck on corners and at holes. 
+Their "arc towards target EQS" now only accepts points that bring the hyena closer to the destination.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2278
+#vettedby jvrooij
+--------------------------------------------------
+Change: 896173
+Date:   2025-02-14 11:36:33
+Description:
+[UNB-NOTICKET]
+Fixed VGOnDemandBuildData spamming synchronous p4 commands for non-map packages. Opening Blueprints and anything else other than maps should be significantly faster now.
+
+Vetted by Danny Kruiswijk
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby dkruiswijk
+--------------------------------------------------
+Change: 896188
+Date:   2025-02-14 13:12:46
+Description:
+[UNB-2256]
+Set up the scorpion character, controller, templates, HTN/BB.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2256
+#vettedby jvrooij
+--------------------------------------------------
+Change: 896369
+Date:   2025-02-18 13:34:07
+Description:
+[UNB-2256]
+Fixed "missing head socket" on BP_Scorpion which doesn't have a skeletal mesh yet. This warning was preventing review builds from coming through on scorpion work.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2256
+#vettedby slageweg
+--------------------------------------------------
+Change: 896402
+Date:   2025-02-18 16:52:02
+Description:
+[UNB-2153]
+
+Imported mimic pro and hooked it up to BP_Pawn_Game. There are warnings about missing fbx/obj files for hte assets that it imports, as well as for assets names not following our conventions, but we ignore those for third party assets such as this.
+
+Some work to make Mimic Pro work with our locomotion system, such as getting head and hand transforms relative to the playspace origin instead of relative to their parent.
+--------------------------------------------------
+Change: 896415
+Date:   2025-02-18 17:28:00
+Description:
+[UNB-2154]
+Assigned Lara as the FBA model.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2154
+#vettedby slageweg
+--------------------------------------------------
+Change: 896438
+Date:   2025-02-19 10:41:04
+Description:
+[UNB-2153]
+Hid the fullbody avatar temporarily until it's in a more ready state.
+
+#assetvalidation succeeded
+#jira unb-2153
+--------------------------------------------------
+Change: 896455
+Date:   2025-02-19 11:56:33
+Description:
+[UNB-2153][UNB-2154]
+
+Moved and renamed some MimicPro things to match our folder and naming conventions:
+BP_VRBodyComponent -> BAC_Avatar
+UE5_VRBody_AnimBP -> ABP_Avatar
+UE5_CR_VRBody -> CR_Avatar
+
+Fixed broken foot IK.
+
+Fixed up some warnings about out of date animation poses.
+
+Vetted by Stanley Lageweg
+--------------------------------------------------
+Change: 896500
+Date:   2025-02-19 18:51:42
+Description:
+[UNB-2154]
+Moved the POV to where Lara's eyes are. This creates a more natural perspective for the player (e.g. it's easier to see the rest of your body when you look down etc). Before the POV was above her eyes and floating some 10cm in front of them.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-2154
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 896548
+Date:   2025-02-20 13:22:59
+Description:
+[UNB-2153]
+Fixed "noodle arms" in the Full Body Avatar.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2153
+#vettedby slageweg
+--------------------------------------------------
+Change: 896579
+Date:   2025-02-20 15:36:56
+Description:
+[UNB-2257] [UNB-2259]
+[UNB-2257] [UNB-2259]
+Fixed BP_EncounterBase always overriding the damage multipliers on the player to the class default ones of BPT_Pawn_Game.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2257,unb-2259
+#vettedby jvrooij
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2257,unb-2259
+#vettedby jvrooij
+--------------------------------------------------
+Change: 896771
+Date:   2025-02-25 12:20:43
+Description:
+[UNB-2155]
+Clamping camera to calibration height + small leeway (10cm, configurable on BP_Pawn). The player can't get taller than that even if they calibrate height while sitting and then stand up. This prevents players from cheating to make a 3m tall Lara that can skip climbing sections.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2155
+#vettedby slageweg
+--------------------------------------------------
+Change: 896874
+Date:   2025-02-26 15:47:41
+Description:
+[UNB-2427]
+When doing a dodge, the player's hands smoothly stay behind for a bit, creating a sense of motion.
+VGHandTransformProvider: Made it so that that base implementation of ProvideTransform is a no-op instead of overriding all lower-priority hand transform providers.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2427
+#vettedby slageweg
+--------------------------------------------------
+Change: 896905
+Date:   2025-02-26 17:59:29
+Description:
+[UNB-2427]
+Made it possible to scale hand offsets during dodges per axis (in camera space). E.g. make it so forward-back movement is inverted while left-right and up-down remain the same.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2427
+#vettedby slageweg
+--------------------------------------------------
+Change: 897073
+Date:   2025-02-28 15:59:53
+Description:
+[UNB-2366]
+Made it possible for combat circle members to say they don't want to be assigned a circle sector at the moment by providing an invalid self location. This is useful for Hyenas when they're running off to hide after an attack to prevent empty slots occupied by hyenas far away.
+Ported a combat circle fix made for Power Demos that fixes characters going through each other to get to their destination instead of shuffling around the circle.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2366
+#vettedby slageweg
+--------------------------------------------------
+Change: 897156
+Date:   2025-03-03 13:10:12
+Description:
+[UNB-2366]
+Option to limit the number of group members that get considered for combat circle assignment (only consider n closest ones). This is needed to keep the performance testing TAF test working: the O(n!) assignment algorithm worked fine when you had 6 nosalises, but will destroy performance for 50 hyenas. Keeping it to just the nearest 8 hyenas helps.
+
+Also added a vg.CombatCircle.DrawCombatCircles CVAR for debug drawing combat circles and sector assignments.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2366
+#vettedby slageweg
+--------------------------------------------------
+Change: 897172
+Date:   2025-03-03 14:13:59
+Description:
+[UNB-1479]
+Fixed missing null check in ABP_Lurker02
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-1479
+#vettedby ikamula
+--------------------------------------------------
+Change: 897254
+Date:   2025-03-04 11:31:05
+Description:
+[UNB-2366]
+Iteration 3 of hyenas encircling the player
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2366
+#vettedby jvrooij
+--------------------------------------------------
+Change: 897392
+Date:   2025-03-05 13:17:26
+Description:
+[UNB-2437]
+Made UVGAnimationUtilities::GetLocalSpaceBoneTransformsForTime work at runtime and not just in editor.
+Fixed UVGCollisionUtilities::GetAnimationPoseBounds only grabbing poses of the requested bones and their immediate parents and not the entire chain.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2437
+#vettedby slageweg
+--------------------------------------------------
+Change: 897453
+Date:   2025-03-05 18:04:08
+Description:
+[UNB-2437]
+Fixed getting bone transforms from an animation giving the locations for the base skeleton instead of the one the animation is actually used with.
+Made GetComponentSpaceBoneTransformForTimes and GetLocalSpaceBoneTransformsForTime take an optional USkeletalMesh to override on which skeletal mesh to evaluate the animation (this influnces bone poses).
+
+Added hysterestis and caring about hand rotation for "crossed arms" and "hands on hip" in the full-body avatar.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2437
+#vettedby slageweg
+--------------------------------------------------
+Change: 897485
+Date:   2025-03-06 10:58:30
+Description:
+[UNB-NOTICKET]
+Added BP_RequiredActors to fix CombatGym_Main being stuck on a black screen
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 897510
+Date:   2025-03-06 12:14:25
+Description:
+[UNB-1482]
+Fixed motionmatched hyenas always using the running movement method even when they're supposed to be walking.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-1482
+#vettedby ikamula
+--------------------------------------------------
+Change: 897568
+Date:   2025-03-06 15:54:56
+Description:
+[UNB-1482]
+Fixed Lurker02 not having a physics asset.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-1482
+#vettedby ikamula
+--------------------------------------------------
+Change: 897569
+Date:   2025-03-06 15:55:04
+Description:
+[UNB-2694]
+Optimized CombatCircleComponent::AssignToSectors from 5ms to 1ms in the editor by caching the costs.
+The combat circle now evaluates the cost of assignment at the leaf nodes of the tree.
+The cost of assigning a member at a given location to a given sector is now cached per location-sector pair.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2694
+#vettedby slageweg
+--------------------------------------------------
+Change: 897602
+Date:   2025-03-06 17:44:31
+Description:
+[UNB-1482]
+Fixed motionmatched hyena walking in place when it's supposed to idle.
+
+Vetted by Inka Kamula
+
+#assetvalidation warning
+#jira unb-1482
+#vettedby ikamula
+Encountered 1 warnings:
+/Game/Blueprints/Animation/Lurker02/CR_Lurker02.CR_Lurker02 is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Animation/Lurker02/CR_Lurker02.uasset'
+--------------------------------------------------
+Change: 897656
+Date:   2025-03-07 12:07:05
+Description:
+[UNB-1482]
+Fixed hyenas using the walk F animation instead of walk B when backing away from the player. The trajectory prediciton logic was assuming the character was calculating the character orientation wrong because it expected GetViewRotation to return the desired rotation instead of the actual. The two happen to be the same in the base engine but VGCharacterBase overrides it to return the head bone rotation.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1482
+#vettedby slageweg
+--------------------------------------------------
+Change: 897708
+Date:   2025-03-07 15:58:51
+Description:
+[UNB-2694]
+Hyena:
+
+Enabled anim budget allocator
+Disabled sight and hearing sensors (they're from the base class and not used by the AI).
+Removed the VGHitReactionHandler (hit reactions are now done with physical animation, light hit reactions and death are not used and when we get to them we'll do them in the ABP itself).
+
+Changed walk speed from 250cm/s to 200cm/s to match animation.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2694
+#vettedby jvrooij
+--------------------------------------------------
+Change: 897709
+Date:   2025-03-07 15:59:11
+Description:
+[UNB-2694]
+Reduced EQS budget from 5ms to 2ms (like on Impact)
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2694
+#vettedby slageweg
+--------------------------------------------------
+Change: 897710
+Date:   2025-03-07 15:59:29
+Description:
+[UNB-2694]
+Small optimization making it so we don't bother moving the sight/hearing sensor every frame if it's disabled.
+Fixed missing null check preventing Simulate in the BP editor from working.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2694
+#vettedby slageweg
+--------------------------------------------------
+Change: 897841
+Date:   2025-03-10 15:51:38
+Description:
+[UNB-2694]
+Fixed Quest3 device profile being ignored due to type in name.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-2694
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 897863
+Date:   2025-03-10 16:33:34
+Description:
+[UNB-1482]
+Made the inout param in IPoseSearchTrajectoryPredictorInterface::Predict actaully show up as in-out instead of just out when implemented in Blueprint.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-1482
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 897867
+Date:   2025-03-10 16:50:40
+Description:
+[UNB-1482]
+Added PSS_ PSD_ PSN_ prefixes to asset validators for pose search (motion matching) related data assets.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-1482
+#vettedby slageweg
+--------------------------------------------------
+Change: 897871
+Date:   2025-03-10 16:58:46
+Description:
+[UNB-2740]
+Intial setup for FBA motion matching, using extremely simple trajectory prediction.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2740
+#vettedby slageweg
+--------------------------------------------------
+Change: 897944
+Date:   2025-03-11 10:20:04
+Description:
+[UNB-2778]
+Added missing "is array empty" check causing warning spam
+
+#assetvalidation succeeded
+#jira unb-2778
+--------------------------------------------------
+Change: 897986
+Date:   2025-03-11 13:13:58
+Description:
+[UNB-2778]
+Fixed arm length 0 before first calibration
+
+#assetvalidation succeeded
+#jira unb-2778
+--------------------------------------------------
+Change: 898085
+Date:   2025-03-12 10:38:55
+Description:
+[UNB-2740]
+Better trajectory prediction for Avatar FBA that takes into account acceleration and braking.
+Trajectory during falling is correctly predicted with the player pawn's custom gravity and detects where it will hit the floor.
+Made the Idle pose be the one we had before. It causes foot sliding on transitions but at least we don't always have one foot forward anymore.
+Removed spamming "idle" and "moving" in the log.
+
+#assetvalidation succeeded
+#jira unb-2740
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2740
+#vettedby slageweg
+--------------------------------------------------
+Change: 898111
+Date:   2025-03-12 11:21:05
+Description:
+[UNB-2694]
+Made a StressTest_SkeletonWarrior map with a TAF test to stress test performance of many of them. Made BP_Skeleton_Melee use VGSkeletalMeshComponent that allows for the anim budget allocator.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira unb-2694
+#vettedby slageweg
+Encountered 2 warnings:
+/Game/Blueprints/Weapons/BP_Firearm_Base.BP_Firearm_Base is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Weapons/BP_Firearm_Base.uasset'
+/Game/Blueprints/Weapons/Kalashnikov/BP_Firearm_Kalashnikov.BP_Firearm_Kalashnikov is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Weapons/Kalashnikov/BP_Firearm_Kalashnikov.uasset'
+--------------------------------------------------
+Change: 898276
+Date:   2025-03-13 11:39:46
+Description:
+[UNB-2740]
+Stride scaling for the full-body avatar.
+
+Vetted by Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-2740
+#vettedby arembado
+--------------------------------------------------
+Change: 898341
+Date:   2025-03-13 17:20:54
+Description:
+[UNB-2740]
+Fixed wrong stride scaling bone setup on the right foot of the FBA.
+
+Vetted by Alessandro Rembado
+
+#assetvalidation warning
+#jira unb-2740
+#vettedby arembado
+Encountered 1 warnings:
+/Game/MimicPro/Demo/EngineContent/UE5Mannequins/Meshes/SK_Mannequin.SK_Mannequin is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/MimicPro/Demo/EngineContent/UE5Mannequins/Meshes/SK_Mannequin.uasset'
+--------------------------------------------------
+Change: 898444
+Date:   2025-03-14 16:45:50
+Description:
+[UNB-2694]
+Unshelved from pending changelist '898133':
+
+Made BP_Skeleton_Melee use the SK_Mannequin based skeletal mesh for compatibility with the motion matching animations.
+Motion matching setup for skeleton warriors based on Epic's example project, also featuring stride scaling and foot locking.
+Added the skeleton stess test level to development levels.
+Fixed skeleton warrior using the wrong navmesh in builds (we had a similar issue with Nosalises on Impact).
+Made BP_SkeletonFlower not affect navigation (impacts performance at runtime).
+Made BP_Skeleton_Melee not damage other skeletons
+Fixed BP_Skeleton_Melee calling GetOverlappingActors many times while iterating over it.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira unb-2694
+#vettedby slageweg
+Encountered 1 warnings:
+/Game/Assets/Audio/MSS_NeedsToBeReplaced.MSS_NeedsToBeReplaced is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Assets/Audio/MSS_NeedsToBeReplaced.uasset'
+--------------------------------------------------
+Change: 898446
+Date:   2025-03-14 16:57:52
+Description:
+[UNB-2694]
+Set up the physics asset for the UE5 skeleton of the skeleton warrior.
+
+#assetvalidation succeeded
+#jira unb-2694
+--------------------------------------------------
+Change: 898450
+Date:   2025-03-14 17:28:58
+Description:
+[UNB-2740]
+Foot placement for FBA Using a footplacement node and making the controlrig use the IK bones instead of performing its own traces.
+Vetted by Stanley Lageweg.
+
+Submitted via p4v because CR_Avatar has an invalid soft reference that I've been unable to locate. This has been the case since MimicPro was imported and does not cause issues apart from triggering asset validation.
+--------------------------------------------------
+Change: 898696
+Date:   2025-03-18 14:01:11
+Description:
+[UNB-2740]
+More advanced motion matching for FBA, with starts/stops/pivots instead of just loops. 
+Also jumps and lands.
+The Mimic Pro demo map level blueprint now has an option to make the player character run around in a spiral without VR.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-2740
+#vettedby ikamula
+--------------------------------------------------
+Change: 898712
+Date:   2025-03-18 14:24:50
+Description:
+[UNB-323]
+Unshelved from pending changelist '898544':
+
+Fixed skeleton warrior keeping legs planted during montages (said montages were keeping the foot ik bones still instead of making them follow the fk bones).
+
+Vetted by Alessandro Rembado
+
+#assetvalidation warning
+#jira unb-323
+#vettedby arembado
+Encountered 12 warnings:
+Source file Sword1h_Hit_Head_LeftDown.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_LeftDown.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_LeftDown
+Source file Sword1h_Hit_Head_LeftUp.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_LeftUp.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_LeftUp
+Source file Sword1h_Hit_Head_Front.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Head_Front.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Head_Front
+Source file Sword1h_Hit_Legs_Left.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Legs_Left.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Legs_Left
+Source file Sword1h_Hit_Legs_Right.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Skeleton/Animations/Prototype/Stagger/Sword1h_Hit_Legs_Right.FBX' or depot. Referenced by: /Game/Assets/Characters/Skeleton/Animations/Prototype/Stagger/SkeletonPrototype_Hit_Legs_Right
+See log for complete list of warnings
+--------------------------------------------------
+Change: 898762
+Date:   2025-03-18 17:49:04
+Description:
+[UNB-2740]
+Reimported the animation assets from Epic's GameAnimationSample, this time with the pose search notifies intact. This fixes various weirdness during jumps, stops, and other animations.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira unb-2740
+#vettedby slageweg
+Encountered 800 warnings:
+Source file M_Neutral_Run_Lean_Pose_Right_out.fbx is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/UEFN_Mannequin/Animations/Run/UE5/Characters/M_UEFN/Animation/MotionMatching/Run/FBX/M_Neutral_Run_Lean_Pose_Right_out.fbx' or depot. Referenced by: /Game/Assets/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Lean_Pose_Right_out
+Source file M_Neutral_Crouch_Box_B_RL_Rfoot.fbx is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/UEFN_Mannequin/Animations/Crouch/UE5/Characters/M_UEFN/Animation/MotionMatching/Crouch/FBX/M_Neutral_Crouch_Box_B_RL_Rfoot.fbx' or depot. Referenced by: /Game/Assets/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RL_Rfoot
+Source file M_Neutral_Crouch_Box_B_RR_Lfoot.fbx is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/UEFN_Mannequin/Animations/Crouch/UE5/Characters/M_UEFN/Animation/MotionMatching/Crouch/FBX/M_Neutral_Crouch_Box_B_RR_Lfoot.fbx' or depot. Referenced by: /Game/Assets/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RR_Lfoot
+Source file M_Neutral_Crouch_Box_B_RR_Rfoot.fbx is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/UEFN_Mannequin/Animations/Crouch/UE5/Characters/M_UEFN/Animation/MotionMatching/Crouch/FBX/M_Neutral_Crouch_Box_B_RR_Rfoot.fbx' or depot. Referenced by: /Game/Assets/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RR_Rfoot
+Source file M_Neutral_Crouch_Box_F_LL_Lfoot.fbx is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/UEFN_Mannequin/Animations/Crouch/UE5/Characters/M_UEFN/Animation/MotionMatching/Crouch/FBX/M_Neutral_Crouch_Box_F_LL_Lfoot.fbx' or depot. Referenced by: /Game/Assets/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_LL_Lfoot
+See log for complete list of warnings
+--------------------------------------------------
+Change: 898824
+Date:   2025-03-19 10:31:54
+Description:
+[UNB-2428]
+More jump animations for long jumps (e.g., off a cliff).
+More precise trajectory prediction.
+Counting "climbing" as in air.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-2428
+#vettedby ikamula
+--------------------------------------------------
+Change: 898930
+Date:   2025-03-19 14:59:05
+Description:
+[UNB-2492]
+Fixed "player ground location" jumping up when the player switches to climbing or swimming.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2492
+#vettedby slageweg
+--------------------------------------------------
+Change: 898999
+Date:   2025-03-19 18:02:50
+Description:
+[UNB-2428]
+FBA climbing improvements. 
+Trajectory prediction now takes into account that we're holding onto something.
+While holding onto something, the legs no longer dangle as if falling. Using the idle poses for now pending bespoke animations.
+There is now a head-bob after landing.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2428
+#vettedby slageweg
+--------------------------------------------------
+Change: 899102
+Date:   2025-03-20 15:02:18
+Description:
+[UNB-2942]
+Compile error fix
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2942
+#vettedby jvrooij
+--------------------------------------------------
+Change: 899136
+Date:   2025-03-20 16:41:00
+Description:
+[UNB-2942]
+Stress test TAF level for scorpions. 
+Optimization pass for scorpions so they don't keep replanning every frame if they can't attach to the player.
+Enabled anim budet allocator for scorpions.
+When all the slots in the inner circle are filled out, scorpions spread out and loiter some distance away like hyenas do.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2942
+#vettedby jvrooij
+--------------------------------------------------
+Change: 899187
+Date:   2025-03-20 18:51:17
+Description:
+[UNB-2942]
+Made player run around in the scorpion test.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-2942
+#vettedby ttrignol
+--------------------------------------------------
+Change: 899320
+Date:   2025-03-24 10:39:59
+Description:
+[UNB-2229]
+Fixed SA_Scorpion having the wrong volume at max distance. The sound was falling off so little it was difficult to tell where it's coming from.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2229
+#vettedby jvrooij
+--------------------------------------------------
+Change: 899476
+Date:   2025-03-25 10:46:18
+Description:
+[UNB-2879]
+First iteration of the bat. They fly around as a swarm and attack the player one at a time. They can be shot or knocked out of the air in melee. They telegraph their attacks via a placeholder sound and harder wobbling.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2879
+#vettedby jvrooij
+--------------------------------------------------
+Change: 899494
+Date:   2025-03-25 11:34:08
+Description:
+[UNB-2740]
+Improved trajectory prediction to detect braking properly.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-2740
+#vettedby ikamula
+--------------------------------------------------
+Change: 899501
+Date:   2025-03-25 12:03:19
+Description:
+[UNB-NOTICKET]
+Made VGSkeletalMeshComponent blueprint spawnable
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby ttrignol
+--------------------------------------------------
+Change: 899774
+Date:   2025-03-26 18:08:32
+Description:
+[UNB-2477]
+WiP on the leg kick when jumping onto enemies. Currently disabled via bEnableAutomaticLegKick on ABP_Avatar.
+
+Vetted by Thomas Trignol
+
+#assetvalidation warning
+#jira unb-2477
+#vettedby ttrignol
+Encountered 2 warnings:
+/Game/Blueprints/Avatar/CR_Avatar.CR_Avatar is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Avatar/CR_Avatar.uasset'
+SK_Mannequin: This asset is in an unexpected path: MimicPro/Demo/EngineContent/UE5Mannequins/Meshes/. Expected root path is Assets/ for Skeleton assets. (AssetPath_Validator_C)
+--------------------------------------------------
+Change: 900991
+Date:   2025-04-09 10:41:01
+Description:
+[UNB-3103]
+Bats now circle overhead and occasionally lunge.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-3103
+#vettedby jvrooij
+--------------------------------------------------
+Change: 901168
+Date:   2025-04-10 10:55:08
+Description:
+[UNB-8021]
+Bats now occasionally swarm in on the player all together.
+
+Vetted by Jente van Rooij
+
+#assetvalidation warning
+#jira unb-8021
+#vettedby jvrooij
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Shared/Group/BPT_AIGroup.BPT_AIGroup is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/AIToolkit/Shared/Group/BPT_AIGroup.uasset'
+--------------------------------------------------
+Change: 901181
+Date:   2025-04-10 11:17:47
+Description:
+[UNB-8021]
+Doubled bat acceleration, made bats not flap wings when dead.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8021
+#vettedby jvrooij
+--------------------------------------------------
+Change: 901190
+Date:   2025-04-10 11:45:13
+Description:
+[UNB-8021]
+Fixed Bats flapping wings when dead
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-8021
+#vettedby ikamula
+--------------------------------------------------
+Change: 901207
+Date:   2025-04-10 13:18:45
+Description:
+[UNB-8021]
+Made bats not flap wings when grabbed.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8021
+#vettedby jvrooij
+--------------------------------------------------
+Change: 901239
+Date:   2025-04-10 14:36:24
+Description:
+[UNB-8021]
+Fixed being able to evade bats' lunge attacks simply by walking at constant speed.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8021
+#vettedby jvrooij
+--------------------------------------------------
+Change: 901352
+Date:   2025-04-11 13:17:14
+Description:
+[UNB-2477]
+Fixed skeleton warriors dragging their feet on the ground (they were unable to interrupt the idle loop due to incorrect settings).
+
+Fixed various hard dependencies on human/lurker stuff from Impact on skeleton warriors and hyenas (>1GB of assets).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-2477
+#vettedby ttrignol
+--------------------------------------------------
+Change: 901412
+Date:   2025-04-11 16:30:32
+Description:
+[UNB-2477]
+Re-enabled the drop kick, improved its detection and made it feel better (double speed feels way better). 
+Made enemies that can stagger always stagger when kicked.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2477
+#vettedby slageweg
+--------------------------------------------------
+Change: 901482
+Date:   2025-04-14 11:09:26
+Description:
+[UNB-8146]
+Added a Stress Test map for bats with a TAF test.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8146
+#vettedby slageweg
+--------------------------------------------------
+Change: 901538
+Date:   2025-04-14 14:00:43
+Description:
+[UNB-8159]
+Made bats only swarm if there are at least 10 of them.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8159
+#vettedby jvrooij
+--------------------------------------------------
+Change: 901675
+Date:   2025-04-15 14:23:34
+Description:
+[UNB-8170]
+Perfect look at for skeleton warriors via ControlRig. This will also be useful to make them aim their bow at something. 
+Doing the foot IK in the control rig as well.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-8170
+#vettedby ikamula
+--------------------------------------------------
+Change: 901987
+Date:   2025-04-17 14:09:56
+Description:
+[UNB-8200]
+Unshelved from pending changelist '901829':
+
+Made the MPOC store navigation tiles inside sublevels (the ones that have nav bounds volumes). 
+Updated project settings to make this work.
+
+From now on, levels with level streaming should have navmesh bounds inside sublevels (and also one(s) encompassing the whole map in the persistent level, not sure why).
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8200
+#vettedby jvrooij
+--------------------------------------------------
+Change: 902003
+Date:   2025-04-17 14:59:35
+Description:
+[UNB-8200]
+Rebuilt navmesh in the VisualTarget map to fix functional test for the TAF test.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8200
+#vettedby jvrooij
+--------------------------------------------------
+Change: 902271
+Date:   2025-04-22 16:23:56
+Description:
+[UNB-8173]
+Made turn-in-place work for skeleton warriors using motion matching. The trick is to select the right animation at the start and stick to it using cost bias. The default normalization method in the Pose Search Schema (Normalize) was producing values much bigger than the cost bias in the turn-in-place animations, so they were getting interrupted. Switching the normalization method to "Normalize With Common Schema" (like in the example project) fixed it.
+
+Fixed jittery lookat for skeleton warriors by clamping swing-twist angles instead of euler angles.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation warning
+#jira unb-8173
+#vettedby slageweg
+Encountered 1 warnings:
+/Game/Blueprints/Framework/Game/BP_Pawn_Game.BP_Pawn_Game is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Framework/Game/BP_Pawn_Game.uasset'
+--------------------------------------------------
+Change: 902359
+Date:   2025-04-23 11:15:25
+Description:
+[UNB-8324]
+Rebuilt navmesh in VisualTarget. This fixes the reproduction steps in the bug ticket.
+
+#assetvalidation succeeded
+#jira unb-8324
+--------------------------------------------------
+Change: 902380
+Date:   2025-04-23 13:15:06
+Description:
+[UNB-8185] [UNB-3043]
+Made hyenas, skeletons, scorpions create ripples on water. Fixed scorpion control rig errors.
+
+Vetted by Dennis Fokker
+
+#assetvalidation succeeded
+#jira unb-8185,unb-3043
+#vettedby dfokker
+--------------------------------------------------
+Change: 902382
+Date:   2025-04-23 13:16:25
+Description:
+[UNB-8324]
+Rebuild navmesh in combat gym
+
+#assetvalidation succeeded
+#jira unb-8324
+--------------------------------------------------
+Change: 902410
+Date:   2025-04-23 14:30:09
+Description:
+[UNB-8213]
+Basic blueprints setup for tigers. BP/AIC/AIG/HTN/ABP/BPT/BPTA etc.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8213
+#vettedby slageweg
+--------------------------------------------------
+Change: 902631
+Date:   2025-04-25 11:17:11
+Description:
+[UNB-8324]
+Fixed floating navmesh by removing the navmesh bounds from the persistent level. This improves performance because when a level is loaded, we just add its tiles instead of replacing the floating ones.
+
+Disabled "force rebuild on load" again.
+
+#assetvalidation succeeded
+#jira unb-8324
+--------------------------------------------------
+Change: 902815
+Date:   2025-04-28 15:51:48
+Description:
+[UNB-8336] [UNB-8337] [UNB-8338]
+Tiger prototype behavior. It sneaks around, then goes for a grapple attack where you are locked in place and have to punch it enough for it to let you go.
+Fixed no audio from hitting flesh.
+
+Vetted by Jente van Rooij
+
+#assetvalidation warning
+#jira unb-8336,unb-8337,unb-8338
+#vettedby jvrooij
+Encountered 4 warnings:
+/Game/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaAttacks.MSS_HyenaAttacks is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaAttacks.uasset'
+/Game/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaDamaged.MSS_HyenaDamaged is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaDamaged.uasset'
+/Game/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaPlayerImpact.MSS_HyenaPlayerImpact is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Assets/Audio/SFX/Creatures/Hyena/Prototype/MSS_HyenaPlayerImpact.uasset'
+SK_Mannequin: This asset is in an unexpected path: MimicPro/Demo/EngineContent/UE5Mannequins/Meshes/. Expected root path is Assets/ for Skeleton assets. (AssetPath_Validator_C)
+--------------------------------------------------
+Change: 902944
+Date:   2025-04-29 14:58:34
+Description:
+[UNB-8337]
+Tiger now does driveby attacks like the lurker. Those attacks also push you back.
+
+Vetted by Thomas Trignol, Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-8337
+#vettedby ttrignol,ikamula
+--------------------------------------------------
+Change: 903209
+Date:   2025-05-01 10:47:08
+Description:
+[UNB-8233]
+Re-enabled IsActive again on BP_EncounterBase as the change to disable it broke all the demo maps where there's one encounter that's supposed to start active.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-8233
+#vettedby ttrignol
+--------------------------------------------------
+Change: 903362
+Date:   2025-05-02 10:23:25
+Description:
+[UNB-8461]
+Fixed heap allocations happening for each navmesh tile being added during level streaming.
+
+Epic had added a heap-allocated dynamic buffer to store links instead of a stack-preallocated one that was there in the original Detour code. Profiling shows this had a huge effect on performance. I've inlined the loop so we process each poly as we find it so we don't have to put the found polys into a dynamic array first. This cut the spike in Insights from ~1s to ~300ms.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-8461
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 903383
+Date:   2025-05-02 13:48:30
+Description:
+[UNB-8461]
+Removed 3 our of 5 navmeshes in the tomb mpoc, trimmed down navmesh in inaccessible areas a little.
+
+#assetvalidation succeeded
+#jira unb-8461
+--------------------------------------------------
+Change: 903394
+Date:   2025-05-02 15:06:30
+Description:
+[UNB-8604]
+Made a BP_Pawn_Game_NoFullBodyAvatar and corresponding BP_GameMode_Game_NoFullBodyAvatar that hides the FBA. Can't assign it to VisualTarget yet because it's checked out.
+
+Note that in the World Settings of a map, you must set the game mode class and not the pawn class. Setting the pawn class willl actually edit the regular game mode and affect all maps, not just the one you want to edit.
+
+#assetvalidation warning
+#jira unb-8604
+Encountered 1 warnings:
+/Game/Blueprints/Locomotion/BAC_FallLocomotion.BAC_FallLocomotion is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Locomotion/BAC_FallLocomotion.uasset'
+--------------------------------------------------
+Change: 903721
+Date:   2025-05-07 14:13:26
+Description:
+[UNB-8759]
+Fixed very large navmesh projection causing hyenas to try to go to the wrong floor.
+Made hyenas explicitly prefer the Lurker navmesh.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8759
+#vettedby jvrooij
+--------------------------------------------------
+Change: 903903
+Date:   2025-05-08 11:29:47
+Description:
+[UNB-8851]
+Fix for disappearing navmesh when backtracking out of ToDesertTomb2 (just moved navmesh bounds so fewer tiles are included in the ToDesertTomb sublevel which gets unloaded).
+
+Vetted by Jacob Eriksson
+
+#assetvalidation succeeded
+#jira unb-8851
+#vettedby jeriksson
+--------------------------------------------------
+Change: 904036
+Date:   2025-05-09 10:28:53
+Description:
+[UNB-2239] [UNB-8756] [UNB-8759] [UNB-8851]
+Made nav geometry data be stored at runtime even on DynamicModiifersOnly navmesh (not only Dynamic), because navlink generation requires that we store the raw geometry data from which to build a heightfield.
+See FRecastTileGenerator::Setup / bRegenerateCompressedLayers.
+That means we must store that data at runtime even when using the DynamicModifersOnly setting 
+(before, bStoreNavGeometry would only be true for ERuntimeGenerationType::Dynamic).
+Otherwise it would try to fully rebuild the tiles with no geometry present and fail, completely removing the tiles instead.
+We'll be able to revert this if and when we replace this way of generating navliks with PCG placing navlink proxy actors.
+
+Also applying a navmesh fix from Epic:
+https://github.com/EpicGames/UnrealEngine/commit/f71956e453f093a524bd1c02c07574321d5e2b39#diff-51e3b26fa53574690de1d0aa8d7e0a39d73133a8cae98a57928d2613b144e230L1-R144
+
+Original commit message from Epic here:
+
+[NavigationSystem]
+the call to OnActorRegistered from AActor::PostRegisterAllComponents will now handle registration for the actor and all its components.
+Component registration to the navigation system will be ignored until all components are registered to the scene to avoid extra work since actor registration will take care of it.
+The component specific operations are now only used after the initial registration (e.g., component added/removed/updated).
+This change fixes an issue exposed by the new registration flow when the NavigationElement is created and pushed with all the relevant data instead of relying on the callbacks when processing the registration queue. That delay was hiding the depencies between some components.
+#jira PLAY-66984
+
+fixed regression be adding back calls to AddLevelToOctree in ConditionalPopulateNavOctree so levels could register their collision (BSP).
+The goal in CL 35531152 was only to not register all actors since those are now handled by the repository, not also removing level collision registration.
+#jira UE-235006
+#rb Aris.Theophanidis
+
+[CL 40137066 by yoan stamant in 5.5 branch]
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-2239,unb-8756,unb-8759,unb-8851
+#vettedby slageweg
+--------------------------------------------------
+Change: 904040
+Date:   2025-05-09 10:42:00
+Description:
+[UNB-2239] [UNB-8756] [UNB-8759] [UNB-8851]
+Rebuilt navmesh in mpoc
+
+#assetvalidation succeeded
+#jira unb-2239,unb-8756,unb-8759,unb-8851
+--------------------------------------------------
+Change: 904042
+Date:   2025-05-09 10:50:37
+Description:
+[UNB-8759]
+Fixed hyenas picking a spot on a different floor when outside combat circle.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8759
+#vettedby jvrooij
+--------------------------------------------------
+Change: 904067
+Date:   2025-05-09 11:45:57
+Description:
+[UNB-8851]
+Fixed an issue where loading a level, unloading it, and then loading it again before it gets GCd results in missing navmesh.
+It's something specific to DynamicModifiersOnly, which was mistakenly being treated as Dynamic.
+
+The fix is from Epic:
+https://github.com/EpicGames/UnrealEngine/commit/0c8af87858ac569e8d505d22c66721c1060b5d0c
+Original commit message:
+
+Allow RecastNavMeshDataChunks to reclaim navmesh tiles when using Dynamic Modifiers Only runtime generation while detaching them if they have different layers but the same XY position.
+Also updated the warning for reusing unloaded sublevels to use the updated console command 'LevelStreaming.ShouldReuseUnloadedButStillAroundLevels 0'.
+
+#jira UE-243852
+#rb Aris.Theophanidis
+
+[CL 39827496 by james keeling in ue5-main branch]
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8851
+#vettedby slageweg
+--------------------------------------------------
+Change: 904419
+Date:   2025-05-13 10:54:32
+Description:
+[UNB-8800] [UNB-8801] [UNB-8802]
+Unshelved from pending changelist '904114':
+
+Improvements to the "flyby" attack of bats: 
+- such attacks are more spread out in space and in time
+- they are less likely to fall back to a hover attack because some other bat reserved the location they wanted (this was causing a bat to hover in front of the player even outside of the swarming mode).
+- and can now do such attacks in low-ceiling areas such as corridors.
+- the flyby attacks are much mroe likely to be picked over the "hover in front of player's face" attacks (those are more like "if all else" fails fallbacks now).
+
+Improvements to the "Swarming" mode:
+- it happens less often
+- it happens for shorter duration
+- bats no longer hover in place like hummingbirds while swarming but actually fly around you chaotically.
+
+Made bats not flap their wings in sync.
+
+Bats generally behave better in narrow spaces such as the encounter demo now.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8800,unb-8801,unb-8802
+#vettedby jvrooij
+--------------------------------------------------
+Change: 904478
+Date:   2025-05-13 13:51:10
+Description:
+[UNB-8963]
+Improved performance of EQSQuery_HyenaArcTowardsMovementTarget to fix an issue where hyenas zigzagging was too sluggish.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8963
+#vettedby jvrooij
+--------------------------------------------------
+Change: 904480
+Date:   2025-05-13 14:01:33
+Description:
+[UNB-8918]
+Reduced physical hit reaction strength for hyenas in motion to prevent clipping through the floor.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8918
+#vettedby jvrooij
+--------------------------------------------------
+Change: 904489
+Date:   2025-05-13 14:21:22
+Description:
+[UNB-8518]
+Made the tiger's arms not detach from your shoulders whe the tiger is shot.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8518
+#vettedby slageweg
+--------------------------------------------------
+Change: 904608
+Date:   2025-05-14 10:44:33
+Description:
+[UNB-8758]
+Made pistols easier to grab by doubling the size of the grab volumes at the hips.
+Fixed the shoulder slot not being hidden in game.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8758
+#vettedby slageweg
+--------------------------------------------------
+Change: 904642
+Date:   2025-05-14 13:12:05
+Description:
+[UNB-8758]
+Made the avatar not turn in place if the player is looking too far down (or up).
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-8758
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 904665
+Date:   2025-05-14 14:01:50
+Description:
+[UNB-8758]
+Put hip slots on the pelvis so one leg being in front of the other in the idle pose does not make the right gun harder to grab.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-8758
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 904860
+Date:   2025-05-15 15:23:57
+Description:
+[UNB-8536]
+Tiger: 
+Telegraphed dodgeable grapplling attack.
+New animations during grappling: idle/bite/roar.
+Fixed missing attenuation on tiger footsteps.
+Added check if the path is unobstructed before doing a jump attack.
+Broke up HTN_Tiger_Combat into subnetworks for hiding, approaching, grapple attacks.
+
+Reimported lurker animations with the correct positioning of ik bones.
+
+I got permission to submit this from Steijn even though it's not for MS2.0
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-8536
+#missingfixversion
+#vettedby jvrooij
+--------------------------------------------------
+Change: 904861
+Date:   2025-05-15 15:27:09
+Description:
+[UNB-8918]
+Reduced the hit reaction multiplier when in motion further to 1 (just like for the Tiger), to fix hyenas disappearing under the floor when shot a lot while in motion.
+
+#assetvalidation succeeded
+#jira unb-8918
+--------------------------------------------------
+Change: 904910
+Date:   2025-05-15 17:11:03
+Description:
+[UNB-8536]
+Made the tiger actually bite your face.
+Fixed the tiger triggering out-of-bounds during grappling when its face gets too close.
+
+This is part of the tiger work I got permission from Steijn to submit. This does not impact the MPOC but is needed for MG review of the tiger.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-8536
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 904921
+Date:   2025-05-15 17:46:48
+Description:
+[UNB-8536]
+Tweaks to tiger combat values based on playtesting feedback. They run away from their cover at a larger distance now when the player comes out.
+
+Tigers now decide between two kinds of attacks at random instead of based on being looked at or not.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira unb-8536
+#missingfixversion
+#vettedby kkune
+--------------------------------------------------
+Change: 905324
+Date:   2025-05-20 16:35:08
+Description:
+[UNB-2504] [UNB-8918]
+Unshelved from pending changelist '904958':
+
+Jumps for hyenas and tigers are now using a montage with motionwarping like we did on Impact, so much less likely to get stuck off navmesh now.
+Fixed tigers in grappling reacting to a hit that happened before the grapple.
+Dialed down physical hit reaction strength further to prevent the body from clipping through floor.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-2504,unb-8918
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 905329
+Date:   2025-05-20 16:47:43
+Description:
+[UNB-2504]
+Rebuilt navmesh in combat gym
+
+#assetvalidation succeeded
+#jira unb-2504
+--------------------------------------------------
+Change: 906405
+Date:   2025-06-04 11:27:51
+Description:
+[UNB-2863]
+Fixes for existing issues in the scorpion AI:
+- fixed attack tokens being ignored
+- fixed use of deprecated PickRandom node that does not handle fallbacks
+- fixed scorpions from holes ignoring being grabbed
+
+This means they now properly move around chaotically when the attachment slots are full instead of crowding next to your feet.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-2863
+#vettedby jvrooij
+--------------------------------------------------
+Change: 906618
+Date:   2025-06-05 11:41:10
+Description:
+[UNB-9721]
+Fixed VGTAFAction_KillAllEnemies not ticking.
+
+Vetted by Dennis Fokker
+
+#assetvalidation succeeded
+#jira unb-9721
+#vettedby dfokker
+--------------------------------------------------
+Change: 906669
+Date:   2025-06-05 14:52:48
+Description:
+[UNB-8185]
+Changed navmeshes to Default/Small/Player. Rebuilt navmesh in CombatGym, MPOC, Visual Target.
+
+The Small navmesh is used by scorpions and is blocked by water. Normal-sized enemies can walk through water, which is fine because only shallow water will ever be present around enemies.
+Fixed up nav areas and nav filters accordingly.
+
+Removed overrides for attenuation and concurrency of footstep sounds on Hyena and Tiger at the request of Tim Verberne.
+
+Vetted by Thomas Trignol, Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-8185
+#vettedby ttrignol,sbrattinga
+--------------------------------------------------
+Change: 906894
+Date:   2025-06-06 15:07:26
+Description:
+[UNB-9656]
+[UNB-9656]
+Scorpions now attack using an actual sting animation. 
+The stinger is IKd to the nearest point on the character's body.
+Scorpions actually try to reach the limbs when going to the player instead of just vaguely under the camera.
+
+Vetted by Jente van Rooij
+
+#assetvalidation failed
+#jira unb-9656
+#vettedby jvrooij
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9656
+#vettedby jvrooij
+--------------------------------------------------
+Change: 907097
+Date:   2025-06-11 10:10:14
+Description:
+[UNB-10138]
+Fixed navmesh in LocomotionDemoRoom
+
+#assetvalidation succeeded
+#jira unb-10138
+--------------------------------------------------
+Change: 907275
+Date:   2025-06-12 11:27:37
+Description:
+[UNB-9708]
+Scorpion ranged attack prototype.
+Fixed wrong attenuation settings on SA_Scorpion.
+
+Vetted by Jente van Rooij, Tim Verberne
+
+#assetvalidation succeeded
+#jira unb-9708
+#vettedby jvrooij,tverberne
+--------------------------------------------------
+Change: 907462
+Date:   2025-06-13 16:44:37
+Description:
+[UNB-NOTICKET]
+Fixed Hyena holes not having navlinks generated. Fixed functional test for holes not working.
+
+Vetted by Jenilson Martins Da Silva
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby jmartinsdasilva
+--------------------------------------------------
+Change: 907512
+Date:   2025-06-16 13:16:21
+Description:
+[UNB-9706]
+Unshelved from pending changelist '907323':
+
+Scorpion jump attack. Cleanup in then scorpion combat HTN. Scorpions now fall off your body after stinging you once.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9706
+#vettedby jvrooij
+--------------------------------------------------
+Change: 907518
+Date:   2025-06-16 13:45:34
+Description:
+[UNB-5295]
+The Scorpion AI now supports:
+- level design HTN override in combat (to enable things similar to Lurker jumpscares on Impact)
+- participating in a Level Sequence
+
+Vetted by Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-5295
+#vettedby istan
+--------------------------------------------------
+Change: 907547
+Date:   2025-06-16 16:16:45
+Description:
+[UNB-9706]
+Making scorpions able to jump along navlinks at Jente's request. Reusing the jump attack animation for this for now.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9706
+#vettedby jvrooij
+--------------------------------------------------
+Change: 907891
+Date:   2025-06-19 11:49:05
+Description:
+[UNB-9651]
+Unshelved from pending changelist '907676':
+
+Scorpion burrowing/unburrowing.
+A scorpion can be configured to start as burrowed. In that case they'll be hidden and come out of the sand when they enter combat (when the player comes too close or looks at the place where they're burrowed).
+
+If a scorpion unburrows close enough to the player, they'll launch into an attack straight from the sand.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9651
+#vettedby jvrooij
+--------------------------------------------------
+Change: 907984
+Date:   2025-06-19 17:20:44
+Description:
+[UNB-9651]
+Making scorpions burrow only when stadning on sand (actors with the PM_Sand physical material). 
+
+Scorpions placed in levels will automatically begin play burrowed if they're standing on sand 
+(this can be disabled by unchecking "start burrowed if placed on sand") on the BP_Scorpion.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-9651
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908050
+Date:   2025-06-20 13:17:22
+Description:
+[UNB-9651]
+Added a placeholder "burrow" sound (generated with elevenlabs) to scorpions.
+Fixed hitch when transitioning from "burrowed" to unburrowing.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9651
+#vettedby jvrooij
+--------------------------------------------------
+Change: 908098
+Date:   2025-06-20 16:10:13
+Description:
+[UNB-10461]
+Made scorpions not attach to the player upon a successful jump attack but just do damage instead.
+Added a "MSS_ScorpionJump" (Elevenlabs) and used it.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10461
+#vettedby jvrooij
+--------------------------------------------------
+Change: 908187
+Date:   2025-06-23 14:06:49
+Description:
+[UNB-9654]
+Scorpions now sting out of an ambush hole using an animation. They don't attach to your hand and instead just keep biting. They can be shot in a hole or they can be grabbed and removed, at which point they're just regular scorpions.
+
+The case where you grab and let go while still in a hole or take a regular scorpion and stick it into a hole is not yet handled, that will be taken care of later.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-9654
+#vettedby jvrooij
+--------------------------------------------------
+Change: 908312
+Date:   2025-06-24 11:57:50
+Description:
+[UNB-10462]
+Pass over Scorpion EQS.
+
+When loitering, they continuously update their destination. This prevents them from running off for a minute when the player moves between floors.
+
+The EQS queries used for attacks now use pathfinding tests to make sure we actually make it to the player. Otherwise the MoveTo task right after would fail to plan and they'd be stuck. If performance becomes a concern we can disable them again and rely on them picking another type of attack instead.
+
+Slightly reduced the frequency of rerunning the destination EQS when moving to attack.
+
+Fixed scorpions that are spawned on sand glitching out for a fraction of a second as they blend from the default pose into the "burrowing out of sand" animation.
+
+Additionally, the "burrow out" animation immediately moves the character out of the sand due to having root motion. The animations need to have the "moving in/out of sand" parts to not have any root motion.
+
+Vetted by Thomas Trignol
+
+#assetvalidation warning
+#jira unb-10462
+#vettedby ttrignol
+
+Encountered 2 warnings:
+/Game/Blueprints/AIToolkit/Shared/Pawn/BAC_LinkedActors.BAC_LinkedActors is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/AIToolkit/Shared/Pawn/BAC_LinkedActors.uasset'
+/Game/Blueprints/AIToolkit/Shared/BPFL_AIHelpers.BPFL_AIHelpers is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/AIToolkit/Shared/BPFL_AIHelpers.uasset'
+--------------------------------------------------
+Change: 908320
+Date:   2025-06-24 13:19:45
+Description:
+[UNB-9707]
+Minor tweaks to scorpion to make it not stay still for too long after a jump attack.
+Fixed scorpion spinning in place when trying to get in position for a jump attack (MoveTo's acceptance radius was too small).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-9707
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908330
+Date:   2025-06-24 13:43:45
+Description:
+[UNB-9707]
+Instead of a boolean, the scorpion's StartBurrowed setting is now an enum:
+Never | Always | If Placed On Sand (Default).
+
+This makes it easy to set up demos where it begins burrowed without having to make the floor sand (which doesn't work with BSP geometry).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-9707
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908490
+Date:   2025-06-25 16:02:30
+Description:
+[UNB-9707]
+A poison cloud Area-Of-Effect attack for scorpions.
+
+It's an attack with a long and loud telegraph that creates a cloud of poison gas that lasts a few seconds. The cloud does only 1 damage every 0.5s but applies the poison effect which slows you down. The cloud goes away after a few seconds.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-9707
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908513
+Date:   2025-06-25 16:40:35
+Description:
+[UNB-9707]
+Added a higher-level level design override behavior to HTN_Scorpion, which allows more precise control over the scorpion. Specifically, it allows level designers to decide when the scorpion unburrows in their custom scripts.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-9707
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908688
+Date:   2025-06-27 11:53:32
+Description:
+[UNB-10551]
+Fixed the poison cloud inheriting the scale of the scorpion's skeletal mesh.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10551
+#vettedby jvrooij
+--------------------------------------------------
+Change: 908706
+Date:   2025-06-27 13:15:57
+Description:
+[UNB-10551]
+Allowed AnimNotifyState to have access to a World like AnimNotify does and call functions like SpawnActor etc.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10551
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908718
+Date:   2025-06-27 14:07:59
+Description:
+[UNB-10551]
+Scorpion now emits the poison cloud anyway if killed during the telegraph for that.
+Fixed death not interrupting the current bark.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10551
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908753
+Date:   2025-06-27 16:41:46
+Description:
+[UNB-10547]
+Made the scorpion ragdoll after death (towards the end of the death animation, but instantly if it's in midair when it dies).
+Made the scorpion not do footsteps if they're dead.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10547
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908833
+Date:   2025-06-30 13:09:27
+Description:
+[UNB-10554]
+Integrated the new scorpion poison cloud attack animation.
+Made the scorpion move towards the player while doing the telegraph.
+
+Made the poison cloud size independent of the scale of the scorpion.
+Increased the size of the poison cloud.
+
+Fixed the poison effect never being applied due to AnyDamage not being triggered due to the damage multiplier for poison being 0.
+
+A bit of cleanup in the ABP to use property access instead of a large "set some variables" function that runs every frame.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10554
+#vettedby jvrooij
+--------------------------------------------------
+Change: 908915
+Date:   2025-07-01 10:32:22
+Description:
+[UNB-10547]
+Dead scorpions are now replaced with a corpse once the ragdoll settles down.
+Corpses now copy the pose of the character taking into account ragdolling instead of just the pose coming out of the ABP (before physical animation is applied).
+Added a helper function to tell if a skeletal mesh has settled down after ragdolling.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10547
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908921
+Date:   2025-07-01 11:26:03
+Description:
+[UNB-10547]
+Added physical hit reactions to scorpions.
+Made scorpions make a sound when damaged.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10547
+#vettedby ttrignol
+--------------------------------------------------
+Change: 908946
+Date:   2025-07-01 14:14:58
+Description:
+[UNB-10634]
+Fixed scorpions (and enemies in general) resetting back to the default pose if you keep shooting them while they're dying. The physical animation component was blending out the physics when recovering from a hit reaction. It now doesn't do that if the character is dead so as not to interfere with ragdolling.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10634
+#vettedby jvrooij
+--------------------------------------------------
+Change: 909012
+Date:   2025-07-02 11:04:45
+Description:
+[UNB-10554]
+Scorpion action points from recent playtest feedback:
+- Made the poison cloud 2x smaller
+- Made the scorpion move faster during the moving part of the poison cloud telegraph
+- Made the poison cloud telegraph quieter
+- Removed HTN logic for being grabbed and being in an ambush hole, since those mechanics were removed.
+- Made it more likely for scorpions to burrow during combat.
+- Increased the physical hit reaction impulse 2.5x. Hitting legs now adds more impulse to the body, making the hit more noticeable.
+- The "sting leg" attack now happens from a slightly further distance to account for the scorpion being bigger and having more reach.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10554
+#vettedby jvrooij
+--------------------------------------------------
+Change: 909014
+Date:   2025-07-02 11:38:03
+Description:
+[UNB-10554]
+Fixed scorpions' poison cloud telegraph SFX being interrupted by damage.
+
+#assetvalidation succeeded
+#jira unb-10554
+--------------------------------------------------
+Change: 909074
+Date:   2025-07-02 15:08:44
+Description:
+[UNB-10554]
+Fixed scorpions not starting burrowed in sand because with the changed size their bottom is actually below ground so the trace from there never hits the ground. Raised the origin of the trace to be 20cm above that to fix this.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10554
+#vettedby jvrooij
+--------------------------------------------------
+Change: 909866
+Date:   2025-07-10 17:28:42
+Description:
+[UNB-10700]
+Pass over the scorpion to make the AoE attack more threatening:
+- they run to you faster (double normal speed now).
+- they can do initiate the attack from further away so you can see them run to you with the telegraph for longer
+- they get closer
+
+Fixed scorpions not starting burrowed in sand.
+Made scorpions more likely to jump out of sand instead of merely burrow out.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10700
+#vettedby ttrignol
+--------------------------------------------------
+Change: 909921
+Date:   2025-07-11 14:08:01
+Description:
+[UNB-10700]
+Made scorpions' poison cloud attack telegraph have a pulsating green bit on their head to make the telegraph visually clearer.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10700
+#vettedby ttrignol
+--------------------------------------------------
+Change: 909945
+Date:   2025-07-11 15:45:23
+Description:
+[UNB-10572]
+AI groups are now independent of encounters. 
+VGAIController automatically joins and leaves global groups when it activates/deactivates.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10572
+#vettedby ttrignol
+--------------------------------------------------
+Change: 909947
+Date:   2025-07-11 15:50:45
+Description:
+[UNB-10700]
+Fixed placement of scorpion in one of the demo rooms.
+Disabled debug drawing of the "am I standing on sand" trace.
+
+#assetvalidation succeeded
+#jira unb-10700
+--------------------------------------------------
+Change: 909974
+Date:   2025-07-11 17:21:38
+Description:
+[UNB-10572]
+Removed the notion of a "group template" that was set on an encounter. We'll instead rely on subclassing groups or things like gameplay tag volumes to alter behavior based on where it's happening.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10572
+#vettedby ttrignol
+--------------------------------------------------
+Change: 910199
+Date:   2025-07-15 15:29:12
+Description:
+[UNB-10734]
+HTNTask_EQSQuery now allows the querier to be the controller when there is no pawn.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10734
+#vettedby ttrignol
+--------------------------------------------------
+Change: 910288
+Date:   2025-07-16 13:24:16
+Description:
+[UNB-10734]
+Controlling character enabled/disabled state via worldstate.
+Verifying the above via functional test. Enabled a few functional tests that were disabled before.
+
+Cleaned up the way the encounter system affects a character's enabled/disabled state for easier removal.
+At this point both encounter and worldstate can make a character disabled, so existing levels remain functional.
+Fixed characters being active for one frame on startup when they're supposed to be disabled.
+
+Made AIController only get created when the character is taken out of pool, intead in PostInitializeComponents of the pawn. This way everything is consistently ready for us in OnPossess.
+Fixed cases where the ActorStateHandler tried to disable things before BeginPlay, at which point some components would start ticking anyway.
+
+Fixed the budgeted skeletal mesh getting enabled by the animation budget allocator even when the character is supposed to be disabled.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10734
+#vettedby slageweg
+--------------------------------------------------
+Change: 910439
+Date:   2025-07-17 14:26:27
+Description:
+[UNB-10734]
+Removed the annoying "missing actor pool" log spam that breaks functional tests as it's valid not to have an actor pool in some maps.
+
+Vetted by Tim Toxopeus, Thomas Trignol, Steijn Kistemaker
+
+#assetvalidation succeeded
+#jira unb-10734
+#vettedby ttoxopeus,ttrignol,skistemaker
+--------------------------------------------------
+Change: 910546
+Date:   2025-07-18 13:19:17
+Description:
+[UNB-10734]
+Unshelved from pending changelist '910344':
+
+Adding worldstate to characters so you can set something to happen when a character dies. 
+
+A character's state is boolean-interpretable (true if alive), and float-interpretable (current fraction of total health, starts and 1 and goes to 0 as you damage it).
+
+Characters can be killed by setting their worldstate to false or 0 via the usual interfaces.
+
+FunctionalTest_CharacterEnabled now also verifies the above functionality.
+
+Fixed a case of calling a static function via an object instance when working with interfaces.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation warning
+#jira unb-10734
+#vettedby ttoxopeus
+
+Encountered 3 warnings:
+/Game/Blueprints/WorldInteraction/Levers/BP_LeverBase.BP_LeverBase is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/WorldInteraction/Levers/BP_LeverBase.uasset'
+/Game/Blueprints/WorldInteraction/Levers/BP_RotatingLever_Floor.BP_RotatingLever_Floor is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/WorldInteraction/Levers/BP_RotatingLever_Floor.uasset'
+/Game/Blueprints/WorldInteraction/Levers/BP_RotatingLever_Base.BP_RotatingLever_Base is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/WorldInteraction/Levers/BP_RotatingLever_Base.uasset'
+--------------------------------------------------
+Change: 910571
+Date:   2025-07-18 15:01:07
+Description:
+[UNB-10734]
+Submitting files that were reviewed but were not submitted as part of an earlier submit.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10734
+#vettedby slageweg
+--------------------------------------------------
+Change: 910590
+Date:   2025-07-18 16:00:46
+Description:
+[UNB-NOTICKET]
+Fixed invalid key for currentambushhole being used in scorpions.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby ttrignol
+--------------------------------------------------
+Change: 910714
+Date:   2025-07-21 16:26:47
+Description:
+[UNB-10735]
+AI characters are now automatically disabled when they are too far from the camera (50m, hysteresis 5m smaller) AND have not been rendered for some time (10s).
+UVGActorStateHandler now allows disablers to be added before all components have had their BeginPlay.
+Made a functional test for this, added it to the list of tests to run.
+Narrowed down the possible worldstate classes for characters.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10735
+#vettedby slageweg
+--------------------------------------------------
+Change: 910736
+Date:   2025-07-21 17:50:09
+Description:
+[UNB-10735]
+Excluded the bit that relies on rendering from the functional test because the server that runs them does not do rendering (or at least does not set LastRenderTime on actors). At least the rest of the functionality is still covered by the test.
+
+#assetvalidation succeeded
+#jira unb-10735
+--------------------------------------------------
+Change: 911032
+Date:   2025-07-23 17:00:56
+Description:
+[UNB-10737]
+VGWorldStateComponent no longer breaks for spawned actors and actors that were saved before worldstate was added to them. 
+
+Changed default log verbosity of the worldstate system from Display to Log.
+
+Vetted by Tim Toxopeus, Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10737
+#vettedby ttoxopeus,ttrignol
+--------------------------------------------------
+Change: 911039
+Date:   2025-07-23 17:19:39
+Description:
+[UNB-NOTICKET]
+Added HTNTask_WaitForWorldState to support level design
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 911044
+Date:   2025-07-23 17:27:34
+Description:
+[UNB-10737]
+Removed dependency of VGEnemyPhaseManager from encounters, using groups instead.
+Removed dependency of VGCharacterSpawner on encounters.
+Made a functional test for the phase manager.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10737
+#vettedby slageweg
+--------------------------------------------------
+Change: 911135
+Date:   2025-07-24 13:57:03
+Description:
+[UNB-10739]
+Fixed the debug drawing of worldstate connections not working. 
+Made the debug arrows more visible with thicker lines and less washed-out colors.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-10739
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 911193
+Date:   2025-07-24 18:22:20
+Description:
+[UNB-NOTICKET]
+Fix for VGDisableWhenNotRelevantComponent continuing to tick after being destroyed when level streaming is involved.
+This fixes logspam in PerformanceBenchmark_L2 that Andrea reported.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 911245
+Date:   2025-07-25 13:08:48
+Description:
+[UNB-10739]
+Added a Demo_AIScripting for adding scripted behaviors to an AI character in a level.
+Fixed scorpion not turning to face movement direction.
+Fixed "Wait For World State" erroring when the worldstate was not made yet.
+
+#assetvalidation succeeded
+#jira unb-10739
+--------------------------------------------------
+Change: 911284
+Date:   2025-07-25 16:13:58
+Description:
+[UNB-10757]
+Fixed doubled "melee damage" notifies on the scorpion jump montages.
+
+#assetvalidation succeeded
+#jira unb-10757
+--------------------------------------------------
+Change: 911286
+Date:   2025-07-25 16:19:15
+Description:
+[UNB-11242]
+Made it possible to forbid scorpions from doing area-of-effect attacks by placing a VGGameplayTagVolume with the tag AI.LocationTags.Scorpion.AreaOfEffectAttack.Forbid around them.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-11242
+#vettedby ttrignol
+--------------------------------------------------
+Change: 911388
+Date:   2025-07-28 09:17:57
+Description:
+[UNB-10974]
+Made it so the scorpions' poison cloud only does damage instead of slowing the player down. Keeping the damage output the same as at 12 damage per hit and 4 hits per second you're already dead in 2.25s
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-10974
+#vettedby jvrooij
+--------------------------------------------------
+Change: 911393
+Date:   2025-07-28 09:37:52
+Description:
+[UNB-10747]
+Fixed scorpions stinging the player sideways if the player manages to dodge at the last moment.
+We blend out the tail IK alpha when the target is more than 60 degress away from forward (from the spine01_03, with 10 degree hysteresis).
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-10747
+#vettedby ikamula
+--------------------------------------------------
+Change: 911440
+Date:   2025-07-28 14:41:43
+Description:
+[UNB-10640]
+Scorpion projectiles now blind the player for a few seconds.
+
+Vetted by Krien Linnenbank
+
+#assetvalidation succeeded
+#jira unb-10640
+#vettedby klinnenbank
+--------------------------------------------------
+Change: 911483
+Date:   2025-07-28 16:31:43
+Description:
+[UNB-10640]
+It's now possible to "wipe" the scorpions' blinding effect by holding up a hand to the camera.
+The effect no longer appears when already dead.
+
+Vetted by Krien Linnenbank
+
+#assetvalidation succeeded
+#jira unb-10640
+#vettedby klinnenbank
+--------------------------------------------------
+Change: 911550
+Date:   2025-07-29 13:24:52
+Description:
+[UNB-10745]
+When scorpions burrow underground during combat, they come out in a different place.
+Support for GetWorld and GetQuerier on Blueprint EQS tests.
+EQS test for "Is On Physical Material".
+Fixed one-frame flicker when using HTNTask_Teleport.
+Cleaned up HTN_Scorpion_Combat, extracted a couple behaviors into subnets.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10745
+#vettedby slageweg
+--------------------------------------------------
+Change: 911577
+Date:   2025-07-29 15:54:16
+Description:
+[UNB-10746]
+Functional test to verify that scorpions can't jump through walls.
+The test was made to reproduce this old bug and it doesn't reproduce anymore. Assuming the bug is no longer present but keeping the test in case of regression.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10746
+#vettedby slageweg
+--------------------------------------------------
+Change: 911623
+Date:   2025-07-30 10:34:18
+Description:
+[UNB-10762]
+Fixed the scorpion's telegraph VFX staying even after the montage is interrupted. 
+Made a functional test to verify this. 
+Made a BP_AnimaNotifyState_AttachSpawnedActor that provides a generic solution for this.
+Fixed a bug where ending the game during a scorpion's death animation causes a crash due to a double-unregister.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10762
+#vettedby slageweg
+--------------------------------------------------
+Change: 911666
+Date:   2025-07-30 13:49:12
+Description:
+[UNB-10762]
+Rebuilt navmesh in the FunctionalTest_Scorpion_AoETelegraphVFXAfterDeath
+
+#assetvalidation succeeded
+#jira unb-10762
+--------------------------------------------------
+Change: 911739
+Date:   2025-07-30 17:10:03
+Description:
+[UNB-10972]
+Fixed scorpions randomly not starting burrowed in sand. 
+
+Before, the scorpion would decide if it's standing on sand during BlueprintInitializeAnimation which is called when the character is being incrementally added during level streaming. There's a 50% chance that it is added before the sand under it is, and so half the time the sand would go undetected.
+
+The ABP now does this in BeginPlay instead, which is after everything in a sublevel has loaded. This does mean that scorpions no longer preview if they'll be burrowed in the editor, but that wasn't that great anyway since it would hide scorpions underground.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10972
+#vettedby slageweg
+--------------------------------------------------
+Change: 911748
+Date:   2025-07-30 17:44:21
+Description:
+[UNB-10762]
+Re-enabled "Auto Create Navigation Data" in project settings. It was erroneously disabled before instead of "Update Navigation Automatically" in the editor preferences.
+
+Without it,  UNavigationSystemV1::OnWorldInitDone ends up trying to rebuild the navmesh and end up invalidating it if "Update Navigation Automatically" is enabled in editor preferences. This breaks functional tests because it nukes the navmeshes and prevents the characters from moving.
+
+Vetted by Jacob Eriksson
+
+#assetvalidation succeeded
+#jira unb-10762
+#vettedby jeriksson
+--------------------------------------------------
+Change: 911835
+Date:   2025-08-01 12:27:49
+Description:
+[UNB-10972]
+Removed old hacks from the scorpion htn that delay it by one frame, now that they are properly disabled on startup when they're supposed to be.
+
+Made scoprions go from idle to combat also when other scorpions in the group do that, same as the bat. This prevents specific scorpions from being stuck underground in idle even if all others are fighting already.
+
+Vetted by Jente van Rooij, Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-10972
+#vettedby jvrooij,istan
+--------------------------------------------------
+Change: 912279
+Date:   2025-08-06 15:38:30
+Description:
+[UNB-11401]
+Fixed StressTest maps having the TAF test actor in the air (the player didn't teleport to the TAF actor when these maps were made).
+
+Fixed some low-hanging fruit where scorpions that are loitering (because there are too many of them) were using more CPU than scorpions actually engaging the player.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-11401
+#vettedby ttrignol
+--------------------------------------------------
+Change: 912473
+Date:   2025-08-07 14:56:00
+Description:
+[UNB-11253] [UNB-11254] [UNB-11256]
+Unshelved from pending changelist '911864':
+
+WiP on new hyena behaviors: flanking attack, skulking, new bite attack animation with motion warping
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-11253,unb-11254,unb-11256
+#vettedby jvrooij
+--------------------------------------------------
+Change: 912801
+Date:   2025-08-11 15:54:35
+Description:
+[UNB-11327]
+Making CR_Avatar get the head/hands controls directly from the ABP instead of through intermediate variables.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-11327
+#vettedby ikamula
+--------------------------------------------------
+Change: 913100
+Date:   2025-08-13 16:06:17
+Description:
+[UNB-11606]
+Crash fix. Single-fire delegate was unsubscribing itself first and then using one of the lambda captures, which by now is destroyed and overwritten by 0xdddddddddddddddd when deallocated (at least in development builds on MSVC). 
+Putting said data into a local variable before unsubscribing makes the data safely available even after the lambda is invalidated.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-11606
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 913304
+Date:   2025-08-14 15:57:32
+Description:
+[UNB-11257]
+Fixed hyenas being in combat by default. Now in idle, same as other AI characters. This is done to support level design.
+
+Vetted by Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-11257
+#vettedby istan
+--------------------------------------------------
+Change: 913427
+Date:   2025-08-15 11:42:31
+Description:
+[UNB-11327]
+More streamlined and better upperbody solving for the full-body avatar. Foot traces are now done by a node in the ABP, so no need for that in the CR.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-11327
+#vettedby ikamula
+--------------------------------------------------
+Change: 913526
+Date:   2025-08-15 17:24:00
+Description:
+[UNB-NOTICKET]
+By request from Level Design (Ioana). Added a Scorpion_JumpToMovementTarget_Montage that can be played from an HTN to jump to the MovementTarget BB key.
+
+#assetvalidation succeeded
+#jira unb-noticket
+--------------------------------------------------
+Change: 913812
+Date:   2025-08-19 11:54:14
+Description:
+[UNB-11257]
+Hyenas do directional bites now. When they do ones from the sides they pin you in place.
+Hyenas have the correct lookat target in the controlrig now.
+Hyenas no longer instantly snap-rotate after playing a montage.
+Removed extra montage slots from the hyena. Only DefaultSlot and Death remain.
+
+Vetted by Stanley Lageweg, Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-11257
+#vettedby slageweg,ikamula
+--------------------------------------------------
+Change: 913854
+Date:   2025-08-19 14:54:12
+Description:
+[UNB-11257]
+Hyenas dragging your arm when they bite you from the side. 
+Fixed hyena stagger animations etc using the wrong animation slot. Fixed hyenas spazzing out when staggered.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-11257
+#vettedby slageweg
+--------------------------------------------------
+Change: 913912
+Date:   2025-08-19 17:07:07
+Description:
+[UNB-11252]
+Changed hyena movement methods to match the new design: Walk, Canter, Gallop
+Fixed other characters using .Hyena. Movement Methods. Now they have their own.
+Made BP_MakePlayerRunAround work with Mover.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-11252
+#vettedby slageweg
+--------------------------------------------------
+Change: 914225
+Date:   2025-08-21 15:58:32
+Description:
+[UNB-11252]
+Hyena behavior progress.
+Dodging when aimed at.
+Skulking is now closer.
+Movement methods speeds now match their animations.
+Attack telegraph is now walking+growling instead of a dedicated animation.
+Ragdolling on death.
+
+Vetted by Stanley Lageweg, Jente van Rooij
+
+#assetvalidation warning
+#jira unb-11252
+#vettedby slageweg,jvrooij
+
+Encountered 1 warnings:
+Source file Death_Stand_L.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Hyena/Animations/Death_Stand_L.FBX' or depot. Referenced by: /Game/Assets/Characters/Hyena/Animations/Hyena_Death_Stand_L
+--------------------------------------------------
+Change: 914246
+Date:   2025-08-21 17:05:49
+Description:
+[UNB-11252]
+Fixed hyenas being too slow in functional tests (now Gallop instead of Walk by default).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-11252
+#vettedby ttrignol
+--------------------------------------------------
+Change: 914441
+Date:   2025-08-25 13:34:17
+Description:
+[UNB-12080]
+Fixed hyenas being stuck in dodging.
+
+Vetted by Jente van Rooij, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-12080
+#vettedby jvrooij,rrunhardt
+--------------------------------------------------
+Change: 914469
+Date:   2025-08-25 17:37:08
+Description:
+[UNB-12018]
+If enemies BeginPlay when some levels are still streaming, they will be disabled until all the streaming is done. This fixes enemies in a gameplay sublevel falling through the floor because the content sublevel hasn't loaded in yet.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-12018
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 914562
+Date:   2025-08-26 13:58:28
+Description:
+[UNB-12122]
+Fixed enemies activating each other from across the level. Now an enemy being in combat makes other enemies in a 40m radius go into combat, instead of all active enemies in the entire map (this used to include the oasis hyenas because those are active from a really long distance).
+
+Fixed hyenas trying to get to you from far away being really expensive (40ms perf spikes).
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-12122
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 914742
+Date:   2025-08-28 10:20:39
+Description:
+[UNB-11251] [UNB-11255] [UNB-11336]
+Hyenas attacking more when the player is standing still (3 instead of 1).
+Added BAC_LinkedActors to BP_Hyena to allow for level scripting.
+Reduce RVO avoidance consideration radius to reduce artifacts.
+Fixed HTNDecorator_IsMoving, now it works and supports checking if somebody else is moving (e.g., CurrentEnemy).
+
+Implemented the part where hyenas run away if there are too few of them left (<3), but that's disconnected for now until the encounters in chapter03 get more hyenas.
+
+#assetvalidation succeeded
+#jira unb-11251,unb-11255,unb-11336
+--------------------------------------------------
+Change: 914897
+Date:   2025-08-28 16:24:05
+Description:
+[UNB-11258]
+Hyenas can now bite up at a player above (e.g. when the player is climbing) and pull them down (a hyena bite makes you release climbing holds). They actually bite the nearest part of the body (FBIK using ControlRig).
+
+Added the "turn" animations to the pose search databases of hyenas, tweaked settings to prevent being stuck in the current pose. 
+Improved trajectory prediction for hyenas so the turn animations actually get picked.
+Fixed the "walk combat" animation playing too slow.
+
+Added missing projectile sensors to hyenas and scorpions. Increased player detection radius for hyenas (doubled).
+
+Disabled the "moving" stagger animations on hyenas since they're leftovers from the lurker that look really bad on the hyenas.
+
+Vetted by Jente van Rooij, Inka Kamula, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby jvrooij,ikamula,slageweg
+--------------------------------------------------
+Change: 914907
+Date:   2025-08-28 16:42:44
+Description:
+[UNB-11258]
+Fixed Hyenas being scared of guns in your holsters pointing down at them when you're climbing above them. The gun sight sensors are now only on when actually held by the player.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby ttrignol
+--------------------------------------------------
+Change: 914923
+Date:   2025-08-28 17:15:13
+Description:
+[UNB-11258]
+Fixed hyenas being unable to attack when you're in a corner, reduced attack cooldown.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 914983
+Date:   2025-08-29 09:56:18
+Description:
+[UNB-11258]
+Added an idle-only dynamic subnetwork slot for level designers to do behavior scripting in levels. This slot is automatically stopped when the character goes to combat.
+
+Added the Combat level design override slot to HTN_Hyena_Combat for parity with other enemy types.
+
+Vetted by Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby istan
+--------------------------------------------------
+Change: 915006
+Date:   2025-08-29 11:18:00
+Description:
+[UNB-11258]
+Not stretching hyena head too far when biting.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby ikamula
+--------------------------------------------------
+Change: 915073
+Date:   2025-08-29 14:50:16
+Description:
+[UNB-11258]
+Fix for hyenas not biting up when you're climbing and not standing on navmesh. Made it optional to project "can reach in straight line" from/to test locations onto navmesh. The "to" location no longer needs to be projected because the player can be climbing.
+
+Fixed hyena attack hitbox not following the head. Note that it still has to be very big to account for the fact that the full body avatar doesn't have any collision but only the capsule does and the capsule is smaller when climbing.
+
+Fixed dead hyenas twitching and doing footstep sounds. BAC_Ragdoll no longer aborts the death slot so it can keep playing forever.
+
+Vetted by Stanley Lageweg, Inka Kamula, Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby slageweg,ikamula,jvrooij
+--------------------------------------------------
+Change: 915081
+Date:   2025-08-29 15:02:47
+Description:
+[UNB-11258]
+Enabling the runaway behavior for hyenas.
+Getting in range and running away are now aborted when the hyena is staggered.
+Fixed hyenas retrying the bite animation if the player dodged.
+
+Vetted by Jente van Rooij, Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby jvrooij,istan
+--------------------------------------------------
+Change: 915102
+Date:   2025-08-29 15:48:44
+Description:
+[UNB-11258]
+Fix for hyenas running away into a hole not always working. The lurker animation is totally broken be we'll have to make do until Alessandro comes back and fixes it.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-11258
+#vettedby jvrooij
+--------------------------------------------------
+Change: 915226
+Date:   2025-09-01 13:59:26
+Description:
+[UNB-12181]
+Functional test and fix for hyena not letting go of a hand after being killed. The blackboard was getting removed so early after death that the notifystate could not find a hand to let go of.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-12181
+#vettedby jvrooij
+--------------------------------------------------
+Change: 915236
+Date:   2025-09-01 14:38:28
+Description:
+[UNB-12243]
+Fixed incorrect reservation when a hyena wants to run away into a hole
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-12243
+#vettedby jvrooij
+--------------------------------------------------
+Change: 915282
+Date:   2025-09-01 16:32:44
+Description:
+[UNB-12243]
+Fixed EnemyPhaseManager not catching enemies who left a group for a reason other than being fatal-damaged or returned to pool. Now directly subscribes to the "on left group" event.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12243
+#vettedby slageweg
+--------------------------------------------------
+Change: 915299
+Date:   2025-09-01 17:19:05
+Description:
+[UNB-12243]
+Fixed characters leaving the enemy phase manager multiple times, one for each group they're in.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12243
+#vettedby slageweg
+--------------------------------------------------
+Change: 915579
+Date:   2025-09-03 16:38:42
+Description:
+[UNB-12280]
+Made hyenas get scared by gunshots that pass near them instead of merely aiming.
+Added a HTNDecorator_WasShotAtRecently to handle this.
+
+Vetted by Thomas Trignol, Franciszek Luczak
+
+#assetvalidation succeeded
+#jira unb-12280
+#vettedby ttrignol,fluczak
+--------------------------------------------------
+Change: 915581
+Date:   2025-09-03 16:41:35
+Description:
+[UNB-12280]
+Fixed mixed up node name / description
+
+#assetvalidation succeeded
+#jira unb-12280
+--------------------------------------------------
+Change: 915637
+Date:   2025-09-04 10:53:58
+Description:
+[UNB-12243]
+Fixed missing null check for GetWorld(). Fixes crash on player death.
+
+Vetted by Tim Toxopeus, Franciszek Luczak
+
+#assetvalidation succeeded
+#jira unb-12243
+#vettedby ttoxopeus,fluczak
+--------------------------------------------------
+Change: 915689
+Date:   2025-09-04 14:22:23
+Description:
+[UNB-12339]
+Made scorpions transition from idle to combat when shot at but not burrowed.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-12339
+#vettedby jvrooij
+--------------------------------------------------
+Change: 916089
+Date:   2025-09-09 13:38:47
+Description:
+[UNB-12336] [UNB-12338] [UNB-12339]
+Fixed multiple hyenas not attacking when they're telegraphing together. Now they properly attack one at a time.
+
+Made them try not to get too close when telegraphing.
+
+Fixed hyenas doing footstep sounds during a montage that doesn't have them (no longer doing locomotion animations during montages).
+
+Hyenas now bite your hands for longer. All ground-level attack animations now bite your hand.
+
+Fixed EQS queries projecting player location onto navmesh even when the player might be climbing.
+
+Hyena performance optimizations:
+Removed combat circle (0.5ms)
+Made hyenas getting closer to you from far away significantly cheaper (not checking path during planning, cheapear nav filter), this saves ~4ms spikes towards the end of the TAF test.
+
+Vetted by Jente van Rooij, Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-12336,unb-12338,unb-12339
+#vettedby jvrooij,ttrignol
+--------------------------------------------------
+Change: 916107
+Date:   2025-09-09 14:43:44
+Description:
+[UNB-12338]
+Fixed hyena forward bite not pinning the player in place
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-12338
+#vettedby ttrignol
+--------------------------------------------------
+Change: 916115
+Date:   2025-09-09 15:13:17
+Description:
+[UNB-12336]
+Fixed "HTNDecorator_SwitchToCombatOnProjectileNoticed" unbinding all subscriptions, not just its own.
+
+Vetted by Thomas Trignol, Franciszek Luczak
+
+#assetvalidation succeeded
+#jira unb-12336
+#vettedby ttrignol,fluczak
+--------------------------------------------------
+Change: 916140
+Date:   2025-09-09 16:50:11
+Description:
+[UNB-12336]
+Made hyena shudder when a gun is shot near it. This helps signal the transition to the "scared" (dodging) state that follows.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-12336
+#vettedby ttrignol
+--------------------------------------------------
+Change: 916533
+Date:   2025-09-11 10:36:10
+Description:
+[UNB-12496]
+Better wristwatch positioning so it always stays perfectly on the wrist no matter the forearm scaling/stretching and follows the hand rotation on either hand. This is all done in the ControlRig instead of moving the actor around every frame.
+
+Vetted by Thomas Trignol, Inka Kamula
+
+#assetvalidation warning
+#jira unb-12496
+#vettedby ttrignol,ikamula
+
+Encountered 1 warnings:
+Lara_skel: Only [1] LODs on this mesh. At least [3] are expected. Last LOD current tris [56.575]. (SkeletalMeshLOD_Validator_C)
+--------------------------------------------------
+Change: 916612
+Date:   2025-09-11 15:34:08
+Description:
+[UNB-12496]
+Fixed missing virtual bones on lara skeleton.
+
+#assetvalidation warning
+#jira unb-12496
+
+Encountered 1 warnings:
+Lara_skel: Only [1] LODs on this mesh. At least [3] are expected. Last LOD current tris [56.575]. (SkeletalMeshLOD_Validator_C)
+--------------------------------------------------
+Change: 916624
+Date:   2025-09-11 16:02:20
+Description:
+[UNB-12496]
+Fixed missing virtual bones on Lara (needed to check out SK_Mannequin)
+
+#assetvalidation succeeded
+#jira unb-12496
+--------------------------------------------------
+Change: 916640
+Date:   2025-09-11 16:31:21
+Description:
+[UNB-NOTICKET]
+At the request of Niels, disabled the blinding effect that happens when you get hit with a scorpion projectile because the VFX for that won't be ready until after vertical slice. After vertical slice delivery we should re-enable this.
+
+Vetted by Niels van Unen
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby nvunen
+--------------------------------------------------
+Change: 917035
+Date:   2025-09-15 17:33:05
+Description:
+[UNB-12496]
+Submitting offsets to wristwatch sockets that were not submitted previously.
+
+#assetvalidation succeeded
+#jira unb-12496
+--------------------------------------------------
+Change: 917041
+Date:   2025-09-15 17:48:58
+Description:
+[UNB-12404]
+Fixed hyena lookat being active during stagger (now controlled by curve DisableLookAt).
+Fixed hyena stagger data asset having null entries.
+Set blend in/out on staggers to HermiteCubicInOut instead of Linear.
+
+Vetted by Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-12404
+#vettedby arembado
+--------------------------------------------------
+Change: 917097
+Date:   2025-09-16 11:46:53
+Description:
+[UNB-11420]
+Repalced scorpion model.
+
+Vetted by Diego Lopez Martinez
+
+#assetvalidation succeeded
+#jira unb-11420
+#vettedby dlopez
+--------------------------------------------------
+Change: 917111
+Date:   2025-09-16 13:06:14
+Description:
+[UNB-11420]
+Fixed scorpion capsule size
+
+#assetvalidation succeeded
+#jira unb-11420
+--------------------------------------------------
+Change: 917179
+Date:   2025-09-16 17:09:10
+Description:
+[UNB-12133]
+Initial submit of the Trajectory Component and ABP_Avatar integration. It's already much better than what we had before, so I'm submitting it already, but there are still a couple of issues to iron out:
+- Support standing on a moving platform (e.g. a moving flow puzzle element)
+- Detect future collisions so we can predict where and when we'll land after a jump or collide with a wall.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12133
+#vettedby slageweg
+--------------------------------------------------
+Change: 917299
+Date:   2025-09-17 13:48:47
+Description:
+[UNB-12133]
+Added vislogging to the trajectory component. 
+
+Made the history sample rate 1 / 36 instead of every frame. On Quest 3 it will be every frame but in the editor we'll see the same behavior as on the Quest 3 now (before it was different because the editor runs at a higher framerate).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12133
+#vettedby slageweg
+--------------------------------------------------
+Change: 917366
+Date:   2025-09-17 15:52:41
+Description:
+[UNB-958]
+At the request of Lore,  added support for playing player VO when a phase in the phase manager begins.
+
+While I was at it, fixed a bug where the voice lines would get enqueued multiple times if multiple tracked worldstates have it.
+
+Vetted by Tim Toxopeus, Lore Bouman
+
+#assetvalidation succeeded
+#jira unb-958
+#vettedby ttoxopeus,tbouman
+--------------------------------------------------
+Change: 917409
+Date:   2025-09-17 17:20:18
+Description:
+[UNB-12133]
+Player trajectory prediction now takes into account movement on a moving base (a moving platform such as a flow puzzle element): if you stand still on a moving platform, the trajectory will have you stand still even though you're moving in worldspace.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12133
+#vettedby slageweg
+--------------------------------------------------
+Change: 917417
+Date:   2025-09-17 17:37:55
+Description:
+[UNB-958]
+Made var public that was meant to be public
+
+Vetted by Lore Bouman
+
+#assetvalidation succeeded
+#jira unb-958
+#vettedby tbouman
+--------------------------------------------------
+Change: 917771
+Date:   2025-09-19 18:34:28
+Description:
+[UNB-12133]
+Predicting landing time and speed after jump.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12133
+#vettedby slageweg
+--------------------------------------------------
+Change: 917798
+Date:   2025-09-22 09:53:09
+Description:
+[UNB-12133]
+Fixed missing floor offset in trajectory prediction.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12133
+#vettedby slageweg
+--------------------------------------------------
+Change: 917935
+Date:   2025-09-22 16:32:49
+Description:
+[UNB-12498]
+Reduced the number of traces done by scorpion footsteps in the ControlRig.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-12498
+#vettedby ikamula
+--------------------------------------------------
+Change: 917961
+Date:   2025-09-22 17:29:17
+Description:
+[UNB-12498]
+Making scorpions not tick pose etc when offscreen, not update bounds and bones during interpolation that happens due to anim budget optimization.
+
+This may theoretically make footsteps not play for a scorpion if they have not been rendered for over 1s, however:
+- In my tests this mysteriously didn't happen for nearby scorpions because they keep getting rendered for reasons to do with shadows (needs further investigation) 
+- We'll be moving to a more optimized footstep solution that is independent of the animation instance to address that whole setup's performance issues.
+
+So I'm submitting this already to see the performance improvements on the nightly build tomorrow.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-12498
+#vettedby ikamula
+--------------------------------------------------
+Change: 917965
+Date:   2025-09-22 17:55:39
+Description:
+[UNB-12498]
+Removed temp vislog
+
+#assetvalidation succeeded
+#jira unb-12498
+--------------------------------------------------
+Change: 918089
+Date:   2025-09-23 15:07:59
+Description:
+[UNB-12498]
+Made scorpion footsteps a single loop instead of separate metasound instances for individual footsteps.
+Increased scorpion attenuation falloff so they are not so quiet (used to be 360m, then was reduced to 36m which is too low, now increased to 100m).
+Made concurrency of scorpion locomotion cancel furthest first instead of oldest. Set it up so looping sounds can recover after being ducked.
+
+Vetted by Inka Kamula, Tim Verberne, Nino Saglia
+
+#assetvalidation succeeded
+#jira unb-12498
+#vettedby ikamula,tverberne,nsaglia
+--------------------------------------------------
+Change: 918348
+Date:   2025-09-24 16:22:21
+Description:
+[UNB-11710]
+Removing unused navmeshes. Now there's only one instead of three.
+Dramatically reducing polycount-per-tile for the remaining navmesh. Fixing navmesh clipping into staircases in a better way (the previous solution was to subdivide tiles aggressively).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-11710
+#vettedby slageweg
+--------------------------------------------------
+Change: 918365
+Date:   2025-09-24 17:09:02
+Description:
+[UNB-NOTICKET]
+Fixed "more than 9 simultaneous enemies" mapcheck warnings on enemy phase manager. Now it's a configurable limit (default 30).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby slageweg
+--------------------------------------------------
+Change: 918545
+Date:   2025-09-25 17:10:02
+Description:
+[UNB-12498] [UNB-12830]
+Fixed dead Scorpions ragdolling forever instead of being replaced with posed corpses.
+
+Vetted by Stanley Lageweg, Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-12498,unb-12830
+#vettedby slageweg,rrunhardt
+--------------------------------------------------
+Change: 919059
+Date:   2025-09-30 11:37:54
+Description:
+[UNB-11710] [UNB-12830]
+Fixed navmesh tile pool size in Ch03 (someone had reset it back to default 2048, which is not enough to cover the level).
+This should get rid of the navmesh streaming spike again that was fixed earlier but re-introduced on the 29th.
+
+Vetted by Sander Vereecken
+
+#assetvalidation succeeded
+#jira unb-11710,unb-12830
+#vettedby svereecken
+--------------------------------------------------
+Change: 919138
+Date:   2025-09-30 14:59:37
+Description:
+[UNB-9047]
+The -13 degree weapon pitch offset adapted from Impact. Instead of hooking it up to the BP_Menu, it's controlled via the debug menu. Default value -13, same as on Impact. It's saved in the BP_SaveData_PlayerSettings.
+
+Vetted by Franciszek Luczak, Paul van Zelst, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-9047
+#vettedby fluczak,pvzelst,slageweg
+--------------------------------------------------
+Change: 919436
+Date:   2025-10-01 16:28:01
+Description:
+[UNB-12274]
+Improved full body avatar arm overstretching: when stretching the arm, any stretching beyond the calibrated max length goes into the upperarm instead of stretching everything. 
+
+There's a tiny bit of stretching in the elbow if you look for it, that can be solved later by changing the rig so the upperarm isn't all one bone. I'd wait until we get the new Lara model for that.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-12274
+#vettedby ikamula
+--------------------------------------------------
+Change: 919801
+Date:   2025-10-03 11:28:13
+Description:
+[UNB-12997]
+Fixed elbow pole vector in full body avatar being calculated from the wrong pose (current instead of initial).
+
+#assetvalidation succeeded
+#jira unb-12997
+--------------------------------------------------
+Change: 920751
+Date:   2025-10-08 17:08:06
+Description:
+[UNB-10971]
+VGSaveData now supports UClass* and TSubclassOf<> entries. 
+It can only serialize items that were added to the project settings with a serialization key.
+
+Vetted by Paul van Zelst
+
+#assetvalidation succeeded
+#jira unb-10971
+#vettedby pvzelst
+--------------------------------------------------
+Change: 920894
+Date:   2025-10-09 13:31:55
+Description:
+[UNB-13105]
+Potential navmesh fix for Chapter03. Just rebuilt and resaved. For some reason there were duplicate navmeshes that were accidentally submitted by Sander V on the 6th of October (CL920232, accidentally did "Accept both" during merge conflict).
+
+Vetted by Sander Vereecken
+
+#assetvalidation succeeded
+#jira unb-13105
+#vettedby svereecken
+--------------------------------------------------
+Change: 920956
+Date:   2025-10-09 15:48:18
+Description:
+[UNB-10971]
+Enemies now save their location, AI state, if they've been killed or not etc.
+VGWorldStateBase now has an array of VGSaveData that various components can register.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-10971
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 921107
+Date:   2025-10-10 11:31:01
+Description:
+[UNB-13021]
+Fixed missing LOD3 on scorpion and bat meshes.
+Scorpion LOD3 is now around 1k tris instead of 2.2k, Bat LOD3 is 252 tris instead of 1.3k
+
+Vetted by Andrea Molino
+
+#assetvalidation succeeded
+#jira unb-13021
+#vettedby amolino
+--------------------------------------------------
+Change: 921178
+Date:   2025-10-10 14:44:35
+Description:
+[UNB-13021]
+Made scorpions disable their rendering while they're burrowed underground.
+Added a Scorpion_Burrow_In_01_Montage that does not stay burrowed (can be used to burrow and then despawn in an HTN).
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-13021
+#vettedby slageweg
+--------------------------------------------------
+Change: 921684
+Date:   2025-10-14 15:14:25
+Description:
+[UNB-12997]
+Resetting arms to default pose before solving arms. This removes wobble from animation and makes the old pole vector calculation work again.
+
+The pole vector calculation for the elbows is now much cleaner and takes into account hand orientation: checking your wristwatch now puts the arm horizontally just like IRL. The elbow generally more closely follows the IRL elbow instead of pointing down all the time.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-12997
+#vettedby ikamula
+--------------------------------------------------
+Change: 921721
+Date:   2025-10-14 16:21:28
+Description:
+[UNB-NOTICKET]
+At Kent's request, re-enabled the scorpion blinding effect (when a scorpion projectile hits you) again. Was previously disabled due to lack of L2 VFX.
+
+Vetted by Kent Kune
+
+#assetvalidation succeeded
+#jira unb-noticket
+#vettedby kkune
+--------------------------------------------------
+Change: 922219
+Date:   2025-10-16 14:40:44
+Description:
+[UNB-13382]
+Added level design override support to Bat HTNs same as for the other enemies.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13382
+#vettedby ttrignol
+--------------------------------------------------
+Change: 922314
+Date:   2025-10-16 17:16:09
+Description:
+[UNB-13011]
+Hyenas returning back to idle if could not fight the player for a while.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13011
+#vettedby ttrignol
+--------------------------------------------------
+Change: 922759
+Date:   2025-10-20 15:13:49
+Description:
+[UNB-13011]
+Made hyenas hide when unable to reach player or do anything else, instead of just being sitting ducks.
+Fixed hyenas not picking a hiding spot when the spot can't be reached by the *player*. This also fixes the running away behavior.
+
+Vetted by Jente van Rooij
+
+#assetvalidation warning
+#jira unb-13011
+#vettedby jvrooij
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Hyena/HTN/HTN_Hyena_Combat_Flanking.HTN_Hyena_Combat_Flanking is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/AIToolkit/Hyena/HTN/HTN_Hyena_Combat_Flanking.uasset'
+--------------------------------------------------
+Change: 922923
+Date:   2025-10-21 10:55:56
+Description:
+[UNB-13552]
+Fixed the lonely hyena sleeping in the desert not reacting to being approached or shot at.
+
+Vetted by Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-13552
+#vettedby istan
+--------------------------------------------------
+Change: 923266
+Date:   2025-10-22 10:13:53
+Description:
+[UNB-13552]
+Fixed characters thinking they got proper despawned when they merely got removed due to level streaming out. This fixes them destroying themselves via save data when loaded again. The rest is about fixing falling through the floor.
+
+Disabled LevelStreaming.ShouldServerUseMakingVisibleTransactionRequest: this fixes various things breaking when you unload a streaming level and load it again before it manages to GC. None of our things, chiefly the actor state handler, works with the notion of having Initialize being called on them twice. Navmesh streaming is broken by it too so much easier to disable this.
+
+Fixed a subtle crash where a lambda unsubscribes self from an event, thus destroying itself, and then using its captured variables. In debug builds under msvc the memory is overwritten with some magic values, so it explicitly breaks. It's still undefined behavior, so fixing it.
+
+Vetted by Sander Brattinga, Tim Toxopeus, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-13552
+#vettedby sbrattinga,ttoxopeus,slageweg
+--------------------------------------------------
+Change: 923385
+Date:   2025-10-22 13:51:41
+Description:
+[UNB-13012]
+Made scorpions go back to idle if not fought for a while. They will go to where they were when combat started and burrow into sand if that location is on sand.
+
+Moved a couple of scorpions in Chapter03 down so the're actually on the sand.
+
+Vetted by Thomas Trignol, Ioana Stan
+
+#assetvalidation succeeded
+#jira unb-13012
+#vettedby ttrignol,istan
+--------------------------------------------------
+Change: 923436
+Date:   2025-10-22 15:15:10
+Description:
+[UNB-13013]
+Made bats go back to idle when not fought for a while. 
+Fixed issues with characters bouncing between idle and combat in this case.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13013
+#vettedby ttrignol
+--------------------------------------------------
+Change: 923630
+Date:   2025-10-23 11:17:45
+Description:
+[UNB-13716]
+When skulking and dodging, hyenas move for longer before picking another target. They do much fewer 180s now.
+When skulking, they sometimes stop and look at the player menacingly, but start running again if the player starts walking at them.
+When hyenas dodge, they speed up when shot at (gallop instead of canter for 2s after every shot).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13716
+#vettedby ttrignol
+--------------------------------------------------
+Change: 923670
+Date:   2025-10-23 13:14:01
+Description:
+[UNB-12944]
+Fixed always biting left hand instead of nearest.
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-12944
+#vettedby jvrooij
+--------------------------------------------------
+Change: 923812
+Date:   2025-10-23 17:55:19
+Description:
+[UNB-12944]
+Implemented new two-part bite animations with a smart montage that detects when you're close enough to bite.
+Fixed hyenas biting your hands being lower priority than hand snapping to guns or wiping surfaces.
+Fixed hyena sometimes not letting go of the hand it bit.
+
+Vetted by Thomas Trignol
+
+#assetvalidation warning
+#jira unb-12944
+#vettedby ttrignol
+
+Encountered 1 warnings:
+/Game/Blueprints/AIToolkit/Hyena/Pawn/BP_Hyena.BP_Hyena is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/AIToolkit/Hyena/Pawn/BP_Hyena.uasset'
+--------------------------------------------------
+Change: 923945
+Date:   2025-10-24 15:00:12
+Description:
+[UNB-13757]
+Fixed hands not fitting into the hyena's mouth when the hyena bites your hands. The hand was colliding against the hyena.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-13757
+#vettedby slageweg
+--------------------------------------------------
+Change: 923965
+Date:   2025-10-24 15:52:53
+Description:
+[UNB-13776] [UNB-13777]
+Shooting the hyena no longer interrupts its attack after it started the telegraph (before you had the chance to do so before the bite attack animation began).
+
+While skulking, hyenas gallop when too close to player (e.g. after an attack) and randomly alternate between walk and canter otherwise.
+
+Each bite during the frontal bite attack now makes a sound (before only the first one would play due to its long tail).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13776,unb-13777
+#vettedby ttrignol
+--------------------------------------------------
+Change: 924061
+Date:   2025-10-27 12:37:27
+Description:
+[UNB-13776]
+Made hyenas move slower up slopes
+
+Vetted by Stanley Lageweg, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13776
+#vettedby slageweg,ttoxopeus
+--------------------------------------------------
+Change: 924131
+Date:   2025-10-27 14:58:56
+Description:
+[UNB-13776]
+Fixed hyenas clipping into slopes by orienting the body to matching it up to 30 degrees. Made the "foot placement" node fast path.
+
+Vetted by Inka Kamula, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13776
+#vettedby ikamula,ttoxopeus
+--------------------------------------------------
+Change: 924211
+Date:   2025-10-27 17:17:20
+Description:
+[UNB-13782]
+Moved a bunch of floating enemies down onto the navmesh in Chapter03. So scorpions can spawn in the ground and not in midair.
+
+Vetted by Ioana Stan, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13782
+#vettedby istan,ttoxopeus
+--------------------------------------------------
+Change: 924212
+Date:   2025-10-27 17:17:34
+Description:
+[UNB-13782]
+Fixed hyena getting stuck on the boundary of a "running away forbidden volume" when trying to run away. This pause they do before running away is now cancelled if you're too close or if you charge at them.
+
+I've made a new EQSQuery_HyenaFindDespawnLocation and reworked it to run in 8ms instead of 80 by using batch pathfinding tests and only filtering instead of scoring. It also checks that the location is not inside the forbidden area. It covers a 40m radius now instead of 20m. 
+
+In HTN_Hyena_Combat, the running away is now on a Prefer instead of an If, so even if you fail to find a spot you keep doing the usual behavior. Entering a forbidden area doesn't cancel the behavior anymore.
+
+Vetted by Jente van Rooij, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13782
+#vettedby jvrooij,ttoxopeus
+--------------------------------------------------
+Change: 924641
+Date:   2025-10-30 13:57:00
+Description:
+[UNB-13924]
+Improved hyena lookat:
+- Involves the spine like the tiger does
+- Less roll
+- Eyes now move
+
+Vetted by Inka Kamula, Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-13924
+#missingfixversion
+#vettedby ikamula,arembado
+--------------------------------------------------
+Change: 924644
+Date:   2025-10-30 14:01:34
+Description:
+[UNB-12765] [UNB-13850]
+1. Functional test for scorpions spawning burrowed instantly instead of one frame late. Fixed character spawner showing the model in the wrong place.
+
+2. Parameter template component now lets you constrain on the allowed type of template. This will prevent issues like people accidentally assigning the bat AI to a scorpion. Existing mistakes will be caught by a map check.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12765,unb-13850
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 924650
+Date:   2025-10-30 14:05:42
+Description:
+[UNB-13850]
+Set up the allowed types on the parameter template components of BP_Bat
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-13850
+#missingfixversion
+#vettedby slageweg
+--------------------------------------------------
+Change: 924716
+Date:   2025-10-30 15:43:43
+Description:
+[UNB-13850]
+Made character spawners also set up their AllowedClasses based on the type of character they'll be spawning.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-13850
+#vettedby slageweg
+--------------------------------------------------
+Change: 924825
+Date:   2025-10-31 13:04:23
+Description:
+[UNB-12765]
+Added the recent "scorpion spawns burrowed" functional test to PHD.
+
+Vetted by Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-12765
+#vettedby slageweg
+--------------------------------------------------
+Change: 924897
+Date:   2025-10-31 17:00:27
+Description:
+[UNB-13934]
+Fixed BiteForward2 montage of hyenas (frontal attack where it holds onto your hand and deals damage 3 times) clipping into the player in these two cases:
+
+1. When the player runs at the hyena as it jumps, but a bit off to the side: enabled "assume target will face us" when figuring out offset at which to be during the bite. Also moved the motionwarp for that position into an area of the animation without root motion so that it is evenly distributed.
+2. When the player stands still and the hyena launches into an attack from a short distance: added an offset to the target of the first motionwarping so it doesn't try to jump into the player but a bit in front.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-13934
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 924908
+Date:   2025-10-31 17:13:58
+Description:
+[UNB-13918]
+1. When skulking, hyenas can't move away from you walking: if they're moving away they have to canter.
+2. Increased max distance at which they can stand still and look at you from 2m to 3m.
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-13918
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 924918
+Date:   2025-10-31 17:33:29
+Description:
+[UNB-13918]
+In EQS queries used for hyena skulking, increased min distance to other hyenas from 0.5m to 2m so they don't get so close together.
+
+Vetted by Stanley Lageweg, Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13918
+#vettedby slageweg,ttrignol
+--------------------------------------------------
+Change: 925923
+Date:   2025-11-10 15:14:24
+Description:
+[UNB-14049]
+Fixed hyena's head wobbling during turn-in-motion.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-14049
+#vettedby ikamula
+--------------------------------------------------
+Change: 926122
+Date:   2025-11-11 14:23:52
+Description:
+[UNB-12377]
+Made a hyena jump montage for Ioana for use in bespoke level designer HTNs: this animation automatically sets the warping target from the MovementTarget Blackboard key.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-12377
+#vettedby ttrignol
+--------------------------------------------------
+Change: 926130
+Date:   2025-11-11 14:47:38
+Description:
+[UNB-14148]
+Better TurnInMotion animation selection for hyenas. Hyenas in motion now Accumulate the root rotation instead of interpolating it, which lets animation take complete control over rotating the character without interference. This fixes issues where the wrong animation is selected and then changed because the mesh keeps rotating independently of the animation.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-14148
+#vettedby ikamula
+--------------------------------------------------
+Change: 926161
+Date:   2025-11-11 15:18:43
+Description:
+[UNB-14152]
+Enemy optimizations:
+1. Made the HTNComponent on AIs tick on PostPhysics, so that it can't accidentally try to read a curve while the animation work is still happening on a worker thread (in that case the GameThread is blocked).
+2. Enabled the same skeletal mesh component optimizations on the Hyena and Bat that we did for the Scorpion some weeks ago (skip kinematic bone and bounds updates on the frames we're not ticking but only interpolating pose + only tick pose when visible or playing montage)
+
+Vetted by Thomas Trignol
+
+#assetvalidation warning
+#jira unb-14152
+#vettedby ttrignol
+
+Encountered 1 warnings:
+/Game/Blueprints/Hands/BSC_InteractionSocket.BSC_InteractionSocket is referenced but is not at the latest revision 'D:/UnboundDevelopment/Game/Content/Blueprints/Hands/BSC_InteractionSocket.uasset'
+--------------------------------------------------
+Change: 926211
+Date:   2025-11-11 16:34:07
+Description:
+[UNB-14171]
+1. Fixed hyenas' trajectory prediction not accounting for sharp instant turns correctly, leading to incorrect animation selection.
+2. Fixed hyenas being "pulled along" when they're doing a turn-in-motion animation, specifically during the part of the turn where they're supposed to be still.
+
+Vetted by Inka Kamula
+
+#assetvalidation succeeded
+#jira unb-14171
+#vettedby ikamula
+--------------------------------------------------
+Change: 926234
+Date:   2025-11-11 17:30:17
+Description:
+[UNB-13925]
+Fixed hyenas not hiding when the player is unreachable. They thought they could skulk and didn't realize the player was unreachable. Fixed some EQS queries not actually discarding unreachable points.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13925
+#vettedby ttrignol
+--------------------------------------------------
+Change: 926400
+Date:   2025-11-12 13:59:15
+Description:
+[UNB-14060]
+Undo range //Unbound/Development/Game/Content/Blueprints/AIToolkit/Scorpion/Animation/CR_Scorpion.uasset from revision 18 to revision #head
+
+The original submit sets the scorpion pose to NaN in builds and creates tons of logspam, tanking performance on device.
+
+On top of that, the chain dynamics add 0.2ms per scropion per frame, which is not acceptable for the milestone delivery. This needs to be revisited with proper tech support from me after the milestone.
+
+See slack thread for context: https://vertigo-games.slack.com/archives/C081GB2BG9Y/p1762941237232169
+
+Vetted by Diego Lopez Martinez
+
+#assetvalidation succeeded
+#jira unb-14060
+#vettedby dlopez
+--------------------------------------------------
+Change: 926440
+Date:   2025-11-12 15:12:55
+Description:
+[UNB-13916]
+Made the hyena use the two new moving stagger animations.
+Made the hyena staggers happen more often (now takes two body shots or one headshot instead of three body shots or two headshots).
+
+Vetted by Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-13916
+#vettedby arembado
+--------------------------------------------------
+Change: 926567
+Date:   2025-11-13 10:59:45
+Description:
+[UNB-13916]
+Hyena improvements based on feedback:
+- Undid a recent change so they run around less and stay still more again.
+- Fixed hyena not properly rotating during jump and attack montages (interpolate instead of accumulate rotation error during montages).
+- Disabled lookat during recovery from a missed jump
+- Fixed hyenas trying to jump at you through rocks and not realizing you're unreachable (capsule trace offset to high up to catch obstacles).
+- Fixed hyenas not turning fast enough when walking due to lack of turn-in-motion animations for that stance. This mildly inteferes with TiM animation selection but should be alleviated following Inka's changes to the PSDs and removed completly after we have turn-in-place anims and turn-in-motion walk anims.
+
+Vetted by Inka Kamula, Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-13916
+#vettedby ikamula,jvrooij
+--------------------------------------------------
+Change: 926742
+Date:   2025-11-13 16:53:26
+Description:
+[UNB-13916]
+Increased speed threshold for hyenas using the standing vs moving staggers from 50 to 100 cm/s
+
+Vetted by Ruben Runhardt
+
+#assetvalidation succeeded
+#jira unb-13916
+#vettedby rrunhardt
+--------------------------------------------------
+Change: 927268
+Date:   2025-11-18 14:20:48
+Description:
+[UNB-13916] [UNB-14224]
+Unshelved from pending changelist '926918':
+
+Making hyenas use the dodging animations shorly after being shot at.
+Fixed sliding when blending out of jumps.
+Better setup for turn-in-motion during gallop. Fixed wrong motionmatching normalization set.
+Fixed hyenas only considering one PSD when multiple are selected by the Chooser Table.
+
+Hyena hit reactions are now done in the ControlRig instead of via physical hit reactions. (WiP still, quality of body hits to improve).
+
+Vetted by Inka Kamula, Stanley Lageweg
+
+#assetvalidation warning
+#jira unb-13916,unb-14224
+#vettedby ikamula,slageweg
+
+Encountered 4 warnings:
+Source file Lurker02_Gallop_Dodge_R45.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Hyena/Animations/RetargetFromLurker/Lurker02_Gallop_Dodge_R45.FBX' or depot. Referenced by: /Game/Assets/Characters/Hyena/Animations/RetargetFromLurker/Hyena_Gallop_Dodge_R45
+Source file Lurker02_Gallop_Dodge_L45.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Hyena/Animations/RetargetFromLurker/Lurker02_Gallop_Dodge_L45.FBX' or depot. Referenced by: /Game/Assets/Characters/Hyena/Animations/RetargetFromLurker/Hyena_Gallop_Dodge_L45
+Source file Lurker02_Gallop_Dodge_R15.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Hyena/Animations/RetargetFromLurker/Lurker02_Gallop_Dodge_R15.FBX' or depot. Referenced by: /Game/Assets/Characters/Hyena/Animations/RetargetFromLurker/Hyena_Gallop_Dodge_R15
+Source file Lurker02_Gallop_Dodge_L15.FBX is referenced and cannot be found in workspace 'D:/UnboundDevelopment/Game/Content/Assets/Characters/Hyena/Animations/RetargetFromLurker/Lurker02_Gallop_Dodge_L15.FBX' or depot. Referenced by: /Game/Assets/Characters/Hyena/Animations/RetargetFromLurker/Hyena_Gallop_Dodge_L15
+--------------------------------------------------
+Change: 927386
+Date:   2025-11-18 17:01:52
+Description:
+[UNB-14224]
+Submitting Jente's CL to improve performance of hyenas hiding by using [batch] pathfinding tests instead of per-item ones. 
+
+Hyena: Updated EQSQuery_HyenaFindHidingSpotBehindObstacle so that it would stop using too much processing power
+- Updated EQSQuery_HyenaFindHidingSpotBehindObstacle, by changing both PathLength: from EQSContext_CurrentEnemyNavLocation and PathLength: from HTNQuerierLocation to a  batch version
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-14224
+#vettedby jvrooij
+--------------------------------------------------
+Change: 927413
+Date:   2025-11-18 17:37:48
+Description:
+[UNB-13916]
+Tweaked hyena hit reactions to look nicer.
+
+#assetvalidation succeeded
+#jira unb-13916
+--------------------------------------------------
+Change: 927614
+Date:   2025-11-19 14:55:24
+Description:
+[UNB-14224]
+Hooking up new combat idle variation for hyenas. Fixed motionmatched animation being interrupted in the idle state.
+
+Vetted by Inka Kamula, Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-14224
+#vettedby ikamula,arembado
+--------------------------------------------------
+Change: 927702
+Date:   2025-11-19 17:13:43
+Description:
+[UNB-14224]
+If a hyena is standing still when it enters the dodging behavior they have a 50% chance to do a dodge montage where they jump back, back left, or back right.
+
+Fixed issue with HTNTask_PlayAnimationWithMinimalMotionWarping where the start rotation was 90deg off (we had mesh face along with character on Impact, but now we're back to the standard way of having the mesh be rotated 90 degrees inside the character actor blueprint).
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-14224
+#vettedby ttrignol
+--------------------------------------------------
+Change: 927773
+Date:   2025-11-20 12:50:29
+Description:
+[UNB-14224]
+Blending into attack via motionmatching
+
+Vetted by Thomas Trignol, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-14224
+#vettedby ttrignol,ttoxopeus
+--------------------------------------------------
+Change: 927806
+Date:   2025-11-20 14:33:21
+Description:
+[UNB-14224] [UNB-14234] [UNB-13917]
+Fixed hyenas picking wrong animations and warping the wrong way when staggering and/or dodging.
+Fixed hyenas jumping back and forth a lot when dodging.
+
+Vetted by Jente van Rooij, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-14224,unb-14234,unb-13917
+#missingfixversion
+#vettedby jvrooij,ttoxopeus
+--------------------------------------------------
+Change: 927839
+Date:   2025-11-20 15:31:10
+Description:
+[UNB-14249]
+Fixed hyenas doing sleep animations in parallel with combat when triggered via triggerbox.
+
+Vetted by Jente van Rooij, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-14249
+#vettedby jvrooij,ttoxopeus
+--------------------------------------------------
+Change: 927885
+Date:   2025-11-20 17:18:16
+Description:
+[UNB-13709]
+Manually rebuilt navmesh to remove stale data chunks from sublevels that used to have navmeshbounds but now don't.
+
+Vetted by Sander Brattinga, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13709
+#vettedby sbrattinga,ttoxopeus
+--------------------------------------------------
+Change: 927985
+Date:   2025-11-21 15:04:53
+Description:
+[UNB-13709]
+Fixed navmesh being left in the persistent level when done via the UVGBuildAllCommandlet (as is done every night on the buildserver). This cuts down the level streaming spike in half as the tiles only need to be added instead of removed and then added. Getting rid of floating navmesh in builds may also improve performance in other ways.
+
+Fixed stale navmesh data not being cleared in sublevels that used to have navigation bounds but no longer do.
+
+Added performance scopes so adding/removing navmesh tiles shows up on insights.
+
+Vetted by Steijn Kistemaker, Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13709
+#vettedby skistemaker,ttoxopeus
+--------------------------------------------------
+Change: 928124
+Date:   2025-11-24 17:02:26
+Description:
+[UNB-13709]
+Fixed all the light blockers and some Desert Vista objects having navmesh on them.
+The number of navmesh tiles in the desert went from >9000 to 5627. 
+Insights shows spike reduction from 179ms to 85ms.
+
+Vetted by Tim Toxopeus
+
+#assetvalidation succeeded
+#jira unb-13709
+#vettedby ttoxopeus
+--------------------------------------------------
+Change: 928189
+Date:   2025-11-25 13:12:21
+Description:
+[UNB-13709]
+Fix for spike when first loading the hyena controlrig. FVGDamageRecord is now registered manually instead of letting the ControlRig spend 100ms looking for it by scanning through all types the first time the controlrig is loaded.
+
+Vetted by Tim Toxopeus, Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-13709
+#vettedby ttoxopeus,ttrignol
+--------------------------------------------------
+Change: 929927
+Date:   2025-12-10 17:14:38
+Description:
+[UNB-10736] [UNB-14424]
+Save/loading support for spawned/despawned actors, taking into account level streaming.
+Save/loading support for corpses.
+Various functionality can now be added to save data via IVGSaveDataAutoSaveLoadInterface, IVGSaveDataAutoAddInterface, IVGSaveDataApplyToWorldInterface.
+The save/loading serialization now supports storing asset references, as long as they were added in the project settings.
+
+Vetted by Tim Toxopeus, Sander Brattinga, Stanley Lageweg
+
+#assetvalidation succeeded
+#jira unb-10736,unb-14424
+#vettedby ttoxopeus,sbrattinga,slageweg
+--------------------------------------------------
+Change: 929988
+Date:   2025-12-11 10:31:23
+Description:
+[UNB-10736]
+Fix for compile error only seen on Development Android builds.
+This was caused by a structured binding being captured by a lambda, which is perfectly fine but the specific version of clang used for Development Android builds is not fully compliant with C++20 and thus errors out on this.
+
+Vetted by Sander Brattinga
+
+#assetvalidation succeeded
+#jira unb-10736
+#vettedby sbrattinga
+--------------------------------------------------
+Change: 930059
+Date:   2025-12-11 13:29:28
+Description:
+[UNB-10736]
+Fixed flow puzzle worldstate integration.
+Fixed worldstate component/manager crashing if Initialize was not called on the worldstate component.
+
+Vetted by Thomas Trignol
+
+#assetvalidation succeeded
+#jira unb-10736
+#vettedby ttrignol
+--------------------------------------------------
+Change: 930349
+Date:   2025-12-15 12:16:43
+Description:
+[UNB-14555]
+Fixed skeletons aiming shield behind themselves
+
+Vetted by Jente van Rooij
+
+#assetvalidation succeeded
+#jira unb-14555
+#vettedby jvrooij
+--------------------------------------------------
+Change: 930794
+Date:   2025-12-17 16:56:59
+Description:
+[UNB-14555]
+Fixed skeletons jittering. Just disabled some PSDs that have no animations at all in the Chooser Table.
+
+Vetted by Alessandro Rembado
+
+#assetvalidation succeeded
+#jira unb-14555
+#vettedby arembado
+--------------------------------------------------
