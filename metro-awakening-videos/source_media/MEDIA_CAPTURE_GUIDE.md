@@ -21,9 +21,9 @@ This document lists every screenshot and video needed for the portfolio page, wi
 - Save as PNG
 
 ### Transcoding
-1. Place raw videos in `raw_video/` and raw screenshots in `raw_screenshot/` (create these folders next to `transcode_media.bat`)
-2. Run `transcode_media.bat`
-3. Output goes to `images/metro_awakening/`
+1. Place raw videos in `raw_video/` and raw screenshots in `raw_screenshot/` under this `source_media/` folder.
+2. Run `transcode_media.bat` from this folder, or drag specific files/folders onto it.
+3. Output goes to `../../images/metro_awakening/`
 
 The script will:
 - Videos: Scale to max 1280×720, encode H.264 CRF 28, no audio, faststart for web — ~1-2 MB per 10s clip
