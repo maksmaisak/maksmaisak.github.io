@@ -5,11 +5,10 @@ import { Clip } from "./Clip";
 
 /**
  * AI SYSTEMS MONTAGE
- * Combines awareness state machine, movement/avoidance, and damage response clips.
+ * Combines runtime systems and polish-oriented clips.
  *
  * Required raw clips in public/:
- *   ai_state_machine.mp4       — Enemy cycling through awareness states:
- *                                 Unaware → Investigate → Alarmed → Combat → de-escalation. ~15-20s.
+ *   cover_dynamic_safety.mp4   — Cover points updating from safe to unsafe at runtime. ~10-15s.
  *   rvo_avoidance.mp4          — Multiple AIs navigating tight spaces without collision,
  *                                 showing RVO debug vis if possible. ~8-12s.
  *   stagger_hit_reactions.mp4  — Hit reactions (additive flinch) vs staggers (full-body interrupt),
@@ -24,16 +23,16 @@ export const AISystemsMontage: React.FC = () => {
     <TransitionSeries>
       {/* Title card */}
       <TransitionSeries.Sequence durationInFrames={60}>
-        <TitleCard title="AI Systems" subtitle="State Machine · Avoidance · Damage Response" />
+        <TitleCard title="AI Systems" subtitle="Cover Safety · Avoidance · Damage Response" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}
         timing={linearTiming({ durationInFrames: FADE })}
       />
 
-      {/* Clip 1: Awareness state machine — the full state transition chain */}
-      <TransitionSeries.Sequence durationInFrames={480}>
-        <Clip src="ai_state_machine.mp4" />
+      {/* Clip 1: Cover safety updating at runtime */}
+      <TransitionSeries.Sequence durationInFrames={360}>
+        <Clip src="cover_dynamic_safety.mp4" />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}

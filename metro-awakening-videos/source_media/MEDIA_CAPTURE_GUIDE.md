@@ -1,6 +1,36 @@
 # Metro Awakening Portfolio — Media Capture Guide
 
-This document lists every screenshot and video needed for the portfolio page, with instructions on what to capture, where, and how.
+This document lists the media needed for the current trimmed portfolio page, with instructions on what to capture, where, and how.
+
+---
+
+## Current Capture Plan
+
+The Metro page was trimmed to a smaller interview-focused case study. Capture against that page, not against older drafts.
+
+### Must-have
+- `perception_sight_fields.jpg`
+- `perception_darkness.mp4`
+- `cover_system_overview.jpg`
+- `cover_dynamic_safety.mp4`
+- `enemy_human_combat.mp4`
+- `enemy_nosalis.mp4`
+- `enemy_lurker.mp4`
+- `enemy_hunter.mp4`
+- `rvo_avoidance.mp4`
+- `stagger_hit_reactions.mp4`
+- `functional_testing.jpg`
+- `performance_profiling.jpg`
+
+### Optional
+- `perception_hearing.jpg`
+- `perception_custom_sensors.jpg`
+- `cover_eqs.jpg`
+- `htn_architecture.jpg`
+
+### Not planned unless the page changes again
+- `ai_state_machine.mp4`
+- Any extra debug-only clips that do not support a surviving section or montage
 
 ---
 
@@ -31,7 +61,7 @@ The script will:
 
 ---
 
-## Required Media
+## Capture Details
 
 ### 1. `perception_sight_fields.jpg` — Perception System hero shot
 **What**: Editor screenshot showing sight field debug visualization on a human AI character  
@@ -58,7 +88,7 @@ The script will:
 
 ---
 
-### 3. `perception_hearing.jpg` — Noise propagation visualization
+### 3. `perception_hearing.jpg` — Noise propagation visualization (optional)
 **What**: Editor screenshot or paused-game screenshot showing hearing debug visualization — noise propagation paths through rooms  
 **Where**: A level with multiple rooms and doors  
 **How**:  
@@ -70,7 +100,7 @@ The script will:
 
 ---
 
-### 4. `perception_custom_sensors.jpg` — Visual Logger showing perception data
+### 4. `perception_custom_sensors.jpg` — Visual Logger showing perception data (optional)
 **What**: Screenshot of the Visual Logger window showing perception info — sight fields, noise events, or projectile sensor data  
 **Where**: Visual Logger (`Window > Developer Tools > Visual Logger`)  
 **How**:  
@@ -94,19 +124,19 @@ The script will:
 
 ---
 
-### 6. `cover_dynamic_safety.jpg` — Dynamic cover safety state
-**What**: Screenshot showing cover points color-coded by safety at runtime (green = safe, red = unsafe)  
+### 6. `cover_dynamic_safety.mp4` — Dynamic cover safety state
+**What**: Video showing cover points color-coded by safety at runtime (green = safe, red = unsafe) while the player moves  
 **Where**: In-game with an enemy nearby, or use a test map  
 **How**:  
 - Enable cover debug visualization (CVar `vg.CoverSystem.DrawCoverPoints 1` or similar)
-- Position so some cover points are safe (player behind them) and some are unsafe (player flanking)
-- The contrast between safe/unsafe colors makes a compelling image
+- Record ~10-15 seconds while the player moves so points near the active threat update visibly
+- Show safe points turning unsafe as the player flanks or advances
 
-**File**: `raw_screenshot/cover_dynamic_safety.png`
+**File**: `raw_video/cover_dynamic_safety.mp4`
 
 ---
 
-### 7. `cover_eqs.jpg` — EQS query scoring cover points
+### 7. `cover_eqs.jpg` — EQS query scoring cover points (optional)
 **What**: Screenshot of an EQS query debug view showing scored cover points  
 **Where**: Enable EQS debug on a human AI running a "find cover" query  
 **How**:  
@@ -118,15 +148,14 @@ The script will:
 
 ---
 
-### 8. `ai_state_machine.mp4` — Awareness state transitions
-**What**: Video showing an enemy going through multiple awareness states  
-**Where**: A stealth encounter where you can trigger the full chain  
+### 8. `htn_architecture.jpg` — HTN / debugging architecture visual (optional)
+**What**: Screenshot that helps explain the AI architecture, such as an HTN graph, Gameplay Debugger, or Visual Logger view  
+**Where**: HTN editor, Gameplay Debugger, or Visual Logger  
 **How**:  
-- Enable AI debug info (Gameplay Debugger or Visual Logger to show current state on screen)
-- Record the sequence: enemy patrolling (Unaware), throw an object (Investigate), approach or find dead body (Alarmed/Search), spot player (Combat). Also show de-escalation if possible (player hides, enemy goes Combat to Alarmed, or Investigate back to Unaware)
-- ~15-20 seconds
+- Capture only if the image genuinely helps explain the architecture section on the page
+- Prefer something legible at web scale rather than a dense editor screenshot full of unreadable nodes
 
-**File**: `raw_video/ai_state_machine.mp4`
+**File**: `raw_screenshot/htn_architecture.png`
 
 ---
 
@@ -143,7 +172,7 @@ The script will:
 ---
 
 ### 10. `enemy_nosalis.mp4` — Nosalis pack combat
-**What**: Video of nosalises surrounding the player, using the combat circle, and attacking  
+**What**: Video of nosalises surrounding the player and attacking, ideally with combat circle debug visualization visible for part of the clip  
 **Where**: A nosalis encounter (multiple nosalises)  
 **How**:  
 - Enable combat circle debug visualization if possible (`vg.CombatCircle.DrawDebug 1` or similar)
@@ -187,19 +216,7 @@ The script will:
 
 ---
 
-### 14. `combat_circle.jpg` — Combat circle visualization
-**What**: Top-down or angled view showing the combat circle with obstacle-aware sectors  
-**Where**: Test map or nosalis encounter  
-**How**:  
-- Enable combat circle debug drawing
-- Position camera top-down or at an angle that clearly shows: the circle, the sectors, the obstacles blocking some arcs, agents assigned to sectors
-- A corridor scene that shows a partial/semicircle is more interesting than a full circle in open space
-
-**File**: `raw_screenshot/combat_circle.png`
-
----
-
-### 15. `stagger_hit_reactions.mp4` — Damage response
+### 14. `stagger_hit_reactions.mp4` — Damage response
 **What**: Video showing enemies reacting to hits from different directions, regular hits vs stagger threshold  
 **Where**: Combat, shooting different enemies in different body parts  
 **How**:  
@@ -211,19 +228,19 @@ The script will:
 
 ---
 
-### 16. `actor_pooling.jpg` — Actor pooling
-**What**: Screenshot showing the actor pool system in action — could be a debug view, the editor spawner setup, or test results  
-**Where**: Editor or functional test  
+### 15. `performance_profiling.jpg` — AI performance profiling
+**What**: Screenshot showing AI-side profiling or performance investigation work  
+**Where**: Unreal Insights, stat capture, Session Frontend, or another profiling/debugging view  
 **How**:  
-- Option A: Screenshot of the pooling test passing in Test Automation window
-- Option B: Blueprint or editor view showing the VGActorPool actor with connected spawners
-- Option C: Statistics/profiler view showing eliminated spawn hitches
+- Prefer a capture that clearly shows AI-related work rather than a generic frame graph
+- Good examples: a trace highlighting AI spikes, EQS/perception work in Insights, or a profiling view used during Quest 2 optimization
+- Keep it readable at web scale; avoid an over-dense screenshot with tiny unreadable labels
 
-**File**: `raw_screenshot/actor_pooling.png`
+**File**: `raw_screenshot/performance_profiling.png`
 
 ---
 
-### 17. `functional_testing.jpg` — Test automation results
+### 16. `functional_testing.jpg` — Test automation results
 **What**: Screenshot of the Test Automation window with AI tests listed and passing  
 **Where**: `Window > Developer Tools > Session Frontend > Automation` tab  
 **How**:  
@@ -241,7 +258,7 @@ Target total page weight: **~15-25 MB** (acceptable for a detailed portfolio pag
 | Type | Count | Target each | Subtotal |
 |------|-------|-------------|----------|
 | Videos (720p, CRF 28, 8-15s) | 8 | 1-3 MB | ~8-24 MB |
-| Images (1280px JPEG) | 9 | 100-300 KB | ~1-3 MB |
+| Images (1280px JPEG) | 5 must-have + 4 optional | 100-300 KB | ~0.5-2.7 MB |
 
 If the total exceeds 25 MB:
 - Increase CRF to 30 for videos (smaller but slightly lower quality)
@@ -252,11 +269,13 @@ If the total exceeds 25 MB:
 
 If you want to do the most impactful ones first:
 
-1. **`enemy_nosalis.mp4`** — Most visually exciting, shows combat circle
-2. **`cover_system_overview.jpg`** — Strongest "systems" visual
-3. **`perception_sight_fields.jpg`** — Shows the custom perception architecture
-4. **`ai_state_machine.mp4`** — The full state chain is very impressive
-5. **`enemy_human_combat.mp4`** — Core gameplay
-6. **`perception_darkness.mp4`** — Metro's signature stealth mechanic
-7. **`rvo_avoidance.mp4`** — Technical depth, may need test map setup
-8. The rest — fill in as you go
+1. **`enemy_nosalis.mp4`** — Most visually exciting and can carry the combat circle debug view as well
+2. **`cover_system_overview.jpg`** — Strongest static systems visual
+3. **`perception_sight_fields.jpg`** — Shows the custom perception architecture immediately
+4. **`enemy_human_combat.mp4`** — Core shipped gameplay behavior
+5. **`perception_darkness.mp4`** — Metro's signature stealth mechanic
+6. **`cover_dynamic_safety.mp4`** — Best runtime systems clip for the cover section
+7. **`functional_testing.jpg`** — strong proof of reliability and production maturity
+8. **`performance_profiling.jpg`** — strongest supporting screenshot for the optimization story
+9. **`rvo_avoidance.mp4`** and **`stagger_hit_reactions.mp4`** — strong supporting technical clips
+10. The optional captures — only if the page still needs them after the must-haves are in place

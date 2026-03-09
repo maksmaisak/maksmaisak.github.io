@@ -67,7 +67,7 @@ Game Programmer Intern
     February 2021 — June 2021
     Force Field Entertainment, Amsterdam, the Netherlands
 
-        Created a JavaScript/TypeScript declarative state machine library for game logic
+        Created a JavaScript declarative state machine library for game logic
         The library drove all gameplay logic on a Node.js server for multiple Facebook Rooms titles
         Ported the state machine system from JavaScript to C# (Unity) for a mobile multiplayer game
         Implemented full poker game logic: betting rounds, tournament mode, blinds, hand evaluation,

@@ -12,13 +12,13 @@ import { Clip } from "./Clip";
  * All clips should be in public/.
  *
  * Recommended clip order (high-energy → technical depth → back to action):
- *   1. enemy_nosalis.mp4      — Visceral pack combat (best 5s)
+ *   1. enemy_nosalis.mp4       — Visceral pack combat (best 5s)
  *   2. perception_darkness.mp4 — Stealth light/dark moment (best 4s)
  *   3. cover_dynamic_safety.mp4 — Cover points updating live (best 4s)
- *   4. ai_state_machine.mp4   — State transition chain (best 5s)
- *   5. enemy_human_combat.mp4 — Cover-based firefight (best 5s)
+ *   4. enemy_hunter.mp4        — Evasive ambush enemy (best 5s)
+ *   5. enemy_human_combat.mp4  — Cover-based firefight (best 5s)
  *   6. stagger_hit_reactions.mp4 — Satisfying stagger hit (best 3s)
- *   7. rvo_avoidance.mp4      — Smooth crowd movement (best 3s)
+ *   7. rvo_avoidance.mp4       — Smooth crowd movement (best 3s)
  *
  * Adjust trimStart/trimEnd in each <Clip> to pick the best moments.
  * Total: ~30-35s at 30fps (900-1050 frames).
@@ -64,9 +64,9 @@ export const HeroMontage: React.FC = () => {
         timing={linearTiming({ durationInFrames: FADE })}
       />
 
-      {/* Awareness state chain */}
+      {/* Hunter ambush behavior */}
       <TransitionSeries.Sequence durationInFrames={150}>
-        <Clip src="ai_state_machine.mp4" trimStart={0} trimEnd={5} />
+        <Clip src="enemy_hunter.mp4" trimStart={0} trimEnd={5} />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}

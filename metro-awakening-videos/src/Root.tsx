@@ -102,15 +102,6 @@ export const RemotionRoot: React.FC = () => {
           width={WIDTH}
           height={HEIGHT}
         />
-        {/* AI / State Machine */}
-        <Composition
-          id="ai-state-machine"
-          component={() => <Clip src="ai_state_machine.mp4" />}
-          durationInFrames={480}
-          fps={FPS}
-          width={WIDTH}
-          height={HEIGHT}
-        />
         {/* Enemy Types */}
         <Composition
           id="enemy-human-combat"
