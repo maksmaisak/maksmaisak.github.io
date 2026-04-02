@@ -1,8 +1,7 @@
 @echo off
 REM ═══════════════════════════════════════════════════════════════
-REM  Render all individual clip compositions to ../images/metro_awakening/
-REM  Run from the metro-awakening-videos directory.
-REM  Requires: npm install (run once before first render)
+REM  Render individual clip compositions only (no transcode).
+REM  For full render + transcode, use render_all.bat instead.
 REM ═══════════════════════════════════════════════════════════════
 
 setlocal
@@ -16,11 +15,8 @@ echo ╚════════════════════════
 echo.
 
 for %%C in (
-    perception-darkness
-    perception-projectile
-    perception-debugging
+    perception-sight-fields
     cover-dynamic-safety
-    ai-state-machine
     enemy-human-combat
     enemy-nosalis
     enemy-lurker

@@ -22,7 +22,7 @@ const finishRenderHandle = (
   continueRender(renderHandle);
 };
 
-const MissingVideoPlaceholder: React.FC<{ src: string }> = ({ src }) => {
+const MissingVideoPlaceholder: React.FC<{ src: string; placeholder?: string }> = ({ src, placeholder }) => {
   return (
     <AbsoluteFill
       style={{
@@ -59,16 +59,29 @@ const MissingVideoPlaceholder: React.FC<{ src: string }> = ({ src }) => {
         >
           Missing Preview Video
         </div>
-        <div
-          style={{
-            fontSize: 44,
-            fontWeight: 700,
-            lineHeight: 1.15,
-            marginBottom: 18,
-          }}
-        >
-          Add the source clip to the public folder.
-        </div>
+        {placeholder ? (
+          <div
+            style={{
+              fontSize: 28,
+              fontWeight: 400,
+              lineHeight: 1.4,
+              marginBottom: 18,
+            }}
+          >
+            {placeholder}
+          </div>
+        ) : (
+          <div
+            style={{
+              fontSize: 44,
+              fontWeight: 700,
+              lineHeight: 1.15,
+              marginBottom: 18,
+            }}
+          >
+            Add the source clip to the public folder.
+          </div>
+        )}
         <div
           style={{
             color: "#c7c7c7",
@@ -107,7 +120,9 @@ export const Clip: React.FC<{
   trimStart?: number;
   /** Trim end in seconds */
   trimEnd?: number;
-}> = ({ src, trimStart, trimEnd }) => {
+  /** Instruction text shown in placeholder when clip is missing */
+  placeholder?: string;
+}> = ({ src, trimStart, trimEnd, placeholder }) => {
   const { fps } = useVideoConfig();
   const resolvedSrc = staticFile(src);
   const [isAvailable, setIsAvailable] = useState<boolean | null>(() => {
@@ -177,7 +192,7 @@ export const Clip: React.FC<{
   }, [renderHandle, resolvedSrc]);
 
   if (isAvailable !== true) {
-    return <MissingVideoPlaceholder src={src} />;
+    return <MissingVideoPlaceholder src={src} placeholder={placeholder} />;
   }
 
   return (

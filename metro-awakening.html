@@ -178,7 +178,7 @@
             }
 
             .content-row {
-                align-items: flex-start;
+                align-items: center;
             }
 
             .content-row + .content-row {
@@ -250,26 +250,21 @@
                 <div class="row content-row justify-content-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
-                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/htn_architecture.jpg" alt="HTN architecture or debugging view" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
+                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/htn_architecture.png" alt="HTN architecture or debugging view" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
                             <div class="media-slot-ph">
                                 Screenshot: HTN graph, Gameplay Debugger, or Visual Logger view that helps explain the architecture.<br>
-                                <strong>images/metro_awakening/htn_architecture.jpg</strong>
+                                <strong>images/metro_awakening/htn_architecture.png</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Enemy AI had two layers. A lightweight <strong>awareness state machine</strong>
-                            handled high-level states such as Unaware, Startled, Investigate, Alarmed, and Combat.
+                            Enemy AI had two layers. A state machine handled high-level modes — Unaware, Investigate, Alarmed, Combat — while
+                            my <a target="_blank" href="https://maksmaisak.github.io/htn">HTN plugin</a>
+                            chose concrete actions inside each: investigating sounds, moving to cover, advancing, shooting, suppressing, retreating.
                         </p>
                         <p>
-                            Inside each state, my <a target="_blank" href="https://maksmaisak.github.io/htn"><strong>Hierarchical Task Networks</strong> plugin</a>
-                            chose concrete actions such as investigating a noise, searching cover near the last known position,
-                            advancing, shooting, suppressing, retreating, or triggering archetype-specific behavior.
-                        </p>
-                        <p>
-                            The structure was supported by shared systems
-                            for <strong>AI tokens</strong>, <strong>group communication</strong>, <strong>location reservation</strong>, and <strong>parameter templates</strong>.
+                            All archetypes shared a token system, group communication, location reservation, and designer-facing parameter templates.
                         </p>
                     </div>
                 </div>
@@ -280,48 +275,32 @@
                 <div class="row content-row justify-content-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
-                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/perception_sight_fields.jpg" alt="Perception sight field debug screenshot" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                            <div class="media-slot-ph">
-                                Editor screenshot: select a human AI character, enable
-                                "Show &gt; Impact &gt; Show Sight Fields: Of Selected Actor".
-                                Show coffin-shaped and cone-shaped sight fields (Focus, Normal, Periphery)
-                                with Metro architecture in background.<br>
-                                <strong>images/metro_awakening/perception_sight_fields.jpg</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-md-6">
-                        <p>
-                            Unreal's built-in <code>AIPerception</code> did not fit the project's performance and flexibility needs,
-                            so I built a custom <strong>time-sliced perception framework</strong>.
-                            Sensor work was budgeted across frames to make it viable on Quest 2-class standalone VR hardware.
-                        </p>
-                        <ul class="compact-list">
-                            <li><strong>Sight:</strong> multiple prioritized sight fields, awareness rates tied to what was seen, and darkness-aware detection</li>
-                            <li><strong>Hearing:</strong> navmesh-based noise propagation with obstacle dampening so stealth felt readable and grounded in level geometry</li>
-                            <li><strong>Custom sensors:</strong> projectile fly-bys, dead-body detection, and matching debug views in the Visual Logger</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row content-row justify-content-center">
-                    <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
-                        <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/perception_darkness.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/perception_sight_fields.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/perception_sight_fields.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/perception_sight_fields.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
-                                Video (8-12s): enable sight field debug drawing, then show the player
-                                stepping from a dark area into light (enemy detects), then back into darkness
-                                (enemy loses sight). Sight trace lines changing color sell this well.<br>
-                                <strong>images/metro_awakening/perception_darkness.mp4</strong>
+                                Video (8-12s): select a human AI, enable sight field debug drawing.
+                                Show Focus, Normal, and Periphery cones tracking the player,
+                                with trace lines changing color as awareness builds.<br>
+                                <strong>images/metro_awakening/perception_sight_fields.mp4</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Metro's stealth depends on players understanding why they were or were not seen.
-                            The darkness integration made light, cover, and line of sight consistent and readable.
+                            Unreal's <code>AIPerception</code> didn't meet the project's performance or flexibility needs,
+                            so I built a <strong>custom perception framework</strong> with time-sliced updates viable on Quest 2.
+                        </p>
+                        <p>
+                            Sight ran through multiple prioritized fields with per-target awareness rates and darkness-aware detection.
+                        </p>
+                        <p>
+                            Hearing propagated noise through the navmesh with material-based dampening.
+                        </p>
+                        <p>
+                            Additional sensors covered projectile fly-bys and dead bodies, each with Visual Logger debug views.
                         </p>
                     </div>
                 </div>
@@ -332,20 +311,20 @@
                 <div class="row content-row justify-content-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
-                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/cover_system_overview.jpg" alt="Cover system overview screenshot" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
+                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/cover_system_overview.png" alt="Cover system overview screenshot" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
                             <div class="media-slot-ph">
                                 Editor screenshot: show auto-generated cover points along navmesh edges.
                                 Enable cover point visualization, position camera for wide shot showing
                                 low cover (one color) and high cover (another) with line-of-fire indicators.<br>
-                                <strong>images/metro_awakening/cover_system_overview.jpg</strong>
+                                <strong>images/metro_awakening/cover_system_overview.png</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Human combat was built around a cover system that automatcally generated points from navmesh edges,
-                            classified them as low or high cover, and scored them by body coverage.
-                            That data fed EQS queries and level-design controls, so enemies could reason about actual protection.
+                            The cover system automatically generated points from navmesh edges,
+                            classified each as low or high cover, and scored them by body coverage.
+                            That data fed EQS queries so enemies could reason about actual protection.
                         </p>
                     </div>
                 </div>
@@ -354,7 +333,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/cover_dynamic_safety.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/cover_dynamic_safety.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/cover_dynamic_safety.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/cover_dynamic_safety.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (10-15s): enable cover point safety visualization and walk
@@ -367,9 +348,9 @@
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Static cover data was generated offline. <strong>CoverTrackers</strong> kept runtime safety up to date
-                            against live threats so enemies could react when the player flanked, advanced, or disappeared.
-                            Updates ran within a <strong>0.1ms per-frame budget</strong> on Quest 2, with nearby points refreshing more often than distant ones.
+                            Static cover data was generated offline. CoverTrackers then kept safety up to date against live threats,
+                            so enemies reacted when the player flanked or disappeared.
+                            Updates ran within a <strong>0.1 ms per-frame budget</strong> on Quest 2, with nearby points refreshing more often than distant ones.
                         </p>
                     </div>
                 </div>
@@ -378,7 +359,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/enemy_human_combat.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/enemy_human_combat.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/enemy_human_combat.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/enemy_human_combat.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (10-15s): human enemies in cover-based combat.
@@ -390,14 +373,11 @@
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Humans could <strong>fight from cover, reposition when exposed, and maintain pressure</strong>.
-                            They selected cover through EQS, used safer routes to get there, and switched behavior when the player's position changed.
+                            Humans fought from cover, repositioned when exposed, and selected positions through EQS based on safety and the player's location.
+                            Token-based coordination stopped squads from crowding one spot or all firing at once.
                         </p>
                         <p>
-                            <strong>Token-based coordination</strong> and <strong>location reservation</strong> stopped squads from dogpiling the same spot or all firing at once.
-                        </p>
-                        <p>
-                            <strong>An accuracy system</strong> and suppressive fire let designers keep pressure on the player without overwhelming them.
+                            An accuracy system and suppressive fire let designers control pressure without overwhelming the player.
                         </p>
                     </div>
                 </div>
@@ -409,7 +389,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/enemy_nosalis.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/enemy_nosalis.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/enemy_nosalis.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/enemy_nosalis.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (10-15s): nosalises in combat, surrounding the player and attacking in a group.
@@ -421,12 +403,9 @@
                     <div class="col col-md-6">
                         <h3>Nosalises</h3>
                         <p>
-                            Nosalises were built around pressure and player positioning. Their key system was the
-                            <strong>Combat Circle</strong>, which distributed melee enemies into obstacle-aware sectors around the player
-                            so they could surround naturally in open areas and form semicircles in tighter spaces.
-                        </p>
-                        <p>
-                            Their behavior stack handled telegraphs, attacks, landings, noise escalation, and aim avoidance.
+                            Nosalises used a <strong>Combat Circle</strong> that distributed attackers into obstacle-aware sectors around the player,
+                            forming natural surrounds in open areas and semicircles in tight spaces.
+                            On top of that: telegraphed attacks, aim avoidance when the player looked at them, and weakspot-driven staggers.
                         </p>
                     </div>
                 </div>
@@ -435,7 +414,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/enemy_lurker.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/enemy_lurker.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/enemy_lurker.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/enemy_lurker.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (10-15s): lurkers hiding, attacking, and retreating to new hiding spots.<br>
@@ -446,8 +427,8 @@
                     <div class="col col-md-6">
                         <h3>Lurkers</h3>
                         <p>
-                            Lurkers were built around <strong>hide-attack-retreat</strong> loops instead of constant exposure.
-                            They used bounce, drive-by, and proximity attacks, coordinated into waves, and scattered when allies died.
+                            Lurkers hid in dark spots, attacked in coordinated waves (bounce, drive-by, and proximity attacks),
+                            then retreated to new hiding spots. They scattered when allies died nearby.
                         </p>
                     </div>
                 </div>
@@ -456,7 +437,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/enemy_hunter.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/enemy_hunter.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/enemy_hunter.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/enemy_hunter.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (10-15s): hunters using hit-and-run tactics, hiding, dodging, and pair attacks.<br>
@@ -467,8 +450,9 @@
                     <div class="col col-md-6">
                         <h3>Hunters</h3>
                         <p>
-                            Hunters were stealthy blowgun enemies built around <strong>ambush positions, evasive movement, and pair attacks</strong>.
-                            They preferred hiding spots with real line of sight, dodged in purposeful directions, and retreated back into cover between attacks.
+                            Hunters were stealthy blowgun enemies that picked hiding spots with real line of sight,
+                            dodged toward their next destination when shot at,
+                            and attacked in pairs from different angles if the player stayed still too long.
                         </p>
                     </div>
                 </div>
@@ -480,7 +464,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/rvo_avoidance.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/rvo_avoidance.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/rvo_avoidance.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/rvo_avoidance.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (8-12s): multiple characters navigating past each other in a corridor
@@ -492,14 +478,12 @@
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Unreal's built-in avoidance was not good enough for the project's <strong>root-motion-driven characters</strong>.
-                            It assumed directly controlled velocity and had no real awareness of navmesh boundaries,
-                            which made it a bad fit for combat movement.
+                            Unreal's avoidance assumed directly controlled velocity and had no navmesh boundary awareness — a bad fit for root-motion combat.
                         </p>
                         <p>
-                            I rewrote the engine's <code>UAvoidanceManager</code> to use navmesh-aware candidate directions,
-                            actual animation-driven velocity, better handling of moving and stationary characters,
-                            and a fallback that minimized collision depth when avoidance was unavoidable.
+                            I rewrote <code>UAvoidanceManager</code> with navmesh-aware candidate directions,
+                            animation-driven velocity, distinct handling of moving vs. stationary characters,
+                            and a fallback that minimized penetration depth when collision was unavoidable.
                         </p>
                     </div>
                 </div>
@@ -511,7 +495,9 @@
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
                             <video class="img-fluid mx-auto d-block" autoplay playsinline muted loop onloadeddata="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
-                                <source src="images/metro_awakening/stagger_hit_reactions.mp4" type="video/mp4">
+                                <source src="images/metro_awakening/stagger_hit_reactions.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"'>
+                                <source src="images/metro_awakening/stagger_hit_reactions.hevc.mp4" type='video/mp4; codecs="hvc1"'>
+                                <source src="images/metro_awakening/stagger_hit_reactions.mp4" type='video/mp4; codecs="avc1"'>
                             </video>
                             <div class="media-slot-ph">
                                 Video (8-12s): shoot enemies in different body parts. Show directional
@@ -522,10 +508,9 @@
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            Damage response needed to communicate impact without turning every hit into a hard stun.
-                            The system separated <strong>light hit reactions</strong> from <strong>full staggers</strong>,
-                            with data-driven selection based on hit direction, hit location, and damage type.
-                            That kept combat feedback readable and tuning in data instead of hard-coded cases.
+                            The system separated light hit reactions (additive flinches) from full staggers (interruptive),
+                            selected by hit direction, body part, and damage type.
+                            All selection was data-driven so designers could tune responses without code changes.
                         </p>
                     </div>
                 </div>
@@ -536,17 +521,18 @@
                 <div class="row content-row justify-content-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3 order-md-last">
                         <div class="media-slot">
-                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/functional_testing.jpg" alt="Functional testing results" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
+                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/functional_testing.png" alt="Functional testing results" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
                             <div class="media-slot-ph">
                                 Screenshot: Test Automation window with AI-related tests listed and passing.<br>
-                                <strong>images/metro_awakening/functional_testing.jpg</strong>
+                                <strong>images/metro_awakening/functional_testing.png</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            I introduced <strong>automated functional testing</strong> so AI regressions could be caught and reproduced reliably.
-                            I made tests for various complex behaviors, which made bug fixing faster and late tuning safer.
+                            I wrote 50+ automated functional tests covering perception, state transitions, cover selection,
+                            combat coordination, and character pooling.
+                            Regressions were caught before they reached QA, and late-stage tuning was safer because of it.
                         </p>
                     </div>
                 </div>
@@ -557,23 +543,20 @@
                 <div class="row content-row justify-content-center">
                     <div class="col-md mb-4 mb-md-0 px-0 px-sm-3">
                         <div class="media-slot">
-                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/performance_profiling.jpg" alt="Performance profiling screenshot" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
+                            <img class="img-fluid mx-auto d-block" src="images/metro_awakening/performance_profiling.png" alt="Performance profiling screenshot" onload="this.closest('.media-slot').classList.add('has-media')" onerror="this.remove()">
                             <div class="media-slot-ph">
                                 Screenshot: Unreal Insights, stat capture, or another profiling view showing AI-side performance investigation or improvement work.<br>
-                                <strong>images/metro_awakening/performance_profiling.jpg</strong>
+                                <strong>images/metro_awakening/performance_profiling.png</strong>
                             </div>
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <p>
-                            The AI also had to hold up on Quest 2, so performance work happened alongside feature work.
+                            The AI had to hold up on Quest 2, so performance work happened alongside feature work:
+                            time-slicing perception and cover updates, porting hot-path Blueprint logic to C++,
+                            integrating the Animation Budget Allocator,
+                            and profiling-driven fixes like eliminating stale references that caused 120× more path recalculations than necessary.
                         </p>
-                        <ul class="compact-list">
-                            <li><strong>Time-slicing</strong> across perception, cover updates, and related systems</li>
-                            <li><strong>Blueprint-to-C++ ports</strong> of hot-path AI code</li>
-                            <li><strong>Animation optimization</strong> through fast-path work and Animation Budget Allocator integration</li>
-                            <li><strong>Debugging and profiling fixes</strong> such as removing stale references that forced unnecessary path recalculation</li>
-                        </ul>
                     </div>
                 </div>
 
